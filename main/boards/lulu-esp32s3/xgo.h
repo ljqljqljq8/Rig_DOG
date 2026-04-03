@@ -33,7 +33,6 @@ void SendMotorCommand(uint8_t *pData, uint16_t size);
 void move();
 void xgo_control();
 void xgo_rx();
-void SetDogMotion(float new_vx, float new_vyaw, int duration_ms);
 //Action & Behavior Functions
 void set_action_loop_flag(uint8_t flag);
 

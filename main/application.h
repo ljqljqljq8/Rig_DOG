@@ -93,9 +93,6 @@ private:
     void XgoTask(); 
     void XgoRxTask(); 
     void SetListeningMode(ListeningMode mode);
-#ifdef CONFIG_BOARD_TYPE_LULU_ESP32S3
-    bool HandleLocalLuluVoiceCommand(const std::string& text);
-#endif
 };
 
 #endif // _APPLICATION_H_

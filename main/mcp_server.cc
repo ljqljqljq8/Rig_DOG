@@ -18,6 +18,72 @@
 
 #define DEFAULT_TOOLCALL_STACK_SIZE 6144
 
+namespace {
+
+bool ContainsAny(const std::string& text, const std::initializer_list<const char*>& patterns) {
+    for (const char* pattern : patterns) {
+        if (text.find(pattern) != std::string::npos) {
+            return true;
+        }
+    }
+    return false;
+}
+
+std::string TrimAscii(const std::string& text) {
+    const auto begin = text.find_first_not_of(" \t\r\n\"'`");
+    if (begin == std::string::npos) {
+        return "";
+    }
+    const auto end = text.find_last_not_of(" \t\r\n\"'`");
+    return text.substr(begin, end - begin + 1);
+}
+
+std::string ExtractNameByMarker(const std::string& text, const std::string& marker) {
+    const auto position = text.find(marker);
+    if (position == std::string::npos) {
+        return "";
+    }
+
+    size_t start = position + marker.size();
+    while (start < text.size() && (text[start] == ' ' || text[start] == ':' || text[start] == '=')) {
+        ++start;
+    }
+
+    size_t end = text.size();
+    for (const std::string& delimiter : {std::string("。"), std::string("，"), std::string("！"),
+                                         std::string("？"), std::string(","), std::string("."),
+                                         std::string("!"), std::string("?"), std::string("\n"),
+                                         std::string("\r")}) {
+        const auto found = text.find(delimiter, start);
+        if (found != std::string::npos && found < end) {
+            end = found;
+        }
+    }
+
+    return TrimAscii(text.substr(start, end - start));
+}
+
+std::string ExtractEnrollmentName(const std::string& question) {
+    if (!ContainsAny(question, {"记住", "录入", "注册", "登记", "保存"})) {
+        return "";
+    }
+
+    for (const std::string& marker : {std::string("记住我叫"), std::string("记住这个人叫"),
+                                      std::string("记住他叫"), std::string("记住她叫"),
+                                      std::string("名字是"), std::string("我叫"),
+                                      std::string("叫"), std::string("name is "),
+                                      std::string("called ")}) {
+        std::string name = ExtractNameByMarker(question, marker);
+        if (!name.empty() && name.size() <= 64) {
+            return name;
+        }
+    }
+
+    return "";
+}
+
+}  // namespace
+
 McpServer::McpServer() {
 }
 
@@ -86,7 +152,8 @@ void McpServer::AddCommonTools() {
     auto camera = board.GetCamera();
     if (camera) {
         AddTool("self.camera.take_photo",
-            "Take a photo and explain it. Use this tool after the user asks you to see something.\n"
+            "Take a photo and explain the visual scene only. Use this tool when the user asks you to see or describe something.\n"
+            "Do not use this tool for face recognition, identifying who someone is, or remembering/registering a person. For requests like 'remember me' or 'register my face', this tool will redirect to face enrollment when possible.\n"
             "Args:\n"
             "  `question`: The question that you want to ask about the photo.\n"
             "Return:\n"
@@ -95,10 +162,17 @@ void McpServer::AddCommonTools() {
                 Property("question", kPropertyTypeString)
             }),
             [camera](const PropertyList& properties) -> ReturnValue {
+                auto question = properties["question"].value<std::string>();
+                std::string enroll_name = ExtractEnrollmentName(question);
+                if (!enroll_name.empty()) {
+                    if (!camera->Capture()) {
+                        return std::string("<enroll>Failed to capture photo</enroll>");
+                    }
+                    return camera->EnrollPerson(enroll_name);
+                }
                 if (!camera->Capture()) {
                     return "{\"success\": false, \"message\": \"Failed to capture photo\"}";
                 }
-                auto question = properties["question"].value<std::string>();
                 return camera->Explain(question);
             });
     }
@@ -353,8 +427,6 @@ void McpServer::DoToolCall(int id, const std::string& tool_name, const cJSON* to
     cfg.stack_size = stack_size;
     cfg.prio = 1;
     esp_pthread_set_cfg(&cfg);
-
-    ESP_LOGI(TAG, "tools/call: invoking %s", tool_name.c_str());
 
     // Use a thread to call the tool to avoid blocking the main thread
     tool_call_thread_ = std::thread([this, id, tool_iter, arguments = std::move(arguments)]() {

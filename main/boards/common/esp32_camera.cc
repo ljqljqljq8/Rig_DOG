@@ -4,12 +4,122 @@
 #include "board.h"
 #include "system_info.h"
 
+#include <cJSON.h>
 #include <esp_log.h>
 #include <esp_heap_caps.h>
 #include <img_converters.h>
+#include <mbedtls/base64.h>
+#include <cstdlib>
 #include <cstring>
 
 #define TAG "Esp32Camera"
+
+namespace {
+
+bool EncodeFrameToBase64(camera_fb_t* frame, std::string& base64_image, std::string& error_message) {
+    if (frame == nullptr) {
+        error_message = "No image captured";
+        return false;
+    }
+
+    uint8_t* jpeg_buffer = nullptr;
+    size_t jpeg_length = 0;
+    bool own_jpeg_buffer = false;
+
+    if (frame->format == PIXFORMAT_JPEG) {
+        jpeg_buffer = frame->buf;
+        jpeg_length = frame->len;
+    } else {
+        if (!frame2jpg(frame, 80, &jpeg_buffer, &jpeg_length) || jpeg_buffer == nullptr || jpeg_length == 0) {
+            ESP_LOGE(TAG, "Failed to encode frame as JPEG");
+            error_message = "Failed to encode JPEG";
+            return false;
+        }
+        own_jpeg_buffer = true;
+    }
+
+    size_t base64_length = 0;
+    mbedtls_base64_encode(nullptr, 0, &base64_length, jpeg_buffer, jpeg_length);
+
+    auto* base64_buffer = static_cast<uint8_t*>(
+        heap_caps_malloc(base64_length + 1, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT)
+    );
+    if (base64_buffer == nullptr) {
+        if (own_jpeg_buffer) {
+            free(jpeg_buffer);
+        }
+        ESP_LOGE(TAG, "Failed to allocate base64 buffer");
+        error_message = "Memory allocation failed";
+        return false;
+    }
+
+    if (mbedtls_base64_encode(base64_buffer, base64_length + 1, &base64_length, jpeg_buffer, jpeg_length) != 0) {
+        heap_caps_free(base64_buffer);
+        if (own_jpeg_buffer) {
+            free(jpeg_buffer);
+        }
+        ESP_LOGE(TAG, "Base64 encoding failed");
+        error_message = "Base64 encoding failed";
+        return false;
+    }
+    base64_buffer[base64_length] = '\0';
+
+    if (own_jpeg_buffer) {
+        free(jpeg_buffer);
+    }
+
+    base64_image.assign(reinterpret_cast<const char*>(base64_buffer), base64_length);
+    heap_caps_free(base64_buffer);
+    return true;
+}
+
+std::string BuildJsonPayload(const std::string& image_base64, const char* name = nullptr) {
+    cJSON* payload = cJSON_CreateObject();
+    if (payload == nullptr) {
+        return {};
+    }
+
+    cJSON_AddStringToObject(payload, "image_base64", image_base64.c_str());
+    if (name != nullptr) {
+        cJSON_AddStringToObject(payload, "name", name);
+    } else {
+        cJSON_AddNumberToObject(payload, "confidence_threshold", 0.45);
+    }
+
+    char* json_str = cJSON_PrintUnformatted(payload);
+    std::string result;
+    if (json_str != nullptr) {
+        result = json_str;
+        cJSON_free(json_str);
+    }
+    cJSON_Delete(payload);
+    return result;
+}
+
+std::string ExtractApiErrorMessage(const std::string& response_body, int status_code) {
+    cJSON* response = cJSON_Parse(response_body.c_str());
+    if (response != nullptr) {
+        cJSON* detail = cJSON_GetObjectItem(response, "detail");
+        cJSON* error = cJSON_GetObjectItem(response, "error");
+        if (cJSON_IsString(detail) && detail->valuestring != nullptr) {
+            std::string message = detail->valuestring;
+            cJSON_Delete(response);
+            return message;
+        }
+        if (cJSON_IsString(error) && error->valuestring != nullptr) {
+            std::string message = error->valuestring;
+            cJSON_Delete(response);
+            return message;
+        }
+        cJSON_Delete(response);
+    }
+
+    char fallback[64];
+    snprintf(fallback, sizeof(fallback), "API error: %d", status_code);
+    return std::string(fallback);
+}
+
+}  // namespace
 
 Esp32Camera::Esp32Camera(const camera_config_t& config) {
     // camera init
@@ -84,6 +194,10 @@ void Esp32Camera::SetExplainUrl(const std::string& url, const std::string& token
     explain_token_ = token;
 }
 
+void Esp32Camera::SetFaceEnrollUrl(const std::string& url) {
+    face_enroll_url_ = url;
+}
+
 bool Esp32Camera::Capture() {
     if (encoder_thread_.joinable()) {
         encoder_thread_.join();
@@ -126,6 +240,143 @@ bool Esp32Camera::Capture() {
     }
     return true;
 }
+
+std::string Esp32Camera::RecognizeFace(const std::string& url) {
+    if (url.empty()) {
+        return "<rec>Face recognition URL not configured</rec>";
+    }
+    std::string base64_image;
+    std::string error_message;
+    if (!EncodeFrameToBase64(fb_, base64_image, error_message)) {
+        return std::string("<rec>") + error_message + "</rec>";
+    }
+
+    std::string payload = BuildJsonPayload(base64_image);
+    if (payload.empty()) {
+        return "<rec>Failed to build request</rec>";
+    }
+
+    auto network = Board::GetInstance().GetNetwork();
+    auto http = network->CreateHttp(3);
+    http->SetHeader("Content-Type", "application/json");
+    http->SetHeader("Device-Id", SystemInfo::GetMacAddress().c_str());
+    http->SetHeader("Client-Id", Board::GetInstance().GetUuid().c_str());
+    http->SetContent(std::move(payload));
+
+    ESP_LOGI(TAG, "Sending face recognition request to %s", url.c_str());
+    if (!http->Open("POST", url)) {
+        ESP_LOGE(TAG, "Failed to connect to face recognition API");
+        return "<rec>Failed to connect to API</rec>";
+    }
+
+    int status_code = http->GetStatusCode();
+    if (status_code != 200) {
+        ESP_LOGE(TAG, "Face recognition API returned status code %d", status_code);
+        http->Close();
+        char error_output[64];
+        snprintf(error_output, sizeof(error_output), "<rec>API error: %d</rec>", status_code);
+        return std::string(error_output);
+    }
+
+    std::string response_string = http->ReadAll();
+    http->Close();
+
+    cJSON* response = cJSON_Parse(response_string.c_str());
+    if (response == nullptr) {
+        ESP_LOGE(TAG, "Invalid face recognition response: %s", response_string.c_str());
+        return "<rec>Invalid API response</rec>";
+    }
+
+    std::string result = "<rec>Invalid API response</rec>";
+    cJSON* matched = cJSON_GetObjectItem(response, "matched");
+    cJSON* name = cJSON_GetObjectItem(response, "name");
+    cJSON* confidence = cJSON_GetObjectItem(response, "confidence");
+
+    if (cJSON_IsBool(matched) && cJSON_IsNumber(confidence)) {
+        char output[160];
+        if (cJSON_IsTrue(matched) && cJSON_IsString(name)) {
+            snprintf(output, sizeof(output), "<rec>%s, confidence: %.2f</rec>",
+                     name->valuestring, confidence->valuedouble);
+        } else {
+            snprintf(output, sizeof(output), "<rec>No match, confidence: %.2f</rec>",
+                     confidence->valuedouble);
+        }
+        result = output;
+    }
+
+    cJSON_Delete(response);
+    return result;
+}
+
+std::string Esp32Camera::EnrollFace(const std::string& url, const std::string& name) {
+    if (url.empty()) {
+        return "<enroll>Face enrollment URL not configured</enroll>";
+    }
+    if (name.empty()) {
+        return "<enroll>Name is required</enroll>";
+    }
+
+    std::string base64_image;
+    std::string error_message;
+    if (!EncodeFrameToBase64(fb_, base64_image, error_message)) {
+        return std::string("<enroll>") + error_message + "</enroll>";
+    }
+
+    std::string payload = BuildJsonPayload(base64_image, name.c_str());
+    if (payload.empty()) {
+        return "<enroll>Failed to build request</enroll>";
+    }
+
+    auto network = Board::GetInstance().GetNetwork();
+    auto http = network->CreateHttp(3);
+    http->SetHeader("Content-Type", "application/json");
+    http->SetHeader("Device-Id", SystemInfo::GetMacAddress().c_str());
+    http->SetHeader("Client-Id", Board::GetInstance().GetUuid().c_str());
+    http->SetContent(std::move(payload));
+
+    ESP_LOGI(TAG, "Sending face enrollment request to %s for %s", url.c_str(), name.c_str());
+    if (!http->Open("POST", url)) {
+        ESP_LOGE(TAG, "Failed to connect to face enrollment API");
+        return "<enroll>Failed to connect to API</enroll>";
+    }
+
+    int status_code = http->GetStatusCode();
+    std::string response_string = http->ReadAll();
+    http->Close();
+
+    if (status_code != 200) {
+        std::string api_error = ExtractApiErrorMessage(response_string, status_code);
+        ESP_LOGE(TAG, "Face enrollment API returned status code %d: %s", status_code, api_error.c_str());
+        return std::string("<enroll>failed: ") + api_error + "</enroll>";
+    }
+
+    cJSON* response = cJSON_Parse(response_string.c_str());
+    if (response == nullptr) {
+        ESP_LOGE(TAG, "Invalid face enrollment response: %s", response_string.c_str());
+        return "<enroll>Invalid API response</enroll>";
+    }
+
+    std::string result = "<enroll>Invalid API response</enroll>";
+    cJSON* success = cJSON_GetObjectItem(response, "success");
+    cJSON* response_name = cJSON_GetObjectItem(response, "name");
+    cJSON* error = cJSON_GetObjectItem(response, "error");
+
+    if (cJSON_IsBool(success)) {
+        if (cJSON_IsTrue(success) && cJSON_IsString(response_name) && response_name->valuestring != nullptr) {
+            result = std::string("<enroll>registered: ") + response_name->valuestring + "</enroll>";
+        } else if (cJSON_IsString(error) && error->valuestring != nullptr) {
+            result = std::string("<enroll>failed: ") + error->valuestring + "</enroll>";
+        }
+    }
+
+    cJSON_Delete(response);
+    return result;
+}
+
+std::string Esp32Camera::EnrollPerson(const std::string& name) {
+    return EnrollFace(face_enroll_url_, name);
+}
+
 bool Esp32Camera::SetHMirror(bool enabled) {
     sensor_t *s = esp_camera_sensor_get();
     if (s == nullptr) {

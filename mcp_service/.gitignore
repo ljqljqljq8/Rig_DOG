@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+models_cache/
+logs/
+data/embeddings.json
+photos/*
+!photos/.gitkeep

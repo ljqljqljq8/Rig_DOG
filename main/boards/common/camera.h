@@ -10,6 +10,10 @@ public:
     virtual bool SetHMirror(bool enabled) = 0;
     virtual bool SetVFlip(bool enabled) = 0;
     virtual std::string Explain(const std::string& question) = 0;
+    virtual std::string EnrollPerson(const std::string& name) {
+        (void)name;
+        return "<enroll>Face enrollment not supported</enroll>";
+    }
 };
 
 #endif // CAMERA_H

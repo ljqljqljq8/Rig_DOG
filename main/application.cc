@@ -10,10 +10,8 @@
 #include "mcp_server.h"
 #ifdef CONFIG_BOARD_TYPE_LULU_ESP32S3
 #include "boards/lulu-esp32s3/config.h"
-#include "boards/lulu-esp32s3/xgo_action.h"
 #endif
 
-#include <algorithm>
 #include <cstring>
 #include <esp_log.h>
 #include <cJSON.h>
@@ -21,44 +19,6 @@
 #include <arpa/inet.h>
 
 #define TAG "Application"
-
-#ifdef CONFIG_BOARD_TYPE_LULU_ESP32S3
-namespace {
-bool ContainsText(const std::string& text, const char* needle) {
-    return text.find(needle) != std::string::npos;
-}
-
-int DetectStepCount(const std::string& text) {
-    if (ContainsText(text, "五步") || ContainsText(text, "5步")) {
-        return 5;
-    }
-    if (ContainsText(text, "四步") || ContainsText(text, "4步")) {
-        return 4;
-    }
-    if (ContainsText(text, "三步") || ContainsText(text, "3步")) {
-        return 3;
-    }
-    if (ContainsText(text, "两步") || ContainsText(text, "二步") || ContainsText(text, "2步")) {
-        return 2;
-    }
-    if (ContainsText(text, "一步") || ContainsText(text, "1步")) {
-        return 1;
-    }
-    return 0;
-}
-
-int MotionDurationMs(const std::string& text, int default_duration_ms) {
-    int steps = DetectStepCount(text);
-    if (steps > 0) {
-        return std::min(steps * 700, 4000);
-    }
-    if (ContainsText(text, "一下")) {
-        return 700;
-    }
-    return default_duration_ms;
-}
-}
-#endif
 
 
 static const char* const STATE_STRINGS[] = {
@@ -115,65 +75,6 @@ Application::~Application() {
     }
     vEventGroupDelete(event_group_);
 }
-
-#ifdef CONFIG_BOARD_TYPE_LULU_ESP32S3
-bool Application::HandleLocalLuluVoiceCommand(const std::string& text) {
-    if (ContainsText(text, "停止") || ContainsText(text, "停下") || ContainsText(text, "别动")) {
-        Action_ID = 0;
-        SetDogMotion(0.0f, 0.0f, 0);
-        ESP_LOGI(TAG, "Handled local Lulu voice command: stop");
-        return true;
-    }
-
-    if (ContainsText(text, "前进") || ContainsText(text, "向前") || ContainsText(text, "往前")) {
-        Action_ID = 0;
-        SetDogMotion(75.0f, 0.0f, MotionDurationMs(text, 1400));
-        ESP_LOGI(TAG, "Handled local Lulu voice command: forward");
-        return true;
-    }
-
-    if (ContainsText(text, "后退") || ContainsText(text, "向后") || ContainsText(text, "往后")) {
-        Action_ID = 0;
-        SetDogMotion(-75.0f, 0.0f, MotionDurationMs(text, 1400));
-        ESP_LOGI(TAG, "Handled local Lulu voice command: backward");
-        return true;
-    }
-
-    if (ContainsText(text, "左转")) {
-        Action_ID = 0;
-        SetDogMotion(0.0f, 75.0f, MotionDurationMs(text, 1200));
-        ESP_LOGI(TAG, "Handled local Lulu voice command: turn_left");
-        return true;
-    }
-
-    if (ContainsText(text, "右转")) {
-        Action_ID = 0;
-        SetDogMotion(0.0f, -75.0f, MotionDurationMs(text, 1200));
-        ESP_LOGI(TAG, "Handled local Lulu voice command: turn_right");
-        return true;
-    }
-
-    if (ContainsText(text, "挥手") || ContainsText(text, "打招呼")) {
-        Action_ID = Wave_ID;
-        ESP_LOGI(TAG, "Handled local Lulu voice command: wave");
-        return true;
-    }
-
-    if (ContainsText(text, "坐下")) {
-        Action_ID = Sit_ID;
-        ESP_LOGI(TAG, "Handled local Lulu voice command: sit");
-        return true;
-    }
-
-    if (ContainsText(text, "复位") || ContainsText(text, "重置") || ContainsText(text, "站好")) {
-        Action_ID = reset_ID;
-        ESP_LOGI(TAG, "Handled local Lulu voice command: reset");
-        return true;
-    }
-
-    return false;
-}
-#endif
 
 void Application::CheckNewVersion(Ota& ota) {
     const int MAX_RETRY = 10;
@@ -564,9 +465,6 @@ void Application::Start() {
             auto text = cJSON_GetObjectItem(root, "text");
             if (cJSON_IsString(text)) {
                 ESP_LOGI(TAG, ">> %s", text->valuestring);
-#ifdef CONFIG_BOARD_TYPE_LULU_ESP32S3
-                HandleLocalLuluVoiceCommand(text->valuestring);
-#endif
                 Schedule([this, display, message = std::string(text->valuestring)]() {
                     display->SetChatMessage("user", message.c_str());
                 });

@@ -22,6 +22,7 @@ private:
     lv_img_dsc_t preview_image_;
     std::string explain_url_;
     std::string explain_token_;
+    std::string face_enroll_url_;
     std::thread encoder_thread_;
 
 public:
@@ -29,7 +30,11 @@ public:
     ~Esp32Camera();
 
     virtual void SetExplainUrl(const std::string& url, const std::string& token);
+    void SetFaceEnrollUrl(const std::string& url);
     virtual bool Capture();
+    std::string RecognizeFace(const std::string& url);
+    std::string EnrollFace(const std::string& url, const std::string& name);
+    virtual std::string EnrollPerson(const std::string& name) override;
     // 翻转控制函数
     virtual bool SetHMirror(bool enabled) override;
     virtual bool SetVFlip(bool enabled) override;

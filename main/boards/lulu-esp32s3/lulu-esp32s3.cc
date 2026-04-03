@@ -249,6 +249,7 @@ private:
         config.grab_mode = CAMERA_GRAB_WHEN_EMPTY;
         camera_ = new Esp32Camera(config);
         camera_->SetHMirror(false);
+        camera_->SetFaceEnrollUrl(FACE_ENROLL_URL);
     }
 
     
@@ -271,7 +272,13 @@ private:
     void set_dog_speed(int dog_vx, int dog_vyaw, int time)
     {        
         motor_speed = 0;
-        SetDogMotion(3.0f * dog_vx, 3.0f * dog_vyaw, time);
+        vx = 3.0*dog_vx;
+        vyaw = 3.0*dog_vyaw;
+        if(time>0){
+            vTaskDelay(pdMS_TO_TICKS(time));
+        }
+        vx = 0.0;
+        vyaw = 0.0;
     }
 
     /*
@@ -333,6 +340,47 @@ private:
     void InitializeIot() {
         auto& mcp_server = McpServer::GetInstance();
 
+        mcp_server.AddTool("self.camera.face_rec",
+        "识别人脸专用：拍一张照片，并在本地已有人脸库里判断这是谁。这个工具只做识别，不会新增或保存任何人脸。用户问'这是谁'、'认出我是谁'时使用。",
+        PropertyList(std::vector<Property>{}), [this](const PropertyList& properties) -> ReturnValue {
+            (void)properties;
+            if (camera_ == nullptr) {
+                return std::string("<rec>Camera not initialized</rec>");
+            }
+            if (!camera_->Capture()) {
+                return std::string("<rec>Failed to capture photo</rec>");
+            }
+            return camera_->RecognizeFace(FACE_RECOGNITION_URL);
+        });
+
+        mcp_server.AddTool("self.camera.face_enroll",
+        "录入人脸专用：拍一张照片，把当前这个人保存到本地人脸库。用户说'记住我'、'录入我'、'注册人脸'、'把这个人记成某某'时必须使用这个工具，而不是识别工具。必填参数：name。",
+        PropertyList({
+            Property("name", kPropertyTypeString)
+        }), [this](const PropertyList& properties) -> ReturnValue {
+            if (camera_ == nullptr) {
+                return std::string("<enroll>Camera not initialized</enroll>");
+            }
+            if (!camera_->Capture()) {
+                return std::string("<enroll>Failed to capture photo</enroll>");
+            }
+            return camera_->EnrollFace(FACE_ENROLL_URL, properties["name"].value<std::string>());
+        });
+
+        mcp_server.AddTool("self.camera.remember_person",
+        "记住某人：这是录入人脸的同义工具。用户说'记住我叫某某'、'记住这个人叫某某'时使用。会拍照并把人脸保存到本地数据库。必填参数：name。",
+        PropertyList({
+            Property("name", kPropertyTypeString)
+        }), [this](const PropertyList& properties) -> ReturnValue {
+            if (camera_ == nullptr) {
+                return std::string("<enroll>Camera not initialized</enroll>");
+            }
+            if (!camera_->Capture()) {
+                return std::string("<enroll>Failed to capture photo</enroll>");
+            }
+            return camera_->EnrollFace(FACE_ENROLL_URL, properties["name"].value<std::string>());
+        });
+
         mcp_server.AddTool("self.dog.move", 
         "机器狗移动(vx,vyaw,time),前后移动速度vx(前正后负,0停下)和转向速度vyaw(左转正值,右转负值,0停下),time为移动时间(毫秒),time=0时持续移动,否则移动time毫秒后停止", 
         PropertyList({
@@ -343,7 +391,6 @@ private:
             int dog_vx = properties["dog_vx"].value<int>();
             int dog_vyaw = properties["dog_vyaw"].value<int>();
             int time = properties["time"].value<int>();
-            ESP_LOGI(TAG, "self.dog.move vx=%d vyaw=%d time=%d", dog_vx, dog_vyaw, time);
             set_dog_speed(dog_vx, dog_vyaw, time);
             return true;
         });

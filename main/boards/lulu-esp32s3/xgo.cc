@@ -9,10 +9,8 @@
 #include <esp_flash.h>
 #include <esp_heap_caps.h>
 #include <esp_system.h>
-#include <esp_timer.h>
 #include "xgo_action.h"
 
-static const char* TAG = "XGO";
 
 Motor motor[MOTOR_NUM];
 uint16_t zero_buffer[MOTOR_NUM] = {2400,600,2400,600,1500};
@@ -23,20 +21,12 @@ uint8_t actionLoop_FLAG = 0;
 uint8_t serial_lock = 0;
 float vx = 0.0;
 float vyaw = 0.0;
-static int64_t motion_deadline_us = 0;
 int calibrate_mode = 0;
 int init_flag = 0;
 float l_p[][5] = {{3*PI/4.0, 3*PI/4.0, 3*PI/4.0, 3*PI/4.0, PI/4.0},
                   {-PI/4.0, -PI/4.0, -PI/4.0, -PI/4.0, PI/4.0},
                   {3*PI/4.0, -PI/4.0,  -PI/4.0, 3*PI/4.0, PI/4.0},
                   {-PI/4.0, 3*PI/4.0,  3*PI/4.0, -PI/4.0, PI/4.0}};
-
-static void ApplyDefaultZeroPos() {
-    for (int i = 0; i < MOTOR_NUM; i++) {
-        motor[i].ZeroPos = zero_buffer_default[i];
-        ESP_LOGW(TAG, "Using default zeropos[%d]=%u", i, zero_buffer_default[i]);
-    }
-}
 
 
 void set_action_loop_flag(uint8_t flag){
@@ -73,14 +63,13 @@ bool ReadZeroPos(){
         printf("zeropos [%d]: %ld\r\n", i, data[i]);
     }
     if (err != ESP_OK) {
-        ESP_LOGW(TAG, "Failed to read zero position data from flash, falling back to defaults");
-        ApplyDefaultZeroPos();
+        for(int i=0;i<MOTOR_NUM;i++){
+            motor[i].ZeroPos = zero_buffer_default[i];
+        }
         return false;
     }
     for(int i=0;i<MOTOR_NUM;i++){  
         if(data[i]<200||data[i]>2800){
-            ESP_LOGW(TAG, "Invalid zeropos[%d]=%ld in flash, falling back to defaults", i, data[i]);
-            ApplyDefaultZeroPos();
             return false;
         }else{
             motor[i].ZeroPos = data[i];
@@ -94,32 +83,19 @@ void InitZeroPos(){
     res = ReadZeroPos();
     for(int i=0;i<MOTOR_NUM;i++){
         motor[i].ID = i+1;
-        motor[i].Load = 1;
     }
     if(res){
-        ESP_LOGI(TAG, "Loaded zero positions from flash");
+        for(int i=0;i<MOTOR_NUM;i++){
+            motor[i].Load = 1;
+        }
     }else{
-        calibrate_mode = 0;
-        ESP_LOGW(TAG, "Zero positions are unavailable, running with built-in defaults");
+        calibrate_mode = 1;
     }
-    // Ensure the servos are torque-enabled after power-on so motion commands take effect.
-    EnableAllMotor(1);
     init_flag = 1;
-}
-
-void SetDogMotion(float new_vx, float new_vyaw, int duration_ms) {
-    vx = new_vx;
-    vyaw = new_vyaw;
-    if (duration_ms > 0) {
-        motion_deadline_us = esp_timer_get_time() + ((int64_t)duration_ms * 1000);
-    } else {
-        motion_deadline_us = 0;
-    }
 }
 
 void SendMotorCommand(uint8_t *pData,uint16_t size)
 {
-    static uint32_t tx_counter = 0;
     if(serial_lock){
 		return;
 	}else{
@@ -127,10 +103,6 @@ void SendMotorCommand(uint8_t *pData,uint16_t size)
 	}
 	uart_write_bytes(UART_NUM_2,pData,size);
     uart_wait_tx_done(UART_NUM_2, pdMS_TO_TICKS(2));
-    tx_counter++;
-    if ((tx_counter % 50) == 1 && size >= 8) {
-        ESP_LOGI(TAG, "UART TX #%lu id=%u cmd=0x%02x size=%u", (unsigned long)tx_counter, pData[2], pData[4], size);
-    }
 	serial_lock = 0;
 }
 
@@ -374,12 +346,6 @@ void xgo_control() {
     static uint32_t counter = 0;
     static uint32_t counter2 = 0;
     static uint8_t read_id = 1;
-    if (motion_deadline_us > 0 && esp_timer_get_time() >= motion_deadline_us) {
-        vx = 0.0f;
-        vyaw = 0.0f;
-        motion_deadline_us = 0;
-        ESP_LOGI(TAG, "Dog motion duration elapsed, stopping");
-    }
     counter++; 
     counter2++;
     move();
