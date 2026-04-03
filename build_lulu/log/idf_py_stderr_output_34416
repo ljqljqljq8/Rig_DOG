@@ -1,0 +1,55 @@
+[0;33m--- Warning: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM9 instead...[0m
+[0;33m--- esp-idf-monitor 1.9.0 on \\.\COM9 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0;33m--- Print filter: "*:I XGO:W"[0m
+[0;33m--- To exit from IDF monitor please use "Ctrl+]". Alternatively, you can use Ctrl+T Ctrl+X to exit.[0m
+[0m--- 0x4214c927: [0;33m__cxxabiv1::__terminate(void (*)())[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_terminate.cc[0m[0m:[1;31m48[0m
+[0m--- 0x40379ffd: [0;33mpanic_abort[0m[0m at [0;32mC:/Espressif/esp-idf/components/esp_system/panic.c[0m[0m:[1;31m469[0m
+[0m--- 0x40385565: [0;33mesp_system_abort[0m[0m at [0;32mC:/Espressif/esp-idf/components/esp_system/port/esp_system_chip.c[0m[0m:[1;31m87[0m
+[0m--- 0x4038ced6: [0;33mabort[0m[0m at [0;32mC:/Espressif/esp-idf/components/newlib/abort.c[0m[0m:[1;31m38[0m
+[0m--- 0x4214c927: [0;33m__cxxabiv1::__terminate(void (*)())[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_terminate.cc[0m[0m:[1;31m48[0m
+[0m--- 0x4214c95c: [0;33mstd::terminate()[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_terminate.cc[0m[0m:[1;31m58[0m
+[0m--- 0x4214ca37: [0;33m__cxa_throw[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_throw.cc[0m[0m:[1;31m98[0m
+[0m--- 0x4215df29: [0;33mstd::__throw_system_error(int)[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/gcc/libstdc++-v3/src/c++11/system_error.cc[0m[0m:[1;31m595[0m
+[0m--- 0x4215dfa3: [0;33mstd::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)())[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/gcc/libstdc++-v3/src/c++11/thread.cc[0m[0m:[1;31m176[0m
+[0m--- 0x42014036: [0;33mMcpServer::DoToolCall(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, cJSON const*, int)[0m[0m at [0;32mC:/Users/Lenovo/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/bits/std_thread.h[0m[0m:[1;31m173[0m
+[0m--- (inlined by) [0;33mMcpServer::DoToolCall(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, cJSON const*, int)[0m[0m at [0;32mE:/OneDrive/Research/Project/Robot/RIG-puppy/main/mcp_server.cc[0m[0m:[1;31m367[0m
+[0m--- 0x42014541: [0;33mMcpServer::ParseMessage(cJSON const*)[0m[0m at [0;32mE:/OneDrive/Research/Project/Robot/RIG-puppy/main/mcp_server.cc[0m[0m:[1;31m233[0m
+[0m--- 0x42015f43: [0;33mstd::_Function_handler<void (cJSON const*), Application::Start()::{lambda(cJSON const*)#1}>::_M_invoke(std::_Any_data const&, cJSON const*&&)[0m[0m at [0;32mE:/OneDrive/Research/Project/Robot/RIG-puppy/main/application.cc[0m[0m:[1;31m584[0m
+[0m--- (inlined by) [0;33m__invoke_impl<void, Application::Start()::<lambda(const cJSON*)>&, const cJSON*>[0m[0m at [0;32mC:/Users/Lenovo/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/bits/invoke.h[0m[0m:[1;31m61[0m
+[0m--- (inlined by) [0;33m__invoke_r<void, Application::Start()::<lambda(const cJSON*)>&, const cJSON*>[0m[0m at [0;32mC:/Users/Lenovo/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/bits/invoke.h[0m[0m:[1;31m111[0m
+[0m--- (inlined by) [0;33m_M_invoke[0m[0m at [0;32mC:/Users/Lenovo/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/bits/std_function.h[0m[0m:[1;31m290[0m
+[0m--- 0x4201151d: [0;33mstd::function<void (cJSON const*)>::operator()(cJSON const*) const[0m[0m at [0;32mC:/Users/Lenovo/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/bits/std_function.h[0m[0m:[1;31m591[0m
+[0m--- (inlined by) [0;33moperator()[0m[0m at [0;32mE:/OneDrive/Research/Project/Robot/RIG-puppy/main/protocols/mqtt_protocol.cc[0m[0m:[1;31m80[0m
+[0m--- (inlined by) [0;33m__invoke_impl<void, MqttProtocol::StartMqttClient(bool)::<lambda(const std::string&, const std::string&)>&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>[0m[0m at [0;32mC:/Users/Lenovo/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/bits/invoke.h[0m[0m:[1;31m61[0m
+[0m--- (inlined by) [0;33m__invoke_r<void, MqttProtocol::StartMqttClient(bool)::<lambda(const std::string&, const std::string&)>&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, const std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>[0m[0m at [0;32mC:/Users/Lenovo/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/bits/invoke.h[0m[0m:[1;31m111[0m
+[0m--- (inlined by) [0;33m_M_invoke[0m[0m at [0;32mC:/Users/Lenovo/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/bits/std_function.h[0m[0m:[1;31m290[0m
+[0m--- 0x420206c6: [0;33mstd::function<void (std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)>::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const[0m[0m at [0;32mC:/Users/Lenovo/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/xtensa-esp-elf/include/c++/14.2.0/bits/std_function.h[0m[0m:[1;31m591[0m
+[0m--- 0x42021386: [0;33mEspMqtt::MqttEventCallback(char const*, long, void*)[0m[0m at [0;32mE:/OneDrive/Research/Project/Robot/RIG-puppy/managed_components/78__esp-ml307/src/esp/esp_mqtt.cc[0m[0m:[1;31m65[0m
+[0m--- 0x420214e2: [0;33mEspMqtt::Connect(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)::{lambda(void*, char const*, long, void*)#1}::_FUN(void*, char const*, long, void*)[0m[0m at [0;32mE:/OneDrive/Research/Project/Robot/RIG-puppy/managed_components/78__esp-ml307/src/esp/esp_mqtt.cc[0m[0m:[1;31m40[0m
+[0m--- (inlined by) [0;33m_FUN[0m[0m at [0;32mE:/OneDrive/Research/Project/Robot/RIG-puppy/managed_components/78__esp-ml307/src/esp/esp_mqtt.cc[0m[0m:[1;31m41[0m
+[0m--- 0x42198909: [0;33mhandler_execute[0m[0m at [0;32mC:/Espressif/esp-idf/components/esp_event/esp_event.c[0m[0m:[1;31m136[0m
+[0m--- (inlined by) [0;33mesp_event_loop_run[0m[0m at [0;32mC:/Espressif/esp-idf/components/esp_event/esp_event.c[0m[0m:[1;31m686[0m
+[0m--- 0x42024e5a: [0;33mesp_mqtt_dispatch_event[0m[0m at [0;32mC:/Espressif/esp-idf/components/mqtt/esp-mqtt/mqtt_client.c[0m[0m:[1;31m1041[0m
+[0m--- 0x42025c56: [0;33mdeliver_publish[0m[0m at [0;32mC:/Espressif/esp-idf/components/mqtt/esp-mqtt/mqtt_client.c[0m[0m:[1;31m1108[0m
+[0m--- (inlined by) [0;33mmqtt_process_receive[0m[0m at [0;32mC:/Espressif/esp-idf/components/mqtt/esp-mqtt/mqtt_client.c[0m[0m:[1;31m1386[0m
+[0m--- (inlined by) [0;33mesp_mqtt_task[0m[0m at [0;32mC:/Espressif/esp-idf/components/mqtt/esp-mqtt/mqtt_client.c[0m[0m:[1;31m1653[0m
+[0m--- 0x40379f41: [0;33mesp_restart_noos[0m[0m at [0;32mC:/Espressif/esp-idf/components/esp_system/port/soc/esp32s3/system_internal.c[0m[0m:[1;31m162[0m
+[0m
+Traceback (most recent call last):
+  File "C:\Espressif\esp-idf\tools/idf_monitor.py", line 11, in <module>
+    sys.exit(subprocess.run([sys.executable, '-m', 'esp_idf_monitor'] + sys.argv[1:]).returncode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1201, in communicate
+    self.wait()
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1590, in _wait
+    result = _winapi.WaitForSingleObject(self._handle,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

@@ -1,0 +1,688 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x29 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  2 2026 00:00:24[0m
+[0;32mI (112) app_init: ELF file SHA256:  6fa06ea86...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (139) heap_init: At 3FCB2CB8 len 00036A58 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (181) main_task: Started on CPU0[0m
+[0;32mI (211) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (211) main_task: Calling app_main()[0m
+[0;32mI (231) Board: UUID=09ce79d5-7f68-4663-9513-14ccbe3be5ec SKU=lulu-esp32s3[0m
+[0;32mI (231) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (231) button: IoT Button Version: 4.1.6[0m
+[0;32mI (241) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (251) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (371) Display: Power management not supported[0m
+[0;32mI (491) LcdDisplay: Turning display on[0m
+[0;32mI (491) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (491) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (491) LVGL: Starting LVGL task[0m
+[0;32mI (491) LcdDisplay: Adding LCD display[0m
+[0;32mI (501) MCP: Add tool: self.dog.move[0m
+[0;32mI (501) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (501) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (501) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (511) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (511) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (521) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (521) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (521) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (531) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (531) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (531) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (541) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (541) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (541) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (551) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (551) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (551) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (561) MCP: Add tool: self.laser.control[0m
+[0;32mI (561) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (561) cam_hal: cam init ok[0m
+[0;32mI (571) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (571) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (581) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (581) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (581) gc032a: Mismatch PID=0xf302[0m
+[0;32mI (581) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (591) camera: Detected GC0308 camera[0m
+[0;32mI (591) camera: Detected camera at address=0x21[0m
+[0;32mI (831) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (831) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (831) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (841) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (841) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (851) cam_hal: cam config ok[0m
+[0;32mI (851) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (881) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (881) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (881) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (891) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (901) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: 2331
+zeropos [1]: 624
+zeropos [2]: 2347
+zeropos [3]: 724
+zeropos [4]: 1495
+[0;32mI (1121) Backlight: Set brightness to 75[0m
+[0;32mI (1121) Application: STATE: starting[0m
+[0;32mI (1121) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1121) AudioCodec: Set input enable to true[0m
+[0;32mI (1121) AudioCodec: Set output enable to true[0m
+[0;32mI (1131) AudioCodec: Audio codec started[0m
+[0;32mI (1131) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1141) Application: XGO task started[0m
+[0;32mI (1141) pp: pp rom version: e7ae62f[0m
+[0;32mI (1151) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1161) wifi:wifi driver task: 3fce7c70, prio:23, stack:6144, core=0[0m
+[0;32mI (1161) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1161) wifi:wifi certification version: v7.0[0m
+[0;32mI (1171) wifi:config NVS flash: disabled[0m
+[0;32mI (1171) wifi:config nano formatting: enabled[0m
+[0;32mI (1181) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1181) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1191) wifi:Init management short buffer num: 32[0m
+[0;32mI (1191) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1191) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1201) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1201) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1211) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1211) wifi_init: rx ba win: 6[0m
+[0;32mI (1211) wifi_init: accept mbox: 6[0m
+[0;32mI (1221) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1221) wifi_init: udp mbox: 6[0m
+[0;32mI (1221) wifi_init: tcp mbox: 6[0m
+[0;32mI (1221) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1231) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1231) wifi_init: tcp mss: 1440[0m
+[0;32mI (1231) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1271) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1271) wifi:enable tsf[0m
+[0;32mI (3681) WifiStation: Found AP: Pigeon Owner, BSSID: 1a:e2:f3:dd:ed:22, RSSI: -64, Channel: 6, Authmode: 3[0m
+[0;33mW (3681) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (4471) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (4471) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (4481) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (4491) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (4521) wifi:connected with Pigeon Owner, aid = 1, channel 6, BW20, bssid = 1a:e2:f3:dd:ed:22[0m
+[0;32mI (4521) wifi:security: WPA2-PSK, phy: bgn, rssi: -40[0m
+[0;32mI (4521) wifi:pm start, type: 1[0m
+
+[0;32mI (4521) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4531) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4601) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (4911) wifi:<ba-add>idx:0 (ifx:0, 1a:e2:f3:dd:ed:22), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5621) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5621) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5631) Application: STATE: activating[0m
+[0;32mI (5631) Ota: Current version: 1.8.8[0m
+[0;32mI (5811) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (6341) Dynamic Impl: mbedtls_ssl_fetch_input error=29312[0m
+[0;32mI (6351) Ota: Current is the latest version[0m
+[0;32mI (6351) Ota: Running partition: ota_0[0m
+[0;32mI (6351) MCP: Add tool: self.get_device_status[0m
+[0;32mI (6351) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (6361) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (6361) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (6361) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (6371) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (6521) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6921) MQTT: Connected to endpoint[0m
+[0;32mI (6921) Application: STATE: idle[0m
+[0;32mI (6921) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (6921) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (6921) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (6931) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (6931) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (6941) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (6991) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (6991) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (7001) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (7011) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (7071) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (7081) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (7081) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (7091) SystemInfo: free sram: 25403 minimal sram: 25327[0m
+[0;32mI (16131) SystemInfo: free sram: 27695 minimal sram: 22403[0m
+[0;32mI (21251) Application: STATE: connecting[0m
+[0;32mI (21391) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (21501) MQTT: Session ID: 1fbe1331[0m
+[0;32mI (21511) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (21511) Application: STATE: listening[0m
+[0;32mI (21551) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (21561) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (21561) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (21561) AFE: AFE Pipeline: [input] -> |VAD(WebRTC)| -> [output][0m
+[0;32mI (21561) AfeAudioProcessor: Audio communication task started, feed size: 512 fetch size: 512[0m
+[0;32mI (23131) AudioCodec: Set output enable to false[0m
+[0;32mI (23451) Application: STATE: speaking[0m
+[0;32mI (23451) Application: >> hel好。[0m
+[0;32mI (24131) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (24191) Application: << 哈囉！今天怎麼了～[0m
+[0;32mI (24411) AudioCodec: Set output enable to true[0m
+[0;32mI (26501) Application: STATE: listening[0m
+[0;32mI (26641) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (29521) Application: STATE: speaking[0m
+[0;32mI (29531) Application: >> 拍一下照片。[0m
+[0;32mI (29851) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (29951) Application: << 好啊，我幫你拍！[0m
+[0;32mI (30151) Application: << % self.camera.take_photo...[0m
+[0;32mI (30151) MCP: tools/call: invoking self.camera.take_photo[0m
+[0;32mI (39231) SystemInfo: free sram: 1063 minimal sram: 223[0m
+[0;32mI (40331) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (40481) Application: << 哎呀，相機好像卡住啦…[0m
+[0;32mI (40741) Application: << % self.camera.take_photo...[0m
+[1;31mE (40741) esp-aes: Failed to allocate memory[0m
+[1;31mE (40741) esp-tls-mbedtls: read error :-0x0001[0m
+[1;31mE (40741) transport_base: esp_tls_conn_read error, errno=Connection already in progress[0m
+[1;31mE (40751) mqtt_client: esp_mqtt_handle_transport_read_error: transport_read(): EOF[0m
+[1;31mE (40761) mqtt_client: esp_mqtt_handle_transport_read_error: transport_read() error: errno=119[0m
+[0;32mI (40771) esp_mqtt: MQTT error occurred: ESP_OK[0m
+[1;31mE (40771) mqtt_client: mqtt_process_receive: mqtt_message_receive() returned -2[0m
+[0;32mI (49271) SystemInfo: free sram: 1487 minimal sram: 95[0m
+[0;32mI (56461) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (56821) esp-aes: Failed to allocate memory[0m
+[1;31mE (56831) esp-tls-mbedtls: read error :-0x0001[0m
+[1;31mE (56831) transport_base: esp_tls_conn_read error, errno=Connection already in progress[0m
+[1;31mE (56831) mqtt_client: esp_mqtt_handle_transport_read_error: transport_read(): EOF[0m
+[1;31mE (56841) mqtt_client: esp_mqtt_handle_transport_read_error: transport_read() error: errno=119[0m
+[0;32mI (56851) esp_mqtt: MQTT error occurred: ESP_OK[0m
+[1;31mE (56851) mqtt_client: mqtt_process_receive: mqtt_message_receive() returned -2[0m
+[0;32mI (59181) SystemInfo: free sram: 1947 minimal sram: 95[0m
+[0;32mI (69131) SystemInfo: free sram: 1475 minimal sram: 95[0m
+[0;32mI (74481) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (76411) AudioCodec: Set output enable to false[0m
+[0;32mI (79191) SystemInfo: free sram: 1023 minimal sram: 95[0m
+[0;32mI (89131) SystemInfo: free sram: 1011 minimal sram: 95[0m
+[1;31mE (90621) EspTcp: Send failed: ret=-1, errno=104[0m
+[1;31mE (90621) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90621) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90621) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90631) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90641) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90641) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90651) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90661) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90661) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90671) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90681) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90681) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90691) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90701) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90701) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90711) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90721) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90721) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90731) HttpClient: Cannot write: connection closed or not chunked mode[0m
+[1;31mE (90731) HttpClient: Cannot write: connection closed or not chunked mode[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  2 2026 00:00:24[0m
+[0;32mI (112) app_init: ELF file SHA256:  6fa06ea86...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (139) heap_init: At 3FCB2CB8 len 00036A58 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (181) main_task: Started on CPU0[0m
+[0;32mI (211) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (211) main_task: Calling app_main()[0m
+[0;32mI (231) Board: UUID=09ce79d5-7f68-4663-9513-14ccbe3be5ec SKU=lulu-esp32s3[0m
+[0;32mI (231) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (231) button: IoT Button Version: 4.1.6[0m
+[0;32mI (241) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (251) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (371) Display: Power management not supported[0m
+[0;32mI (491) LcdDisplay: Turning display on[0m
+[0;32mI (491) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (491) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (491) LVGL: Starting LVGL task[0m
+[0;32mI (491) LcdDisplay: Adding LCD display[0m
+[0;32mI (501) MCP: Add tool: self.dog.move[0m
+[0;32mI (501) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (501) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (501) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (511) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (511) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (521) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (521) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (521) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (531) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (531) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (531) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (541) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (541) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (541) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (551) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (551) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (551) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (561) MCP: Add tool: self.laser.control[0m
+[0;32mI (561) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (561) cam_hal: cam init ok[0m
+[0;32mI (571) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (571) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (581) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (581) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (581) gc032a: Mismatch PID=0xf302[0m
+[0;32mI (581) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (591) camera: Detected GC0308 camera[0m
+[0;32mI (591) camera: Detected camera at address=0x21[0m
+[0;32mI (831) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (831) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (831) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (841) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (841) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (851) cam_hal: cam config ok[0m
+[0;32mI (851) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (881) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (881) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (881) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (891) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (901) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: 2331
+zeropos [1]: 624
+zeropos [2]: 2347
+zeropos [3]: 724
+zeropos [4]: 1495
+[0;32mI (1121) Backlight: Set brightness to 75[0m
+[0;32mI (1121) Application: STATE: starting[0m
+[0;32mI (1121) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1121) AudioCodec: Set input enable to true[0m
+[0;32mI (1121) AudioCodec: Set output enable to true[0m
+[0;32mI (1131) AudioCodec: Audio codec started[0m
+[0;32mI (1131) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1141) Application: XGO task started[0m
+[0;32mI (1141) pp: pp rom version: e7ae62f[0m
+[0;32mI (1151) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1161) wifi:wifi driver task: 3fce7c70, prio:23, stack:6144, core=0[0m
+[0;32mI (1161) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1161) wifi:wifi certification version: v7.0[0m
+[0;32mI (1171) wifi:config NVS flash: disabled[0m
+[0;32mI (1171) wifi:config nano formatting: enabled[0m
+[0;32mI (1181) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1181) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1191) wifi:Init management short buffer num: 32[0m
+[0;32mI (1191) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1191) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1201) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1201) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1211) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1211) wifi_init: rx ba win: 6[0m
+[0;32mI (1211) wifi_init: accept mbox: 6[0m
+[0;32mI (1221) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1221) wifi_init: udp mbox: 6[0m
+[0;32mI (1221) wifi_init: tcp mbox: 6[0m
+[0;32mI (1221) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1231) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1231) wifi_init: tcp mss: 1440[0m
+[0;32mI (1231) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1271) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1271) wifi:enable tsf[0m
+[0;32mI (3681) WifiStation: Found AP: Pigeon Owner, BSSID: 1a:e2:f3:dd:ed:22, RSSI: -55, Channel: 6, Authmode: 3[0m
+[0;33mW (3681) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (4381) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (4381) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (4381) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (4391) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (4431) wifi:connected with Pigeon Owner, aid = 1, channel 6, BW20, bssid = 1a:e2:f3:dd:ed:22[0m
+[0;32mI (4431) wifi:security: WPA2-PSK, phy: bgn, rssi: -48[0m
+[0;32mI (4431) wifi:pm start, type: 1[0m
+
+[0;32mI (4431) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4441) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4511) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5471) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5471) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5481) Application: STATE: activating[0m
+[0;32mI (5481) Ota: Current version: 1.8.8[0m
+[0;32mI (5491) wifi:<ba-add>idx:0 (ifx:0, 1a:e2:f3:dd:ed:22), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5671) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (9021) Dynamic Impl: mbedtls_ssl_fetch_input error=29312[0m
+[0;32mI (9021) Ota: Current is the latest version[0m
+[0;32mI (9021) Ota: Running partition: ota_0[0m
+[0;32mI (9021) MCP: Add tool: self.get_device_status[0m
+[0;32mI (9021) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (9031) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (9031) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (9041) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (9041) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (9341) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (9651) MQTT: Connected to endpoint[0m
+[0;32mI (9651) Application: STATE: idle[0m
+[0;32mI (9661) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (9661) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (9661) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (9661) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (9671) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (9671) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (9731) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (9731) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (9741) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (9751) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (9861) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (9861) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (9861) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (9881) SystemInfo: free sram: 23235 minimal sram: 21587[0m
+[0;32mI (14251) Application: STATE: connecting[0m
+[0;32mI (14281) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (14551) MQTT: Session ID: fe9013b6[0m
+[0;32mI (14551) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (14551) Application: STATE: listening[0m
+[0;32mI (14591) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (14601) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (14601) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (14601) AFE: AFE Pipeline: [input] -> |VAD(WebRTC)| -> [output][0m
+[0;32mI (14611) AfeAudioProcessor: Audio communication task started, feed size: 512 fetch size: 512[0m
+[0;32mI (16521) Application: STATE: speaking[0m
+[0;32mI (16521) Application: >> 你好。[0m
+[0;32mI (16921) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (17141) Application: << 你好呀，酷盖上线咯～[0m
+[0;32mI (19511) Application: << 今天想聊点啥？[0m
+[0;32mI (21341) Application: STATE: listening[0m
+[0;32mI (21341) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (23491) Application: STATE: speaking[0m
+[0;32mI (23491) Application: >> 拍一下照片。[0m
+[0;32mI (24061) Application: << % self.camera.take_photo...[0m
+[0;32mI (24071) MCP: tools/call: invoking self.camera.take_photo[0m
+[0;32mI (33131) SystemInfo: free sram: 6071 minimal sram: 559[0m
+[0;32mI (34261) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (34491) Application: << 抱歉啦，拍照功能暂时失效，可能是设备忙或连接超时～[0m
+[0;32mI (40521) Application: << 要不要试试等下再拍？[0m
+[0;32mI (42551) Application: STATE: listening[0m
+[0;32mI (42631) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (46481) Application: STATE: speaking[0m
+[0;32mI (46481) Application: >> 你再拍一次试一下。[0m
+[0;32mI (46971) Application: << % self.camera.take_photo...[0m
+[0;32mI (46971) MCP: tools/call: invoking self.camera.take_photo[0m
+[1;31mE (46971) pthread: Failed to create task![0m
+
+abort() was called at PC 0x4214c927 on core 0
+
+
+Backtrace: 0x40379ffd:0x3fcc0dd0 0x40385565:0x3fcc0df0 0x4038ced6:0x3fcc0e10 0x4214c927:0x3fcc0e80 0x4214c95c:0x3fcc0ea0 0x4214ca37:0x3fcc0ec0 0x4215df29:0x3fcc0ee0 0x4215dfa3:0x3fcc0f20 0x42014036:0x3fcc0f40 0x42014541:0x3fcc0fd0 0x42015f43:0x3fcc1050 0x4201151d:0x3fcc10a0 0x420206c6:0x3fcc10d0 0x42021386:0x3fcc10f0 0x420214e2:0x3fcc1160 0x42198909:0x3fcc1180 0x42024e5a:0x3fcc11d0 0x42025c56:0x3fcc11f0
+
+
+
+
+ELF file SHA256: 6fa06ea86
+
+Rebooting...
+���ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x28 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40379f41
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (41) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (41) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (42) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (43) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (47) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (52) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (56) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (61) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (65) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (70) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (75) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (80) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (83) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (87) esp_psram: Speed: 80MHz[0m
+[0;32mI (90) cpu_start: Multicore app[0m
+[0;32mI (104) cpu_start: Pro cpu start user code[0m
+[0;32mI (104) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (104) app_init: Application information:[0m
+[0;32mI (104) app_init: Project name:     lulu[0m
+[0;32mI (108) app_init: App version:      1.8.8[0m
+[0;32mI (112) app_init: Compile time:     Apr  2 2026 00:00:24[0m
+[0;32mI (117) app_init: ELF file SHA256:  6fa06ea86...[0m
+[0;32mI (121) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (125) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (129) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (133) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (137) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (143) heap_init: At 3FCB2CB8 len 00036A58 (218 KiB): RAM[0m
+[0;32mI (148) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (153) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (159) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (166) spi_flash: detected chip: generic[0m
+[0;32mI (169) spi_flash: flash io: qio[0m
+[0;32mI (172) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (178) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (185) main_task: Started on CPU0[0m
+[0;32mI (215) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (215) main_task: Calling app_main()[0m
+[0;32mI (235) Board: UUID=09ce79d5-7f68-4663-9513-14ccbe3be5ec SKU=lulu-esp32s3[0m
+[0;32mI (235) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (235) button: IoT Button Version: 4.1.6[0m
+[0;32mI (245) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (255) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (375) Display: Power management not supported[0m
+[0;32mI (495) LcdDisplay: Turning display on[0m
+[0;32mI (495) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (495) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (495) LVGL: Starting LVGL task[0m
+[0;32mI (495) LcdDisplay: Adding LCD display[0m
+[0;32mI (505) MCP: Add tool: self.dog.move[0m
+[0;32mI (505) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (505) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (505) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (515) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (515) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (525) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (525) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (525) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (535) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (535) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (535) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (545) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (545) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (545) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (555) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (555) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (555) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (565) MCP: Add tool: self.laser.control[0m
+[0;32mI (565) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (565) cam_hal: cam init ok[0m
+[0;32mI (575) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (575) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (585) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (585) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (585) gc032a: Mismatch PID=0x201[0m
+[0;32mI (585) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (595) camera: Detected GC0308 camera[0m
+[0;32mI (595) camera: Detected camera at address=0x21[0m
+[0;32mI (835) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (835) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (835) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (845) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (845) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (855) cam_hal: cam config ok[0m
+[0;32mI (855) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (885) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (885) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (885) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (895) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (905) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: 2331
+zeropos [1]: 624
+zeropos [2]: 2347
+zeropos [3]: 724
+zeropos [4]: 1495
+[0;32mI (1125) Backlight: Set brightness to 75[0m
+[0;32mI (1125) Application: STATE: starting[0m
+[0;32mI (1125) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1125) AudioCodec: Set input enable to true[0m
+[0;32mI (1125) AudioCodec: Set output enable to true[0m
+[0;32mI (1135) AudioCodec: Audio codec started[0m
+[0;32mI (1135) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1145) Application: XGO task started[0m
+[0;32mI (1145) pp: pp rom version: e7ae62f[0m
+[0;32mI (1155) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1165) wifi:wifi driver task: 3fce7c70, prio:23, stack:6144, core=0[0m
+[0;32mI (1165) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1165) wifi:wifi certification version: v7.0[0m
+[0;32mI (1175) wifi:config NVS flash: disabled[0m
+[0;32mI (1175) wifi:config nano formatting: enabled[0m
+[0;32mI (1185) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1185) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1195) wifi:Init management short buffer num: 32[0m
+[0;32mI (1195) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1195) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1205) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1205) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1215) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1215) wifi_init: rx ba win: 6[0m
+[0;32mI (1215) wifi_init: accept mbox: 6[0m
+[0;32mI (1225) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1225) wifi_init: udp mbox: 6[0m
+[0;32mI (1225) wifi_init: tcp mbox: 6[0m
+[0;32mI (1225) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1235) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1235) wifi_init: tcp mss: 1440[0m
+[0;32mI (1235) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1275) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1275) wifi:enable tsf[0m
+[0;32mI (3685) WifiStation: Found AP: Pigeon Owner, BSSID: 1a:e2:f3:dd:ed:22, RSSI: -38, Channel: 6, Authmode: 3[0m
+[0;33mW (3685) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (4375) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (4375) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (4385) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (4395) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (4425) wifi:connected with Pigeon Owner, aid = 1, channel 6, BW20, bssid = 1a:e2:f3:dd:ed:22[0m
+[0;32mI (4425) wifi:security: WPA2-PSK, phy: bgn, rssi: -40[0m
+[0;32mI (4435) wifi:pm start, type: 1[0m
+
+[0;32mI (4435) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4445) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4625) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5475) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5475) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5485) Application: STATE: activating[0m
+[0;32mI (5485) Ota: Current version: 1.8.8[0m
+[0;32mI (5495) wifi:<ba-add>idx:0 (ifx:0, 1a:e2:f3:dd:ed:22), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5685) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (6035) Dynamic Impl: mbedtls_ssl_fetch_input error=29312[0m
+[0;32mI (6045) Ota: Current is the latest version[0m
+[0;32mI (6045) Ota: Running partition: ota_0[0m
+[0;32mI (6045) MCP: Add tool: self.get_device_status[0m
+[0;32mI (6045) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (6055) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (6055) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (6055) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (6065) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (6195) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6515) MQTT: Connected to endpoint[0m
+[0;32mI (6515) Application: STATE: idle[0m
+[0;32mI (6525) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (6525) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (6525) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (6525) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (6535) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (6535) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (6585) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (6585) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (6595) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (6605) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (6675) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (6675) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (6675) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (6695) SystemInfo: free sram: 23011 minimal sram: 21587[0m
+[0;32mI (16155) SystemInfo: free sram: 24375 minimal sram: 19083[0m
+[0;32mI (23135) AudioCodec: Set output enable to false[0m
+[0;32mI (26275) SystemInfo: free sram: 24299 minimal sram: 19083[0m
+[0;32mI (36175) SystemInfo: free sram: 24831 minimal sram: 19083[0m
+[0;32mI (46135) SystemInfo: free sram: 24351 minimal sram: 19083[0m
+[0;32mI (56195) SystemInfo: free sram: 24351 minimal sram: 19083[0m
+[0;32mI (66135) SystemInfo: free sram: 24823 minimal sram: 19083[0m
+[0;32mI (76215) SystemInfo: free sram: 24319 minimal sram: 19083[0m
+[0;32mI (86135) SystemInfo: free sram: 24351 minimal sram: 19083[0m
+[0;32mI (96235) SystemInfo: free sram: 24839 minimal sram: 19083[0m
+[0;32mI (106135) SystemInfo: free sram: 24359 minimal sram: 19083[0m
+[0;32mI (116255) SystemInfo: free sram: 24827 minimal sram: 19083[0m
+[0;32mI (126155) SystemInfo: free sram: 24371 minimal sram: 19083[0m
+[0;32mI (136275) SystemInfo: free sram: 24335 minimal sram: 19083[0m

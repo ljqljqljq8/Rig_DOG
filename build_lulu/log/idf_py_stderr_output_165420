@@ -1,0 +1,21 @@
+[0;33m--- Warning: GDB cannot open serial ports accessed as COMx[0m
+[0;33m--- Using \\.\COM9 instead...[0m
+[0;33m--- esp-idf-monitor 1.9.0 on \\.\COM9 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Lenovo\.espressif\python_env\idf5.4_py3.14_env\Lib\site-packages\esp_idf_monitor\__main__.py", line 4, in <module>
+    main()
+  File "C:\Users\Lenovo\.espressif\python_env\idf5.4_py3.14_env\Lib\site-packages\esp_idf_monitor\idf_monitor.py", line 529, in main
+    monitor.main_loop()
+  File "C:\Users\Lenovo\.espressif\python_env\idf5.4_py3.14_env\Lib\site-packages\esp_idf_monitor\idf_monitor.py", line 254, in main_loop
+    self._main_loop()
+  File "C:\Users\Lenovo\.espressif\python_env\idf5.4_py3.14_env\Lib\site-packages\esp_idf_monitor\idf_monitor.py", line 384, in _main_loop
+    super()._main_loop()
+  File "C:\Users\Lenovo\.espressif\python_env\idf5.4_py3.14_env\Lib\site-packages\esp_idf_monitor\idf_monitor.py", line 316, in _main_loop
+    self._invoke_processing_last_line_timer.start()
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 964, in start
+    _start_new_thread(self._bootstrap, ())
+RuntimeError: can't start new thread

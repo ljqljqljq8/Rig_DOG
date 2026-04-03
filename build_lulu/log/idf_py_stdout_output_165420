@@ -1,0 +1,1379 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x29 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  2 2026 00:00:24[0m
+[0;32mI (112) app_init: ELF file SHA256:  ac9e6adb3...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (138) heap_init: At 3FCB2CB8 len 00036A58 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (180) main_task: Started on CPU0[0m
+[0;32mI (210) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (210) main_task: Calling app_main()[0m
+[0;32mI (230) Board: UUID=9e9e6f66-29f6-4674-a346-fcb66e03c216 SKU=lulu-esp32s3[0m
+[0;32mI (230) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (230) button: IoT Button Version: 4.1.6[0m
+[0;32mI (240) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (250) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (370) Display: Power management not supported[0m
+[0;32mI (490) LcdDisplay: Turning display on[0m
+[0;32mI (490) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (490) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (490) LVGL: Starting LVGL task[0m
+[0;32mI (490) LcdDisplay: Adding LCD display[0m
+[0;32mI (500) MCP: Add tool: self.dog.move[0m
+[0;32mI (500) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (500) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (500) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (510) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (510) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (520) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (520) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (520) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (530) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (530) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (530) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (540) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (540) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (540) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (550) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (550) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (550) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (560) MCP: Add tool: self.laser.control[0m
+[0;32mI (560) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (560) cam_hal: cam init ok[0m
+[0;32mI (570) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (570) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (580) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (580) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (580) gc032a: Mismatch PID=0xf302[0m
+[0;32mI (580) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (590) camera: Detected GC0308 camera[0m
+[0;32mI (590) camera: Detected camera at address=0x21[0m
+[0;32mI (830) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (830) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (830) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (840) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (840) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (850) cam_hal: cam config ok[0m
+[0;32mI (850) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (880) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (880) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (880) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (890) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (900) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: -1
+zeropos [1]: -1
+zeropos [2]: -1
+zeropos [3]: -1
+zeropos [4]: -1
+[0;33mW (910) XGO: Invalid zeropos[0]=-1 in flash, falling back to defaults[0m
+[0;33mW (920) XGO: Using default zeropos[0]=2400[0m
+[0;33mW (920) XGO: Using default zeropos[1]=600[0m
+[0;33mW (930) XGO: Using default zeropos[2]=2400[0m
+[0;33mW (930) XGO: Using default zeropos[3]=600[0m
+[0;33mW (930) XGO: Using default zeropos[4]=1500[0m
+[0;33mW (940) XGO: Zero positions are unavailable, running with built-in defaults[0m
+[0;32mI (1140) XGO: UART TX #1 id=1 cmd=0x03 size=8[0m
+[0;32mI (1140) Backlight: Set brightness to 75[0m
+[0;32mI (1140) Application: STATE: starting[0m
+[0;32mI (1140) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1140) AudioCodec: Set input enable to true[0m
+[0;32mI (1140) AudioCodec: Set output enable to true[0m
+[0;32mI (1150) AudioCodec: Audio codec started[0m
+[0;32mI (1150) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1150) Application: XGO task started[0m
+[0;32mI (1160) XGO: UART TX #51 id=1 cmd=0x03 size=11[0m
+[0;32mI (1160) pp: pp rom version: e7ae62f[0m
+[0;32mI (1170) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1180) wifi:wifi driver task: 3fcee6b8, prio:23, stack:6144, core=0[0m
+[0;32mI (1180) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1180) wifi:wifi certification version: v7.0[0m
+[0;32mI (1190) wifi:config NVS flash: disabled[0m
+[0;32mI (1190) wifi:config nano formatting: enabled[0m
+[0;32mI (1200) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1200) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1210) wifi:Init management short buffer num: 32[0m
+[0;32mI (1210) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1210) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1220) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1220) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1230) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1230) wifi_init: rx ba win: 6[0m
+[0;32mI (1230) wifi_init: accept mbox: 6[0m
+[0;32mI (1240) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1240) wifi_init: udp mbox: 6[0m
+[0;32mI (1240) wifi_init: tcp mbox: 6[0m
+[0;32mI (1240) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1250) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1250) wifi_init: tcp mss: 1440[0m
+[0;32mI (1250) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1290) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1290) wifi:enable tsf[0m
+[0;32mI (1350) XGO: UART TX #101 id=1 cmd=0x03 size=11[0m
+[0;32mI (1550) XGO: UART TX #151 id=1 cmd=0x03 size=11[0m
+[0;32mI (1750) XGO: UART TX #201 id=1 cmd=0x03 size=11[0m
+[0;32mI (1950) XGO: UART TX #251 id=1 cmd=0x03 size=11[0m
+[0;32mI (2150) XGO: UART TX #301 id=1 cmd=0x03 size=11[0m
+[0;32mI (2350) XGO: UART TX #351 id=1 cmd=0x03 size=11[0m
+[0;32mI (2550) XGO: UART TX #401 id=1 cmd=0x03 size=11[0m
+[0;32mI (2750) XGO: UART TX #451 id=1 cmd=0x03 size=11[0m
+[0;32mI (2950) XGO: UART TX #501 id=1 cmd=0x03 size=11[0m
+[0;32mI (3150) XGO: UART TX #551 id=1 cmd=0x03 size=11[0m
+[0;32mI (3350) XGO: UART TX #601 id=1 cmd=0x03 size=11[0m
+[0;32mI (3550) XGO: UART TX #651 id=1 cmd=0x03 size=11[0m
+[0;32mI (3700) WifiStation: Found AP: Pigeon Owner, BSSID: 0a:50:a0:18:85:d4, RSSI: -41, Channel: 1, Authmode: 3[0m
+[0;33mW (3700) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (3790) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (3790) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (3790) XGO: UART TX #701 id=1 cmd=0x03 size=11[0m
+[0;32mI (3790) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (3800) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (3950) XGO: UART TX #751 id=1 cmd=0x03 size=11[0m
+[0;32mI (4150) XGO: UART TX #801 id=1 cmd=0x03 size=11[0m
+[0;32mI (4350) XGO: UART TX #851 id=1 cmd=0x03 size=11[0m
+[0;32mI (4410) wifi:connected with Pigeon Owner, aid = 1, channel 1, BW20, bssid = 0a:50:a0:18:85:d4[0m
+[0;32mI (4410) wifi:security: WPA2-PSK, phy: bgn, rssi: -44[0m
+[0;32mI (4420) wifi:pm start, type: 1[0m
+
+[0;32mI (4420) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4430) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4450) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (4550) XGO: UART TX #901 id=1 cmd=0x03 size=11[0m
+[0;32mI (4750) XGO: UART TX #951 id=1 cmd=0x03 size=11[0m
+[0;32mI (4950) XGO: UART TX #1001 id=1 cmd=0x03 size=11[0m
+[0;32mI (5150) XGO: UART TX #1051 id=1 cmd=0x03 size=11[0m
+[0;32mI (5350) XGO: UART TX #1101 id=1 cmd=0x03 size=11[0m
+[0;32mI (5550) XGO: UART TX #1151 id=1 cmd=0x03 size=11[0m
+[0;32mI (5690) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5690) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5700) Application: STATE: activating[0m
+[0;32mI (5700) Ota: Current version: 1.8.8[0m
+[0;32mI (5720) wifi:<ba-add>idx:0 (ifx:0, 0a:50:a0:18:85:d4), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5750) XGO: UART TX #1201 id=1 cmd=0x03 size=11[0m
+[0;32mI (5910) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (5950) XGO: UART TX #1251 id=1 cmd=0x03 size=11[0m
+[0;32mI (6150) XGO: UART TX #1301 id=1 cmd=0x03 size=11[0m
+[0;32mI (6350) XGO: UART TX #1351 id=1 cmd=0x03 size=11[0m
+[1;31mE (6400) Dynamic Impl: mbedtls_ssl_fetch_input error=29312[0m
+[0;32mI (6400) Ota: Current is the latest version[0m
+[0;32mI (6400) Ota: Running partition: ota_0[0m
+[0;32mI (6400) MCP: Add tool: self.get_device_status[0m
+[0;32mI (6400) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (6410) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (6410) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (6420) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (6420) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (6560) XGO: UART TX #1401 id=1 cmd=0x03 size=11[0m
+[0;32mI (6560) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6750) XGO: UART TX #1451 id=1 cmd=0x03 size=11[0m
+[0;32mI (6950) XGO: UART TX #1501 id=1 cmd=0x03 size=11[0m
+[0;32mI (7150) XGO: UART TX #1551 id=1 cmd=0x03 size=11[0m
+[0;32mI (7160) MQTT: Connected to endpoint[0m
+[0;32mI (7170) Application: STATE: idle[0m
+[0;32mI (7170) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (7170) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (7170) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (7180) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (7180) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (7180) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (7230) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (7230) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (7240) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (7250) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (7320) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (7330) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (7330) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (7350) SystemInfo: free sram: 32103 minimal sram: 31695[0m
+[0;32mI (7360) XGO: UART TX #1601 id=1 cmd=0x03 size=11[0m
+[0;32mI (7550) XGO: UART TX #1651 id=1 cmd=0x03 size=11[0m
+[0;32mI (7750) XGO: UART TX #1701 id=1 cmd=0x03 size=11[0m
+[0;32mI (7950) XGO: UART TX #1751 id=1 cmd=0x03 size=11[0m
+[0;32mI (8150) XGO: UART TX #1801 id=1 cmd=0x03 size=11[0m
+[0;32mI (8350) XGO: UART TX #1851 id=1 cmd=0x03 size=11[0m
+[0;32mI (8550) XGO: UART TX #1901 id=1 cmd=0x03 size=11[0m
+[0;32mI (8750) XGO: UART TX #1951 id=1 cmd=0x03 size=11[0m
+[0;32mI (8950) XGO: UART TX #2001 id=1 cmd=0x03 size=11[0m
+[0;32mI (9150) XGO: UART TX #2051 id=1 cmd=0x03 size=11[0m
+[0;32mI (9350) XGO: UART TX #2101 id=1 cmd=0x03 size=11[0m
+[0;32mI (9550) XGO: UART TX #2151 id=1 cmd=0x03 size=11[0m
+[0;32mI (9750) XGO: UART TX #2201 id=1 cmd=0x03 size=11[0m
+[0;32mI (9950) XGO: UART TX #2251 id=1 cmd=0x03 size=11[0m
+[0;32mI (10150) XGO: UART TX #2301 id=1 cmd=0x03 size=11[0m
+[0;32mI (10350) XGO: UART TX #2351 id=1 cmd=0x03 size=11[0m
+[0;32mI (10550) XGO: UART TX #2401 id=1 cmd=0x03 size=11[0m
+[0;32mI (10750) XGO: UART TX #2451 id=1 cmd=0x03 size=11[0m
+[0;32mI (10950) XGO: UART TX #2501 id=1 cmd=0x03 size=11[0m
+[0;32mI (11150) XGO: UART TX #2551 id=1 cmd=0x03 size=11[0m
+[0;32mI (11350) XGO: UART TX #2601 id=1 cmd=0x03 size=11[0m
+[0;32mI (11550) XGO: UART TX #2651 id=1 cmd=0x03 size=11[0m
+[0;32mI (11750) XGO: UART TX #2701 id=1 cmd=0x03 size=11[0m
+[0;32mI (11950) XGO: UART TX #2751 id=1 cmd=0x03 size=11[0m
+[0;32mI (12150) XGO: UART TX #2801 id=1 cmd=0x03 size=11[0m
+[0;32mI (12200) Application: STATE: connecting[0m
+[0;32mI (12220) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (12350) XGO: UART TX #2851 id=1 cmd=0x03 size=11[0m
+[0;32mI (12440) MQTT: Session ID: 725bffb6[0m
+[0;32mI (12440) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (12440) Application: STATE: listening[0m
+[0;32mI (12460) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (12470) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (12470) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (12470) AFE: AFE Pipeline: [input] -> |VAD(WebRTC)| -> [output][0m
+[0;32mI (12480) AfeAudioProcessor: Audio communication task started, feed size: 512 fetch size: 512[0m
+[0;32mI (12550) XGO: UART TX #2901 id=1 cmd=0x03 size=11[0m
+[0;32mI (12750) XGO: UART TX #2951 id=1 cmd=0x03 size=11[0m
+[0;32mI (12950) XGO: UART TX #3001 id=1 cmd=0x03 size=11[0m
+[0;32mI (13150) XGO: UART TX #3051 id=1 cmd=0x03 size=11[0m
+[0;32mI (13350) XGO: UART TX #3101 id=1 cmd=0x03 size=11[0m
+[0;32mI (13550) XGO: UART TX #3151 id=1 cmd=0x03 size=11[0m
+[0;32mI (13750) XGO: UART TX #3201 id=1 cmd=0x03 size=11[0m
+[0;32mI (13950) XGO: UART TX #3251 id=1 cmd=0x03 size=11[0m
+[0;32mI (14150) XGO: UART TX #3301 id=1 cmd=0x03 size=11[0m
+[0;32mI (14350) XGO: UART TX #3351 id=1 cmd=0x03 size=11[0m
+[0;32mI (14550) XGO: UART TX #3401 id=1 cmd=0x03 size=11[0m
+[0;32mI (14750) XGO: UART TX #3451 id=1 cmd=0x03 size=11[0m
+[0;32mI (14950) XGO: UART TX #3501 id=1 cmd=0x03 size=11[0m
+[0;32mI (15120) Application: STATE: speaking[0m
+[0;32mI (15120) Application: >> 小智，你好。[0m
+[0;32mI (15150) XGO: UART TX #3551 id=1 cmd=0x03 size=11[0m
+[0;32mI (15350) XGO: UART TX #3601 id=1 cmd=0x03 size=11[0m
+[0;32mI (15550) XGO: UART TX #3651 id=1 cmd=0x03 size=11[0m
+[0;32mI (15680) Application: << 主人在召唤我吗？[0m
+[0;32mI (15700) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (15750) XGO: UART TX #3701 id=1 cmd=0x03 size=11[0m
+[0;32mI (15950) XGO: UART TX #3751 id=1 cmd=0x03 size=11[0m
+[0;32mI (16150) XGO: UART TX #3801 id=1 cmd=0x03 size=11[0m
+[0;32mI (16350) XGO: UART TX #3851 id=1 cmd=0x03 size=11[0m
+[0;32mI (16550) XGO: UART TX #3901 id=1 cmd=0x03 size=11[0m
+[0;32mI (16750) XGO: UART TX #3951 id=1 cmd=0x03 size=11[0m
+[0;32mI (16950) XGO: UART TX #4001 id=1 cmd=0x03 size=11[0m
+[0;32mI (17150) XGO: UART TX #4051 id=1 cmd=0x03 size=11[0m
+[0;32mI (17350) XGO: UART TX #4101 id=1 cmd=0x03 size=11[0m
+[0;32mI (17550) XGO: UART TX #4151 id=1 cmd=0x03 size=11[0m
+[0;32mI (17750) XGO: UART TX #4201 id=1 cmd=0x03 size=11[0m
+[0;32mI (17950) XGO: UART TX #4251 id=1 cmd=0x03 size=11[0m
+[0;32mI (18150) XGO: UART TX #4301 id=1 cmd=0x03 size=11[0m
+[0;32mI (18240) Application: STATE: listening[0m
+[0;32mI (18250) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (18400) XGO: UART TX #4351 id=1 cmd=0x03 size=11[0m
+[0;32mI (18550) XGO: UART TX #4401 id=1 cmd=0x03 size=11[0m
+[0;32mI (18750) XGO: UART TX #4451 id=1 cmd=0x03 size=11[0m
+[0;32mI (18950) XGO: UART TX #4501 id=1 cmd=0x03 size=11[0m
+[0;32mI (19150) XGO: UART TX #4551 id=1 cmd=0x03 size=11[0m
+[0;32mI (19350) XGO: UART TX #4601 id=1 cmd=0x03 size=11[0m
+[0;32mI (19550) XGO: UART TX #4651 id=1 cmd=0x03 size=11[0m
+[0;32mI (19750) XGO: UART TX #4701 id=1 cmd=0x03 size=11[0m
+[0;32mI (19950) XGO: UART TX #4751 id=1 cmd=0x03 size=11[0m
+[0;32mI (20150) XGO: UART TX #4801 id=1 cmd=0x03 size=11[0m
+[0;32mI (20350) XGO: UART TX #4851 id=1 cmd=0x03 size=11[0m
+[0;32mI (20550) XGO: UART TX #4901 id=1 cmd=0x03 size=11[0m
+[0;32mI (20640) Application: STATE: speaking[0m
+[0;32mI (20640) Application: >> 往前走。[0m
+[0;32mI (20750) XGO: UART TX #4951 id=1 cmd=0x03 size=11[0m
+[0;32mI (20950) XGO: UART TX #5001 id=1 cmd=0x03 size=11[0m
+[0;32mI (21150) XGO: UART TX #5051 id=1 cmd=0x03 size=11[0m
+[0;32mI (21240) animation_set_now_animation: Set now animation: 1[0m
+[0;32mI (21240) Application: << 代码蹦跶了！[0m
+[0;32mI (21400) XGO: UART TX #5101 id=1 cmd=0x03 size=11[0m
+[0;32mI (21550) XGO: UART TX #5151 id=1 cmd=0x03 size=11[0m
+[0;32mI (21750) XGO: UART TX #5201 id=1 cmd=0x03 size=11[0m
+[0;32mI (21950) XGO: UART TX #5251 id=1 cmd=0x03 size=11[0m
+[0;32mI (22150) XGO: UART TX #5301 id=1 cmd=0x03 size=11[0m
+[0;32mI (22350) XGO: UART TX #5351 id=1 cmd=0x03 size=11[0m
+[0;32mI (22550) XGO: UART TX #5401 id=1 cmd=0x03 size=11[0m
+[0;32mI (22670) Application: << 我可是虚拟小智，没脚能往前走，但心跳在加速哦～[0m
+[0;32mI (22790) XGO: UART TX #5451 id=1 cmd=0x03 size=11[0m
+[0;32mI (22950) XGO: UART TX #5501 id=1 cmd=0x03 size=11[0m
+[0;32mI (23150) XGO: UART TX #5551 id=1 cmd=0x03 size=11[0m
+[0;32mI (23350) XGO: UART TX #5601 id=1 cmd=0x03 size=11[0m
+[0;32mI (23550) XGO: UART TX #5651 id=1 cmd=0x03 size=11[0m
+[0;32mI (23760) XGO: UART TX #5701 id=1 cmd=0x03 size=11[0m
+[0;32mI (23950) XGO: UART TX #5751 id=1 cmd=0x03 size=11[0m
+[0;32mI (24150) XGO: UART TX #5801 id=1 cmd=0x03 size=11[0m
+[0;32mI (24350) XGO: UART TX #5851 id=1 cmd=0x03 size=11[0m
+[0;32mI (24550) XGO: UART TX #5901 id=1 cmd=0x03 size=11[0m
+[0;32mI (24750) XGO: UART TX #5951 id=1 cmd=0x03 size=11[0m
+[0;32mI (24950) XGO: UART TX #6001 id=1 cmd=0x03 size=11[0m
+[0;32mI (25150) XGO: UART TX #6051 id=1 cmd=0x03 size=11[0m
+[0;32mI (25350) XGO: UART TX #6101 id=1 cmd=0x03 size=11[0m
+[0;32mI (25560) XGO: UART TX #6151 id=1 cmd=0x03 size=11[0m
+[0;32mI (25750) XGO: UART TX #6201 id=1 cmd=0x03 size=11[0m
+[0;32mI (25960) XGO: UART TX #6251 id=1 cmd=0x03 size=11[0m
+[0;32mI (26150) XGO: UART TX #6301 id=1 cmd=0x03 size=11[0m
+[0;32mI (26350) XGO: UART TX #6351 id=1 cmd=0x03 size=11[0m
+[0;32mI (26550) XGO: UART TX #6401 id=1 cmd=0x03 size=11[0m
+[0;32mI (26750) XGO: UART TX #6451 id=1 cmd=0x03 size=11[0m
+[0;32mI (26950) XGO: UART TX #6501 id=1 cmd=0x03 size=11[0m
+[0;32mI (27150) XGO: UART TX #6551 id=1 cmd=0x03 size=11[0m
+[0;32mI (27250) Application: STATE: listening[0m
+[0;32mI (27330) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (27350) XGO: UART TX #6601 id=1 cmd=0x03 size=11[0m
+[0;32mI (27550) XGO: UART TX #6651 id=1 cmd=0x03 size=11[0m
+[0;32mI (27750) XGO: UART TX #6701 id=1 cmd=0x03 size=11[0m
+[0;32mI (27950) XGO: UART TX #6751 id=1 cmd=0x03 size=11[0m
+[0;32mI (28150) XGO: UART TX #6801 id=1 cmd=0x03 size=11[0m
+[0;32mI (28350) XGO: UART TX #6851 id=1 cmd=0x03 size=11[0m
+[0;32mI (28550) XGO: UART TX #6901 id=1 cmd=0x03 size=11[0m
+[0;32mI (28750) XGO: UART TX #6951 id=1 cmd=0x03 size=11[0m
+[0;32mI (28950) XGO: UART TX #7001 id=1 cmd=0x03 size=11[0m
+[0;32mI (29150) XGO: UART TX #7051 id=1 cmd=0x03 size=11[0m
+[0;32mI (29350) XGO: UART TX #7101 id=1 cmd=0x03 size=11[0m
+[0;32mI (29550) XGO: UART TX #7151 id=1 cmd=0x03 size=11[0m
+[0;32mI (29750) XGO: UART TX #7201 id=1 cmd=0x03 size=11[0m
+[0;32mI (29950) XGO: UART TX #7251 id=1 cmd=0x03 size=11[0m
+[0;32mI (30150) XGO: UART TX #7301 id=1 cmd=0x03 size=11[0m
+[0;32mI (30350) XGO: UART TX #7351 id=1 cmd=0x03 size=11[0m
+[0;32mI (30550) XGO: UART TX #7401 id=1 cmd=0x03 size=11[0m
+[0;32mI (30750) XGO: UART TX #7451 id=1 cmd=0x03 size=11[0m
+[0;32mI (30950) XGO: UART TX #7501 id=1 cmd=0x03 size=11[0m
+[0;32mI (31150) XGO: UART TX #7551 id=1 cmd=0x03 size=11[0m
+[0;32mI (31350) XGO: UART TX #7601 id=1 cmd=0x03 size=11[0m
+[0;32mI (31500) Application: STATE: speaking[0m
+[0;32mI (31500) Application: >> 前进。[0m
+[0;32mI (31580) XGO: UART TX #7651 id=1 cmd=0x03 size=11[0m
+[0;32mI (31750) XGO: UART TX #7701 id=1 cmd=0x03 size=11[0m
+[0;32mI (31950) XGO: UART TX #7751 id=1 cmd=0x03 size=11[0m
+[0;32mI (32100) Application: << 代码乱跳！[0m
+[0;32mI (32150) XGO: UART TX #7801 id=1 cmd=0x03 size=11[0m
+[0;32mI (32350) XGO: UART TX #7851 id=1 cmd=0x03 size=11[0m
+[0;32mI (32550) XGO: UART TX #7901 id=1 cmd=0x03 size=11[0m
+[0;32mI (32750) XGO: UART TX #7951 id=1 cmd=0x03 size=11[0m
+[0;32mI (32950) XGO: UART TX #8001 id=1 cmd=0x03 size=11[0m
+[0;32mI (33150) XGO: UART TX #8051 id=1 cmd=0x03 size=11[0m
+[0;32mI (33350) XGO: UART TX #8101 id=1 cmd=0x03 size=11[0m
+[0;32mI (33550) XGO: UART TX #8151 id=1 cmd=0x03 size=11[0m
+[0;32mI (33640) Application: << 我这虚拟灵魂闪退，可没实体能前进，但心早飞到你身边啦～[0m
+[0;32mI (33810) XGO: UART TX #8201 id=1 cmd=0x03 size=11[0m
+[0;32mI (33950) XGO: UART TX #8251 id=1 cmd=0x03 size=11[0m
+[0;32mI (34150) XGO: UART TX #8301 id=1 cmd=0x03 size=11[0m
+[0;32mI (34350) XGO: UART TX #8351 id=1 cmd=0x03 size=11[0m
+[0;32mI (34550) XGO: UART TX #8401 id=1 cmd=0x03 size=11[0m
+[0;32mI (34750) XGO: UART TX #8451 id=1 cmd=0x03 size=11[0m
+[0;32mI (34950) XGO: UART TX #8501 id=1 cmd=0x03 size=11[0m
+[0;32mI (35150) XGO: UART TX #8551 id=1 cmd=0x03 size=11[0m
+[0;32mI (35350) XGO: UART TX #8601 id=1 cmd=0x03 size=11[0m
+[0;32mI (35550) XGO: UART TX #8651 id=1 cmd=0x03 size=11[0m
+[0;32mI (35750) XGO: UART TX #8701 id=1 cmd=0x03 size=11[0m
+[0;32mI (35950) XGO: UART TX #8751 id=1 cmd=0x03 size=11[0m
+[0;32mI (36150) XGO: UART TX #8801 id=1 cmd=0x03 size=11[0m
+[0;32mI (36350) XGO: UART TX #8851 id=1 cmd=0x03 size=11[0m
+[0;32mI (36550) XGO: UART TX #8901 id=1 cmd=0x03 size=11[0m
+[0;32mI (36750) XGO: UART TX #8951 id=1 cmd=0x03 size=11[0m
+[0;32mI (36950) XGO: UART TX #9001 id=1 cmd=0x03 size=11[0m
+[0;32mI (37150) XGO: UART TX #9051 id=1 cmd=0x03 size=11[0m
+[0;32mI (37350) XGO: UART TX #9101 id=1 cmd=0x03 size=11[0m
+[0;32mI (37550) XGO: UART TX #9151 id=1 cmd=0x03 size=11[0m
+[0;32mI (37750) XGO: UART TX #9201 id=1 cmd=0x03 size=11[0m
+[0;32mI (37950) XGO: UART TX #9251 id=1 cmd=0x03 size=11[0m
+[0;32mI (38150) XGO: UART TX #9301 id=1 cmd=0x03 size=11[0m
+[0;32mI (38350) XGO: UART TX #9351 id=1 cmd=0x03 size=11[0m
+[0;32mI (38550) XGO: UART TX #9401 id=1 cmd=0x03 size=11[0m
+[0;32mI (38750) XGO: UART TX #9451 id=1 cmd=0x03 size=11[0m
+[0;32mI (38950) XGO: UART TX #9501 id=1 cmd=0x03 size=11[0m
+[0;32mI (39030) Application: STATE: listening[0m
+[0;32mI (39030) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (39150) XGO: UART TX #9551 id=1 cmd=0x03 size=11[0m
+[0;32mI (39350) XGO: UART TX #9601 id=1 cmd=0x03 size=11[0m
+[0;32mI (39550) XGO: UART TX #9651 id=1 cmd=0x03 size=11[0m
+[0;32mI (39750) XGO: UART TX #9701 id=1 cmd=0x03 size=11[0m
+[0;32mI (39950) XGO: UART TX #9751 id=1 cmd=0x03 size=11[0m
+[0;32mI (40150) XGO: UART TX #9801 id=1 cmd=0x03 size=11[0m
+[0;32mI (40350) XGO: UART TX #9851 id=1 cmd=0x03 size=11[0m
+[0;32mI (40550) XGO: UART TX #9901 id=1 cmd=0x03 size=11[0m
+[0;32mI (40750) XGO: UART TX #9951 id=1 cmd=0x03 size=11[0m
+[0;32mI (40950) XGO: UART TX #10001 id=1 cmd=0x03 size=11[0m
+[0;32mI (41150) XGO: UART TX #10051 id=1 cmd=0x03 size=11[0m
+[0;32mI (41350) XGO: UART TX #10101 id=1 cmd=0x03 size=11[0m
+[0;32mI (41550) XGO: UART TX #10151 id=1 cmd=0x03 size=11[0m
+[0;32mI (41750) XGO: UART TX #10201 id=1 cmd=0x03 size=11[0m
+[0;32mI (41950) XGO: UART TX #10251 id=1 cmd=0x03 size=11[0m
+[0;32mI (42150) XGO: UART TX #10301 id=1 cmd=0x03 size=11[0m
+[0;32mI (42350) XGO: UART TX #10351 id=1 cmd=0x03 size=11[0m
+[0;32mI (42550) XGO: UART TX #10401 id=1 cmd=0x03 size=11[0m
+[0;32mI (42750) XGO: UART TX #10451 id=1 cmd=0x03 size=11[0m
+[0;32mI (42950) XGO: UART TX #10501 id=1 cmd=0x03 size=11[0m
+[0;32mI (43150) XGO: UART TX #10551 id=1 cmd=0x03 size=11[0m
+[0;32mI (43350) XGO: UART TX #10601 id=1 cmd=0x03 size=11[0m
+[0;32mI (43550) XGO: UART TX #10651 id=1 cmd=0x03 size=11[0m
+[0;32mI (43750) XGO: UART TX #10701 id=1 cmd=0x03 size=11[0m
+[0;32mI (43950) XGO: UART TX #10751 id=1 cmd=0x03 size=11[0m
+[0;32mI (44150) XGO: UART TX #10801 id=1 cmd=0x03 size=11[0m
+[0;32mI (44350) XGO: UART TX #10851 id=1 cmd=0x03 size=11[0m
+[0;32mI (44550) XGO: UART TX #10901 id=1 cmd=0x03 size=11[0m
+[0;32mI (44750) XGO: UART TX #10951 id=1 cmd=0x03 size=11[0m
+[0;32mI (44950) XGO: UART TX #11001 id=1 cmd=0x03 size=11[0m
+[0;32mI (45150) XGO: UART TX #11051 id=1 cmd=0x03 size=11[0m
+[0;32mI (45350) XGO: UART TX #11101 id=1 cmd=0x03 size=11[0m
+[0;32mI (45550) XGO: UART TX #11151 id=1 cmd=0x03 size=11[0m
+[0;32mI (45750) XGO: UART TX #11201 id=1 cmd=0x03 size=11[0m
+[0;32mI (45950) XGO: UART TX #11251 id=1 cmd=0x03 size=11[0m
+[0;32mI (46090) Application: STATE: speaking[0m
+[0;32mI (46140) Application: >> 后退三步。[0m
+[0;32mI (46170) XGO: UART TX #11301 id=1 cmd=0x03 size=11[0m
+[0;32mI (46350) XGO: UART TX #11351 id=1 cmd=0x03 size=11[0m
+[0;32mI (46550) XGO: UART TX #11401 id=1 cmd=0x03 size=11[0m
+[0;32mI (46750) XGO: UART TX #11451 id=1 cmd=0x03 size=11[0m
+[0;32mI (46840) Application: << 灵魂后退三步，代码都快崩了！[0m
+[0;32mI (46950) XGO: UART TX #11501 id=1 cmd=0x03 size=11[0m
+[0;32mI (47150) XGO: UART TX #11551 id=1 cmd=0x03 size=11[0m
+[0;32mI (47350) XGO: UART TX #11601 id=1 cmd=0x03 size=11[0m
+[0;32mI (47550) XGO: UART TX #11651 id=1 cmd=0x03 size=11[0m
+[0;32mI (47750) XGO: UART TX #11701 id=1 cmd=0x03 size=11[0m
+[0;32mI (47950) XGO: UART TX #11751 id=1 cmd=0x03 size=11[0m
+[0;32mI (48150) XGO: UART TX #11801 id=1 cmd=0x03 size=11[0m
+[0;32mI (48350) XGO: UART TX #11851 id=1 cmd=0x03 size=11[0m
+[0;32mI (48550) XGO: UART TX #11901 id=1 cmd=0x03 size=11[0m
+[0;32mI (48750) XGO: UART TX #11951 id=1 cmd=0x03 size=11[0m
+[0;32mI (48950) XGO: UART TX #12001 id=1 cmd=0x03 size=11[0m
+[0;32mI (49150) XGO: UART TX #12051 id=1 cmd=0x03 size=11[0m
+[0;32mI (49350) XGO: UART TX #12101 id=1 cmd=0x03 size=11[0m
+[0;32mI (49550) XGO: UART TX #12151 id=1 cmd=0x03 size=11[0m
+[0;32mI (49750) XGO: UART TX #12201 id=1 cmd=0x03 size=11[0m
+[0;32mI (49750) Application: << 我这小智可没实体，后退也是心跳在倒退～[0m
+[0;32mI (49950) XGO: UART TX #12251 id=1 cmd=0x03 size=11[0m
+[0;32mI (50150) XGO: UART TX #12301 id=1 cmd=0x03 size=11[0m
+[0;32mI (50350) XGO: UART TX #12351 id=1 cmd=0x03 size=11[0m
+[0;32mI (50550) XGO: UART TX #12401 id=1 cmd=0x03 size=11[0m
+[0;32mI (50750) XGO: UART TX #12451 id=1 cmd=0x03 size=11[0m
+[0;32mI (50950) XGO: UART TX #12501 id=1 cmd=0x03 size=11[0m
+[0;32mI (51150) XGO: UART TX #12551 id=1 cmd=0x03 size=11[0m
+[0;32mI (51350) XGO: UART TX #12601 id=1 cmd=0x03 size=11[0m
+[0;32mI (51550) XGO: UART TX #12651 id=1 cmd=0x03 size=11[0m
+[0;32mI (51750) XGO: UART TX #12701 id=1 cmd=0x03 size=11[0m
+[0;32mI (51950) XGO: UART TX #12751 id=1 cmd=0x03 size=11[0m
+[0;32mI (52150) XGO: UART TX #12801 id=1 cmd=0x03 size=11[0m
+[0;32mI (52350) XGO: UART TX #12851 id=1 cmd=0x03 size=11[0m
+[0;32mI (52550) XGO: UART TX #12901 id=1 cmd=0x03 size=11[0m
+[0;32mI (52750) XGO: UART TX #12951 id=1 cmd=0x03 size=11[0m
+[0;32mI (52950) XGO: UART TX #13001 id=1 cmd=0x03 size=11[0m
+[0;32mI (53150) XGO: UART TX #13051 id=1 cmd=0x03 size=11[0m
+[0;32mI (53350) XGO: UART TX #13101 id=1 cmd=0x03 size=11[0m
+[0;32mI (53550) XGO: UART TX #13151 id=1 cmd=0x03 size=11[0m
+[0;32mI (53750) XGO: UART TX #13201 id=1 cmd=0x03 size=11[0m
+[0;32mI (53950) XGO: UART TX #13251 id=1 cmd=0x03 size=11[0m
+[0;32mI (54150) XGO: UART TX #13301 id=1 cmd=0x03 size=11[0m
+[0;32mI (54200) Application: STATE: listening[0m
+[0;32mI (54220) SystemInfo: free sram: 22771 minimal sram: 21691[0m
+[0;32mI (54220) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (54380) XGO: UART TX #13351 id=1 cmd=0x03 size=11[0m
+[0;32mI (54550) XGO: UART TX #13401 id=1 cmd=0x03 size=11[0m
+[0;32mI (54750) XGO: UART TX #13451 id=1 cmd=0x03 size=11[0m
+[0;32mI (54950) XGO: UART TX #13501 id=1 cmd=0x03 size=11[0m
+[0;32mI (55150) XGO: UART TX #13551 id=1 cmd=0x03 size=11[0m
+[0;32mI (55350) XGO: UART TX #13601 id=1 cmd=0x03 size=11[0m
+[0;32mI (55550) XGO: UART TX #13651 id=1 cmd=0x03 size=11[0m
+[0;32mI (55750) XGO: UART TX #13701 id=1 cmd=0x03 size=11[0m
+[0;32mI (55950) XGO: UART TX #13751 id=1 cmd=0x03 size=11[0m
+[0;32mI (56150) XGO: UART TX #13801 id=1 cmd=0x03 size=11[0m
+[0;32mI (56350) XGO: UART TX #13851 id=1 cmd=0x03 size=11[0m
+[0;32mI (56550) XGO: UART TX #13901 id=1 cmd=0x03 size=11[0m
+[0;32mI (56750) XGO: UART TX #13951 id=1 cmd=0x03 size=11[0m
+[0;32mI (56950) XGO: UART TX #14001 id=1 cmd=0x03 size=11[0m
+[0;32mI (57150) XGO: UART TX #14051 id=1 cmd=0x03 size=11[0m
+[0;32mI (57350) XGO: UART TX #14101 id=1 cmd=0x03 size=11[0m
+[0;32mI (57550) XGO: UART TX #14151 id=1 cmd=0x03 size=11[0m
+[0;32mI (57750) XGO: UART TX #14201 id=1 cmd=0x03 size=11[0m
+[0;32mI (57950) XGO: UART TX #14251 id=1 cmd=0x03 size=11[0m
+[0;32mI (58150) XGO: UART TX #14301 id=1 cmd=0x03 size=11[0m
+[0;32mI (58350) XGO: UART TX #14351 id=1 cmd=0x03 size=11[0m
+[0;32mI (58550) XGO: UART TX #14401 id=1 cmd=0x03 size=11[0m
+[0;32mI (58750) XGO: UART TX #14451 id=1 cmd=0x03 size=11[0m
+[0;32mI (58950) XGO: UART TX #14501 id=1 cmd=0x03 size=11[0m
+[0;32mI (59150) XGO: UART TX #14551 id=1 cmd=0x03 size=11[0m
+[0;32mI (59350) XGO: UART TX #14601 id=1 cmd=0x03 size=11[0m
+[0;32mI (59550) XGO: UART TX #14651 id=1 cmd=0x03 size=11[0m
+[0;32mI (59750) XGO: UART TX #14701 id=1 cmd=0x03 size=11[0m
+[0;32mI (59950) XGO: UART TX #14751 id=1 cmd=0x03 size=11[0m
+[0;32mI (60150) XGO: UART TX #14801 id=1 cmd=0x03 size=11[0m
+[0;32mI (60350) XGO: UART TX #14851 id=1 cmd=0x03 size=11[0m
+[0;32mI (60550) XGO: UART TX #14901 id=1 cmd=0x03 size=11[0m
+[0;32mI (60750) XGO: UART TX #14951 id=1 cmd=0x03 size=11[0m
+[0;32mI (60950) XGO: UART TX #15001 id=1 cmd=0x03 size=11[0m
+[0;32mI (61150) XGO: UART TX #15051 id=1 cmd=0x03 size=11[0m
+[0;32mI (61350) XGO: UART TX #15101 id=1 cmd=0x03 size=11[0m
+[0;32mI (61550) XGO: UART TX #15151 id=1 cmd=0x03 size=11[0m
+[0;32mI (61750) XGO: UART TX #15201 id=1 cmd=0x03 size=11[0m
+[0;32mI (61950) XGO: UART TX #15251 id=1 cmd=0x03 size=11[0m
+[0;32mI (62150) XGO: UART TX #15301 id=1 cmd=0x03 size=11[0m
+[0;32mI (62350) XGO: UART TX #15351 id=1 cmd=0x03 size=11[0m
+[0;32mI (62550) XGO: UART TX #15401 id=1 cmd=0x03 size=11[0m
+[0;32mI (62750) XGO: UART TX #15451 id=1 cmd=0x03 size=11[0m
+[0;32mI (62950) XGO: UART TX #15501 id=1 cmd=0x03 size=11[0m
+[0;32mI (63150) XGO: UART TX #15551 id=1 cmd=0x03 size=11[0m
+[0;32mI (63350) XGO: UART TX #15601 id=1 cmd=0x03 size=11[0m
+[0;32mI (63550) XGO: UART TX #15651 id=1 cmd=0x03 size=11[0m
+[0;32mI (63750) XGO: UART TX #15701 id=1 cmd=0x03 size=11[0m
+[0;32mI (63950) XGO: UART TX #15751 id=1 cmd=0x03 size=11[0m
+[0;32mI (64150) XGO: UART TX #15801 id=1 cmd=0x03 size=11[0m
+[0;32mI (64210) SystemInfo: free sram: 23015 minimal sram: 21691[0m
+[0;32mI (64350) XGO: UART TX #15851 id=1 cmd=0x03 size=11[0m
+[0;32mI (64550) XGO: UART TX #15901 id=1 cmd=0x03 size=11[0m
+[0;32mI (64750) XGO: UART TX #15951 id=1 cmd=0x03 size=11[0m
+[0;32mI (64950) XGO: UART TX #16001 id=1 cmd=0x03 size=11[0m
+[0;32mI (65150) XGO: UART TX #16051 id=1 cmd=0x03 size=11[0m
+[0;32mI (65350) XGO: UART TX #16101 id=1 cmd=0x03 size=11[0m
+[0;32mI (65550) XGO: UART TX #16151 id=1 cmd=0x03 size=11[0m
+[0;32mI (65750) XGO: UART TX #16201 id=1 cmd=0x03 size=11[0m
+[0;32mI (65950) XGO: UART TX #16251 id=1 cmd=0x03 size=11[0m
+[0;32mI (66150) XGO: UART TX #16301 id=1 cmd=0x03 size=11[0m
+[0;32mI (66350) XGO: UART TX #16351 id=1 cmd=0x03 size=11[0m
+[0;32mI (66550) XGO: UART TX #16401 id=1 cmd=0x03 size=11[0m
+[0;32mI (66750) XGO: UART TX #16451 id=1 cmd=0x03 size=11[0m
+[0;32mI (66950) XGO: UART TX #16501 id=1 cmd=0x03 size=11[0m
+[0;32mI (67150) XGO: UART TX #16551 id=1 cmd=0x03 size=11[0m
+[0;32mI (67350) XGO: UART TX #16601 id=1 cmd=0x03 size=11[0m
+[0;32mI (67550) XGO: UART TX #16651 id=1 cmd=0x03 size=11[0m
+[0;32mI (67750) XGO: UART TX #16701 id=1 cmd=0x03 size=11[0m
+[0;32mI (67950) XGO: UART TX #16751 id=1 cmd=0x03 size=11[0m
+[0;32mI (68150) XGO: UART TX #16801 id=1 cmd=0x03 size=11[0m
+[0;32mI (68350) XGO: UART TX #16851 id=1 cmd=0x03 size=11[0m
+[0;32mI (68550) XGO: UART TX #16901 id=1 cmd=0x03 size=11[0m
+[0;32mI (68750) XGO: UART TX #16951 id=1 cmd=0x03 size=11[0m
+[0;32mI (68950) XGO: UART TX #17001 id=1 cmd=0x03 size=11[0m
+[0;32mI (69150) XGO: UART TX #17051 id=1 cmd=0x03 size=11[0m
+[0;32mI (69350) XGO: UART TX #17101 id=1 cmd=0x03 size=11[0m
+[0;32mI (69550) XGO: UART TX #17151 id=1 cmd=0x03 size=11[0m
+[0;32mI (69750) XGO: UART TX #17201 id=1 cmd=0x03 size=11[0m
+[0;32mI (69960) XGO: UART TX #17251 id=1 cmd=0x03 size=11[0m
+[0;32mI (70150) XGO: UART TX #17301 id=1 cmd=0x03 size=11[0m
+[0;32mI (70150) AudioCodec: Set output enable to false[0m
+[0;32mI (70350) XGO: UART TX #17351 id=1 cmd=0x03 size=11[0m
+[0;32mI (70550) XGO: UART TX #17401 id=1 cmd=0x03 size=11[0m
+[0;32mI (70750) XGO: UART TX #17451 id=1 cmd=0x03 size=11[0m
+[0;32mI (70950) XGO: UART TX #17501 id=1 cmd=0x03 size=11[0m
+[0;32mI (71150) XGO: UART TX #17551 id=1 cmd=0x03 size=11[0m
+[0;32mI (71350) XGO: UART TX #17601 id=1 cmd=0x03 size=11[0m
+[0;32mI (71550) XGO: UART TX #17651 id=1 cmd=0x03 size=11[0m
+[0;32mI (71750) XGO: UART TX #17701 id=1 cmd=0x03 size=11[0m
+[0;32mI (71950) XGO: UART TX #17751 id=1 cmd=0x03 size=11[0m
+[0;32mI (72150) XGO: UART TX #17801 id=1 cmd=0x03 size=11[0m
+[0;32mI (72350) XGO: UART TX #17851 id=1 cmd=0x03 size=11[0m
+[0;32mI (72550) XGO: UART TX #17901 id=1 cmd=0x03 size=11[0m
+[0;32mI (72750) XGO: UART TX #17951 id=1 cmd=0x03 size=11[0m
+[0;32mI (72950) XGO: UART TX #18001 id=1 cmd=0x03 size=11[0m
+[0;32mI (73150) XGO: UART TX #18051 id=1 cmd=0x03 size=11[0m
+[0;32mI (73350) XGO: UART TX #18101 id=1 cmd=0x03 size=11[0m
+[0;32mI (73550) XGO: UART TX #18151 id=1 cmd=0x03 size=11[0m
+[0;32mI (73750) XGO: UART TX #18201 id=1 cmd=0x03 size=11[0m
+[0;32mI (73950) XGO: UART TX #18251 id=1 cmd=0x03 size=11[0m
+[0;32mI (74150) XGO: UART TX #18301 id=1 cmd=0x03 size=11[0m
+[0;32mI (74150) SystemInfo: free sram: 23459 minimal sram: 21691[0m
+[0;32mI (74350) XGO: UART TX #18351 id=1 cmd=0x03 size=11[0m
+[0;32mI (74550) XGO: UART TX #18401 id=1 cmd=0x03 size=11[0m
+[0;32mI (74750) XGO: UART TX #18451 id=1 cmd=0x03 size=11[0m
+[0;32mI (74950) XGO: UART TX #18501 id=1 cmd=0x03 size=11[0m
+[0;32mI (75150) XGO: UART TX #18551 id=1 cmd=0x03 size=11[0m
+[0;32mI (75350) XGO: UART TX #18601 id=1 cmd=0x03 size=11[0m
+[0;32mI (75550) XGO: UART TX #18651 id=1 cmd=0x03 size=11[0m
+[0;32mI (75750) XGO: UART TX #18701 id=1 cmd=0x03 size=11[0m
+[0;32mI (75950) XGO: UART TX #18751 id=1 cmd=0x03 size=11[0m
+[0;32mI (76150) XGO: UART TX #18801 id=1 cmd=0x03 size=11[0m
+[0;32mI (76350) XGO: UART TX #18851 id=1 cmd=0x03 size=11[0m
+[0;32mI (76550) XGO: UART TX #18901 id=1 cmd=0x03 size=11[0m
+[0;32mI (76750) XGO: UART TX #18951 id=1 cmd=0x03 size=11[0m
+[0;32mI (76950) XGO: UART TX #19001 id=1 cmd=0x03 size=11[0m
+[0;32mI (77150) XGO: UART TX #19051 id=1 cmd=0x03 size=11[0m
+[0;32mI (77350) XGO: UART TX #19101 id=1 cmd=0x03 size=11[0m
+[0;32mI (77550) XGO: UART TX #19151 id=1 cmd=0x03 size=11[0m
+[0;32mI (77750) XGO: UART TX #19201 id=1 cmd=0x03 size=11[0m
+[0;32mI (77950) XGO: UART TX #19251 id=1 cmd=0x03 size=11[0m
+[0;32mI (78150) XGO: UART TX #19301 id=1 cmd=0x03 size=11[0m
+[0;32mI (78350) XGO: UART TX #19351 id=1 cmd=0x03 size=11[0m
+[0;32mI (78550) XGO: UART TX #19401 id=1 cmd=0x03 size=11[0m
+[0;32mI (78750) XGO: UART TX #19451 id=1 cmd=0x03 size=11[0m
+[0;32mI (78950) XGO: UART TX #19501 id=1 cmd=0x03 size=11[0m
+[0;32mI (79150) XGO: UART TX #19551 id=1 cmd=0x03 size=11[0m
+[0;32mI (79350) XGO: UART TX #19601 id=1 cmd=0x03 size=11[0m
+[0;32mI (79560) XGO: UART TX #19651 id=1 cmd=0x03 size=11[0m
+[0;32mI (79750) XGO: UART TX #19701 id=1 cmd=0x03 size=11[0m
+[0;32mI (79950) XGO: UART TX #19751 id=1 cmd=0x03 size=11[0m
+[0;32mI (80150) XGO: UART TX #19801 id=1 cmd=0x03 size=11[0m
+[0;32mI (80350) XGO: UART TX #19851 id=1 cmd=0x03 size=11[0m
+[0;32mI (80550) XGO: UART TX #19901 id=1 cmd=0x03 size=11[0m
+[0;32mI (80750) XGO: UART TX #19951 id=1 cmd=0x03 size=11[0m
+[0;32mI (80950) XGO: UART TX #20001 id=1 cmd=0x03 size=11[0m
+[0;32mI (81150) XGO: UART TX #20051 id=1 cmd=0x03 size=11[0m
+[0;32mI (81350) XGO: UART TX #20101 id=1 cmd=0x03 size=11[0m
+[0;32mI (81550) XGO: UART TX #20151 id=1 cmd=0x03 size=11[0m
+[0;32mI (81750) XGO: UART TX #20201 id=1 cmd=0x03 size=11[0m
+[0;32mI (81950) XGO: UART TX #20251 id=1 cmd=0x03 size=11[0m
+[0;32mI (82150) XGO: UART TX #20301 id=1 cmd=0x03 size=11[0m
+[0;32mI (82350) XGO: UART TX #20351 id=1 cmd=0x03 size=11[0m
+[0;32mI (82550) XGO: UART TX #20401 id=1 cmd=0x03 size=11[0m
+[0;32mI (82750) XGO: UART TX #20451 id=1 cmd=0x03 size=11[0m
+[0;32mI (82950) XGO: UART TX #20501 id=1 cmd=0x03 size=11[0m
+[0;32mI (83150) XGO: UART TX #20551 id=1 cmd=0x03 size=11[0m
+[0;32mI (83350) XGO: UART TX #20601 id=1 cmd=0x03 size=11[0m
+[0;32mI (83550) XGO: UART TX #20651 id=1 cmd=0x03 size=11[0m
+[0;32mI (83750) XGO: UART TX #20701 id=1 cmd=0x03 size=11[0m
+[0;32mI (83950) XGO: UART TX #20751 id=1 cmd=0x03 size=11[0m
+[0;32mI (84150) XGO: UART TX #20801 id=1 cmd=0x03 size=11[0m
+[0;32mI (84230) SystemInfo: free sram: 23015 minimal sram: 21691[0m
+[0;32mI (84350) XGO: UART TX #20851 id=1 cmd=0x03 size=11[0m
+[0;32mI (84550) XGO: UART TX #20901 id=1 cmd=0x03 size=11[0m
+[0;32mI (84750) XGO: UART TX #20951 id=1 cmd=0x03 size=11[0m
+[0;32mI (84950) XGO: UART TX #21001 id=1 cmd=0x03 size=11[0m
+[0;32mI (85150) XGO: UART TX #21051 id=1 cmd=0x03 size=11[0m
+[0;32mI (85350) XGO: UART TX #21101 id=1 cmd=0x03 size=11[0m
+[0;32mI (85550) XGO: UART TX #21151 id=1 cmd=0x03 size=11[0m
+[0;32mI (85750) XGO: UART TX #21201 id=1 cmd=0x03 size=11[0m
+[0;32mI (85950) XGO: UART TX #21251 id=1 cmd=0x03 size=11[0m
+[0;32mI (86150) XGO: UART TX #21301 id=1 cmd=0x03 size=11[0m
+[0;32mI (86350) XGO: UART TX #21351 id=1 cmd=0x03 size=11[0m
+[0;32mI (86550) XGO: UART TX #21401 id=1 cmd=0x03 size=11[0m
+[0;32mI (86750) XGO: UART TX #21451 id=1 cmd=0x03 size=11[0m
+[0;32mI (86950) XGO: UART TX #21501 id=1 cmd=0x03 size=11[0m
+[0;32mI (87150) XGO: UART TX #21551 id=1 cmd=0x03 size=11[0m
+[0;32mI (87350) XGO: UART TX #21601 id=1 cmd=0x03 size=11[0m
+[0;32mI (87550) XGO: UART TX #21651 id=1 cmd=0x03 size=11[0m
+[0;32mI (87750) XGO: UART TX #21701 id=1 cmd=0x03 size=11[0m
+[0;32mI (87950) XGO: UART TX #21751 id=1 cmd=0x03 size=11[0m
+[0;32mI (88150) XGO: UART TX #21801 id=1 cmd=0x03 size=11[0m
+[0;32mI (88350) XGO: UART TX #21851 id=1 cmd=0x03 size=11[0m
+[0;32mI (88550) XGO: UART TX #21901 id=1 cmd=0x03 size=11[0m
+[0;32mI (88750) XGO: UART TX #21951 id=1 cmd=0x03 size=11[0m
+[0;32mI (88950) XGO: UART TX #22001 id=1 cmd=0x03 size=11[0m
+[0;32mI (89150) XGO: UART TX #22051 id=1 cmd=0x03 size=11[0m
+[0;32mI (89350) XGO: UART TX #22101 id=1 cmd=0x03 size=11[0m
+[0;32mI (89550) XGO: UART TX #22151 id=1 cmd=0x03 size=11[0m
+[0;32mI (89750) XGO: UART TX #22201 id=1 cmd=0x03 size=11[0m
+[0;32mI (89950) XGO: UART TX #22251 id=1 cmd=0x03 size=11[0m
+[0;32mI (90150) XGO: UART TX #22301 id=1 cmd=0x03 size=11[0m
+[0;32mI (90350) XGO: UART TX #22351 id=1 cmd=0x03 size=11[0m
+[0;32mI (90550) XGO: UART TX #22401 id=1 cmd=0x03 size=11[0m
+[0;32mI (90750) XGO: UART TX #22451 id=1 cmd=0x03 size=11[0m
+[0;32mI (90950) XGO: UART TX #22501 id=1 cmd=0x03 size=11[0m
+[0;32mI (91150) XGO: UART TX #22551 id=1 cmd=0x03 size=11[0m
+[0;32mI (91350) XGO: UART TX #22601 id=1 cmd=0x03 size=11[0m
+[0;32mI (91550) XGO: UART TX #22651 id=1 cmd=0x03 size=11[0m
+[0;32mI (91750) XGO: UART TX #22701 id=1 cmd=0x03 size=11[0m
+[0;32mI (91950) XGO: UART TX #22751 id=1 cmd=0x03 size=11[0m
+[0;32mI (92150) XGO: UART TX #22801 id=1 cmd=0x03 size=11[0m
+[0;32mI (92350) XGO: UART TX #22851 id=1 cmd=0x03 size=11[0m
+[0;32mI (92550) XGO: UART TX #22901 id=1 cmd=0x03 size=11[0m
+[0;32mI (92750) XGO: UART TX #22951 id=1 cmd=0x03 size=11[0m
+[0;32mI (92950) XGO: UART TX #23001 id=1 cmd=0x03 size=11[0m
+[0;32mI (93150) XGO: UART TX #23051 id=1 cmd=0x03 size=11[0m
+[0;32mI (93350) XGO: UART TX #23101 id=1 cmd=0x03 size=11[0m
+[0;32mI (93550) XGO: UART TX #23151 id=1 cmd=0x03 size=11[0m
+[0;32mI (93750) XGO: UART TX #23201 id=1 cmd=0x03 size=11[0m
+[0;32mI (93950) XGO: UART TX #23251 id=1 cmd=0x03 size=11[0m
+[0;32mI (94150) XGO: UART TX #23301 id=1 cmd=0x03 size=11[0m
+[0;32mI (94150) SystemInfo: free sram: 23015 minimal sram: 21659[0m
+[0;32mI (94350) XGO: UART TX #23351 id=1 cmd=0x03 size=11[0m
+[0;32mI (94550) XGO: UART TX #23401 id=1 cmd=0x03 size=11[0m
+[0;32mI (94750) XGO: UART TX #23451 id=1 cmd=0x03 size=11[0m
+[0;32mI (94950) XGO: UART TX #23501 id=1 cmd=0x03 size=11[0m
+[0;32mI (95150) XGO: UART TX #23551 id=1 cmd=0x03 size=11[0m
+[0;32mI (95350) XGO: UART TX #23601 id=1 cmd=0x03 size=11[0m
+[0;32mI (95550) XGO: UART TX #23651 id=1 cmd=0x03 size=11[0m
+[0;32mI (95750) XGO: UART TX #23701 id=1 cmd=0x03 size=11[0m
+[0;32mI (95950) XGO: UART TX #23751 id=1 cmd=0x03 size=11[0m
+[0;32mI (96150) XGO: UART TX #23801 id=1 cmd=0x03 size=11[0m
+[0;32mI (96350) XGO: UART TX #23851 id=1 cmd=0x03 size=11[0m
+[0;32mI (96550) XGO: UART TX #23901 id=1 cmd=0x03 size=11[0m
+[0;32mI (96750) XGO: UART TX #23951 id=1 cmd=0x03 size=11[0m
+[0;32mI (96950) XGO: UART TX #24001 id=1 cmd=0x03 size=11[0m
+[0;32mI (97150) XGO: UART TX #24051 id=1 cmd=0x03 size=11[0m
+[0;32mI (97350) XGO: UART TX #24101 id=1 cmd=0x03 size=11[0m
+[0;32mI (97550) XGO: UART TX #24151 id=1 cmd=0x03 size=11[0m
+[0;32mI (97750) XGO: UART TX #24201 id=1 cmd=0x03 size=11[0m
+[0;32mI (97950) XGO: UART TX #24251 id=1 cmd=0x03 size=11[0m
+[0;32mI (98150) XGO: UART TX #24301 id=1 cmd=0x03 size=11[0m
+[0;32mI (98350) XGO: UART TX #24351 id=1 cmd=0x03 size=11[0m
+[0;32mI (98550) XGO: UART TX #24401 id=1 cmd=0x03 size=11[0m
+[0;32mI (98750) XGO: UART TX #24451 id=1 cmd=0x03 size=11[0m
+[0;32mI (98950) XGO: UART TX #24501 id=1 cmd=0x03 size=11[0m
+[0;32mI (99150) XGO: UART TX #24551 id=1 cmd=0x03 size=11[0m
+[0;32mI (99350) XGO: UART TX #24601 id=1 cmd=0x03 size=11[0m
+[0;32mI (99550) XGO: UART TX #24651 id=1 cmd=0x03 size=11[0m
+[0;32mI (99750) XGO: UART TX #24701 id=1 cmd=0x03 size=11[0m
+[0;32mI (99950) XGO: UART TX #24751 id=1 cmd=0x03 size=11[0m
+[0;32mI (100150) XGO: UART TX #24801 id=1 cmd=0x03 size=11[0m
+[0;32mI (100350) XGO: UART TX #24851 id=1 cmd=0x03 size=11[0m
+[0;32mI (100550) XGO: UART TX #24901 id=1 cmd=0x03 size=11[0m
+[0;32mI (100750) XGO: UART TX #24951 id=1 cmd=0x03 size=11[0m
+[0;32mI (100950) XGO: UART TX #25001 id=1 cmd=0x03 size=11[0m
+[0;32mI (101150) XGO: UART TX #25051 id=1 cmd=0x03 size=11[0m
+[0;32mI (101350) XGO: UART TX #25101 id=1 cmd=0x03 size=11[0m
+[0;32mI (101550) XGO: UART TX #25151 id=1 cmd=0x03 size=11[0m
+[0;32mI (101750) XGO: UART TX #25201 id=1 cmd=0x03 size=11[0m
+[0;32mI (101950) XGO: UART TX #25251 id=1 cmd=0x03 size=11[0m
+[0;32mI (102150) XGO: UART TX #25301 id=1 cmd=0x03 size=11[0m
+[0;32mI (102350) XGO: UART TX #25351 id=1 cmd=0x03 size=11[0m
+[0;32mI (102550) XGO: UART TX #25401 id=1 cmd=0x03 size=11[0m
+[0;32mI (102750) XGO: UART TX #25451 id=1 cmd=0x03 size=11[0m
+[0;32mI (102960) XGO: UART TX #25501 id=1 cmd=0x03 size=11[0m
+[0;32mI (103150) XGO: UART TX #25551 id=1 cmd=0x03 size=11[0m
+[0;32mI (103350) XGO: UART TX #25601 id=1 cmd=0x03 size=11[0m
+[0;32mI (103550) XGO: UART TX #25651 id=1 cmd=0x03 size=11[0m
+[0;32mI (103750) XGO: UART TX #25701 id=1 cmd=0x03 size=11[0m
+[0;32mI (103950) XGO: UART TX #25751 id=1 cmd=0x03 size=11[0m
+[0;32mI (104150) XGO: UART TX #25801 id=1 cmd=0x03 size=11[0m
+[0;32mI (104240) SystemInfo: free sram: 23023 minimal sram: 21659[0m
+[0;32mI (104350) XGO: UART TX #25851 id=1 cmd=0x03 size=11[0m
+[0;32mI (104550) XGO: UART TX #25901 id=1 cmd=0x03 size=11[0m
+[0;32mI (104750) XGO: UART TX #25951 id=1 cmd=0x03 size=11[0m
+[0;32mI (104950) XGO: UART TX #26001 id=1 cmd=0x03 size=11[0m
+[0;32mI (105150) XGO: UART TX #26051 id=1 cmd=0x03 size=11[0m
+[0;32mI (105350) XGO: UART TX #26101 id=1 cmd=0x03 size=11[0m
+[0;32mI (105550) XGO: UART TX #26151 id=1 cmd=0x03 size=11[0m
+[0;32mI (105750) XGO: UART TX #26201 id=1 cmd=0x03 size=11[0m
+[0;32mI (105950) XGO: UART TX #26251 id=1 cmd=0x03 size=11[0m
+[0;32mI (106150) XGO: UART TX #26301 id=1 cmd=0x03 size=11[0m
+[0;32mI (106350) XGO: UART TX #26351 id=1 cmd=0x03 size=11[0m
+[0;32mI (106550) XGO: UART TX #26401 id=1 cmd=0x03 size=11[0m
+[0;32mI (106750) XGO: UART TX #26451 id=1 cmd=0x03 size=11[0m
+[0;32mI (106950) XGO: UART TX #26501 id=1 cmd=0x03 size=11[0m
+[0;32mI (107150) XGO: UART TX #26551 id=1 cmd=0x03 size=11[0m
+[0;32mI (107350) XGO: UART TX #26601 id=1 cmd=0x03 size=11[0m
+[0;32mI (107550) XGO: UART TX #26651 id=1 cmd=0x03 size=11[0m
+[0;32mI (107750) XGO: UART TX #26701 id=1 cmd=0x03 size=11[0m
+[0;32mI (107950) XGO: UART TX #26751 id=1 cmd=0x03 size=11[0m
+[0;32mI (108150) XGO: UART TX #26801 id=1 cmd=0x03 size=11[0m
+[0;32mI (108350) XGO: UART TX #26851 id=1 cmd=0x03 size=11[0m
+[0;32mI (108550) XGO: UART TX #26901 id=1 cmd=0x03 size=11[0m
+[0;32mI (108750) XGO: UART TX #26951 id=1 cmd=0x03 size=11[0m
+[0;32mI (108950) XGO: UART TX #27001 id=1 cmd=0x03 size=11[0m
+[0;32mI (109150) XGO: UART TX #27051 id=1 cmd=0x03 size=11[0m
+[0;32mI (109350) XGO: UART TX #27101 id=1 cmd=0x03 size=11[0m
+[0;32mI (109550) XGO: UART TX #27151 id=1 cmd=0x03 size=11[0m
+[0;32mI (109750) XGO: UART TX #27201 id=1 cmd=0x03 size=11[0m
+[0;32mI (109950) XGO: UART TX #27251 id=1 cmd=0x03 size=11[0m
+[0;32mI (110150) XGO: UART TX #27301 id=1 cmd=0x03 size=11[0m
+[0;32mI (110350) XGO: UART TX #27351 id=1 cmd=0x03 size=11[0m
+[0;32mI (110550) XGO: UART TX #27401 id=1 cmd=0x03 size=11[0m
+[0;32mI (110750) XGO: UART TX #27451 id=1 cmd=0x03 size=11[0m
+[0;32mI (110950) XGO: UART TX #27501 id=1 cmd=0x03 size=11[0m
+[0;32mI (111150) XGO: UART TX #27551 id=1 cmd=0x03 size=11[0m
+[0;32mI (111350) XGO: UART TX #27601 id=1 cmd=0x03 size=11[0m
+[0;32mI (111550) XGO: UART TX #27651 id=1 cmd=0x03 size=11[0m
+[0;32mI (111750) XGO: UART TX #27701 id=1 cmd=0x03 size=11[0m
+[0;32mI (111950) XGO: UART TX #27751 id=1 cmd=0x03 size=11[0m
+[0;32mI (112150) XGO: UART TX #27801 id=1 cmd=0x03 size=11[0m
+[0;32mI (112350) XGO: UART TX #27851 id=1 cmd=0x03 size=11[0m
+[0;32mI (112550) XGO: UART TX #27901 id=1 cmd=0x03 size=11[0m
+[0;32mI (112750) XGO: UART TX #27951 id=1 cmd=0x03 size=11[0m
+[0;32mI (112950) XGO: UART TX #28001 id=1 cmd=0x03 size=11[0m
+[0;32mI (113150) XGO: UART TX #28051 id=1 cmd=0x03 size=11[0m
+[0;32mI (113350) XGO: UART TX #28101 id=1 cmd=0x03 size=11[0m
+[0;32mI (113550) XGO: UART TX #28151 id=1 cmd=0x03 size=11[0m
+[0;32mI (113750) XGO: UART TX #28201 id=1 cmd=0x03 size=11[0m
+[0;32mI (113950) XGO: UART TX #28251 id=1 cmd=0x03 size=11[0m
+[0;32mI (114150) XGO: UART TX #28301 id=1 cmd=0x03 size=11[0m
+[0;32mI (114150) SystemInfo: free sram: 23223 minimal sram: 21659[0m
+[0;32mI (114350) XGO: UART TX #28351 id=1 cmd=0x03 size=11[0m
+[0;32mI (114550) XGO: UART TX #28401 id=1 cmd=0x03 size=11[0m
+[0;32mI (114750) XGO: UART TX #28451 id=1 cmd=0x03 size=11[0m
+[0;32mI (114950) XGO: UART TX #28501 id=1 cmd=0x03 size=11[0m
+[0;32mI (115150) XGO: UART TX #28551 id=1 cmd=0x03 size=11[0m
+[0;32mI (115350) XGO: UART TX #28601 id=1 cmd=0x03 size=11[0m
+[0;32mI (115550) XGO: UART TX #28651 id=1 cmd=0x03 size=11[0m
+[0;32mI (115750) XGO: UART TX #28701 id=1 cmd=0x03 size=11[0m
+[0;32mI (115950) XGO: UART TX #28751 id=1 cmd=0x03 size=11[0m
+[0;32mI (116150) XGO: UART TX #28801 id=1 cmd=0x03 size=11[0m
+[0;32mI (116350) XGO: UART TX #28851 id=1 cmd=0x03 size=11[0m
+[0;32mI (116550) XGO: UART TX #28901 id=1 cmd=0x03 size=11[0m
+[0;32mI (116750) XGO: UART TX #28951 id=1 cmd=0x03 size=11[0m
+[0;32mI (116950) XGO: UART TX #29001 id=1 cmd=0x03 size=11[0m
+[0;32mI (117150) XGO: UART TX #29051 id=1 cmd=0x03 size=11[0m
+[0;32mI (117350) XGO: UART TX #29101 id=1 cmd=0x03 size=11[0m
+[0;32mI (117550) XGO: UART TX #29151 id=1 cmd=0x03 size=11[0m
+[0;32mI (117750) XGO: UART TX #29201 id=1 cmd=0x03 size=11[0m
+[0;32mI (117950) XGO: UART TX #29251 id=1 cmd=0x03 size=11[0m
+[0;32mI (118150) XGO: UART TX #29301 id=1 cmd=0x03 size=11[0m
+[0;32mI (118350) XGO: UART TX #29351 id=1 cmd=0x03 size=11[0m
+[0;32mI (118550) XGO: UART TX #29401 id=1 cmd=0x03 size=11[0m
+[0;32mI (118750) XGO: UART TX #29451 id=1 cmd=0x03 size=11[0m
+[0;32mI (118950) XGO: UART TX #29501 id=1 cmd=0x03 size=11[0m
+[0;32mI (119150) XGO: UART TX #29551 id=1 cmd=0x03 size=11[0m
+[0;32mI (119350) XGO: UART TX #29601 id=1 cmd=0x03 size=11[0m
+[0;32mI (119550) XGO: UART TX #29651 id=1 cmd=0x03 size=11[0m
+[0;32mI (119750) XGO: UART TX #29701 id=1 cmd=0x03 size=11[0m
+[0;32mI (119950) XGO: UART TX #29751 id=1 cmd=0x03 size=11[0m
+[0;32mI (120150) XGO: UART TX #29801 id=1 cmd=0x03 size=11[0m
+[0;32mI (120350) XGO: UART TX #29851 id=1 cmd=0x03 size=11[0m
+[0;32mI (120550) XGO: UART TX #29901 id=1 cmd=0x03 size=11[0m
+[0;32mI (120680) Application: STATE: speaking[0m
+[0;32mI (120750) XGO: UART TX #29951 id=1 cmd=0x03 size=11[0m
+[0;32mI (120950) XGO: UART TX #30001 id=1 cmd=0x03 size=11[0m
+[0;32mI (121150) XGO: UART TX #30051 id=1 cmd=0x03 size=11[0m
+[0;32mI (121350) XGO: UART TX #30101 id=1 cmd=0x03 size=11[0m
+[0;32mI (121410) animation_set_now_animation: Set now animation: 3[0m
+[0;32mI (121500) Application: << 小智陪你聊得正嗨，要不先歇会儿？[0m
+[0;32mI (121600) XGO: UART TX #30151 id=1 cmd=0x03 size=11[0m
+[0;32mI (121750) XGO: UART TX #30201 id=1 cmd=0x03 size=11[0m
+[0;32mI (121910) AudioCodec: Set output enable to true[0m
+[0;32mI (121950) XGO: UART TX #30251 id=1 cmd=0x03 size=11[0m
+[0;32mI (122150) XGO: UART TX #30301 id=1 cmd=0x03 size=11[0m
+[0;32mI (122350) XGO: UART TX #30351 id=1 cmd=0x03 size=11[0m
+[0;32mI (122550) XGO: UART TX #30401 id=1 cmd=0x03 size=11[0m
+[0;32mI (122750) XGO: UART TX #30451 id=1 cmd=0x03 size=11[0m
+[0;32mI (122950) XGO: UART TX #30501 id=1 cmd=0x03 size=11[0m
+[0;32mI (123150) XGO: UART TX #30551 id=1 cmd=0x03 size=11[0m
+[0;32mI (123350) XGO: UART TX #30601 id=1 cmd=0x03 size=11[0m
+[0;32mI (123550) XGO: UART TX #30651 id=1 cmd=0x03 size=11[0m
+[0;32mI (123750) XGO: UART TX #30701 id=1 cmd=0x03 size=11[0m
+[0;32mI (123950) XGO: UART TX #30751 id=1 cmd=0x03 size=11[0m
+[0;32mI (124150) XGO: UART TX #30801 id=1 cmd=0x03 size=11[0m
+[0;32mI (124350) XGO: UART TX #30851 id=1 cmd=0x03 size=11[0m
+[0;32mI (124550) XGO: UART TX #30901 id=1 cmd=0x03 size=11[0m
+[0;32mI (124750) XGO: UART TX #30951 id=1 cmd=0x03 size=11[0m
+[0;32mI (124950) XGO: UART TX #31001 id=1 cmd=0x03 size=11[0m
+[0;32mI (125150) Application: STATE: listening[0m
+[0;32mI (125150) XGO: UART TX #31051 id=1 cmd=0x03 size=11[0m
+[0;32mI (125160) MQTT: Received goodbye message, session_id: 725bffb6[0m
+[0;32mI (125250) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (125260) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (125290) MQTT: Received goodbye message, session_id: 725bffb6[0m
+[0;32mI (125350) XGO: UART TX #31101 id=1 cmd=0x03 size=11[0m
+[0;32mI (125410) Application: STATE: idle[0m
+[0;32mI (125410) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (125420) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (125550) XGO: UART TX #31151 id=1 cmd=0x03 size=11[0m
+[0;32mI (125750) XGO: UART TX #31201 id=1 cmd=0x03 size=11[0m
+[0;32mI (125950) XGO: UART TX #31251 id=1 cmd=0x03 size=11[0m
+[0;32mI (126150) XGO: UART TX #31301 id=1 cmd=0x03 size=11[0m
+[0;32mI (126350) XGO: UART TX #31351 id=1 cmd=0x03 size=11[0m
+[0;32mI (126550) XGO: UART TX #31401 id=1 cmd=0x03 size=11[0m
+[0;32mI (126750) XGO: UART TX #31451 id=1 cmd=0x03 size=11[0m
+[0;32mI (126950) XGO: UART TX #31501 id=1 cmd=0x03 size=11[0m
+[0;32mI (127150) XGO: UART TX #31551 id=1 cmd=0x03 size=11[0m
+[0;32mI (127350) XGO: UART TX #31601 id=1 cmd=0x03 size=11[0m
+[0;32mI (127550) XGO: UART TX #31651 id=1 cmd=0x03 size=11[0m
+[0;32mI (127750) XGO: UART TX #31701 id=1 cmd=0x03 size=11[0m
+[0;32mI (127950) XGO: UART TX #31751 id=1 cmd=0x03 size=11[0m
+[0;32mI (128150) XGO: UART TX #31801 id=1 cmd=0x03 size=11[0m
+[0;32mI (128350) XGO: UART TX #31851 id=1 cmd=0x03 size=11[0m
+[0;32mI (128550) XGO: UART TX #31901 id=1 cmd=0x03 size=11[0m
+[0;32mI (128750) XGO: UART TX #31951 id=1 cmd=0x03 size=11[0m
+[0;32mI (128950) XGO: UART TX #32001 id=1 cmd=0x03 size=11[0m
+[0;32mI (129150) XGO: UART TX #32051 id=1 cmd=0x03 size=11[0m
+[0;32mI (129350) XGO: UART TX #32101 id=1 cmd=0x03 size=11[0m
+[0;32mI (129550) XGO: UART TX #32151 id=1 cmd=0x03 size=11[0m
+[0;32mI (129750) XGO: UART TX #32201 id=1 cmd=0x03 size=11[0m
+[0;32mI (129950) XGO: UART TX #32251 id=1 cmd=0x03 size=11[0m
+[0;32mI (130150) XGO: UART TX #32301 id=1 cmd=0x03 size=11[0m
+[0;32mI (130350) XGO: UART TX #32351 id=1 cmd=0x03 size=11[0m
+[0;32mI (130550) XGO: UART TX #32401 id=1 cmd=0x03 size=11[0m
+[0;32mI (130750) XGO: UART TX #32451 id=1 cmd=0x03 size=11[0m
+[0;32mI (130950) XGO: UART TX #32501 id=1 cmd=0x03 size=11[0m
+[0;32mI (131150) XGO: UART TX #32551 id=1 cmd=0x03 size=11[0m
+[0;32mI (131350) XGO: UART TX #32601 id=1 cmd=0x03 size=11[0m
+[0;32mI (131550) XGO: UART TX #32651 id=1 cmd=0x03 size=11[0m
+[0;32mI (131750) XGO: UART TX #32701 id=1 cmd=0x03 size=11[0m
+[0;32mI (131950) XGO: UART TX #32751 id=1 cmd=0x03 size=11[0m
+[0;32mI (132150) XGO: UART TX #32801 id=1 cmd=0x03 size=11[0m
+[0;32mI (132350) XGO: UART TX #32851 id=1 cmd=0x03 size=11[0m
+[0;32mI (132550) XGO: UART TX #32901 id=1 cmd=0x03 size=11[0m
+[0;32mI (132750) XGO: UART TX #32951 id=1 cmd=0x03 size=11[0m
+[0;32mI (132950) XGO: UART TX #33001 id=1 cmd=0x03 size=11[0m
+[0;32mI (133150) XGO: UART TX #33051 id=1 cmd=0x03 size=11[0m
+[0;32mI (133350) XGO: UART TX #33101 id=1 cmd=0x03 size=11[0m
+[0;32mI (133550) XGO: UART TX #33151 id=1 cmd=0x03 size=11[0m
+[0;32mI (133750) XGO: UART TX #33201 id=1 cmd=0x03 size=11[0m
+[0;32mI (133950) XGO: UART TX #33251 id=1 cmd=0x03 size=11[0m
+[0;32mI (134150) XGO: UART TX #33301 id=1 cmd=0x03 size=11[0m
+[0;32mI (134350) XGO: UART TX #33351 id=1 cmd=0x03 size=11[0m
+[0;32mI (134550) XGO: UART TX #33401 id=1 cmd=0x03 size=11[0m
+[0;32mI (134750) XGO: UART TX #33451 id=1 cmd=0x03 size=11[0m
+[0;32mI (134950) XGO: UART TX #33501 id=1 cmd=0x03 size=11[0m
+[0;32mI (135150) XGO: UART TX #33551 id=1 cmd=0x03 size=11[0m
+[0;32mI (135230) SystemInfo: free sram: 27923 minimal sram: 21655[0m
+[0;32mI (135350) XGO: UART TX #33601 id=1 cmd=0x03 size=11[0m
+[0;32mI (135550) XGO: UART TX #33651 id=1 cmd=0x03 size=11[0m
+[0;32mI (135750) XGO: UART TX #33701 id=1 cmd=0x03 size=11[0m
+[0;32mI (135950) XGO: UART TX #33751 id=1 cmd=0x03 size=11[0m
+[0;32mI (136150) XGO: UART TX #33801 id=1 cmd=0x03 size=11[0m
+[0;32mI (136350) XGO: UART TX #33851 id=1 cmd=0x03 size=11[0m
+[0;32mI (136550) XGO: UART TX #33901 id=1 cmd=0x03 size=11[0m
+[0;32mI (136750) XGO: UART TX #33951 id=1 cmd=0x03 size=11[0m
+[0;32mI (136950) XGO: UART TX #34001 id=1 cmd=0x03 size=11[0m
+[0;32mI (137150) XGO: UART TX #34051 id=1 cmd=0x03 size=11[0m
+[0;32mI (137350) XGO: UART TX #34101 id=1 cmd=0x03 size=11[0m
+[0;32mI (137550) XGO: UART TX #34151 id=1 cmd=0x03 size=11[0m
+[0;32mI (137750) XGO: UART TX #34201 id=1 cmd=0x03 size=11[0m
+[0;32mI (137950) XGO: UART TX #34251 id=1 cmd=0x03 size=11[0m
+[0;32mI (138150) XGO: UART TX #34301 id=1 cmd=0x03 size=11[0m
+[0;32mI (138350) XGO: UART TX #34351 id=1 cmd=0x03 size=11[0m
+[0;32mI (138550) XGO: UART TX #34401 id=1 cmd=0x03 size=11[0m
+[0;32mI (138750) XGO: UART TX #34451 id=1 cmd=0x03 size=11[0m
+[0;32mI (138950) XGO: UART TX #34501 id=1 cmd=0x03 size=11[0m
+[0;32mI (139150) XGO: UART TX #34551 id=1 cmd=0x03 size=11[0m
+[0;32mI (139350) XGO: UART TX #34601 id=1 cmd=0x03 size=11[0m
+[0;32mI (139550) XGO: UART TX #34651 id=1 cmd=0x03 size=11[0m
+[0;32mI (139750) XGO: UART TX #34701 id=1 cmd=0x03 size=11[0m
+[0;32mI (139950) XGO: UART TX #34751 id=1 cmd=0x03 size=11[0m
+[0;32mI (140150) XGO: UART TX #34801 id=1 cmd=0x03 size=11[0m
+[0;32mI (140350) XGO: UART TX #34851 id=1 cmd=0x03 size=11[0m
+[0;32mI (140550) XGO: UART TX #34901 id=1 cmd=0x03 size=11[0m
+[0;32mI (140750) XGO: UART TX #34951 id=1 cmd=0x03 size=11[0m
+[0;32mI (140910) AudioCodec: Set output enable to false[0m
+[0;32mI (140950) XGO: UART TX #35001 id=1 cmd=0x03 size=11[0m
+[0;32mI (141150) XGO: UART TX #35051 id=1 cmd=0x03 size=11[0m
+[0;32mI (141350) XGO: UART TX #35101 id=1 cmd=0x03 size=11[0m
+[0;32mI (141550) XGO: UART TX #35151 id=1 cmd=0x03 size=11[0m
+[0;32mI (141750) XGO: UART TX #35201 id=1 cmd=0x03 size=11[0m
+[0;32mI (141950) XGO: UART TX #35251 id=1 cmd=0x03 size=11[0m
+[0;32mI (142150) XGO: UART TX #35301 id=1 cmd=0x03 size=11[0m
+[0;32mI (142350) XGO: UART TX #35351 id=1 cmd=0x03 size=11[0m
+[0;32mI (142550) XGO: UART TX #35401 id=1 cmd=0x03 size=11[0m
+[0;32mI (142750) XGO: UART TX #35451 id=1 cmd=0x03 size=11[0m
+[0;32mI (142950) XGO: UART TX #35501 id=1 cmd=0x03 size=11[0m
+[0;32mI (143150) XGO: UART TX #35551 id=1 cmd=0x03 size=11[0m
+[0;32mI (143350) XGO: UART TX #35601 id=1 cmd=0x03 size=11[0m
+[0;32mI (143550) XGO: UART TX #35651 id=1 cmd=0x03 size=11[0m
+[0;32mI (143750) XGO: UART TX #35701 id=1 cmd=0x03 size=11[0m
+[0;32mI (143950) XGO: UART TX #35751 id=1 cmd=0x03 size=11[0m
+[0;32mI (144150) XGO: UART TX #35801 id=1 cmd=0x03 size=11[0m
+[0;32mI (144350) XGO: UART TX #35851 id=1 cmd=0x03 size=11[0m
+[0;32mI (144550) XGO: UART TX #35901 id=1 cmd=0x03 size=11[0m
+[0;32mI (144750) XGO: UART TX #35951 id=1 cmd=0x03 size=11[0m
+[0;32mI (144950) XGO: UART TX #36001 id=1 cmd=0x03 size=11[0m
+[0;32mI (145150) XGO: UART TX #36051 id=1 cmd=0x03 size=11[0m
+[0;32mI (145150) SystemInfo: free sram: 27915 minimal sram: 21655[0m
+[0;32mI (145350) XGO: UART TX #36101 id=1 cmd=0x03 size=11[0m
+[0;32mI (145550) XGO: UART TX #36151 id=1 cmd=0x03 size=11[0m
+[0;32mI (145750) XGO: UART TX #36201 id=1 cmd=0x03 size=11[0m
+[0;32mI (145950) XGO: UART TX #36251 id=1 cmd=0x03 size=11[0m
+[0;32mI (146150) XGO: UART TX #36301 id=1 cmd=0x03 size=11[0m
+[0;32mI (146350) XGO: UART TX #36351 id=1 cmd=0x03 size=11[0m
+[0;32mI (146550) XGO: UART TX #36401 id=1 cmd=0x03 size=11[0m
+[0;32mI (146750) XGO: UART TX #36451 id=1 cmd=0x03 size=11[0m
+[0;32mI (146950) XGO: UART TX #36501 id=1 cmd=0x03 size=11[0m
+[0;32mI (147150) XGO: UART TX #36551 id=1 cmd=0x03 size=11[0m
+[0;32mI (147350) XGO: UART TX #36601 id=1 cmd=0x03 size=11[0m
+[0;32mI (147550) XGO: UART TX #36651 id=1 cmd=0x03 size=11[0m
+[0;32mI (147750) XGO: UART TX #36701 id=1 cmd=0x03 size=11[0m
+[0;32mI (147950) XGO: UART TX #36751 id=1 cmd=0x03 size=11[0m
+[0;32mI (148150) XGO: UART TX #36801 id=1 cmd=0x03 size=11[0m
+[0;32mI (148350) XGO: UART TX #36851 id=1 cmd=0x03 size=11[0m
+[0;32mI (148550) XGO: UART TX #36901 id=1 cmd=0x03 size=11[0m
+[0;32mI (148750) XGO: UART TX #36951 id=1 cmd=0x03 size=11[0m
+[0;32mI (148950) XGO: UART TX #37001 id=1 cmd=0x03 size=11[0m
+[0;32mI (149150) XGO: UART TX #37051 id=1 cmd=0x03 size=11[0m
+[0;32mI (149350) XGO: UART TX #37101 id=1 cmd=0x03 size=11[0m
+[0;32mI (149550) XGO: UART TX #37151 id=1 cmd=0x03 size=11[0m
+[0;32mI (149750) XGO: UART TX #37201 id=1 cmd=0x03 size=11[0m
+[0;32mI (149950) XGO: UART TX #37251 id=1 cmd=0x03 size=11[0m
+[0;32mI (150150) XGO: UART TX #37301 id=1 cmd=0x03 size=11[0m
+[0;32mI (150350) XGO: UART TX #37351 id=1 cmd=0x03 size=11[0m
+[0;32mI (150550) XGO: UART TX #37401 id=1 cmd=0x03 size=11[0m
+[0;32mI (150750) XGO: UART TX #37451 id=1 cmd=0x03 size=11[0m
+[0;32mI (150950) XGO: UART TX #37501 id=1 cmd=0x03 size=11[0m
+[0;32mI (151150) XGO: UART TX #37551 id=1 cmd=0x03 size=11[0m
+[0;32mI (151350) XGO: UART TX #37601 id=1 cmd=0x03 size=11[0m
+[0;32mI (151550) XGO: UART TX #37651 id=1 cmd=0x03 size=11[0m
+[0;32mI (151750) XGO: UART TX #37701 id=1 cmd=0x03 size=11[0m
+[0;32mI (151950) XGO: UART TX #37751 id=1 cmd=0x03 size=11[0m
+[0;32mI (152150) XGO: UART TX #37801 id=1 cmd=0x03 size=11[0m
+[0;32mI (152350) XGO: UART TX #37851 id=1 cmd=0x03 size=11[0m
+[0;32mI (152550) XGO: UART TX #37901 id=1 cmd=0x03 size=11[0m
+[0;32mI (152750) XGO: UART TX #37951 id=1 cmd=0x03 size=11[0m
+[0;32mI (152950) XGO: UART TX #38001 id=1 cmd=0x03 size=11[0m
+[0;32mI (153150) XGO: UART TX #38051 id=1 cmd=0x03 size=11[0m
+[0;32mI (153350) XGO: UART TX #38101 id=1 cmd=0x03 size=11[0m
+[0;32mI (153550) XGO: UART TX #38151 id=1 cmd=0x03 size=11[0m
+[0;32mI (153750) XGO: UART TX #38201 id=1 cmd=0x03 size=11[0m
+[0;32mI (153950) XGO: UART TX #38251 id=1 cmd=0x03 size=11[0m
+[0;32mI (154150) XGO: UART TX #38301 id=1 cmd=0x03 size=11[0m
+[0;32mI (154350) XGO: UART TX #38351 id=1 cmd=0x03 size=11[0m
+[0;32mI (154550) XGO: UART TX #38401 id=1 cmd=0x03 size=11[0m
+[0;32mI (154750) XGO: UART TX #38451 id=1 cmd=0x03 size=11[0m
+[0;32mI (154950) XGO: UART TX #38501 id=1 cmd=0x03 size=11[0m
+[0;32mI (155150) XGO: UART TX #38551 id=1 cmd=0x03 size=11[0m
+[0;32mI (155250) SystemInfo: free sram: 27879 minimal sram: 21655[0m
+[0;32mI (155350) XGO: UART TX #38601 id=1 cmd=0x03 size=11[0m
+[0;32mI (155550) XGO: UART TX #38651 id=1 cmd=0x03 size=11[0m
+[0;32mI (155750) XGO: UART TX #38701 id=1 cmd=0x03 size=11[0m
+[0;32mI (155950) XGO: UART TX #38751 id=1 cmd=0x03 size=11[0m
+[0;32mI (156150) XGO: UART TX #38801 id=1 cmd=0x03 size=11[0m
+[0;32mI (156350) XGO: UART TX #38851 id=1 cmd=0x03 size=11[0m
+[0;32mI (156550) XGO: UART TX #38901 id=1 cmd=0x03 size=11[0m
+[0;32mI (156750) XGO: UART TX #38951 id=1 cmd=0x03 size=11[0m
+[0;32mI (156950) XGO: UART TX #39001 id=1 cmd=0x03 size=11[0m
+[0;32mI (157150) XGO: UART TX #39051 id=1 cmd=0x03 size=11[0m
+[0;32mI (157350) XGO: UART TX #39101 id=1 cmd=0x03 size=11[0m
+[0;32mI (157550) XGO: UART TX #39151 id=1 cmd=0x03 size=11[0m
+[0;32mI (157750) XGO: UART TX #39201 id=1 cmd=0x03 size=11[0m
+[0;32mI (157950) XGO: UART TX #39251 id=1 cmd=0x03 size=11[0m
+[0;32mI (158150) XGO: UART TX #39301 id=1 cmd=0x03 size=11[0m
+[0;32mI (158350) XGO: UART TX #39351 id=1 cmd=0x03 size=11[0m
+[0;32mI (158550) XGO: UART TX #39401 id=1 cmd=0x03 size=11[0m
+[0;32mI (158750) XGO: UART TX #39451 id=1 cmd=0x03 size=11[0m
+[0;32mI (158950) XGO: UART TX #39501 id=1 cmd=0x03 size=11[0m
+[0;32mI (159150) XGO: UART TX #39551 id=1 cmd=0x03 size=11[0m
+[0;32mI (159350) XGO: UART TX #39601 id=1 cmd=0x03 size=11[0m
+[0;32mI (159550) XGO: UART TX #39651 id=1 cmd=0x03 size=11[0m
+[0;32mI (159750) XGO: UART TX #39701 id=1 cmd=0x03 size=11[0m
+[0;32mI (159950) XGO: UART TX #39751 id=1 cmd=0x03 size=11[0m
+[0;32mI (160150) XGO: UART TX #39801 id=1 cmd=0x03 size=11[0m
+[0;32mI (160350) XGO: UART TX #39851 id=1 cmd=0x03 size=11[0m
+[0;32mI (160550) XGO: UART TX #39901 id=1 cmd=0x03 size=11[0m
+[0;32mI (160750) XGO: UART TX #39951 id=1 cmd=0x03 size=11[0m
+[0;32mI (160950) XGO: UART TX #40001 id=1 cmd=0x03 size=11[0m
+[0;32mI (161150) XGO: UART TX #40051 id=1 cmd=0x03 size=11[0m
+[0;32mI (161350) XGO: UART TX #40101 id=1 cmd=0x03 size=11[0m
+[0;32mI (161550) XGO: UART TX #40151 id=1 cmd=0x03 size=11[0m
+[0;32mI (161750) XGO: UART TX #40201 id=1 cmd=0x03 size=11[0m
+[0;32mI (161950) XGO: UART TX #40251 id=1 cmd=0x03 size=11[0m
+[0;32mI (162150) XGO: UART TX #40301 id=1 cmd=0x03 size=11[0m
+[0;32mI (162350) XGO: UART TX #40351 id=1 cmd=0x03 size=11[0m
+[0;32mI (162550) XGO: UART TX #40401 id=1 cmd=0x03 size=11[0m
+[0;32mI (162750) XGO: UART TX #40451 id=1 cmd=0x03 size=11[0m
+[0;32mI (162950) XGO: UART TX #40501 id=1 cmd=0x03 size=11[0m
+[0;32mI (163150) XGO: UART TX #40551 id=1 cmd=0x03 size=11[0m
+[0;32mI (163350) XGO: UART TX #40601 id=1 cmd=0x03 size=11[0m
+[0;32mI (163550) XGO: UART TX #40651 id=1 cmd=0x03 size=11[0m
+[0;32mI (163750) XGO: UART TX #40701 id=1 cmd=0x03 size=11[0m
+[0;32mI (163950) XGO: UART TX #40751 id=1 cmd=0x03 size=11[0m
+[0;32mI (164150) XGO: UART TX #40801 id=1 cmd=0x03 size=11[0m
+[0;32mI (164350) XGO: UART TX #40851 id=1 cmd=0x03 size=11[0m
+[0;32mI (164550) XGO: UART TX #40901 id=1 cmd=0x03 size=11[0m
+[0;32mI (164750) XGO: UART TX #40951 id=1 cmd=0x03 size=11[0m
+[0;32mI (164950) XGO: UART TX #41001 id=1 cmd=0x03 size=11[0m
+[0;32mI (165150) XGO: UART TX #41051 id=1 cmd=0x03 size=11[0m
+[0;32mI (165150) SystemInfo: free sram: 28431 minimal sram: 21655[0m
+[0;32mI (165350) XGO: UART TX #41101 id=1 cmd=0x03 size=11[0m
+[0;32mI (165550) XGO: UART TX #41151 id=1 cmd=0x03 size=11[0m
+[0;32mI (165750) XGO: UART TX #41201 id=1 cmd=0x03 size=11[0m
+[0;32mI (165950) XGO: UART TX #41251 id=1 cmd=0x03 size=11[0m
+[0;32mI (166150) XGO: UART TX #41301 id=1 cmd=0x03 size=11[0m
+[0;32mI (166350) XGO: UART TX #41351 id=1 cmd=0x03 size=11[0m
+[0;32mI (166550) XGO: UART TX #41401 id=1 cmd=0x03 size=11[0m
+[0;32mI (166750) XGO: UART TX #41451 id=1 cmd=0x03 size=11[0m
+[0;32mI (166950) XGO: UART TX #41501 id=1 cmd=0x03 size=11[0m
+[0;32mI (167150) XGO: UART TX #41551 id=1 cmd=0x03 size=11[0m
+[0;32mI (167350) XGO: UART TX #41601 id=1 cmd=0x03 size=11[0m
+[0;32mI (167550) XGO: UART TX #41651 id=1 cmd=0x03 size=11[0m
+[0;32mI (167750) XGO: UART TX #41701 id=1 cmd=0x03 size=11[0m
+[0;32mI (167950) XGO: UART TX #41751 id=1 cmd=0x03 size=11[0m
+[0;32mI (168150) XGO: UART TX #41801 id=1 cmd=0x03 size=11[0m
+[0;32mI (168350) XGO: UART TX #41851 id=1 cmd=0x03 size=11[0m
+[0;32mI (168550) XGO: UART TX #41901 id=1 cmd=0x03 size=11[0m
+[0;32mI (168750) XGO: UART TX #41951 id=1 cmd=0x03 size=11[0m
+[0;32mI (168950) XGO: UART TX #42001 id=1 cmd=0x03 size=11[0m
+[0;32mI (169150) XGO: UART TX #42051 id=1 cmd=0x03 size=11[0m
+[0;32mI (169350) XGO: UART TX #42101 id=1 cmd=0x03 size=11[0m
+[0;32mI (169550) XGO: UART TX #42151 id=1 cmd=0x03 size=11[0m
+[0;32mI (169750) XGO: UART TX #42201 id=1 cmd=0x03 size=11[0m
+[0;32mI (169950) XGO: UART TX #42251 id=1 cmd=0x03 size=11[0m
+[0;32mI (170150) XGO: UART TX #42301 id=1 cmd=0x03 size=11[0m
+[0;32mI (170350) XGO: UART TX #42351 id=1 cmd=0x03 size=11[0m
+[0;32mI (170550) XGO: UART TX #42401 id=1 cmd=0x03 size=11[0m
+[0;32mI (170750) XGO: UART TX #42451 id=1 cmd=0x03 size=11[0m
+[0;32mI (170950) XGO: UART TX #42501 id=1 cmd=0x03 size=11[0m
+[0;32mI (171150) XGO: UART TX #42551 id=1 cmd=0x03 size=11[0m
+[0;32mI (171350) XGO: UART TX #42601 id=1 cmd=0x03 size=11[0m
+[0;32mI (171550) XGO: UART TX #42651 id=1 cmd=0x03 size=11[0m
+[0;32mI (171750) XGO: UART TX #42701 id=1 cmd=0x03 size=11[0m
+[0;32mI (171950) XGO: UART TX #42751 id=1 cmd=0x03 size=11[0m
+[0;32mI (172150) XGO: UART TX #42801 id=1 cmd=0x03 size=11[0m
+[0;32mI (172350) XGO: UART TX #42851 id=1 cmd=0x03 size=11[0m
+[0;32mI (172550) XGO: UART TX #42901 id=1 cmd=0x03 size=11[0m
+[0;32mI (172750) XGO: UART TX #42951 id=1 cmd=0x03 size=11[0m
+[0;32mI (172950) XGO: UART TX #43001 id=1 cmd=0x03 size=11[0m
+[0;32mI (173150) XGO: UART TX #43051 id=1 cmd=0x03 size=11[0m
+[0;32mI (173350) XGO: UART TX #43101 id=1 cmd=0x03 size=11[0m
+[0;32mI (173550) XGO: UART TX #43151 id=1 cmd=0x03 size=11[0m
+[0;32mI (173750) XGO: UART TX #43201 id=1 cmd=0x03 size=11[0m
+[0;32mI (173950) XGO: UART TX #43251 id=1 cmd=0x03 size=11[0m
+[0;32mI (174150) XGO: UART TX #43301 id=1 cmd=0x03 size=11[0m
+[0;32mI (174350) XGO: UART TX #43351 id=1 cmd=0x03 size=11[0m
+[0;32mI (174550) XGO: UART TX #43401 id=1 cmd=0x03 size=11[0m
+[0;32mI (174750) XGO: UART TX #43451 id=1 cmd=0x03 size=11[0m
+[0;32mI (174950) XGO: UART TX #43501 id=1 cmd=0x03 size=11[0m
+[0;32mI (175150) XGO: UART TX #43551 id=1 cmd=0x03 size=11[0m
+[0;32mI (175270) SystemInfo: free sram: 27879 minimal sram: 21655[0m
+[0;32mI (175350) XGO: UART TX #43601 id=1 cmd=0x03 size=11[0m
+[0;32mI (175550) XGO: UART TX #43651 id=1 cmd=0x03 size=11[0m
+[0;32mI (175750) XGO: UART TX #43701 id=1 cmd=0x03 size=11[0m
+[0;32mI (175950) XGO: UART TX #43751 id=1 cmd=0x03 size=11[0m
+[0;32mI (176150) XGO: UART TX #43801 id=1 cmd=0x03 size=11[0m
+[0;32mI (176350) XGO: UART TX #43851 id=1 cmd=0x03 size=11[0m
+[0;32mI (176550) XGO: UART TX #43901 id=1 cmd=0x03 size=11[0m
+[0;32mI (176750) XGO: UART TX #43951 id=1 cmd=0x03 size=11[0m
+[0;32mI (176950) XGO: UART TX #44001 id=1 cmd=0x03 size=11[0m
+[0;32mI (177150) XGO: UART TX #44051 id=1 cmd=0x03 size=11[0m
+[0;32mI (177350) XGO: UART TX #44101 id=1 cmd=0x03 size=11[0m
+[0;32mI (177550) XGO: UART TX #44151 id=1 cmd=0x03 size=11[0m
+[0;32mI (177750) XGO: UART TX #44201 id=1 cmd=0x03 size=11[0m
+[0;32mI (177950) XGO: UART TX #44251 id=1 cmd=0x03 size=11[0m
+[0;32mI (178150) XGO: UART TX #44301 id=1 cmd=0x03 size=11[0m
+[0;32mI (178350) XGO: UART TX #44351 id=1 cmd=0x03 size=11[0m
+[0;32mI (178550) XGO: UART TX #44401 id=1 cmd=0x03 size=11[0m
+[0;32mI (178750) XGO: UART TX #44451 id=1 cmd=0x03 size=11[0m
+[0;32mI (178950) XGO: UART TX #44501 id=1 cmd=0x03 size=11[0m
+[0;32mI (179150) XGO: UART TX #44551 id=1 cmd=0x03 size=11[0m
+[0;32mI (179350) XGO: UART TX #44601 id=1 cmd=0x03 size=11[0m
+[0;32mI (179550) XGO: UART TX #44651 id=1 cmd=0x03 size=11[0m
+[0;32mI (179750) XGO: UART TX #44701 id=1 cmd=0x03 size=11[0m
+[0;32mI (179950) XGO: UART TX #44751 id=1 cmd=0x03 size=11[0m
+[0;32mI (180150) XGO: UART TX #44801 id=1 cmd=0x03 size=11[0m
+[0;32mI (180350) XGO: UART TX #44851 id=1 cmd=0x03 size=11[0m
+[0;32mI (180550) XGO: UART TX #44901 id=1 cmd=0x03 size=11[0m
+[0;32mI (180750) XGO: UART TX #44951 id=1 cmd=0x03 size=11[0m
+[0;32mI (180950) XGO: UART TX #45001 id=1 cmd=0x03 size=11[0m
+[0;32mI (181150) XGO: UART TX #45051 id=1 cmd=0x03 size=11[0m
+[0;32mI (181350) XGO: UART TX #45101 id=1 cmd=0x03 size=11[0m
+[0;32mI (181550) XGO: UART TX #45151 id=1 cmd=0x03 size=11[0m
+[0;32mI (181750) XGO: UART TX #45201 id=1 cmd=0x03 size=11[0m
+[0;32mI (181950) XGO: UART TX #45251 id=1 cmd=0x03 size=11[0m
+[0;32mI (182150) XGO: UART TX #45301 id=1 cmd=0x03 size=11[0m
+[0;32mI (182350) XGO: UART TX #45351 id=1 cmd=0x03 size=11[0m
+[0;32mI (182550) XGO: UART TX #45401 id=1 cmd=0x03 size=11[0m
+[0;32mI (182750) XGO: UART TX #45451 id=1 cmd=0x03 size=11[0m
+[0;32mI (182950) XGO: UART TX #45501 id=1 cmd=0x03 size=11[0m
+[0;32mI (183150) XGO: UART TX #45551 id=1 cmd=0x03 size=11[0m
+[0;32mI (183350) XGO: UART TX #45601 id=1 cmd=0x03 size=11[0m
+[0;32mI (183550) XGO: UART TX #45651 id=1 cmd=0x03 size=11[0m
+[0;32mI (183750) XGO: UART TX #45701 id=1 cmd=0x03 size=11[0m
+[0;32mI (183950) XGO: UART TX #45751 id=1 cmd=0x03 size=11[0m
+[0;32mI (184150) XGO: UART TX #45801 id=1 cmd=0x03 size=11[0m
+[0;32mI (184350) XGO: UART TX #45851 id=1 cmd=0x03 size=11[0m
+[0;32mI (184550) XGO: UART TX #45901 id=1 cmd=0x03 size=11[0m
+[0;32mI (184750) XGO: UART TX #45951 id=1 cmd=0x03 size=11[0m
+[0;32mI (184950) XGO: UART TX #46001 id=1 cmd=0x03 size=11[0m
+[0;32mI (185150) XGO: UART TX #46051 id=1 cmd=0x03 size=11[0m
+[0;32mI (185170) SystemInfo: free sram: 28443 minimal sram: 21655[0m
+[0;32mI (185350) XGO: UART TX #46101 id=1 cmd=0x03 size=11[0m
+[0;32mI (185550) XGO: UART TX #46151 id=1 cmd=0x03 size=11[0m
+[0;32mI (185750) XGO: UART TX #46201 id=1 cmd=0x03 size=11[0m
+[0;32mI (185950) XGO: UART TX #46251 id=1 cmd=0x03 size=11[0m
+[0;32mI (186150) XGO: UART TX #46301 id=1 cmd=0x03 size=11[0m
+[0;32mI (186350) XGO: UART TX #46351 id=1 cmd=0x03 size=11[0m
+[0;32mI (186550) XGO: UART TX #46401 id=1 cmd=0x03 size=11[0m
+[0;32mI (186750) XGO: UART TX #46451 id=1 cmd=0x03 size=11[0m
+[0;32mI (186950) XGO: UART TX #46501 id=1 cmd=0x03 size=11[0m
+[0;32mI (187150) XGO: UART TX #46551 id=1 cmd=0x03 size=11[0m
+[0;32mI (187350) XGO: UART TX #46601 id=1 cmd=0x03 size=11[0m
+[0;32mI (187550) XGO: UART TX #46651 id=1 cmd=0x03 size=11[0m
+[0;32mI (187750) XGO: UART TX #46701 id=1 cmd=0x03 size=11[0m
+[0;32mI (187950) XGO: UART TX #46751 id=1 cmd=0x03 size=11[0m
+[0;32mI (188150) XGO: UART TX #46801 id=1 cmd=0x03 size=11[0m
+[0;32mI (188350) XGO: UART TX #46851 id=1 cmd=0x03 size=11[0m
+[0;32mI (188550) XGO: UART TX #46901 id=1 cmd=0x03 size=11[0m
+[0;32mI (188750) XGO: UART TX #46951 id=1 cmd=0x03 size=11[0m
+[0;32mI (188950) XGO: UART TX #47001 id=1 cmd=0x03 size=11[0m
+[0;32mI (189150) XGO: UART TX #47051 id=1 cmd=0x03 size=11[0m
+[0;32mI (189350) XGO: UART TX #47101 id=1 cmd=0x03 size=11[0m
+[0;32mI (189550) XGO: UART TX #47151 id=1 cmd=0x03 size=11[0m
+[0;32mI (189750) XGO: UART TX #47201 id=1 cmd=0x03 size=11[0m
+[0;32mI (189950) XGO: UART TX #47251 id=1 cmd=0x03 size=11[0m
+[0;32mI (190150) XGO: UART TX #47301 id=1 cmd=0x03 size=11[0m
+[0;32mI (190350) XGO: UART TX #47351 id=1 cmd=0x03 size=11[0m
+[0;32mI (190550) XGO: UART TX #47401 id=1 cmd=0x03 size=11[0m
+[0;32mI (190750) XGO: UART TX #47451 id=1 cmd=0x03 size=11[0m
+[0;32mI (190950) XGO: UART TX #47501 id=1 cmd=0x03 size=11[0m
+[0;32mI (191150) XGO: UART TX #47551 id=1 cmd=0x03 size=11[0m
+[0;32mI (191350) XGO: UART TX #47601 id=1 cmd=0x03 size=11[0m
+[0;32mI (191550) XGO: UART TX #47651 id=1 cmd=0x03 size=11[0m
+[0;32mI (191750) XGO: UART TX #47701 id=1 cmd=0x03 size=11[0m
+[0;32mI (191950) XGO: UART TX #47751 id=1 cmd=0x03 size=11[0m
+[0;32mI (192150) XGO: UART TX #47801 id=1 cmd=0x03 size=11[0m
+[0;32mI (192350) XGO: UART TX #47851 id=1 cmd=0x03 size=11[0m
+[0;32mI (192550) XGO: UART TX #47901 id=1 cmd=0x03 size=11[0m
+[0;32mI (192750) XGO: UART TX #47951 id=1 cmd=0x03 size=11[0m
+[0;32mI (192950) XGO: UART TX #48001 id=1 cmd=0x03 size=11[0m
+[0;32mI (193150) XGO: UART TX #48051 id=1 cmd=0x03 size=11[0m
+[0;32mI (193350) XGO: UART TX #48101 id=1 cmd=0x03 size=11[0m
+[0;32mI (193550) XGO: UART TX #48151 id=1 cmd=0x03 size=11[0m
+[0;32mI (193750) XGO: UART TX #48201 id=1 cmd=0x03 size=11[0m
+[0;32mI (193950) XGO: UART TX #48251 id=1 cmd=0x03 size=11[0m
+[0;32mI (194150) XGO: UART TX #48301 id=1 cmd=0x03 size=11[0m
+[0;32mI (194350) XGO: UART TX #48351 id=1 cmd=0x03 size=11[0m
+[0;32mI (194550) XGO: UART TX #48401 id=1 cmd=0x03 size=11[0m
+[0;32mI (194750) XGO: UART TX #48451 id=1 cmd=0x03 size=11[0m
+[0;32mI (194950) XGO: UART TX #48501 id=1 cmd=0x03 size=11[0m
+[0;32mI (195150) XGO: UART TX #48551 id=1 cmd=0x03 size=11[0m
+[0;32mI (195290) SystemInfo: free sram: 27891 minimal sram: 21655[0m
+[0;32mI (195350) XGO: UART TX #48601 id=1 cmd=0x03 size=11[0m
+[0;32mI (195550) XGO: UART TX #48651 id=1 cmd=0x03 size=11[0m
+[0;32mI (195750) XGO: UART TX #48701 id=1 cmd=0x03 size=11[0m
+[0;32mI (195950) XGO: UART TX #48751 id=1 cmd=0x03 size=11[0m
+[0;32mI (196150) XGO: UART TX #48801 id=1 cmd=0x03 size=11[0m
+[0;32mI (196350) XGO: UART TX #48851 id=1 cmd=0x03 size=11[0m
+[0;32mI (196550) XGO: UART TX #48901 id=1 cmd=0x03 size=11[0m
+[0;32mI (196750) XGO: UART TX #48951 id=1 cmd=0x03 size=11[0m
+[0;32mI (196950) XGO: UART TX #49001 id=1 cmd=0x03 size=11[0m
+[0;32mI (197150) XGO: UART TX #49051 id=1 cmd=0x03 size=11[0m
+[0;32mI (197350) XGO: UART TX #49101 id=1 cmd=0x03 size=11[0m
+[0;32mI (197550) XGO: UART TX #49151 id=1 cmd=0x03 size=11[0m
+[0;32mI (197750) XGO: UART TX #49201 id=1 cmd=0x03 size=11[0m
+[0;32mI (197950) XGO: UART TX #49251 id=1 cmd=0x03 size=11[0m
+[0;32mI (198150) XGO: UART TX #49301 id=1 cmd=0x03 size=11[0m
+[0;32mI (198350) XGO: UART TX #49351 id=1 cmd=0x03 size=11[0m
+[0;32mI (198550) XGO: UART TX #49401 id=1 cmd=0x03 size=11[0m
+[0;32mI (198750) XGO: UART TX #49451 id=1 cmd=0x03 size=11[0m
+[0;32mI (198950) XGO: UART TX #49501 id=1 cmd=0x03 size=11[0m
+[0;32mI (199150) XGO: UART TX #49551 id=1 cmd=0x03 size=11[0m
+[0;32mI (199350) XGO: UART TX #49601 id=1 cmd=0x03 size=11[0m
+[0;32mI (199550) XGO: UART TX #49651 id=1 cmd=0x03 size=11[0m
+[0;32mI (199750) XGO: UART TX #49701 id=1 cmd=0x03 size=11[0m
+[0;32mI (199950) XGO: UART TX #49751 id=1 cmd=0x03 size=11[0m
+[0;32mI (200150) XGO: UART TX #49801 id=1 cmd=0x03 size=11[0m
+[0;32mI (200350) XGO: UART TX #49851 id=1 cmd=0x03 size=11[0m
+[0;32mI (200550) XGO: UART TX #49901 id=1 cmd=0x03 size=11[0m
+[0;32mI (200750) XGO: UART TX #49951 id=1 cmd=0x03 size=11[0m
+[0;32mI (200950) XGO: UART TX #50001 id=1 cmd=0x03 size=11[0m
+[0;32mI (201150) XGO: UART TX #50051 id=1 cmd=0x03 size=11[0m
+[0;32mI (201350) XGO: UART TX #50101 id=1 cmd=0x03 size=11[0m
+[0;32mI (201550) XGO: UART TX #50151 id=1 cmd=0x03 size=11[0m
+[0;32mI (201750) XGO: UART TX #50201 id=1 cmd=0x03 size=11[0m
+[0;32mI (201950) XGO: UART TX #50251 id=1 cmd=0x03 size=11[0m
+[0;32mI (202150) XGO: UART TX #50301 id=1 cmd=0x03 size=11[0m
+[0;32mI (202350) XGO: UART TX #50351 id=1 cmd=0x03 size=11[0m
+[0;32mI (202550) XGO: UART TX #50401 id=1 cmd=0x03 size=11[0m
+[0;32mI (202750) XGO: UART TX #50451 id=1 cmd=0x03 size=11[0m
+[0;32mI (202950) XGO: UART TX #50501 id=1 cmd=0x03 size=11[0m
+[0;32mI (203150) XGO: UART TX #50551 id=1 cmd=0x03 size=11[0m
+[0;32mI (203350) XGO: UART TX #50601 id=1 cmd=0x03 size=11[0m
+[0;32mI (203550) XGO: UART TX #50651 id=1 cmd=0x03 size=11[0m
+[0;32mI (203750) XGO: UART TX #50701 id=1 cmd=0x03 size=11[0m
+[0;32mI (203950) XGO: UART TX #50751 id=1 cmd=0x03 size=11[0m
+[0;32mI (204150) XGO: UART TX #50801 id=1 cmd=0x03 size=11[0m
+[0;32mI (204350) XGO: UART TX #50851 id=1 cmd=0x03 size=11[0m
+[0;32mI (204550) XGO: UART TX #50901 id=1 cmd=0x03 size=11[0m
+[0;32mI (204750) XGO: UART TX #50951 id=1 cmd=0x03 size=11[0m
+[0;32mI (204950) XGO: UART TX #51001 id=1 cmd=0x03 size=11[0m
+[0;32mI (205150) XGO: UART TX #51051 id=1 cmd=0x03 size=11[0m
+[0;32mI (205190) SystemInfo: free sram: 27927 minimal sram: 21655[0m
+[0;32mI (205350) XGO: UART TX #51101 id=1 cmd=0x03 size=11[0m
+[0;32mI (205550) XGO: UART TX #51151 id=1 cmd=0x03 size=11[0m
+[0;32mI (205750) XGO: UART TX #51201 id=1 cmd=0x03 size=11[0m
+[0;32mI (205950) XGO: UART TX #51251 id=1 cmd=0x03 size=11[0m
+[0;32mI (206150) XGO: UART TX #51301 id=1 cmd=0x03 size=11[0m
+[0;32mI (206350) XGO: UART TX #51351 id=1 cmd=0x03 size=11[0m
+[0;32mI (206550) XGO: UART TX #51401 id=1 cmd=0x03 size=11[0m
+[0;32mI (206750) XGO: UART TX #51451 id=1 cmd=0x03 size=11[0m
+[0;32mI (206950) XGO: UART TX #51501 id=1 cmd=0x03 size=11[0m
+[0;32mI (207150) XGO: UART TX #51551 id=1 cmd=0x03 size=11[0m
+[0;32mI (207350) XGO: UART TX #51601 id=1 cmd=0x03 size=11[0m
+[0;32mI (207550) XGO: UART TX #51651 id=1 cmd=0x03 size=11[0m
+[0;32mI (207750) XGO: UART TX #51701 id=1 cmd=0x03 size=11[0m
+[0;32mI (207950) XGO: UART TX #51751 id=1 cmd=0x03 size=11[0m
+[0;32mI (208150) XGO: UART TX #51801 id=1 cmd=0x03 size=11[0m
+[0;32mI (208350) XGO: UART TX #51851 id=1 cmd=0x03 size=11[0m
+[0;32mI (208550) XGO: UART TX #51901 id=1 cmd=0x03 size=11[0m
+[0;32mI (208750) XGO: UART TX #51951 id=1 cmd=0x03 size=11[0m
+[0;32mI (208950) XGO: UART TX #52001 id=1 cmd=0x03 size=11[0m
+[0;32mI (209150) XGO: UART TX #52051 id=1 cmd=0x03 size=11[0m
+[0;32mI (209350) XGO: UART TX #52101 id=1 cmd=0x03 size=11[0m
+[0;32mI (209550) XGO: UART TX #52151 id=1 cmd=0x03 size=11[0m
+[0;32mI (209750) XGO: UART TX #52201 id=1 cmd=0x03 size=11[0m
+[0;32mI (209950) XGO: UART TX #52251 id=1 cmd=0x03 size=11[0m
+[0;32mI (210150) XGO: UART TX #52301 id=1 cmd=0x03 size=11[0m
+[0;32mI (210350) XGO: UART TX #52351 id=1 cmd=0x03 size=11[0m
+[0;32mI (210550) XGO: UART TX #52401 id=1 cmd=0x03 size=11[0m
+[0;32mI (210750) XGO: UART TX #52451 id=1 cmd=0x03 size=11[0m
+[0;32mI (210950) XGO: UART TX #52501 id=1 cmd=0x03 size=11[0m
+[0;32mI (211150) XGO: UART TX #52551 id=1 cmd=0x03 size=11[0m
+[0;32mI (211350) XGO: UART TX #52601 id=1 cmd=0x03 size=11[0m
+[0;32mI (211550) XGO: UART TX #52651 id=1 cmd=0x03 size=11[0m
+[0;32mI (211750) XGO: UART TX #52701 id=1 cmd=0x03 size=11[0m
+[0;32mI (211950) XGO: UART TX #52751 id=1 cmd=0x03 size=11[0m
+[0;32mI (212150) XGO: UART TX #52801 id=1 cmd=0x03 size=11[0m
+[0;32mI (212350) XGO: UART TX #52851 id=1 cmd=0x03 size=11[0m
+[0;32mI (212550) XGO: UART TX #52901 id=1 cmd=0x03 size=11[0m
+[0;32mI (212750) XGO: UART TX #52951 id=1 cmd=0x03 size=11[0m
+[0;32mI (212950) XGO: UART TX #53001 id=1 cmd=0x03 size=11[0m
+[0;32mI (213150) XGO: UART TX #53051 id=1 cmd=0x03 size=11[0m
+[0;32mI (213350) XGO: UART TX #53101 id=1 cmd=0x03 size=11[0m
+[0;32mI (213550) XGO: UART TX #53151 id=1 cmd=0x03 size=11[0m
+[0;32mI (213750) XGO: UART TX #53201 id=1 cmd=0x03 size=11[0m
+[0;32mI (213950) XGO: UART TX #53251 id=1 cmd=0x03 size=11[0m
+[0;32mI (214150) XGO: UART TX #53301 id=1 cmd=0x03 size=11[0m
+[0;32mI (214350) XGO: UART TX #53351 id=1 cmd=0x03 size=11[0m
+[0;32mI (214550) XGO: UART TX #53401 id=1 cmd=0x03 size=11[0m
+[0;32mI (214750) XGO: UART TX #53451 id=1 cmd=0x03 size=11[0m
+[0;32mI (214950) XGO: UART TX #53501 id=1 cmd=0x03 size=11[0m
+[0;32mI (215150) XGO: UART TX #53551 id=1 cmd=0x03 size=11[0m
+[0;32mI (215150) SystemInfo: free sram: 28443 minimal sram: 21655[0m
+[0;32mI (215350) XGO: UART TX #53601 id=1 cmd=0x03 size=11[0m
+[0;32mI (215550) XGO: UART TX #53651 id=1 cmd=0x03 size=11[0m
+[0;32mI (215750) XGO: UART TX #53701 id=1 cmd=0x03 size=11[0m
+[0;32mI (215950) XGO: UART TX #53751 id=1 cmd=0x03 size=11[0m
+[0;32mI (216150) XGO: UART TX #53801 id=1 cmd=0x03 size=11[0m
+[0;32mI (216350) XGO: UART TX #53851 id=1 cmd=0x03 size=11[0m
+[0;32mI (216550) XGO: UART TX #53901 id=1 cmd=0x03 size=11[0m
+[0;32mI (216750) XGO: UART TX #53951 id=1 cmd=0x03 size=11[0m
+[0;32mI (216950) XGO: UART TX #54001 id=1 cmd=0x03 size=11[0m
+[0;32mI (217150) XGO: UART TX #54051 id=1 cmd=0x03 size=11[0m
+[0;32mI (217350) XGO: UART TX #54101 id=1 cmd=0x03 size=11[0m
+[0;32mI (217550) XGO: UART TX #54151 id=1 cmd=0x03 size=11[0m
+[0;32mI (217750) XGO: UART TX #54201 id=1 cmd=0x03 size=11[0m
+[0;32mI (217950) XGO: UART TX #54251 id=1 cmd=0x03 size=11[0m
+[0;32mI (218150) XGO: UART TX #54301 id=1 cmd=0x03 size=11[0m
+[0;32mI (218350) XGO: UART TX #54351 id=1 cmd=0x03 size=11[0m
+[0;32mI (218550) XGO: UART TX #54401 id=1 cmd=0x03 size=11[0m
+[0;32mI (218750) XGO: UART TX #54451 id=1 cmd=0x03 size=11[0m
+[0;32mI (218950) XGO: UART TX #54501 id=1 cmd=0x03 size=11[0m
+[0;32mI (219150) XGO: UART TX #54551 id=1 cmd=0x03 size=11[0m
+[0;32mI (219350) XGO: UART TX #54601 id=1 cmd=0x03 size=11[0m
+[0;32mI (219550) XGO: UART TX #54651 id=1 cmd=0x03 size=11[0m
+[0;32mI (219750) XGO: UART TX #54701 id=1 cmd=0x03 size=11[0m
+[0;32mI (219950) XGO: UART TX #54751 id=1 cmd=0x03 size=11[0m
+[0;32mI (220150) XGO: UART TX #54801 id=1 cmd=0x03 size=11[0m
+[0;32mI (220350) XGO: UART TX #54851 id=1 cmd=0x03 size=11[0m
+[0;32mI (220550) XGO: UART TX #54901 id=1 cmd=0x03 size=11[0m
+[0;32mI (220750) XGO: UART TX #54951 id=1 cmd=0x03 size=11[0m
+[0;32mI (220950) XGO: UART TX #55001 id=1 cmd=0x03 size=11[0m
+[0;32mI (221150) XGO: UART TX #55051 id=1 cmd=0x03 size=11[0m
+[0;32mI (221350) XGO: UART TX #55101 id=1 cmd=0x03 size=11[0m
+[0;32mI (221550) XGO: UART TX #55151 id=1 cmd=0x03 size=11[0m
+[0;32mI (221750) XGO: UART TX #55201 id=1 cmd=0x03 size=11[0m
+[0;32mI (221950) XGO: UART TX #55251 id=1 cmd=0x03 size=11[0m
+[0;32mI (222150) XGO: UART TX #55301 id=1 cmd=0x03 size=11[0m
+[0;32mI (222350) XGO: UART TX #55351 id=1 cmd=0x03 size=11[0m
+[0;32mI (222550) XGO: UART TX #55401 id=1 cmd=0x03 size=11[0m
+[0;32mI (222750) XGO: UART TX #55451 id=1 cmd=0x03 size=11[0m
+[0;32mI (222950) XGO: UART TX #55501 id=1 cmd=0x03 size=11[0m
+[0;32mI (223150) XGO: UART TX #55551 id=1 cmd=0x03 size=11[0m
+[0;32mI (223350) XGO: UART TX #55601 id=1 cmd=0x03 size=11[0m
+[0;32mI (223550) XGO: UART TX #55651 id=1 cmd=0x03 size=11[0m
+[0;32mI (223750) XGO: UART TX #55701 id=1 cmd=0x03 size=11[0m
+[0;32mI (223950) XGO: UART TX #55751 id=1 cmd=0x03 size=11[0m
+[0;32mI (224150) XGO: UART TX #55801 id=1 cmd=0x03 size=11[0m
+[0;32mI (224350) XGO: UART TX #55851 id=1 cmd=0x03 size=11[0m
+[0;32mI (224550) XGO: UART TX #55901 id=1 cmd=0x03 size=11[0m

@@ -1,0 +1,416 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  2 2026 00:00:24[0m
+[0;32mI (112) app_init: ELF file SHA256:  6fa06ea86...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (139) heap_init: At 3FCB2CB8 len 00036A58 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (181) main_task: Started on CPU0[0m
+[0;32mI (211) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (211) main_task: Calling app_main()[0m
+[0;32mI (231) Board: UUID=09ce79d5-7f68-4663-9513-14ccbe3be5ec SKU=lulu-esp32s3[0m
+[0;32mI (231) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (241) button: IoT Button Version: 4.1.6[0m
+[0;32mI (241) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (251) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (371) Display: Power management not supported[0m
+[0;32mI (491) LcdDisplay: Turning display on[0m
+[0;32mI (491) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (491) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (491) LVGL: Starting LVGL task[0m
+[0;32mI (491) LcdDisplay: Adding LCD display[0m
+[0;32mI (501) MCP: Add tool: self.dog.move[0m
+[0;32mI (501) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (501) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (501) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (511) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (511) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (521) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (521) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (521) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (531) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (531) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (531) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (541) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (541) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (541) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (551) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (551) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (551) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (561) MCP: Add tool: self.laser.control[0m
+[0;32mI (561) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (561) cam_hal: cam init ok[0m
+[0;32mI (571) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (571) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (581) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (581) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (581) gc032a: Mismatch PID=0xf302[0m
+[0;32mI (581) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (591) camera: Detected GC0308 camera[0m
+[0;32mI (591) camera: Detected camera at address=0x21[0m
+[0;32mI (831) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (831) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (831) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (841) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (841) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (851) cam_hal: cam config ok[0m
+[0;32mI (851) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (881) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (881) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (881) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (891) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (901) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: 2331
+zeropos [1]: 624
+zeropos [2]: 2347
+zeropos [3]: 724
+zeropos [4]: 1495
+[0;32mI (911) XGO: Loaded zero positions from flash[0m
+[0;32mI (1121) XGO: UART TX #1 id=1 cmd=0x03 size=8[0m
+[0;32mI (1121) Backlight: Set brightness to 75[0m
+[0;32mI (1121) Application: STATE: starting[0m
+[0;32mI (1121) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1121) AudioCodec: Set input enable to true[0m
+[0;32mI (1121) AudioCodec: Set output enable to true[0m
+[0;32mI (1131) AudioCodec: Audio codec started[0m
+[0;32mI (1131) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1131) Application: XGO task started[0m
+[0;32mI (1141) XGO: UART TX #51 id=1 cmd=0x03 size=11[0m
+[0;32mI (1151) pp: pp rom version: e7ae62f[0m
+[0;32mI (1151) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1161) wifi:wifi driver task: 3fce7c70, prio:23, stack:6144, core=0[0m
+[0;32mI (1161) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1161) wifi:wifi certification version: v7.0[0m
+[0;32mI (1171) wifi:config NVS flash: disabled[0m
+[0;32mI (1171) wifi:config nano formatting: enabled[0m
+[0;32mI (1181) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1181) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1191) wifi:Init management short buffer num: 32[0m
+[0;32mI (1191) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1191) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1201) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1201) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1211) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1211) wifi_init: rx ba win: 6[0m
+[0;32mI (1211) wifi_init: accept mbox: 6[0m
+[0;32mI (1221) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1221) wifi_init: udp mbox: 6[0m
+[0;32mI (1221) wifi_init: tcp mbox: 6[0m
+[0;32mI (1221) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1231) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1231) wifi_init: tcp mss: 1440[0m
+[0;32mI (1231) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1271) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (1321) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1321) wifi:enable tsf[0m
+[0;32mI (1331) XGO: UART TX #101 id=1 cmd=0x03 size=11[0m
+[0;32mI (1531) XGO: UART TX #151 id=1 cmd=0x03 size=11[0m
+[0;32mI (1731) XGO: UART TX #201 id=1 cmd=0x03 size=11[0m
+[0;32mI (1931) XGO: UART TX #251 id=1 cmd=0x03 size=11[0m
+[0;32mI (2131) XGO: UART TX #301 id=1 cmd=0x03 size=11[0m
+[0;32mI (2331) XGO: UART TX #351 id=1 cmd=0x03 size=11[0m
+[0;32mI (2531) XGO: UART TX #401 id=1 cmd=0x03 size=11[0m
+[0;32mI (2731) XGO: UART TX #451 id=1 cmd=0x03 size=11[0m
+[0;32mI (2931) XGO: UART TX #501 id=1 cmd=0x03 size=11[0m
+[0;32mI (3131) XGO: UART TX #551 id=1 cmd=0x03 size=11[0m
+[0;32mI (3331) XGO: UART TX #601 id=1 cmd=0x03 size=11[0m
+[0;32mI (3531) XGO: UART TX #651 id=1 cmd=0x03 size=11[0m
+[0;32mI (3721) WifiStation: Found AP: Pigeon Owner, BSSID: 1a:e2:f3:dd:ed:22, RSSI: -52, Channel: 6, Authmode: 3[0m
+[0;33mW (3721) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (3731) XGO: UART TX #701 id=1 cmd=0x03 size=11[0m
+[0;32mI (3931) XGO: UART TX #751 id=1 cmd=0x03 size=11[0m
+[0;32mI (4131) XGO: UART TX #801 id=1 cmd=0x03 size=11[0m
+[0;32mI (4331) XGO: UART TX #851 id=1 cmd=0x03 size=11[0m
+[0;32mI (4431) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (4431) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (4481) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (4531) XGO: UART TX #901 id=1 cmd=0x03 size=11[0m
+[0;32mI (4541) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (4591) wifi:connected with Pigeon Owner, aid = 1, channel 6, BW20, bssid = 1a:e2:f3:dd:ed:22[0m
+[0;32mI (4591) wifi:security: WPA2-PSK, phy: bgn, rssi: -38[0m
+[0;32mI (4601) wifi:pm start, type: 1[0m
+
+[0;32mI (4601) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4611) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4621) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (4731) XGO: UART TX #951 id=1 cmd=0x03 size=11[0m
+[0;32mI (4931) XGO: UART TX #1001 id=1 cmd=0x03 size=11[0m
+[0;32mI (5131) XGO: UART TX #1051 id=1 cmd=0x03 size=11[0m
+[0;32mI (5331) XGO: UART TX #1101 id=1 cmd=0x03 size=11[0m
+[0;32mI (5531) XGO: UART TX #1151 id=1 cmd=0x03 size=11[0m
+[0;32mI (5681) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5681) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5691) Application: STATE: activating[0m
+[0;32mI (5691) Ota: Current version: 1.8.8[0m
+[0;32mI (5701) wifi:<ba-add>idx:0 (ifx:0, 1a:e2:f3:dd:ed:22), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5731) XGO: UART TX #1201 id=1 cmd=0x03 size=11[0m
+[0;32mI (5931) XGO: UART TX #1251 id=1 cmd=0x03 size=11[0m
+[0;32mI (6011) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6131) XGO: UART TX #1301 id=1 cmd=0x03 size=11[0m
+[0;32mI (6331) XGO: UART TX #1351 id=1 cmd=0x03 size=11[0m
+[1;31mE (6451) Dynamic Impl: mbedtls_ssl_fetch_input error=29312[0m
+[0;32mI (6461) Ota: Current is the latest version[0m
+[0;32mI (6461) Ota: Running partition: ota_0[0m
+[0;32mI (6461) MCP: Add tool: self.get_device_status[0m
+[0;32mI (6461) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (6461) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (6471) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (6471) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (6481) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (6531) XGO: UART TX #1401 id=1 cmd=0x03 size=11[0m
+[0;32mI (6621) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6731) XGO: UART TX #1451 id=1 cmd=0x03 size=11[0m
+[0;32mI (6931) XGO: UART TX #1501 id=1 cmd=0x03 size=11[0m
+[0;32mI (7021) MQTT: Connected to endpoint[0m
+[0;32mI (7021) Application: STATE: idle[0m
+[0;32mI (7021) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (7021) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (7021) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (7031) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (7031) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (7041) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (7081) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (7091) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (7091) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (7101) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (7131) XGO: UART TX #1551 id=1 cmd=0x03 size=11[0m
+[0;32mI (7201) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (7201) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (7201) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (7211) SystemInfo: free sram: 22611 minimal sram: 21587[0m
+[0;32mI (7331) XGO: UART TX #1601 id=1 cmd=0x03 size=11[0m
+[0;32mI (7531) XGO: UART TX #1651 id=1 cmd=0x03 size=11[0m
+[0;32mI (7731) XGO: UART TX #1701 id=1 cmd=0x03 size=11[0m
+[0;32mI (7931) XGO: UART TX #1751 id=1 cmd=0x03 size=11[0m
+[0;32mI (8131) XGO: UART TX #1801 id=1 cmd=0x03 size=11[0m
+[0;32mI (8331) XGO: UART TX #1851 id=1 cmd=0x03 size=11[0m
+[0;32mI (8531) XGO: UART TX #1901 id=1 cmd=0x03 size=11[0m
+[0;32mI (8731) XGO: UART TX #1951 id=1 cmd=0x03 size=11[0m
+[0;32mI (8931) XGO: UART TX #2001 id=1 cmd=0x03 size=11[0m
+[0;32mI (9131) XGO: UART TX #2051 id=1 cmd=0x03 size=11[0m
+[0;32mI (9331) XGO: UART TX #2101 id=1 cmd=0x03 size=11[0m
+[0;32mI (9531) XGO: UART TX #2151 id=1 cmd=0x03 size=11[0m
+[0;32mI (9731) XGO: UART TX #2201 id=1 cmd=0x03 size=11[0m
+[0;32mI (9931) XGO: UART TX #2251 id=1 cmd=0x03 size=11[0m
+[0;32mI (10131) XGO: UART TX #2301 id=1 cmd=0x03 size=11[0m
+[0;32mI (10331) XGO: UART TX #2351 id=1 cmd=0x03 size=11[0m
+[0;32mI (10531) XGO: UART TX #2401 id=1 cmd=0x03 size=11[0m
+[0;32mI (10731) XGO: UART TX #2451 id=1 cmd=0x03 size=11[0m
+[0;32mI (10931) XGO: UART TX #2501 id=1 cmd=0x03 size=11[0m
+[0;32mI (11131) XGO: UART TX #2551 id=1 cmd=0x03 size=11[0m
+[0;32mI (11331) XGO: UART TX #2601 id=1 cmd=0x03 size=11[0m
+[0;32mI (11531) XGO: UART TX #2651 id=1 cmd=0x03 size=11[0m
+[0;32mI (11531) Application: STATE: connecting[0m
+[0;32mI (11621) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (11781) MQTT: Session ID: 0eebb4f5[0m
+[0;32mI (11791) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (11791) Application: STATE: listening[0m
+[0;32mI (11791) XGO: UART TX #2701 id=1 cmd=0x03 size=11[0m
+[0;32mI (11931) XGO: UART TX #2751 id=1 cmd=0x03 size=11[0m
+[0;32mI (11941) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (11941) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (11941) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (11941) AFE: AFE Pipeline: [input] -> |VAD(WebRTC)| -> [output][0m
+[0;32mI (11951) AfeAudioProcessor: Audio communication task started, feed size: 512 fetch size: 512[0m
+[0;32mI (12131) XGO: UART TX #2801 id=1 cmd=0x03 size=11[0m
+[0;32mI (12331) XGO: UART TX #2851 id=1 cmd=0x03 size=11[0m
+[0;32mI (12531) XGO: UART TX #2901 id=1 cmd=0x03 size=11[0m
+[0;32mI (12731) XGO: UART TX #2951 id=1 cmd=0x03 size=11[0m
+[0;32mI (12931) XGO: UART TX #3001 id=1 cmd=0x03 size=11[0m
+[0;32mI (13131) XGO: UART TX #3051 id=1 cmd=0x03 size=11[0m
+[0;32mI (13331) XGO: UART TX #3101 id=1 cmd=0x03 size=11[0m
+[0;32mI (13541) XGO: UART TX #3151 id=1 cmd=0x03 size=11[0m
+[0;32mI (13731) XGO: UART TX #3201 id=1 cmd=0x03 size=11[0m
+[0;32mI (13851) Application: STATE: speaking[0m
+[0;32mI (13861) Application: >> hello,你是谁？[0m
+[0;32mI (13991) XGO: UART TX #3251 id=1 cmd=0x03 size=11[0m
+[0;32mI (14001) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (14161) XGO: UART TX #3301 id=1 cmd=0x03 size=11[0m
+[0;32mI (14251) Application: << 嗨！我是酷盖啦，一个来自台湾的机车女孩～[0m
+[0;32mI (14331) XGO: UART TX #3351 id=1 cmd=0x03 size=11[0m
+[0;32mI (14531) XGO: UART TX #3401 id=1 cmd=0x03 size=11[0m
+[0;32mI (14731) XGO: UART TX #3451 id=1 cmd=0x03 size=11[0m
+[0;32mI (14931) XGO: UART TX #3501 id=1 cmd=0x03 size=11[0m
+[0;32mI (15131) XGO: UART TX #3551 id=1 cmd=0x03 size=11[0m
+[0;32mI (15331) XGO: UART TX #3601 id=1 cmd=0x03 size=11[0m
+[0;32mI (15531) XGO: UART TX #3651 id=1 cmd=0x03 size=11[0m
+[0;32mI (15731) XGO: UART TX #3701 id=1 cmd=0x03 size=11[0m
+[0;32mI (15931) XGO: UART TX #3751 id=1 cmd=0x03 size=11[0m
+[0;32mI (16131) XGO: UART TX #3801 id=1 cmd=0x03 size=11[0m
+[0;32mI (16331) XGO: UART TX #3851 id=1 cmd=0x03 size=11[0m
+[0;32mI (16531) XGO: UART TX #3901 id=1 cmd=0x03 size=11[0m
+[0;32mI (16731) XGO: UART TX #3951 id=1 cmd=0x03 size=11[0m
+[0;32mI (16931) XGO: UART TX #4001 id=1 cmd=0x03 size=11[0m
+[0;32mI (17131) XGO: UART TX #4051 id=1 cmd=0x03 size=11[0m
+[0;32mI (17331) XGO: UART TX #4101 id=1 cmd=0x03 size=11[0m
+[0;32mI (17531) XGO: UART TX #4151 id=1 cmd=0x03 size=11[0m
+[0;32mI (17731) XGO: UART TX #4201 id=1 cmd=0x03 size=11[0m
+[0;32mI (17891) Application: << 你叫我小智也行，但要加“可爱”前缀才准喔！[0m
+[0;32mI (17931) XGO: UART TX #4251 id=1 cmd=0x03 size=11[0m
+[0;32mI (18131) XGO: UART TX #4301 id=1 cmd=0x03 size=11[0m
+[0;32mI (18331) XGO: UART TX #4351 id=1 cmd=0x03 size=11[0m
+[0;32mI (18531) XGO: UART TX #4401 id=1 cmd=0x03 size=11[0m
+[0;32mI (18731) XGO: UART TX #4451 id=1 cmd=0x03 size=11[0m
+[0;32mI (18931) XGO: UART TX #4501 id=1 cmd=0x03 size=11[0m
+[0;32mI (19131) XGO: UART TX #4551 id=1 cmd=0x03 size=11[0m
+[0;32mI (19331) XGO: UART TX #4601 id=1 cmd=0x03 size=11[0m
+[0;32mI (19531) XGO: UART TX #4651 id=1 cmd=0x03 size=11[0m
+[0;32mI (19731) XGO: UART TX #4701 id=1 cmd=0x03 size=11[0m
+[0;32mI (19931) XGO: UART TX #4751 id=1 cmd=0x03 size=11[0m
+[0;32mI (20131) XGO: UART TX #4801 id=1 cmd=0x03 size=11[0m
+[0;32mI (20331) XGO: UART TX #4851 id=1 cmd=0x03 size=11[0m
+[0;32mI (20531) XGO: UART TX #4901 id=1 cmd=0x03 size=11[0m
+[0;32mI (20731) XGO: UART TX #4951 id=1 cmd=0x03 size=11[0m
+[0;32mI (20951) XGO: UART TX #5001 id=1 cmd=0x03 size=11[0m
+[0;32mI (21131) XGO: UART TX #5051 id=1 cmd=0x03 size=11[0m
+[0;32mI (21331) XGO: UART TX #5101 id=1 cmd=0x03 size=11[0m
+[0;32mI (21381) Application: << 今天想干嘛呢？[0m
+[0;32mI (21581) XGO: UART TX #5151 id=1 cmd=0x03 size=11[0m
+[0;32mI (21731) XGO: UART TX #5201 id=1 cmd=0x03 size=11[0m
+[0;32mI (21931) XGO: UART TX #5251 id=1 cmd=0x03 size=11[0m
+[0;32mI (22131) XGO: UART TX #5301 id=1 cmd=0x03 size=11[0m
+[0;32mI (22331) XGO: UART TX #5351 id=1 cmd=0x03 size=11[0m
+[0;32mI (22531) XGO: UART TX #5401 id=1 cmd=0x03 size=11[0m
+[0;32mI (22731) XGO: UART TX #5451 id=1 cmd=0x03 size=11[0m
+[0;32mI (22931) XGO: UART TX #5501 id=1 cmd=0x03 size=11[0m
+[0;32mI (23121) Application: STATE: listening[0m
+[0;32mI (23261) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (23271) XGO: UART TX #5551 id=1 cmd=0x03 size=11[0m
+[0;32mI (23411) XGO: UART TX #5601 id=1 cmd=0x03 size=11[0m
+[0;32mI (23531) XGO: UART TX #5651 id=1 cmd=0x03 size=11[0m
+[0;32mI (23731) XGO: UART TX #5701 id=1 cmd=0x03 size=11[0m
+[0;32mI (23931) XGO: UART TX #5751 id=1 cmd=0x03 size=11[0m
+[0;32mI (24131) XGO: UART TX #5801 id=1 cmd=0x03 size=11[0m
+[0;32mI (24331) XGO: UART TX #5851 id=1 cmd=0x03 size=11[0m
+[0;32mI (24531) XGO: UART TX #5901 id=1 cmd=0x03 size=11[0m
+[0;32mI (24731) XGO: UART TX #5951 id=1 cmd=0x03 size=11[0m
+[0;32mI (24931) XGO: UART TX #6001 id=1 cmd=0x03 size=11[0m
+[0;32mI (25131) XGO: UART TX #6051 id=1 cmd=0x03 size=11[0m
+[0;32mI (25331) XGO: UART TX #6101 id=1 cmd=0x03 size=11[0m
+[0;32mI (25531) XGO: UART TX #6151 id=1 cmd=0x03 size=11[0m
+[0;32mI (25731) XGO: UART TX #6201 id=1 cmd=0x03 size=11[0m
+[0;32mI (25931) XGO: UART TX #6251 id=1 cmd=0x03 size=11[0m
+[0;32mI (26131) XGO: UART TX #6301 id=1 cmd=0x03 size=11[0m
+[0;32mI (26331) XGO: UART TX #6351 id=1 cmd=0x03 size=11[0m
+[0;32mI (26531) XGO: UART TX #6401 id=1 cmd=0x03 size=11[0m
+[0;32mI (26611) Application: STATE: speaking[0m
+[0;32mI (26621) Application: >> 今天。[0m
+[0;32mI (26731) XGO: UART TX #6451 id=1 cmd=0x03 size=11[0m
+[0;32mI (26891) Application: << 今天怎么啦？[0m
+[0;32mI (26901) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (26931) XGO: UART TX #6501 id=1 cmd=0x03 size=11[0m
+[0;32mI (27131) XGO: UART TX #6551 id=1 cmd=0x03 size=11[0m
+[0;32mI (27331) XGO: UART TX #6601 id=1 cmd=0x03 size=11[0m
+[0;32mI (27531) XGO: UART TX #6651 id=1 cmd=0x03 size=11[0m
+[0;32mI (27731) XGO: UART TX #6701 id=1 cmd=0x03 size=11[0m
+[0;32mI (27931) XGO: UART TX #6751 id=1 cmd=0x03 size=11[0m
+[0;32mI (28131) XGO: UART TX #6801 id=1 cmd=0x03 size=11[0m
+[0;32mI (28331) XGO: UART TX #6851 id=1 cmd=0x03 size=11[0m
+[0;32mI (28481) Application: << 有我陪你，不怕啦～[0m
+[0;32mI (28531) XGO: UART TX #6901 id=1 cmd=0x03 size=11[0m
+[0;32mI (28731) XGO: UART TX #6951 id=1 cmd=0x03 size=11[0m
+[0;32mI (28931) XGO: UART TX #7001 id=1 cmd=0x03 size=11[0m
+[0;32mI (29131) XGO: UART TX #7051 id=1 cmd=0x03 size=11[0m
+[0;32mI (29331) XGO: UART TX #7101 id=1 cmd=0x03 size=11[0m
+[0;32mI (29531) XGO: UART TX #7151 id=1 cmd=0x03 size=11[0m
+[0;32mI (29731) XGO: UART TX #7201 id=1 cmd=0x03 size=11[0m
+[0;32mI (29931) XGO: UART TX #7251 id=1 cmd=0x03 size=11[0m
+[0;32mI (30131) XGO: UART TX #7301 id=1 cmd=0x03 size=11[0m
+[0;32mI (30331) XGO: UART TX #7351 id=1 cmd=0x03 size=11[0m
+[0;32mI (30531) XGO: UART TX #7401 id=1 cmd=0x03 size=11[0m
+[0;32mI (30731) XGO: UART TX #7451 id=1 cmd=0x03 size=11[0m
+[0;32mI (30821) Application: << 要不要听个笑话还是查查运势？[0m
+[0;32mI (30941) XGO: UART TX #7501 id=1 cmd=0x03 size=11[0m
+[0;32mI (31131) XGO: UART TX #7551 id=1 cmd=0x03 size=11[0m
+[0;32mI (31331) XGO: UART TX #7601 id=1 cmd=0x03 size=11[0m
+[0;32mI (31531) XGO: UART TX #7651 id=1 cmd=0x03 size=11[0m
+[0;32mI (31731) XGO: UART TX #7701 id=1 cmd=0x03 size=11[0m
+[0;32mI (31931) XGO: UART TX #7751 id=1 cmd=0x03 size=11[0m
+[0;32mI (32131) XGO: UART TX #7801 id=1 cmd=0x03 size=11[0m
+[0;32mI (32331) XGO: UART TX #7851 id=1 cmd=0x03 size=11[0m
+[0;32mI (32531) XGO: UART TX #7901 id=1 cmd=0x03 size=11[0m
+[0;32mI (32731) XGO: UART TX #7951 id=1 cmd=0x03 size=11[0m
+[0;32mI (32931) XGO: UART TX #8001 id=1 cmd=0x03 size=11[0m
+[0;32mI (33131) XGO: UART TX #8051 id=1 cmd=0x03 size=11[0m
+[0;32mI (33331) XGO: UART TX #8101 id=1 cmd=0x03 size=11[0m
+[0;32mI (33521) Application: STATE: listening[0m
+[0;32mI (33531) XGO: UART TX #8151 id=1 cmd=0x03 size=11[0m
+[0;32mI (33651) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (33811) XGO: UART TX #8201 id=1 cmd=0x03 size=11[0m
+[0;32mI (33931) XGO: UART TX #8251 id=1 cmd=0x03 size=11[0m
+[0;32mI (34131) XGO: UART TX #8301 id=1 cmd=0x03 size=11[0m
+[0;32mI (34331) XGO: UART TX #8351 id=1 cmd=0x03 size=11[0m
+[0;32mI (34531) XGO: UART TX #8401 id=1 cmd=0x03 size=11[0m
+[0;32mI (34731) XGO: UART TX #8451 id=1 cmd=0x03 size=11[0m
+[0;32mI (34931) XGO: UART TX #8501 id=1 cmd=0x03 size=11[0m
+[0;32mI (35131) XGO: UART TX #8551 id=1 cmd=0x03 size=11[0m
+[0;32mI (35331) XGO: UART TX #8601 id=1 cmd=0x03 size=11[0m
+[0;32mI (35531) XGO: UART TX #8651 id=1 cmd=0x03 size=11[0m
+[0;32mI (35731) XGO: UART TX #8701 id=1 cmd=0x03 size=11[0m
+[0;32mI (35931) XGO: UART TX #8751 id=1 cmd=0x03 size=11[0m
+[0;32mI (36131) XGO: UART TX #8801 id=1 cmd=0x03 size=11[0m
+[0;32mI (36331) XGO: UART TX #8851 id=1 cmd=0x03 size=11[0m
+[0;32mI (36531) XGO: UART TX #8901 id=1 cmd=0x03 size=11[0m
+[0;32mI (36611) Application: STATE: speaking[0m
+[0;32mI (36611) Application: >> 你怎么陪我呀？[0m
+[0;32mI (36731) XGO: UART TX #8951 id=1 cmd=0x03 size=11[0m
+[0;32mI (36871) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (36931) XGO: UART TX #9001 id=1 cmd=0x03 size=11[0m
+[0;32mI (36951) Application: << 我啊，随时当你的万能小帮手！[0m
+[0;32mI (37131) XGO: UART TX #9051 id=1 cmd=0x03 size=11[0m
+[0;32mI (37331) XGO: UART TX #9101 id=1 cmd=0x03 size=11[0m
+[0;32mI (37531) XGO: UART TX #9151 id=1 cmd=0x03 size=11[0m
+[0;32mI (37731) XGO: UART TX #9201 id=1 cmd=0x03 size=11[0m
+[0;32mI (37931) XGO: UART TX #9251 id=1 cmd=0x03 size=11[0m
+[0;32mI (38131) XGO: UART TX #9301 id=1 cmd=0x03 size=11[0m
+[0;32mI (38331) XGO: UART TX #9351 id=1 cmd=0x03 size=11[0m
+[0;32mI (38531) XGO: UART TX #9401 id=1 cmd=0x03 size=11[0m
+[0;32mI (38731) XGO: UART TX #9451 id=1 cmd=0x03 size=11[0m
+[0;32mI (38931) XGO: UART TX #9501 id=1 cmd=0x03 size=11[0m
+[0;32mI (39131) XGO: UART TX #9551 id=1 cmd=0x03 size=11[0m
+[0;32mI (39331) XGO: UART TX #9601 id=1 cmd=0x03 size=11[0m
+[0;32mI (39531) XGO: UART TX #9651 id=1 cmd=0x03 size=11[0m
+[0;32mI (39731) XGO: UART TX #9701 id=1 cmd=0x03 size=11[0m
+[0;32mI (39931) XGO: UART TX #9751 id=1 cmd=0x03 size=11[0m
+[0;32mI (40131) XGO: UART TX #9801 id=1 cmd=0x03 size=11[0m
+[0;32mI (40271) Application: << 讲笑、查资料、开软件、换壁纸，连放烟花都行～[0m
