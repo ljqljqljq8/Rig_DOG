@@ -13,10 +13,12 @@
 #include "application.h"
 #include "display.h"
 #include "board.h"
+#include "settings.h"
 
 #define TAG "MCP"
 
 #define DEFAULT_TOOLCALL_STACK_SIZE 6144
+#define DEFAULT_FACE_RECOGNITION_SERVICE_URL "http://172.20.10.2:8000/recognize"
 
 McpServer::McpServer() {
 }
@@ -100,6 +102,65 @@ void McpServer::AddCommonTools() {
                 }
                 auto question = properties["question"].value<std::string>();
                 return camera->Explain(question);
+            });
+
+        AddTool("self.face_recognition.get_service_url",
+            "Get the local PC face recognition service URL currently configured on the device.",
+            PropertyList(),
+            [](const PropertyList&) -> ReturnValue {
+                Settings settings("face_recognition", false);
+                auto url = settings.GetString("service_url", DEFAULT_FACE_RECOGNITION_SERVICE_URL);
+                return std::string("{\"success\": true, \"service_url\": \"") + url + "\"}";
+            });
+
+        AddTool("self.face_recognition.set_service_url",
+            "Set the local PC face recognition service URL used for identifying the current person.\n"
+            "Args:\n"
+            "  `url`: Full HTTP URL such as http://192.168.1.10:8000/recognize",
+            PropertyList({
+                Property("url", kPropertyTypeString)
+            }),
+            [](const PropertyList& properties) -> ReturnValue {
+                auto url = properties["url"].value<std::string>();
+                Settings settings("face_recognition", true);
+                settings.SetString("service_url", url);
+                return std::string("{\"success\": true, \"service_url\": \"") + url + "\"}";
+            });
+
+        AddTool("self.face_recognition.identify_current_person",
+            "Identify the person currently in front of the camera by comparing the captured face against a local face database on the external PC service.\n"
+            "Use this tool when the user asks questions like: who is here, who is in front of me, look who this is, or see who is currently in view.\n"
+            "Return:\n"
+            "  A JSON object with fields such as success, matched, name, confidence, and message.",
+            PropertyList(),
+            [camera](const PropertyList&) -> ReturnValue {
+                Settings settings("face_recognition", false);
+                auto service_url = settings.GetString("service_url", DEFAULT_FACE_RECOGNITION_SERVICE_URL);
+                auto original_url = camera->GetExplainUrl();
+                auto original_token = camera->GetExplainToken();
+
+                if (!service_url.empty()) {
+                    camera->SetExplainUrl(service_url, "");
+                } else if (original_url.empty()) {
+                    return "{\"success\": false, \"message\": \"Face recognition service URL is not configured\"}";
+                }
+
+                if (!camera->Capture()) {
+                    if (!service_url.empty()) {
+                        camera->SetExplainUrl(original_url, original_token);
+                    }
+                    return "{\"success\": false, \"message\": \"Failed to capture photo\"}";
+                }
+                auto result = camera->Explain(
+                    "Perform face recognition on the uploaded image against the local PC face database. "
+                    "Return compact JSON only with fields: success (bool), matched (bool), name (string), "
+                    "confidence (number 0-100), message (string). If no known person is matched, set matched=false "
+                    "and name to Unknown."
+                );
+                if (!service_url.empty()) {
+                    camera->SetExplainUrl(original_url, original_token);
+                }
+                return result;
             });
     }
 

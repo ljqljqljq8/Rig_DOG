@@ -29,6 +29,8 @@ public:
     ~Esp32Camera();
 
     virtual void SetExplainUrl(const std::string& url, const std::string& token);
+    virtual std::string GetExplainUrl() const override { return explain_url_; }
+    virtual std::string GetExplainToken() const override { return explain_token_; }
     virtual bool Capture();
     // 翻转控制函数
     virtual bool SetHMirror(bool enabled) override;
