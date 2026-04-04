@@ -1,7 +1,9 @@
 import base64
 import logging
+import shutil
 import time
 from contextlib import asynccontextmanager
+from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
@@ -99,6 +101,29 @@ class DetectAndEmbedResponse(BaseModel):
     processing_time_ms: int
 
 
+class LocateRequest(BaseModel):
+    name: str
+    image_base64: str
+    confidence_threshold: Optional[float] = Field(default=None)
+
+
+class LocateResponse(BaseModel):
+    success: bool
+    target_name: str
+    matched: bool
+    detected_name: Optional[str]
+    confidence: float
+    bbox: Optional[dict]
+    center: Optional[dict]
+    offset: Optional[dict]
+    image_size: Optional[dict]
+    face_ratio: float
+    turn_hint: Optional[str]
+    distance_hint: Optional[str]
+    error: Optional[str]
+    processing_time_ms: int
+
+
 def _normalize_person_name(raw_name: str) -> str:
     name = raw_name.strip()
     for char in INVALID_FILENAME_CHARS:
@@ -126,23 +151,85 @@ def _decode_base64_image(image_base64: str) -> np.ndarray:
 
 
 def _photo_path_for_name(name: str) -> Path:
-    return config.PHOTOS_FOLDER / f"{name}.jpg"
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    return _photo_dir_for_name(name) / f"{timestamp}.jpg"
+
+
+def _photo_dir_for_name(name: str) -> Path:
+    return config.PHOTOS_FOLDER / name
 
 
 def _save_library_photo(name: str, image: np.ndarray) -> Path:
     success, encoded = cv2.imencode(".jpg", image)
     if not success:
         raise HTTPException(status_code=500, detail="failed to encode photo for storage")
+
+    photo_dir = _photo_dir_for_name(name)
+    photo_dir.mkdir(parents=True, exist_ok=True)
     photo_path = _photo_path_for_name(name)
     photo_path.write_bytes(encoded.tobytes())
     return photo_path
 
 
 def _delete_library_photos(name: str) -> None:
+    photo_dir = _photo_dir_for_name(name)
+    if photo_dir.exists():
+        shutil.rmtree(photo_dir)
+
     for suffix in PHOTO_SUFFIXES:
         photo_path = config.PHOTOS_FOLDER / f"{name}{suffix}"
         if photo_path.exists():
             photo_path.unlink()
+
+
+def _face_position_payload(image: np.ndarray, face: dict) -> dict:
+    image_h, image_w = image.shape[:2]
+    bbox = face["bbox"]
+    center_x = bbox["x"] + bbox["w"] / 2.0
+    center_y = bbox["y"] + bbox["h"] / 2.0
+    offset_x = 0.0
+    offset_y = 0.0
+    if image_w > 0:
+        offset_x = (center_x - (image_w / 2.0)) / (image_w / 2.0)
+    if image_h > 0:
+        offset_y = (center_y - (image_h / 2.0)) / (image_h / 2.0)
+
+    face_ratio = 0.0
+    if image_w > 0 and image_h > 0:
+        face_ratio = (bbox["w"] * bbox["h"]) / float(image_w * image_h)
+
+    if offset_x < -0.12:
+        turn_hint = "left"
+    elif offset_x > 0.12:
+        turn_hint = "right"
+    else:
+        turn_hint = "center"
+
+    if face_ratio < 0.07:
+        distance_hint = "forward"
+    elif face_ratio > 0.18:
+        distance_hint = "backward"
+    else:
+        distance_hint = "hold"
+
+    return {
+        "bbox": bbox,
+        "center": {
+            "x": int(round(center_x)),
+            "y": int(round(center_y)),
+        },
+        "offset": {
+            "x": round(float(offset_x), 4),
+            "y": round(float(offset_y), 4),
+        },
+        "image_size": {
+            "w": image_w,
+            "h": image_h,
+        },
+        "face_ratio": round(float(face_ratio), 6),
+        "turn_hint": turn_hint,
+        "distance_hint": distance_hint,
+    }
 
 
 @asynccontextmanager
@@ -154,8 +241,11 @@ async def lifespan(app: FastAPI):
     started_at = time.time()
     backend = InsightFaceBackend()
     vector_store = VectorStore(config.EMBEDDINGS_JSON)
-    vector_store.load_from_json()
     photo_processor = PhotoProcessor(config.PHOTOS_FOLDER, backend, vector_store)
+    migrated = photo_processor.migrate_legacy_photos()
+    vector_store.load_from_json()
+    if migrated:
+        logger.info("detected %s migrated legacy photos; run /reload to rebuild embeddings", len(migrated))
     logger.info("service ready with %s users", len(vector_store.vectors))
     yield
 
@@ -317,6 +407,78 @@ async def detect_and_embed(request: DetectAndEmbedRequest) -> DetectAndEmbedResp
             "confidence": result["face"]["confidence"],
             "embedding": result["embedding"],
         }],
+        error=None,
+        processing_time_ms=int((time.time() - started) * 1000),
+    )
+
+
+@app.post("/locate", response_model=LocateResponse)
+async def locate_person(request: LocateRequest) -> LocateResponse:
+    if backend is None or vector_store is None:
+        raise HTTPException(status_code=503, detail="service not ready")
+
+    started = time.time()
+    normalized_name = _normalize_person_name(request.name)
+    if normalized_name not in vector_store.vectors:
+        return LocateResponse(
+            success=False,
+            target_name=normalized_name,
+            matched=False,
+            detected_name=None,
+            confidence=0.0,
+            bbox=None,
+            center=None,
+            offset=None,
+            image_size=None,
+            face_ratio=0.0,
+            turn_hint=None,
+            distance_hint=None,
+            error="target not enrolled",
+            processing_time_ms=int((time.time() - started) * 1000),
+        )
+
+    image = _decode_base64_image(request.image_base64)
+    result = backend.extract_from_image(
+        image,
+        strategy=config.MULTIPLE_FACES_STRATEGY,
+    )
+    if not result["success"]:
+        return LocateResponse(
+            success=False,
+            target_name=normalized_name,
+            matched=False,
+            detected_name=None,
+            confidence=0.0,
+            bbox=None,
+            center=None,
+            offset=None,
+            image_size=None,
+            face_ratio=0.0,
+            turn_hint=None,
+            distance_hint=None,
+            error=result["error"],
+            processing_time_ms=int((time.time() - started) * 1000),
+        )
+
+    threshold = request.confidence_threshold or config.SIMILARITY_THRESHOLD
+    face_payload = _face_position_payload(image, result["face"])
+    target_confidence = vector_store.score_name(normalized_name, result["embedding"])
+    best_match = vector_store.search(result["embedding"], threshold=-1.0)
+    matched = target_confidence is not None and target_confidence >= threshold
+
+    return LocateResponse(
+        success=True,
+        target_name=normalized_name,
+        matched=matched,
+        detected_name=best_match.get("candidate_name"),
+        confidence=float(target_confidence or 0.0),
+        bbox=face_payload["bbox"],
+        center=face_payload["center"],
+        offset=face_payload["offset"],
+        image_size=face_payload["image_size"],
+        face_ratio=float(face_payload["face_ratio"]),
+        turn_hint=face_payload["turn_hint"],
+        distance_hint=face_payload["distance_hint"],
         error=None,
         processing_time_ms=int((time.time() - started) * 1000),
     )

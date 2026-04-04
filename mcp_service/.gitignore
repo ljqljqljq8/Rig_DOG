@@ -6,6 +6,6 @@ __pycache__/
 .pytest_cache/
 models_cache/
 logs/
-data/embeddings.json
 photos/*
 !photos/.gitkeep
+data/embeddings.json

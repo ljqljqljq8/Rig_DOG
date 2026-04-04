@@ -10,6 +10,8 @@ structure that matches the code currently running locally.
 - local face service is moved into `mcp_service/`
 - personal face photos and embeddings are excluded from git
 - dog-side face recognition and face enrollment hooks are already wired in
+- one person can keep multiple face photos under their own folder
+- the dog can locate a named person in-frame and do a short follow burst toward them
 
 See `docs/face_mcp_status.md` for the detailed feature status.
 
@@ -41,9 +43,13 @@ Key differences in this branch:
 - no sample face photos are committed
 - no `embeddings.json` is committed
 - the dog can enroll a person directly by taking a photo, not just recognize
+- the local face library supports multiple images per person
+- the local service exposes `/locate` for target-position feedback
 - the firmware side includes dedicated tools such as `self.camera.face_rec`
 - the firmware side includes dedicated tools such as `self.camera.face_enroll`
 - the firmware side includes dedicated tools such as `self.camera.remember_person`
+- the firmware side includes `self.camera.locate_person`
+- the firmware side includes `self.dog.follow_person`
 - the generic camera flow can redirect "remember/register" phrasing into face enrollment
 - the branch also cleans up old tracked build outputs instead of only adding feature files
 

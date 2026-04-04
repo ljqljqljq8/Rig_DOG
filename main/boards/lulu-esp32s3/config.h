@@ -54,6 +54,7 @@
 #define XCLK_FREQ_HZ 20000000
 #define FACE_RECOGNITION_URL "http://192.168.147.46:8001/recognize"
 #define FACE_ENROLL_URL "http://192.168.147.46:8001/enroll"
+#define FACE_TRACK_URL "http://192.168.147.46:8001/locate"
 
 
 #define DISPLAY_BACKLIGHT_PIN GPIO_NUM_38

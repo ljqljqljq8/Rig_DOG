@@ -10,8 +10,10 @@ This branch packages the current working state of the project into one repo:
 
 - The dog can capture a photo and recognize a face against the local PC library.
 - The dog can capture a photo and enroll a person directly into the local PC library.
+- The local face library supports multiple photos per person using `photos/<name>/...`.
 - The dog can reuse natural phrases such as "remember me as <name>" and route them into face enrollment.
-- The local HTTP service exposes `/recognize`, `/enroll`, `/reload`, `/list`, and `/health`.
+- The local HTTP service exposes `/recognize`, `/locate`, `/enroll`, `/reload`, `/list`, and `/health`.
+- The dog can locate a named person in the frame and use that result for short visual follow bursts.
 
 ## Branch comparison
 
@@ -52,6 +54,8 @@ This branch instead provides:
 - `self.camera.face_rec`
 - `self.camera.face_enroll`
 - `self.camera.remember_person`
+- `self.camera.locate_person`
+- `self.dog.follow_person`
 
 `self.camera.take_photo` also has a redirect path for "remember/register" phrasing
 so face enrollment can still succeed when the assistant selects the generic camera tool.
@@ -79,6 +83,7 @@ This means collaborators can share the code branch without sharing personal biom
 - board: Lulu ESP32-S3
 - local face service URL: `http://192.168.147.46:8001`
 - firmware endpoint: `/recognize`
+- firmware endpoint: `/locate`
 - firmware endpoint: `/enroll`
 
 If the service host IP changes, update `main/boards/lulu-esp32s3/config.h`,
