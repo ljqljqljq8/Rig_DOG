@@ -3,18 +3,8 @@
 
 #include <esp_camera.h>
 #include <lvgl.h>
-#include <thread>
-#include <memory>
-
-#include <freertos/FreeRTOS.h>
-#include <freertos/queue.h>
 
 #include "camera.h"
-
-struct JpegChunk {
-    uint8_t* data;
-    size_t len;
-};
 
 class Esp32Camera : public Camera {
 private:
@@ -23,7 +13,6 @@ private:
     std::string explain_url_;
     std::string explain_token_;
     std::string face_enroll_url_;
-    std::thread encoder_thread_;
 
 public:
     Esp32Camera(const camera_config_t& config);

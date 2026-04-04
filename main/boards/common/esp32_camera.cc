@@ -11,6 +11,7 @@
 #include <mbedtls/base64.h>
 #include <cstdlib>
 #include <cstring>
+#include "http.h"
 
 #define TAG "Esp32Camera"
 
@@ -119,6 +120,30 @@ std::string ExtractApiErrorMessage(const std::string& response_body, int status_
     return std::string(fallback);
 }
 
+struct JpegUploadContext {
+    Http* http = nullptr;
+    size_t total_sent = 0;
+    bool write_failed = false;
+};
+
+size_t StreamJpegToHttp(void* arg, size_t index, const void* data, size_t len) {
+    (void)index;
+
+    auto* context = static_cast<JpegUploadContext*>(arg);
+    if (context == nullptr || context->http == nullptr || context->write_failed) {
+        return 0;
+    }
+    if (data == nullptr || len == 0) {
+        return 0;
+    }
+    if (context->http->Write(static_cast<const char*>(data), len) < 0) {
+        context->write_failed = true;
+        return 0;
+    }
+    context->total_sent += len;
+    return len;
+}
+
 }  // namespace
 
 Esp32Camera::Esp32Camera(const camera_config_t& config) {
@@ -199,15 +224,12 @@ void Esp32Camera::SetFaceEnrollUrl(const std::string& url) {
 }
 
 bool Esp32Camera::Capture() {
-    if (encoder_thread_.joinable()) {
-        encoder_thread_.join();
-    }
-
     int frames_to_get = 2;
     // Try to get a stable frame
     for (int i = 0; i < frames_to_get; i++) {
         if (fb_ != nullptr) {
             esp_camera_fb_return(fb_);
+            fb_ = nullptr;
         }
         fb_ = esp_camera_fb_get();
         if (fb_ == nullptr) {
@@ -438,27 +460,9 @@ std::string Esp32Camera::Explain(const std::string& question) {
     if (explain_url_.empty()) {
         return "{\"success\": false, \"message\": \"Image explain URL or token is not set\"}";
     }
-
-    // 创建局部的 JPEG 队列, 40 entries is about to store 512 * 40 = 20480 bytes of JPEG data
-    QueueHandle_t jpeg_queue = xQueueCreate(40, sizeof(JpegChunk));
-    if (jpeg_queue == nullptr) {
-        ESP_LOGE(TAG, "Failed to create JPEG queue");
-        return "{\"success\": false, \"message\": \"Failed to create JPEG queue\"}";
+    if (fb_ == nullptr) {
+        return "{\"success\": false, \"message\": \"No image captured\"}";
     }
-
-    // We spawn a thread to encode the image to JPEG
-    encoder_thread_ = std::thread([this, jpeg_queue]() {
-        frame2jpg_cb(fb_, 80, [](void* arg, size_t index, const void* data, size_t len) -> unsigned int {
-            auto jpeg_queue = (QueueHandle_t)arg;
-            JpegChunk chunk = {
-                .data = (uint8_t*)heap_caps_aligned_alloc(16, len, MALLOC_CAP_SPIRAM),
-                .len = len
-            };
-            memcpy(chunk.data, data, len);
-            xQueueSend(jpeg_queue, &chunk, portMAX_DELAY);
-            return len;
-        }, jpeg_queue);
-    });
 
     auto network = Board::GetInstance().GetNetwork();
     auto http = network->CreateHttp(3);
@@ -475,17 +479,6 @@ std::string Esp32Camera::Explain(const std::string& question) {
     http->SetHeader("Transfer-Encoding", "chunked");
     if (!http->Open("POST", explain_url_)) {
         ESP_LOGE(TAG, "Failed to connect to explain URL");
-        // Clear the queue
-        encoder_thread_.join();
-        JpegChunk chunk;
-        while (xQueueReceive(jpeg_queue, &chunk, portMAX_DELAY) == pdPASS) {
-            if (chunk.data != nullptr) {
-                heap_caps_free(chunk.data);
-            } else {
-                break;
-            }
-        }
-        vQueueDelete(jpeg_queue);
         return "{\"success\": false, \"message\": \"Failed to connect to explain URL\"}";
     }
     
@@ -496,7 +489,10 @@ std::string Esp32Camera::Explain(const std::string& question) {
         question_field += "Content-Disposition: form-data; name=\"question\"\r\n";
         question_field += "\r\n";
         question_field += question + "\r\n";
-        http->Write(question_field.c_str(), question_field.size());
+        if (http->Write(question_field.c_str(), question_field.size()) < 0) {
+            http->Close();
+            return "{\"success\": false, \"message\": \"Failed to upload photo\"}";
+        }
     }
     {
         // 第二块：文件字段头部
@@ -505,40 +501,48 @@ std::string Esp32Camera::Explain(const std::string& question) {
         file_header += "Content-Disposition: form-data; name=\"file\"; filename=\"camera.jpg\"\r\n";
         file_header += "Content-Type: image/jpeg\r\n";
         file_header += "\r\n";
-        http->Write(file_header.c_str(), file_header.size());
+        if (http->Write(file_header.c_str(), file_header.size()) < 0) {
+            http->Close();
+            return "{\"success\": false, \"message\": \"Failed to upload photo\"}";
+        }
     }
 
     // 第三块：JPEG数据
-    size_t total_sent = 0;
-    while (true) {
-        JpegChunk chunk;
-        if (xQueueReceive(jpeg_queue, &chunk, portMAX_DELAY) != pdPASS) {
-            ESP_LOGE(TAG, "Failed to receive JPEG chunk");
-            break;
-        }
-        if (chunk.data == nullptr) {
-            break; // The last chunk
-        }
-        http->Write((const char*)chunk.data, chunk.len);
-        total_sent += chunk.len;
-        heap_caps_free(chunk.data);
+    JpegUploadContext upload_context{http.get()};
+    if (!frame2jpg_cb(fb_, 80, StreamJpegToHttp, &upload_context)) {
+        ESP_LOGE(TAG, "Failed to encode JPEG");
+        http->Close();
+        return "{\"success\": false, \"message\": \"Failed to encode photo\"}";
     }
-    // Wait for the encoder thread to finish
-    encoder_thread_.join();
-    // 清理队列
-    vQueueDelete(jpeg_queue);
+    if (upload_context.write_failed) {
+        ESP_LOGE(TAG, "Failed to stream JPEG data to explain URL");
+        http->Close();
+        return "{\"success\": false, \"message\": \"Failed to upload photo\"}";
+    }
 
     {
         // 第四块：multipart尾部
         std::string multipart_footer;
         multipart_footer += "\r\n--" + boundary + "--\r\n";
-        http->Write(multipart_footer.c_str(), multipart_footer.size());
+        if (http->Write(multipart_footer.c_str(), multipart_footer.size()) < 0) {
+            http->Close();
+            return "{\"success\": false, \"message\": \"Failed to upload photo\"}";
+        }
     }
     // 结束块
-    http->Write("", 0);
+    if (http->Write("", 0) < 0) {
+        http->Close();
+        return "{\"success\": false, \"message\": \"Failed to upload photo\"}";
+    }
 
-    if (http->GetStatusCode() != 200) {
-        ESP_LOGE(TAG, "Failed to upload photo, status code: %d", http->GetStatusCode());
+    int status_code = http->GetStatusCode();
+    if (status_code != 200) {
+        ESP_LOGE(TAG, "Failed to upload photo, status code: %d", status_code);
+        std::string error_body = http->ReadAll();
+        http->Close();
+        if (!error_body.empty()) {
+            ESP_LOGE(TAG, "Explain API error body: %s", error_body.c_str());
+        }
         return "{\"success\": false, \"message\": \"Failed to upload photo\"}";
     }
 
@@ -547,7 +551,8 @@ std::string Esp32Camera::Explain(const std::string& question) {
 
     // Get remain task stack size
     size_t remain_stack_size = uxTaskGetStackHighWaterMark(nullptr);
-    ESP_LOGI(TAG, "Explain image size=%dx%d, compressed size=%d, remain stack size=%d, question=%s\n%s",
-        fb_->width, fb_->height, total_sent, remain_stack_size, question.c_str(), result.c_str());
+    ESP_LOGI(TAG, "Explain image size=%dx%d, compressed size=%u, remain stack size=%u, question=%s\n%s",
+        fb_->width, fb_->height, static_cast<unsigned int>(upload_context.total_sent),
+        static_cast<unsigned int>(remain_stack_size), question.c_str(), result.c_str());
     return result;
 }

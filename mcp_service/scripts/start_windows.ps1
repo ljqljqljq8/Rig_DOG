@@ -6,14 +6,32 @@ $ErrorActionPreference = "Stop"
 
 $Root = Split-Path -Parent $PSScriptRoot
 $VenvPython = Join-Path $Root ".venv\Scripts\python.exe"
-$DefaultPython = "C:\Python312\python.exe"
+
+function Resolve-BasePython {
+    $candidates = @(
+        "C:\Python312\python.exe",
+        (Join-Path $env:LocalAppData "Programs\Python\Python312\python.exe"),
+        (Join-Path $env:LocalAppData "Programs\Python\Python311\python.exe"),
+        "C:\Python311\python.exe"
+    )
+
+    foreach ($candidate in $candidates) {
+        if ($candidate -and (Test-Path $candidate)) {
+            return $candidate
+        }
+    }
+
+    $pythonCmd = Get-Command python -ErrorAction SilentlyContinue
+    if ($pythonCmd) {
+        return $pythonCmd.Source
+    }
+
+    throw "No suitable Python interpreter found. Install Python 3.12 or 3.11 first."
+}
 
 if (-not (Test-Path $VenvPython)) {
-    if (Test-Path $DefaultPython) {
-        & $DefaultPython -m venv (Join-Path $Root ".venv")
-    } else {
-        python -m venv (Join-Path $Root ".venv")
-    }
+    $BasePython = Resolve-BasePython
+    & $BasePython -m venv (Join-Path $Root ".venv")
 }
 
 & $VenvPython -m pip install --upgrade pip

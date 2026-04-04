@@ -77,7 +77,7 @@ This means collaborators can share the code branch without sharing personal biom
 ## Current board-side assumptions
 
 - board: Lulu ESP32-S3
-- local face service URL: `http://192.168.147.46:8001`
+- local face service URL: `http://172.20.10.2:8001`
 - firmware endpoint: `/recognize`
 - firmware endpoint: `/enroll`
 

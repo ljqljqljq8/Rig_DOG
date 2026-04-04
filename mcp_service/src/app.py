@@ -1,5 +1,6 @@
 import base64
 import logging
+import shutil
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -13,6 +14,7 @@ from pydantic import BaseModel, Field
 
 from . import config
 from .face_backend import InsightFaceBackend
+from .name_utils import resolve_canonical_name
 from .photo_processor import PhotoProcessor
 from .vector_store import VectorStore
 
@@ -108,6 +110,44 @@ def _normalize_person_name(raw_name: str) -> str:
     return name
 
 
+def _photo_library_names() -> list[str]:
+    if photo_processor is None:
+        return []
+    return photo_processor.get_person_names()
+
+
+def _vector_library_names() -> list[str]:
+    if vector_store is None:
+        return []
+    return vector_store.list_all()
+
+
+def _resolve_library_name(raw_name: str) -> str:
+    normalized_name = _normalize_person_name(raw_name)
+    if not config.PHONETIC_ALIAS_MATCH_ENABLED:
+        return normalized_name
+
+    photo_names = _photo_library_names()
+    resolved_photo_name = resolve_canonical_name(
+        normalized_name,
+        photo_names,
+        similarity_threshold=config.PHONETIC_ALIAS_MIN_SIMILARITY,
+    )
+    if resolved_photo_name in photo_names:
+        return resolved_photo_name
+
+    vector_names = _vector_library_names()
+    resolved_vector_name = resolve_canonical_name(
+        normalized_name,
+        vector_names,
+        similarity_threshold=config.PHONETIC_ALIAS_MIN_SIMILARITY,
+    )
+    if resolved_vector_name in vector_names:
+        return resolved_vector_name
+
+    return normalized_name
+
+
 def _decode_base64_image(image_base64: str) -> np.ndarray:
     payload = image_base64
     if "," in payload and payload.lstrip().startswith("data:"):
@@ -126,10 +166,28 @@ def _decode_base64_image(image_base64: str) -> np.ndarray:
 
 
 def _photo_path_for_name(name: str) -> Path:
-    return config.PHOTOS_FOLDER / f"{name}.jpg"
+    person_folder = config.PHOTOS_FOLDER / name
+    person_folder.mkdir(parents=True, exist_ok=True)
+    next_index = 1
+    for photo_path in person_folder.iterdir():
+        if not photo_path.is_file() or photo_path.suffix.lower() not in PHOTO_SUFFIXES:
+            continue
+        if photo_path.stem.isdigit():
+            next_index = max(next_index, int(photo_path.stem) + 1)
+    return person_folder / f"{next_index}.jpg"
+
+
+def _migrate_legacy_library_photos(name: str) -> None:
+    for suffix in PHOTO_SUFFIXES:
+        legacy_path = config.PHOTOS_FOLDER / f"{name}{suffix}"
+        if not legacy_path.exists() or not legacy_path.is_file():
+            continue
+        target_path = _photo_path_for_name(name)
+        legacy_path.replace(target_path.with_suffix(legacy_path.suffix.lower()))
 
 
 def _save_library_photo(name: str, image: np.ndarray) -> Path:
+    _migrate_legacy_library_photos(name)
     success, encoded = cv2.imencode(".jpg", image)
     if not success:
         raise HTTPException(status_code=500, detail="failed to encode photo for storage")
@@ -138,7 +196,33 @@ def _save_library_photo(name: str, image: np.ndarray) -> Path:
     return photo_path
 
 
+def _rebuild_person_embeddings(name: str) -> tuple[bool, Optional[str]]:
+    if photo_processor is None or vector_store is None:
+        return False, "service not ready"
+
+    rebuild = photo_processor.process_person_photos(
+        name,
+        strategy=config.MULTIPLE_FACES_STRATEGY,
+    )
+    if not rebuild["success"]:
+        return False, rebuild["error"] or "failed to rebuild face library"
+    if not vector_store.save_to_json():
+        return False, "failed to save embedding store"
+    return True, None
+
+
+def _append_person_sample(name: str, image: np.ndarray) -> tuple[bool, Optional[str]]:
+    canonical_name = _resolve_library_name(name)
+    _save_library_photo(canonical_name, image)
+    if vector_store is not None and canonical_name != name:
+        vector_store.remove(name)
+    return _rebuild_person_embeddings(canonical_name)
+
+
 def _delete_library_photos(name: str) -> None:
+    person_folder = config.PHOTOS_FOLDER / name
+    if person_folder.exists() and person_folder.is_dir():
+        shutil.rmtree(person_folder)
     for suffix in PHOTO_SUFFIXES:
         photo_path = config.PHOTOS_FOLDER / f"{name}{suffix}"
         if photo_path.exists():
@@ -210,8 +294,9 @@ async def recognize(request: RecognizeRequest) -> RecognizeResponse:
         raise HTTPException(status_code=503, detail="service not ready")
 
     started = time.time()
-    result = backend.extract_from_base64(
-        request.image_base64,
+    image = _decode_base64_image(request.image_base64)
+    result = backend.extract_from_image(
+        image,
         strategy=config.MULTIPLE_FACES_STRATEGY,
     )
     if not result["success"]:
@@ -224,9 +309,40 @@ async def recognize(request: RecognizeRequest) -> RecognizeResponse:
 
     threshold = request.confidence_threshold or config.SIMILARITY_THRESHOLD
     match = vector_store.search(result["embedding"], threshold=threshold)
+    resolved_match_name = None
+    if match["matched"] and match["name"]:
+        resolved_match_name = _resolve_library_name(str(match["name"]))
+        if resolved_match_name != match["name"]:
+            logger.info("resolved recognized alias '%s' -> '%s'", match["name"], resolved_match_name)
+            if vector_store.remove(str(match["name"])):
+                saved, error = _rebuild_person_embeddings(resolved_match_name)
+                if not saved:
+                    logger.warning("failed to reconcile recognized alias '%s': %s", resolved_match_name, error)
+        if (
+            config.AUTO_APPEND_RECOGNIZED_PHOTOS
+            and photo_processor is not None
+        ):
+            if float(match["confidence"]) >= config.AUTO_APPEND_MIN_CONFIDENCE:
+                appended, append_error = _append_person_sample(resolved_match_name, image)
+                if appended:
+                    logger.info(
+                        "appended recognized sample for '%s' at confidence %.3f",
+                        resolved_match_name,
+                        float(match["confidence"]),
+                    )
+                else:
+                    logger.warning("failed to append recognized sample for '%s': %s", resolved_match_name, append_error)
+            else:
+                logger.info(
+                    "skipped auto-append for '%s': confidence %.3f is below threshold %.3f",
+                    resolved_match_name,
+                    float(match["confidence"]),
+                    config.AUTO_APPEND_MIN_CONFIDENCE,
+                )
+
     return RecognizeResponse(
         matched=match["matched"],
-        name=match["name"],
+        name=resolved_match_name,
         confidence=float(match["confidence"]),
         processing_time_ms=int((time.time() - started) * 1000),
     )
@@ -234,10 +350,13 @@ async def recognize(request: RecognizeRequest) -> RecognizeResponse:
 
 @app.post("/enroll", response_model=EnrollResponse)
 async def enroll(request: EnrollRequest) -> EnrollResponse:
-    if backend is None or vector_store is None:
+    if backend is None or vector_store is None or photo_processor is None:
         raise HTTPException(status_code=503, detail="service not ready")
 
     normalized_name = _normalize_person_name(request.name)
+    canonical_name = _resolve_library_name(normalized_name)
+    if canonical_name != normalized_name:
+        logger.info("resolved enrollment alias '%s' -> '%s'", normalized_name, canonical_name)
     image = _decode_base64_image(request.image_base64)
 
     result = backend.extract_from_image(
@@ -247,18 +366,17 @@ async def enroll(request: EnrollRequest) -> EnrollResponse:
     if not result["success"]:
         return EnrollResponse(
             success=False,
-            name=normalized_name,
+            name=canonical_name,
             embedding_saved=False,
             error=result["error"],
         )
 
-    _save_library_photo(normalized_name, image)
-    saved = vector_store.add(normalized_name, result["embedding"]) and vector_store.save_to_json()
+    saved, error_message = _append_person_sample(canonical_name, image)
     return EnrollResponse(
         success=saved,
-        name=normalized_name,
+        name=canonical_name,
         embedding_saved=saved,
-        error=None if saved else "failed to save embedding",
+        error=error_message,
     )
 
 
@@ -285,7 +403,7 @@ async def reload_embeddings(request: ReloadRequest = ReloadRequest()) -> ReloadR
 async def remove(name: str) -> RemoveResponse:
     if vector_store is None:
         raise HTTPException(status_code=503, detail="service not ready")
-    normalized_name = _normalize_person_name(name)
+    normalized_name = _resolve_library_name(name)
     if not vector_store.remove(normalized_name):
         raise HTTPException(status_code=404, detail=f"user '{normalized_name}' not found")
     _delete_library_photos(normalized_name)

@@ -2,6 +2,8 @@ tmp/
 components/
 managed_components/
 build/
+build_lulu/
+build_lulu_mcp/
 .vscode/
 .devcontainer/
 sdkconfig.old
@@ -16,4 +18,5 @@ main/mmap_generate_emoji.h
 main/mmap_generate_emoji.h
 *.pyc
 *.bin
+*.zip
 mmap_generate_*.h

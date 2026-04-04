@@ -42,7 +42,7 @@ def main() -> int:
     result = processor.process_all_photos(strategy=args.strategy)
     saved = vector_store.save_to_json()
 
-    logger.info("processed=%s failed=%s total=%s saved=%s",
+    logger.info("loaded_users=%s failed_files=%s total_photos=%s saved=%s",
                 result["success"], len(result["failed"]), result["total"], saved)
 
     if result["failed"]:

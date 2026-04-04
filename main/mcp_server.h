@@ -9,6 +9,9 @@
 #include <optional>
 #include <stdexcept>
 #include <thread>
+#include <deque>
+#include <mutex>
+#include <condition_variable>
 
 #include <cJSON.h>
 
@@ -273,9 +276,23 @@ private:
 
     void GetToolsList(int id, const std::string& cursor);
     void DoToolCall(int id, const std::string& tool_name, const cJSON* tool_arguments, int stack_size);
+    void EnsureToolWorkerStarted(int stack_size);
+    void ToolWorkerLoop();
+
+    struct PendingToolCall {
+        int id;
+        McpTool* tool;
+        PropertyList arguments;
+    };
 
     std::vector<McpTool*> tools_;
-    std::thread tool_call_thread_;
+    std::thread tool_worker_thread_;
+    std::mutex tool_call_mutex_;
+    std::condition_variable tool_call_cv_;
+    std::deque<PendingToolCall> pending_tool_calls_;
+    bool tool_worker_started_ = false;
+    bool tool_worker_stop_ = false;
+    int tool_worker_stack_size_ = 0;
 };
 
 #endif // MCP_SERVER_H

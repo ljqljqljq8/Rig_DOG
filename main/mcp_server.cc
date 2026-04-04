@@ -85,9 +85,23 @@ std::string ExtractEnrollmentName(const std::string& question) {
 }  // namespace
 
 McpServer::McpServer() {
+    try {
+        EnsureToolWorkerStarted(DEFAULT_TOOLCALL_STACK_SIZE);
+    } catch (const std::exception& e) {
+        ESP_LOGE(TAG, "Failed to start MCP tool worker: %s", e.what());
+    }
 }
 
 McpServer::~McpServer() {
+    {
+        std::lock_guard<std::mutex> lock(tool_call_mutex_);
+        tool_worker_stop_ = true;
+    }
+    tool_call_cv_.notify_all();
+    if (tool_worker_thread_.joinable()) {
+        tool_worker_thread_.join();
+    }
+
     for (auto tool : tools_) {
         delete tool;
     }
@@ -421,21 +435,71 @@ void McpServer::DoToolCall(int id, const std::string& tool_name, const cJSON* to
         return;
     }
 
-    // Start a task to receive data with stack size
-    esp_pthread_cfg_t cfg = esp_pthread_get_default_config();
-    cfg.thread_name = "tool_call";
-    cfg.stack_size = stack_size;
-    cfg.prio = 1;
-    esp_pthread_set_cfg(&cfg);
+    try {
+        EnsureToolWorkerStarted(stack_size);
+    } catch (const std::exception& e) {
+        ESP_LOGE(TAG, "tools/call: failed to start tool worker: %s", e.what());
+        ReplyError(id, "Failed to start tool worker");
+        return;
+    }
 
-    // Use a thread to call the tool to avoid blocking the main thread
-    tool_call_thread_ = std::thread([this, id, tool_iter, arguments = std::move(arguments)]() {
+    {
+        std::lock_guard<std::mutex> lock(tool_call_mutex_);
+        pending_tool_calls_.push_back(PendingToolCall{id, *tool_iter, std::move(arguments)});
+    }
+    tool_call_cv_.notify_one();
+}
+
+void McpServer::EnsureToolWorkerStarted(int stack_size) {
+    if (tool_worker_started_) {
+        if (stack_size > tool_worker_stack_size_) {
+            ESP_LOGW(TAG, "Ignoring larger tool worker stack request: %d > %d", stack_size, tool_worker_stack_size_);
+        }
+        return;
+    }
+
+    std::lock_guard<std::mutex> lock(tool_call_mutex_);
+    if (tool_worker_started_) {
+        return;
+    }
+
+    esp_pthread_cfg_t cfg = esp_pthread_get_default_config();
+    cfg.thread_name = "tool_worker";
+    cfg.stack_size = std::max(stack_size, DEFAULT_TOOLCALL_STACK_SIZE);
+    cfg.prio = 1;
+    if (esp_pthread_set_cfg(&cfg) != ESP_OK) {
+        throw std::runtime_error("esp_pthread_set_cfg failed");
+    }
+
+    tool_worker_thread_ = std::thread([this]() {
+        ToolWorkerLoop();
+    });
+    tool_worker_started_ = true;
+    tool_worker_stack_size_ = cfg.stack_size;
+}
+
+void McpServer::ToolWorkerLoop() {
+    while (true) {
+        PendingToolCall request;
+        {
+            std::unique_lock<std::mutex> lock(tool_call_mutex_);
+            tool_call_cv_.wait(lock, [this]() {
+                return tool_worker_stop_ || !pending_tool_calls_.empty();
+            });
+
+            if (tool_worker_stop_ && pending_tool_calls_.empty()) {
+                return;
+            }
+
+            request = std::move(pending_tool_calls_.front());
+            pending_tool_calls_.pop_front();
+        }
+
         try {
-            ReplyResult(id, (*tool_iter)->Call(arguments));
+            ReplyResult(request.id, request.tool->Call(request.arguments));
         } catch (const std::exception& e) {
             ESP_LOGE(TAG, "tools/call: %s", e.what());
-            ReplyError(id, e.what());
+            ReplyError(request.id, e.what());
         }
-    });
-    tool_call_thread_.detach();
+    }
 }
