@@ -23,10 +23,13 @@ DETECTION_SIZE = (
     int(os.getenv("DETECTION_WIDTH", "640")),
     int(os.getenv("DETECTION_HEIGHT", "640")),
 )
+PHONETIC_ALIAS_MATCH_ENABLED = os.getenv("PHONETIC_ALIAS_MATCH_ENABLED", "1").lower() not in {"0", "false", "no"}
+PHONETIC_ALIAS_MIN_SIMILARITY = float(os.getenv("PHONETIC_ALIAS_MIN_SIMILARITY", "0.92"))
+AUTO_APPEND_RECOGNIZED_PHOTOS = os.getenv("AUTO_APPEND_RECOGNIZED_PHOTOS", "1").lower() not in {"0", "false", "no"}
+AUTO_APPEND_MIN_CONFIDENCE = float(os.getenv("AUTO_APPEND_MIN_CONFIDENCE", "0.60"))
 
 
 def ensure_directories() -> None:
     PHOTOS_FOLDER.mkdir(parents=True, exist_ok=True)
     EMBEDDINGS_JSON.parent.mkdir(parents=True, exist_ok=True)
     MODEL_CACHE_DIR.mkdir(parents=True, exist_ok=True)
-

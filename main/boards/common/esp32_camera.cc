@@ -96,6 +96,26 @@ std::string BuildJsonPayload(const std::string& image_base64, const char* name =
     return result;
 }
 
+std::string BuildLocatePayload(const std::string& image_base64, const char* name, double confidence_threshold) {
+    cJSON* payload = cJSON_CreateObject();
+    if (payload == nullptr) {
+        return {};
+    }
+
+    cJSON_AddStringToObject(payload, "image_base64", image_base64.c_str());
+    cJSON_AddStringToObject(payload, "name", name);
+    cJSON_AddNumberToObject(payload, "confidence_threshold", confidence_threshold);
+
+    char* json_str = cJSON_PrintUnformatted(payload);
+    std::string result;
+    if (json_str != nullptr) {
+        result = json_str;
+        cJSON_free(json_str);
+    }
+    cJSON_Delete(payload);
+    return result;
+}
+
 std::string ExtractApiErrorMessage(const std::string& response_body, int status_code) {
     cJSON* response = cJSON_Parse(response_body.c_str());
     if (response != nullptr) {
@@ -196,6 +216,10 @@ void Esp32Camera::SetExplainUrl(const std::string& url, const std::string& token
 
 void Esp32Camera::SetFaceEnrollUrl(const std::string& url) {
     face_enroll_url_ = url;
+}
+
+void Esp32Camera::SetFaceTrackUrl(const std::string& url) {
+    face_track_url_ = url;
 }
 
 bool Esp32Camera::Capture() {
@@ -375,6 +399,72 @@ std::string Esp32Camera::EnrollFace(const std::string& url, const std::string& n
 
 std::string Esp32Camera::EnrollPerson(const std::string& name) {
     return EnrollFace(face_enroll_url_, name);
+}
+
+std::string Esp32Camera::LocatePerson(const std::string& name) {
+    if (face_track_url_.empty()) {
+        return "{\"success\":false,\"matched\":false,\"error\":\"Face locate URL not configured\"}";
+    }
+    if (name.empty()) {
+        return "{\"success\":false,\"matched\":false,\"error\":\"Name is required\"}";
+    }
+
+    std::string base64_image;
+    std::string error_message;
+    if (!EncodeFrameToBase64(fb_, base64_image, error_message)) {
+        cJSON* response = cJSON_CreateObject();
+        cJSON_AddBoolToObject(response, "success", false);
+        cJSON_AddBoolToObject(response, "matched", false);
+        cJSON_AddStringToObject(response, "error", error_message.c_str());
+        char* json_str = cJSON_PrintUnformatted(response);
+        std::string result = json_str ? json_str : "{\"success\":false,\"matched\":false,\"error\":\"encode failed\"}";
+        if (json_str != nullptr) {
+            cJSON_free(json_str);
+        }
+        cJSON_Delete(response);
+        return result;
+    }
+
+    std::string payload = BuildLocatePayload(base64_image, name.c_str(), 0.45);
+    if (payload.empty()) {
+        return "{\"success\":false,\"matched\":false,\"error\":\"Failed to build request\"}";
+    }
+
+    auto network = Board::GetInstance().GetNetwork();
+    auto http = network->CreateHttp(3);
+    http->SetHeader("Content-Type", "application/json");
+    http->SetHeader("Device-Id", SystemInfo::GetMacAddress().c_str());
+    http->SetHeader("Client-Id", Board::GetInstance().GetUuid().c_str());
+    http->SetContent(std::move(payload));
+
+    ESP_LOGI(TAG, "Sending face locate request to %s for %s", face_track_url_.c_str(), name.c_str());
+    if (!http->Open("POST", face_track_url_)) {
+        ESP_LOGE(TAG, "Failed to connect to face locate API");
+        return "{\"success\":false,\"matched\":false,\"error\":\"Failed to connect to API\"}";
+    }
+
+    int status_code = http->GetStatusCode();
+    std::string response_string = http->ReadAll();
+    http->Close();
+
+    if (status_code != 200) {
+        std::string api_error = ExtractApiErrorMessage(response_string, status_code);
+        ESP_LOGE(TAG, "Face locate API returned status code %d: %s", status_code, api_error.c_str());
+
+        cJSON* response = cJSON_CreateObject();
+        cJSON_AddBoolToObject(response, "success", false);
+        cJSON_AddBoolToObject(response, "matched", false);
+        cJSON_AddStringToObject(response, "error", api_error.c_str());
+        char* json_str = cJSON_PrintUnformatted(response);
+        std::string result = json_str ? json_str : "{\"success\":false,\"matched\":false,\"error\":\"API error\"}";
+        if (json_str != nullptr) {
+            cJSON_free(json_str);
+        }
+        cJSON_Delete(response);
+        return result;
+    }
+
+    return response_string;
 }
 
 bool Esp32Camera::SetHMirror(bool enabled) {

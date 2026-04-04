@@ -9,6 +9,10 @@
 #include "lamp_controller.h"
 #include "led/single_led.h"
 #include "esp32_camera.h"
+#include <algorithm>
+#include <cJSON.h>
+#include <cmath>
+#include <esp_timer.h>
 #include <wifi_station.h>
 #include <esp_log.h>
 #include <driver/i2c_master.h>
@@ -250,6 +254,7 @@ private:
         camera_ = new Esp32Camera(config);
         camera_->SetHMirror(false);
         camera_->SetFaceEnrollUrl(FACE_ENROLL_URL);
+        camera_->SetFaceTrackUrl(FACE_TRACK_URL);
     }
 
     
@@ -279,6 +284,270 @@ private:
         }
         vx = 0.0;
         vyaw = 0.0;
+    }
+
+    struct FollowCommand {
+        int dog_vx;
+        int dog_vyaw;
+        const char* turn;
+        const char* distance;
+    };
+
+    struct FollowSummaryStats {
+        int completed_steps = 0;
+        int tracked_steps = 0;
+        int moved_steps = 0;
+        double final_offset_x = 0.0;
+        double final_face_ratio = 0.0;
+        bool has_final_pose = false;
+    };
+
+    FollowCommand DecideFollowCommand(double offset_x, double face_ratio) {
+        int dog_vyaw = 0;
+        int dog_vx = 0;
+        double abs_offset = std::fabs(offset_x);
+
+        if (abs_offset > 0.30) {
+            dog_vyaw = offset_x > 0 ? -72 : 72;
+        } else if (abs_offset > 0.20) {
+            dog_vyaw = offset_x > 0 ? -56 : 56;
+        } else if (abs_offset > 0.12) {
+            dog_vyaw = offset_x > 0 ? -46 : 46;
+        } else if (abs_offset > 0.06) {
+            dog_vyaw = offset_x > 0 ? -30 : 30;
+        }
+
+        if (face_ratio < 0.05) {
+            if (abs_offset > 0.30) {
+                dog_vx = 8;
+            } else if (abs_offset > 0.20) {
+                dog_vx = 12;
+            } else if (abs_offset > 0.12) {
+                dog_vx = 18;
+            } else {
+                dog_vx = 28;
+            }
+        } else if (face_ratio < 0.10) {
+            if (abs_offset > 0.30) {
+                dog_vx = 6;
+            } else if (abs_offset > 0.20) {
+                dog_vx = 10;
+            } else if (abs_offset > 0.12) {
+                dog_vx = 14;
+            } else {
+                dog_vx = 20;
+            }
+        } else if (face_ratio > 0.28) {
+            dog_vx = -18;
+        } else if (face_ratio > 0.20) {
+            dog_vx = -10;
+        }
+
+        const char* turn = "center";
+        if (dog_vyaw > 0) {
+            turn = "left";
+        } else if (dog_vyaw < 0) {
+            turn = "right";
+        }
+
+        const char* distance = "hold";
+        if (dog_vx > 0) {
+            distance = "forward";
+        } else if (dog_vx < 0) {
+            distance = "backward";
+        }
+
+        return {dog_vx, dog_vyaw, turn, distance};
+    }
+
+    std::string BuildFollowSummary(
+        const std::string& target_name,
+        int requested_steps,
+        int step_time_ms,
+        cJSON* steps,
+        const FollowSummaryStats& stats,
+        bool success,
+        const char* error = nullptr
+    ) {
+        cJSON* root = cJSON_CreateObject();
+        cJSON_AddBoolToObject(root, "success", success);
+        cJSON_AddStringToObject(root, "status", success ? "follow_burst_completed" : "follow_burst_failed");
+        cJSON_AddStringToObject(root, "target_name", target_name.c_str());
+        cJSON_AddNumberToObject(root, "requested_steps", requested_steps);
+        cJSON_AddNumberToObject(root, "completed_steps", stats.completed_steps);
+        cJSON_AddNumberToObject(root, "tracked_steps", stats.tracked_steps);
+        cJSON_AddNumberToObject(root, "moved_steps", stats.moved_steps);
+        cJSON_AddBoolToObject(root, "target_visible", stats.tracked_steps > 0);
+        cJSON_AddBoolToObject(root, "moved", stats.moved_steps > 0);
+        cJSON_AddNumberToObject(root, "step_time_ms", step_time_ms);
+        if (stats.has_final_pose) {
+            cJSON_AddNumberToObject(root, "final_offset_x", stats.final_offset_x);
+            cJSON_AddNumberToObject(root, "final_face_ratio", stats.final_face_ratio);
+        }
+
+        char message[256];
+        if (success) {
+            snprintf(
+                message,
+                sizeof(message),
+                "Follow burst completed. Target tracked for %d/%d steps and dog moved for %d steps.",
+                stats.tracked_steps,
+                requested_steps,
+                stats.moved_steps
+            );
+        } else {
+            snprintf(
+                message,
+                sizeof(message),
+                "Follow burst failed after %d/%d steps: %s",
+                stats.completed_steps,
+                requested_steps,
+                error != nullptr ? error : "unknown error"
+            );
+        }
+        cJSON_AddStringToObject(root, "message", message);
+        cJSON_AddItemToObject(root, "steps", steps);
+        if (error != nullptr) {
+            cJSON_AddStringToObject(root, "error", error);
+        }
+
+        char* json_str = cJSON_PrintUnformatted(root);
+        std::string result = json_str ? json_str : "{\"success\":false,\"error\":\"Failed to build follow summary\"}";
+        if (json_str != nullptr) {
+            cJSON_free(json_str);
+        }
+        cJSON_Delete(root);
+        return result;
+    }
+
+    std::string FollowPerson(const std::string& target_name, int steps, int step_time_ms) {
+        if (camera_ == nullptr) {
+            return "{\"success\":false,\"error\":\"Camera not initialized\"}";
+        }
+
+        const int planned_steps = std::max(1, std::min(steps, 4));
+        const int planned_step_time_ms = std::max(180, std::min(step_time_ms, 280));
+        const int max_follow_elapsed_ms = 8500;
+        int64_t follow_started_us = esp_timer_get_time();
+        cJSON* steps_json = cJSON_CreateArray();
+        FollowSummaryStats stats;
+
+        for (int i = 0; i < planned_steps; ++i) {
+            int64_t step_started_us = esp_timer_get_time();
+            if (!camera_->Capture()) {
+                cJSON* step_json = cJSON_CreateObject();
+                cJSON_AddNumberToObject(step_json, "step", i + 1);
+                cJSON_AddStringToObject(step_json, "error", "Failed to capture photo");
+                cJSON_AddItemToArray(steps_json, step_json);
+                stats.completed_steps = i;
+                return BuildFollowSummary(target_name, planned_steps, planned_step_time_ms, steps_json, stats, false, "Failed to capture photo");
+            }
+
+            std::string locate_result = camera_->LocatePerson(target_name);
+            cJSON* locate_json = cJSON_Parse(locate_result.c_str());
+            if (locate_json == nullptr) {
+                cJSON* step_json = cJSON_CreateObject();
+                cJSON_AddNumberToObject(step_json, "step", i + 1);
+                cJSON_AddStringToObject(step_json, "error", "Invalid locate response");
+                cJSON_AddItemToArray(steps_json, step_json);
+                stats.completed_steps = i;
+                return BuildFollowSummary(target_name, planned_steps, planned_step_time_ms, steps_json, stats, false, "Invalid locate response");
+            }
+
+            cJSON* success = cJSON_GetObjectItem(locate_json, "success");
+            cJSON* matched = cJSON_GetObjectItem(locate_json, "matched");
+            cJSON* confidence = cJSON_GetObjectItem(locate_json, "confidence");
+            cJSON* detected_name = cJSON_GetObjectItem(locate_json, "detected_name");
+            cJSON* offset = cJSON_GetObjectItem(locate_json, "offset");
+            cJSON* face_ratio = cJSON_GetObjectItem(locate_json, "face_ratio");
+            cJSON* error = cJSON_GetObjectItem(locate_json, "error");
+            cJSON* processing_time_ms = cJSON_GetObjectItem(locate_json, "processing_time_ms");
+
+            cJSON* step_json = cJSON_CreateObject();
+            cJSON_AddNumberToObject(step_json, "step", i + 1);
+            cJSON_AddBoolToObject(step_json, "success", cJSON_IsTrue(success));
+            cJSON_AddBoolToObject(step_json, "matched", cJSON_IsTrue(matched));
+            stats.completed_steps = i + 1;
+            if (cJSON_IsString(detected_name) && detected_name->valuestring != nullptr) {
+                cJSON_AddStringToObject(step_json, "detected_name", detected_name->valuestring);
+            }
+            if (cJSON_IsNumber(confidence)) {
+                cJSON_AddNumberToObject(step_json, "confidence", confidence->valuedouble);
+            }
+            if (cJSON_IsNumber(processing_time_ms)) {
+                cJSON_AddNumberToObject(step_json, "processing_time_ms", processing_time_ms->valueint);
+            }
+            if (cJSON_IsString(error) && error->valuestring != nullptr) {
+                cJSON_AddStringToObject(step_json, "error", error->valuestring);
+            }
+
+            if (!cJSON_IsTrue(success) || !cJSON_IsTrue(matched) || !cJSON_IsObject(offset) || !cJSON_IsNumber(face_ratio)) {
+                set_dog_speed(0, 0, 0);
+                cJSON_AddItemToArray(steps_json, step_json);
+                cJSON_Delete(locate_json);
+                return BuildFollowSummary(target_name, planned_steps, planned_step_time_ms, steps_json, stats, false, "Target not matched");
+            }
+
+            cJSON* offset_x = cJSON_GetObjectItem(offset, "x");
+            if (!cJSON_IsNumber(offset_x)) {
+                set_dog_speed(0, 0, 0);
+                cJSON_AddStringToObject(step_json, "error", "Missing horizontal offset");
+                cJSON_AddItemToArray(steps_json, step_json);
+                cJSON_Delete(locate_json);
+                return BuildFollowSummary(target_name, planned_steps, planned_step_time_ms, steps_json, stats, false, "Missing horizontal offset");
+            }
+
+            FollowCommand command = DecideFollowCommand(offset_x->valuedouble, face_ratio->valuedouble);
+            int locate_processing_ms = cJSON_IsNumber(processing_time_ms) ? processing_time_ms->valueint : -1;
+            stats.tracked_steps += 1;
+            stats.final_offset_x = offset_x->valuedouble;
+            stats.final_face_ratio = face_ratio->valuedouble;
+            stats.has_final_pose = true;
+            ESP_LOGI(
+                TAG,
+                "follow step=%d locate_ms=%d offset_x=%.3f face_ratio=%.3f vx=%d vyaw=%d",
+                i + 1,
+                locate_processing_ms,
+                offset_x->valuedouble,
+                face_ratio->valuedouble,
+                command.dog_vx,
+                command.dog_vyaw
+            );
+
+            cJSON* movement = cJSON_CreateObject();
+            cJSON_AddNumberToObject(movement, "dog_vx", command.dog_vx);
+            cJSON_AddNumberToObject(movement, "dog_vyaw", command.dog_vyaw);
+            cJSON_AddNumberToObject(movement, "time_ms", planned_step_time_ms);
+            cJSON_AddStringToObject(movement, "turn", command.turn);
+            cJSON_AddStringToObject(movement, "distance", command.distance);
+            cJSON_AddItemToObject(step_json, "movement", movement);
+
+            cJSON_AddItemToArray(steps_json, step_json);
+            cJSON_Delete(locate_json);
+
+            if (command.dog_vx != 0 || command.dog_vyaw != 0) {
+                stats.moved_steps += 1;
+            }
+            set_dog_speed(command.dog_vx, command.dog_vyaw, planned_step_time_ms);
+            int step_elapsed_ms = static_cast<int>((esp_timer_get_time() - step_started_us) / 1000);
+            ESP_LOGI(TAG, "follow step=%d done total_step_ms=%d", i + 1, step_elapsed_ms);
+
+            int follow_elapsed_ms = static_cast<int>((esp_timer_get_time() - follow_started_us) / 1000);
+            if (follow_elapsed_ms >= max_follow_elapsed_ms) {
+                cJSON_AddBoolToObject(step_json, "truncated_for_timeout_budget", true);
+                cJSON_AddNumberToObject(step_json, "follow_elapsed_ms", follow_elapsed_ms);
+                ESP_LOGW(TAG, "follow burst stopped early at step=%d elapsed_ms=%d to avoid upstream timeout", i + 1, follow_elapsed_ms);
+                return BuildFollowSummary(target_name, planned_steps, planned_step_time_ms, steps_json, stats, true);
+            }
+            vTaskDelay(pdMS_TO_TICKS(40));
+        }
+
+        cJSON* final_step = cJSON_GetArraySize(steps_json) > 0 ? cJSON_GetArrayItem(steps_json, cJSON_GetArraySize(steps_json) - 1) : nullptr;
+        if (final_step != nullptr) {
+            cJSON_AddNumberToObject(final_step, "follow_elapsed_ms", (esp_timer_get_time() - follow_started_us) / 1000);
+        }
+
+        return BuildFollowSummary(target_name, planned_steps, planned_step_time_ms, steps_json, stats, true);
     }
 
     /*
@@ -381,6 +650,20 @@ private:
             return camera_->EnrollFace(FACE_ENROLL_URL, properties["name"].value<std::string>());
         });
 
+        mcp_server.AddTool("self.camera.locate_person",
+        "Capture a photo and locate the named person in the frame. Returns whether the target matched, the detected identity, face position, and coarse movement hints. Use this before follow or when you need to know where someone is.",
+        PropertyList({
+            Property("name", kPropertyTypeString)
+        }), [this](const PropertyList& properties) -> ReturnValue {
+            if (camera_ == nullptr) {
+                return std::string("{\"success\":false,\"error\":\"Camera not initialized\"}");
+            }
+            if (!camera_->Capture()) {
+                return std::string("{\"success\":false,\"matched\":false,\"error\":\"Failed to capture photo\"}");
+            }
+            return camera_->LocatePerson(properties["name"].value<std::string>());
+        });
+
         mcp_server.AddTool("self.dog.move", 
         "机器狗移动(vx,vyaw,time),前后移动速度vx(前正后负,0停下)和转向速度vyaw(左转正值,右转负值,0停下),time为移动时间(毫秒),time=0时持续移动,否则移动time毫秒后停止", 
         PropertyList({
@@ -393,6 +676,20 @@ private:
             int time = properties["time"].value<int>();
             set_dog_speed(dog_vx, dog_vyaw, time);
             return true;
+        });
+
+        mcp_server.AddTool("self.dog.follow_person",
+        "Short closed-loop follow burst. Capture photos, keep the named person in view, and move the dog a few small steps toward that person using face offset and face size. success=true means this follow burst completed normally.",
+        PropertyList({
+            Property("name", kPropertyTypeString),
+            Property("steps", kPropertyTypeInteger, 4, 1, 4),
+            Property("step_time_ms", kPropertyTypeInteger, 260, 180, 600),
+        }), [this](const PropertyList& properties) -> ReturnValue {
+            return FollowPerson(
+                properties["name"].value<std::string>(),
+                properties["steps"].value<int>(),
+                properties["step_time_ms"].value<int>()
+            );
         });
 
         mcp_server.AddTool("self.dog.calibrate", 

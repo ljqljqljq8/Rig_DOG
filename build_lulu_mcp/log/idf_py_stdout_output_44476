@@ -1,0 +1,2393 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  4 2026 08:03:41[0m
+[0;32mI (112) app_init: ELF file SHA256:  74a4ee538...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (139) heap_init: At 3FCB2CE0 len 00036A30 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (180) main_task: Started on CPU0[0m
+[0;32mI (210) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (210) main_task: Calling app_main()[0m
+[0;32mI (220) Board: UUID=143e5eac-6e0c-4c50-8310-409b22a8a7e3 SKU=lulu-esp32s3[0m
+[0;32mI (220) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (230) button: IoT Button Version: 4.1.6[0m
+[0;32mI (230) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (240) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (360) Display: Power management not supported[0m
+[0;32mI (480) LcdDisplay: Turning display on[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (480) LVGL: Starting LVGL task[0m
+[0;32mI (480) LcdDisplay: Adding LCD display[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_rec[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_enroll[0m
+[0;32mI (580) MCP: Add tool: self.camera.remember_person[0m
+[0;32mI (590) MCP: Add tool: self.dog.move[0m
+[0;32mI (590) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (590) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (600) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (600) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (600) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (610) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (610) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (610) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (620) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (620) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (620) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (630) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (630) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (630) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (640) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (640) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (640) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (650) MCP: Add tool: self.laser.control[0m
+[0;32mI (650) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (650) cam_hal: cam init ok[0m
+[0;32mI (660) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (660) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (670) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (670) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (670) gc032a: Mismatch PID=0xf302[0m
+[0;32mI (670) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (680) camera: Detected GC0308 camera[0m
+[0;32mI (680) camera: Detected camera at address=0x21[0m
+[0;32mI (930) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (930) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (930) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (940) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (940) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (950) cam_hal: cam config ok[0m
+[0;32mI (950) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (980) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (980) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (980) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (990) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1000) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: 2331
+zeropos [1]: 647
+zeropos [2]: 2382
+zeropos [3]: 682
+zeropos [4]: 1515
+[0;32mI (1010) Backlight: Set brightness to 75[0m
+[0;32mI (1020) Application: STATE: starting[0m
+[0;32mI (1020) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1020) AudioCodec: Set input enable to true[0m
+[0;32mI (1030) AudioCodec: Set output enable to true[0m
+[0;32mI (1030) AudioCodec: Audio codec started[0m
+[0;32mI (1040) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1040) Application: XGO task started[0m
+[0;32mI (1050) pp: pp rom version: e7ae62f[0m
+[0;32mI (1050) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1060) wifi:wifi driver task: 3fce86c8, prio:23, stack:6144, core=0[0m
+[0;32mI (1060) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1060) wifi:wifi certification version: v7.0[0m
+[0;32mI (1070) wifi:config NVS flash: disabled[0m
+[0;32mI (1070) wifi:config nano formatting: enabled[0m
+[0;32mI (1080) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1080) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1090) wifi:Init management short buffer num: 32[0m
+[0;32mI (1090) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1090) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1100) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1100) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1110) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1110) wifi_init: rx ba win: 6[0m
+[0;32mI (1110) wifi_init: accept mbox: 6[0m
+[0;32mI (1120) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1120) wifi_init: udp mbox: 6[0m
+[0;32mI (1120) wifi_init: tcp mbox: 6[0m
+[0;32mI (1120) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp mss: 1440[0m
+[0;32mI (1130) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1170) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1170) wifi:enable tsf[0m
+[0;32mI (3580) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -53, Channel: 6, Authmode: 3[0m
+[0;33mW (3580) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (4270) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (4270) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (4280) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (4280) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (4330) wifi:connected with Pigeon Owner, aid = 2, channel 6, BW20, bssid = de:e4:0e:d6:94:43[0m
+[0;32mI (4330) wifi:security: WPA2-PSK, phy: bgn, rssi: -49[0m
+[0;32mI (4330) wifi:pm start, type: 1[0m
+
+[0;32mI (4330) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4340) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4410) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5380) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5380) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5390) Application: STATE: activating[0m
+[0;32mI (5390) Ota: Current version: 1.8.8[0m
+[0;32mI (5400) wifi:<ba-add>idx:0 (ifx:0, de:e4:0e:d6:94:43), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5680) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (6150) Dynamic Impl: mbedtls_ssl_fetch_input error=76[0m
+[1;31mE (6160) esp-tls-mbedtls: read error :-0x004C[0m
+[1;31mE (6160) EspSsl: SSL receive failed: -76[0m
+[0;32mI (6160) Ota: Current is the latest version[0m
+[0;32mI (6160) Ota: Running partition: ota_0[0m
+[0;32mI (6160) MCP: Add tool: self.get_device_status[0m
+[0;32mI (6170) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (6170) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (6180) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (6180) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (6190) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (6310) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6750) MQTT: Connected to endpoint[0m
+[0;32mI (6750) Application: STATE: idle[0m
+[0;32mI (6750) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (6760) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (6760) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (6760) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (6770) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (6770) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (6820) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (6820) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (6830) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (6840) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (6910) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (6910) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (6910) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (6930) SystemInfo: free sram: 17631 minimal sram: 17563[0m
+[0;32mI (16170) SystemInfo: free sram: 20071 minimal sram: 14119[0m
+[0;32mI (23040) AudioCodec: Set output enable to false[0m
+[0;32mI (24090) Application: STATE: connecting[0m
+[0;32mI (24100) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (24290) MQTT: Session ID: e032b886[0m
+[0;32mI (24290) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (24290) Application: STATE: listening[0m
+[0;32mI (24410) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (24410) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (24410) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (24420) AFE: AFE Pipeline: [input] -> |VAD(WebRTC)| -> [output][0m
+[0;32mI (24420) AfeAudioProcessor: Audio communication task started, feed size: 512 fetch size: 512[0m
+[0;32mI (26900) Application: STATE: speaking[0m
+[0;32mI (26900) Application: >> 拍个照。[0m
+[0;32mI (27820) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (28000) Application: << 好嘞，马上给你拍一张！[0m
+[0;32mI (28160) Application: << % self.camera.take_photo...[0m
+[0;32mI (28180) AudioCodec: Set output enable to true[0m
+[0;32mI (30550) Esp32Camera: Explain image size=320x240, compressed size=13785, remain stack size=2116, question=描述一下照片里的场景[0m
+{"success":true,"filename":"g4k4nnpn6tx9gihe4xqpfcrp8.jpg","text":"这是一张自拍视角的照片，画面中人物穿着白色带图案上衣，戴眼镜，头发束起，右侧有手举着拍摄设备。背景是室内房间，能看到门、墙面、窗帘及一些物品，光线明亮，画面边缘有橙色模糊效果，整体氛围日常。"}
+[0;32mI (31760) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (31790) Application: << 拍好啦！[0m
+[0;32mI (33410) Application: << 你穿着白色带图案的上衣，戴着眼镜，头发束起来了，[0m
+[0;32mI (36080) SystemInfo: free sram: 9327 minimal sram: 615[0m
+[0;32mI (38260) Application: << 背景是明亮的室内房间，光线很不错呢！[0m
+[0;32mI (42420) Application: STATE: listening[0m
+[0;32mI (42510) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (47570) Application: STATE: speaking[0m
+[0;32mI (47570) Application: >> 那你看看我是谁。[0m
+[0;32mI (48360) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (48380) Application: << 让我看看你是谁～[0m
+[0;32mI (50310) Application: << % self.camera.face_rec...[0m
+[0;32mI (50620) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[1;31mE (50640) EspTcp: Failed to connect to 172.20.10.2:8001[0m
+[1;31mE (50640) HttpClient: TCP connection failed[0m
+[1;31mE (50640) Esp32Camera: Failed to connect to face recognition API[0m
+[0;32mI (51160) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (51820) Application: << 哎呀，识别功能好像连不上呢，[0m
+[0;32mI (55620) Application: << 不过我刚才拍的照片里看到你戴眼镜、穿白色上衣、头发束起来了，是不是你呀？[0m
+[0;32mI (57070) SystemInfo: free sram: 9435 minimal sram: 615[0m
+[0;32mI (62860) Application: STATE: listening[0m
+[0;32mI (63010) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (72130) SystemInfo: free sram: 10187 minimal sram: 615[0m
+[0;32mI (78180) AudioCodec: Set output enable to false[0m
+[0;32mI (81970) Application: STATE: speaking[0m
+[0;32mI (81970) Application: >> 你可以往前走吗？[0m
+[0;32mI (82570) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (82700) Application: << 好嘞，我往前走一点！[0m
+[0;32mI (82890) AudioCodec: Set output enable to true[0m
+[0;32mI (85170) Application: << % self.dog.move...[0m
+[0;32mI (87940) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (88810) Application: << 走啦走啦，我已经往前移动啦！[0m
+[0;32mI (91140) SystemInfo: free sram: 9231 minimal sram: 615[0m
+[0;32mI (91860) Application: STATE: listening[0m
+[0;32mI (91860) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (101170) SystemInfo: free sram: 9551 minimal sram: 615[0m
+[0;32mI (107890) AudioCodec: Set output enable to false[0m
+[0;32mI (111080) SystemInfo: free sram: 9743 minimal sram: 615[0m
+[0;32mI (121040) SystemInfo: free sram: 9743 minimal sram: 615[0m
+[0;32mI (131100) SystemInfo: free sram: 10135 minimal sram: 615[0m
+[0;32mI (141040) SystemInfo: free sram: 10819 minimal sram: 615[0m
+[0;32mI (151120) SystemInfo: free sram: 10303 minimal sram: 615[0m
+[0;32mI (154630) Application: STATE: speaking[0m
+[0;32mI (155080) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (155150) Application: << 那先这样啦，拜拜！[0m
+[0;32mI (155380) AudioCodec: Set output enable to true[0m
+[0;32mI (157440) Application: STATE: listening[0m
+[0;32mI (157450) MQTT: Received goodbye message, session_id: e032b886[0m
+[0;32mI (157590) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (157590) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (157590) Application: STATE: idle[0m
+[0;32mI (157600) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (157650) MQTT: Received goodbye message, session_id: e032b886[0m
+[0;32mI (157650) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (167120) SystemInfo: free sram: 15195 minimal sram: 615[0m
+[0;32mI (173380) AudioCodec: Set output enable to false[0m
+[0;32mI (177040) SystemInfo: free sram: 14679 minimal sram: 615[0m
+[0;32mI (187140) SystemInfo: free sram: 15151 minimal sram: 615[0m
+[0;32mI (197040) SystemInfo: free sram: 14679 minimal sram: 615[0m
+[0;32mI (207160) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (217060) SystemInfo: free sram: 14679 minimal sram: 615[0m
+[0;32mI (227180) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (237080) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (247040) SystemInfo: free sram: 15195 minimal sram: 615[0m
+[0;32mI (257100) SystemInfo: free sram: 14679 minimal sram: 615[0m
+[0;32mI (267040) SystemInfo: free sram: 14675 minimal sram: 615[0m
+[0;32mI (277120) SystemInfo: free sram: 15159 minimal sram: 615[0m
+[0;32mI (287040) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (297140) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (307040) SystemInfo: free sram: 14687 minimal sram: 615[0m
+[0;32mI (317160) SystemInfo: free sram: 14607 minimal sram: 615[0m
+[0;32mI (327060) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (337180) SystemInfo: free sram: 15163 minimal sram: 615[0m
+[0;32mI (347080) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (357040) SystemInfo: free sram: 14679 minimal sram: 615[0m
+[0;32mI (367100) SystemInfo: free sram: 15195 minimal sram: 615[0m
+[0;32mI (377040) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (387120) SystemInfo: free sram: 14647 minimal sram: 615[0m
+[0;32mI (397040) SystemInfo: free sram: 14683 minimal sram: 615[0m
+[0;32mI (407140) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (417040) SystemInfo: free sram: 14679 minimal sram: 615[0m
+[0;32mI (427160) SystemInfo: free sram: 15159 minimal sram: 615[0m
+[0;32mI (437060) SystemInfo: free sram: 14647 minimal sram: 615[0m
+[0;32mI (447180) SystemInfo: free sram: 14643 minimal sram: 615[0m
+[0;32mI (457080) SystemInfo: free sram: 15199 minimal sram: 615[0m
+[0;32mI (467040) SystemInfo: free sram: 14659 minimal sram: 615[0m
+[0;32mI (477100) SystemInfo: free sram: 14659 minimal sram: 615[0m
+[0;32mI (487040) SystemInfo: free sram: 14667 minimal sram: 615[0m
+[0;32mI (497120) SystemInfo: free sram: 14663 minimal sram: 615[0m
+[0;32mI (507040) SystemInfo: free sram: 14703 minimal sram: 615[0m
+[0;32mI (517140) SystemInfo: free sram: 15179 minimal sram: 615[0m
+[0;32mI (527040) SystemInfo: free sram: 14703 minimal sram: 615[0m
+[0;32mI (537160) SystemInfo: free sram: 14659 minimal sram: 615[0m
+[0;32mI (547060) SystemInfo: free sram: 15215 minimal sram: 615[0m
+[0;32mI (557180) SystemInfo: free sram: 14631 minimal sram: 615[0m
+[0;32mI (567080) SystemInfo: free sram: 15219 minimal sram: 615[0m
+[0;32mI (577040) SystemInfo: free sram: 14659 minimal sram: 615[0m
+[0;32mI (587100) SystemInfo: free sram: 14655 minimal sram: 615[0m
+[0;32mI (597040) SystemInfo: free sram: 14703 minimal sram: 615[0m
+[0;32mI (607120) SystemInfo: free sram: 15171 minimal sram: 615[0m
+[0;32mI (617040) SystemInfo: free sram: 14699 minimal sram: 615[0m
+[0;32mI (627140) SystemInfo: free sram: 15171 minimal sram: 615[0m
+[0;32mI (637040) SystemInfo: free sram: 15171 minimal sram: 615[0m
+[0;32mI (647160) SystemInfo: free sram: 14655 minimal sram: 615[0m
+[0;32mI (657060) SystemInfo: free sram: 15215 minimal sram: 615[0m
+[0;32mI (667180) SystemInfo: free sram: 14655 minimal sram: 615[0m
+[0;32mI (677080) SystemInfo: free sram: 14655 minimal sram: 615[0m
+[0;32mI (687040) SystemInfo: free sram: 14655 minimal sram: 615[0m
+[0;32mI (697100) SystemInfo: free sram: 15171 minimal sram: 615[0m
+[0;32mI (707040) SystemInfo: free sram: 14699 minimal sram: 615[0m
+[0;32mI (717120) SystemInfo: free sram: 15171 minimal sram: 615[0m
+[0;32mI (727040) SystemInfo: free sram: 15207 minimal sram: 615[0m
+[0;32mI (737140) SystemInfo: free sram: 14667 minimal sram: 615[0m
+[0;32mI (747040) SystemInfo: free sram: 15207 minimal sram: 615[0m
+[0;32mI (757160) SystemInfo: free sram: 14631 minimal sram: 615[0m
+[0;32mI (767060) SystemInfo: free sram: 14707 minimal sram: 615[0m
+[0;32mI (777180) SystemInfo: free sram: 14655 minimal sram: 615[0m
+[0;32mI (787080) SystemInfo: free sram: 14651 minimal sram: 615[0m
+[0;32mI (797040) SystemInfo: free sram: 14651 minimal sram: 615[0m
+[0;32mI (807100) SystemInfo: free sram: 15219 minimal sram: 615[0m
+[0;32mI (817040) SystemInfo: free sram: 14651 minimal sram: 615[0m
+[0;32mI (827120) SystemInfo: free sram: 14651 minimal sram: 615[0m
+[0;32mI (837040) SystemInfo: free sram: 15211 minimal sram: 615[0m
+[0;32mI (847140) SystemInfo: free sram: 14635 minimal sram: 615[0m
+[0;32mI (857040) SystemInfo: free sram: 14663 minimal sram: 615[0m
+[0;32mI (867160) SystemInfo: free sram: 14663 minimal sram: 615[0m
+[0;32mI (877060) SystemInfo: free sram: 14707 minimal sram: 615[0m
+[0;32mI (887180) SystemInfo: free sram: 14659 minimal sram: 615[0m
+[0;32mI (897080) SystemInfo: free sram: 15223 minimal sram: 615[0m
+[0;32mI (907040) SystemInfo: free sram: 14707 minimal sram: 615[0m
+[0;32mI (917100) SystemInfo: free sram: 14659 minimal sram: 615[0m
+[0;32mI (927040) SystemInfo: free sram: 15179 minimal sram: 615[0m
+[0;32mI (937120) SystemInfo: free sram: 14659 minimal sram: 615[0m
+[0;32mI (947040) SystemInfo: free sram: 14707 minimal sram: 615[0m
+[0;32mI (957140) SystemInfo: free sram: 14667 minimal sram: 615[0m
+[0;32mI (967040) SystemInfo: free sram: 14707 minimal sram: 615[0m
+[0;32mI (977160) SystemInfo: free sram: 14667 minimal sram: 615[0m
+[0;32mI (987060) SystemInfo: free sram: 15175 minimal sram: 615[0m
+[0;32mI (997180) SystemInfo: free sram: 14663 minimal sram: 615[0m
+[0;32mI (1007080) SystemInfo: free sram: 14703 minimal sram: 615[0m
+[0;32mI (1017040) SystemInfo: free sram: 15219 minimal sram: 615[0m
+[0;32mI (1027100) SystemInfo: free sram: 14667 minimal sram: 615[0m
+[0;32mI (1037040) SystemInfo: free sram: 14703 minimal sram: 615[0m
+[0;32mI (1047120) SystemInfo: free sram: 14667 minimal sram: 615[0m
+[0;32mI (1057040) SystemInfo: free sram: 14703 minimal sram: 615[0m
+[0;32mI (1067140) SystemInfo: free sram: 14667 minimal sram: 615[0m
+[0;32mI (1077040) SystemInfo: free sram: 15183 minimal sram: 615[0m
+[0;32mI (1087160) SystemInfo: free sram: 14667 minimal sram: 615[0m
+[0;32mI (1097060) SystemInfo: free sram: 14703 minimal sram: 615[0m
+[0;32mI (1107180) SystemInfo: free sram: 15147 minimal sram: 615[0m
+[0;32mI (1117080) SystemInfo: free sram: 14703 minimal sram: 615[0m
+[0;32mI (1127040) SystemInfo: free sram: 15219 minimal sram: 615[0m
+[0;32mI (1137100) SystemInfo: free sram: 14667 minimal sram: 615[0m
+[0;32mI (1147040) SystemInfo: free sram: 14703 minimal sram: 615[0m
+[0;32mI (1157120) SystemInfo: free sram: 14703 minimal sram: 615[0m
+�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 4[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  4 2026 08:03:41[0m
+[0;32mI (112) app_init: ELF file SHA256:  74a4ee538...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (139) heap_init: At 3FCB2CE0 len 00036A30 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (180) main_task: Started on CPU0[0m
+[0;32mI (210) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (210) main_task: Calling app_main()[0m
+[0;32mI (220) Board: UUID=143e5eac-6e0c-4c50-8310-409b22a8a7e3 SKU=lulu-esp32s3[0m
+[0;32mI (220) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (230) button: IoT Button Version: 4.1.6[0m
+[0;32mI (230) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (240) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (360) Display: Power management not supported[0m
+[0;32mI (480) LcdDisplay: Turning display on[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (480) LVGL: Starting LVGL task[0m
+[0;32mI (480) LcdDisplay: Adding LCD display[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_rec[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_enroll[0m
+[0;32mI (580) MCP: Add tool: self.camera.remember_person[0m
+[0;32mI (590) MCP: Add tool: self.dog.move[0m
+[0;32mI (590) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (590) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (600) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (600) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (600) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (610) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (610) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (610) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (620) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (620) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (620) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (630) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (630) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (630) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (640) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (640) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (640) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (650) MCP: Add tool: self.laser.control[0m
+[0;32mI (650) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (650) cam_hal: cam init ok[0m
+[0;32mI (660) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (660) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (670) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (670) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (670) gc032a: Mismatch PID=0xf302[0m
+[0;32mI (670) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (680) camera: Detected GC0308 camera[0m
+[0;32mI (680) camera: Detected camera at address=0x21[0m
+[0;32mI (930) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (930) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (930) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (940) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (940) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (950) cam_hal: cam config ok[0m
+[0;32mI (950) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (980) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (980) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (980) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (990) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1000) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: 2331
+zeropos [1]: 647
+zeropos [2]: 2382
+zeropos [3]: 682
+zeropos [4]: 1515
+[0;32mI (1010) Backlight: Set brightness to 75[0m
+[0;32mI (1020) Application: STATE: starting[0m
+[0;32mI (1020) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1020) AudioCodec: Set input enable to true[0m
+[0;32mI (1030) AudioCodec: Set output enable to true[0m
+[0;32mI (1030) AudioCodec: Audio codec started[0m
+[0;32mI (1040) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1040) Application: XGO task started[0m
+[0;32mI (1050) pp: pp rom version: e7ae62f[0m
+[0;32mI (1050) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1060) wifi:wifi driver task: 3fce86c8, prio:23, stack:6144, core=0[0m
+[0;32mI (1060) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1060) wifi:wifi certification version: v7.0[0m
+I (1070cam_hal: EV-EOF-OVF
+) wifi:config NVS flash: disabled
+[0;32mI (1070) wifi:config nano formatting: enabled[0m
+[0;32mI (1080) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1080) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1090) wifi:Init management short buffer num: 32[0m
+[0;32mI (1090) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1100) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1100) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1100) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1110) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1110) wifi_init: rx ba win: 6[0m
+[0;32mI (1110) wifi_init: accept mbox: 6[0m
+[0;32mI (1120) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1120) wifi_init: udp mbox: 6[0m
+[0;32mI (1120) wifi_init: tcp mbox: 6[0m
+[0;32mI (1130) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp mss: 1440[0m
+[0;32mI (1140) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1170) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (1200) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1200) wifi:enable tsf[0m
+cam_hal: FB-SIZE: 138240 != 153600
+[0;32mI (3600) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -32, Channel: 6, Authmode: 3[0m
+[0;33mW (3610) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (4290) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (4290) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (4340) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (4350) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (4610) wifi:connected with Pigeon Owner, aid = 2, channel 6, BW20, bssid = de:e4:0e:d6:94:43[0m
+[0;32mI (4610) wifi:security: WPA2-PSK, phy: bgn, rssi: -34[0m
+[0;32mI (4610) wifi:pm start, type: 1[0m
+
+[0;32mI (4610) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4620) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4780) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5900) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5900) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5910) Application: STATE: activating[0m
+[0;32mI (5910) Ota: Current version: 1.8.8[0m
+[0;32mI (5920) wifi:<ba-add>idx:0 (ifx:0, de:e4:0e:d6:94:43), tid:0, ssn:2, winSize:64[0m
+[0;32mI (6100) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (6610) Dynamic Impl: mbedtls_ssl_fetch_input error=29312[0m
+[0;32mI (6610) Ota: Current is the latest version[0m
+[0;32mI (6610) Ota: Running partition: ota_0[0m
+[0;32mI (6610) MCP: Add tool: self.get_device_status[0m
+[0;32mI (6610) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (6620) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (6620) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (6630) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (6630) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (6760) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (7110) MQTT: Connected to endpoint[0m
+[0;32mI (7110) Application: STATE: idle[0m
+[0;32mI (7110) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (7120) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (7120) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (7120) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (7120) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (7130) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (7180) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (7180) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (7190) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (7200) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (7270) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (7270) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (7270) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (7290) SystemInfo: free sram: 18023 minimal sram: 17943[0m
+[0;32mI (8490) Application: STATE: connecting[0m
+[0;32mI (8620) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (8730) MQTT: Session ID: d5a0b2b1[0m
+[0;32mI (8740) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (8740) Application: STATE: listening[0m
+[0;32mI (8770) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (8780) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (8780) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (8790) AFE: AFE Pipeline: [input] -> |VAD(WebRTC)| -> [output][0m
+[0;32mI (8790) AfeAudioProcessor: Audio communication task started, feed size: 512 fetch size: 512[0m
+[0;32mI (11250) Application: STATE: speaking[0m
+[0;32mI (11260) Application: >> 你好呀。[0m
+[0;32mI (12240) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (12550) Application: << 你好呀，我是酷盖，很高兴见到你！[0m
+[0;32mI (16150) Application: STATE: listening[0m
+[0;32mI (16150) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (18550) Application: STATE: speaking[0m
+[0;32mI (18560) Application: >> 看看我是谁。[0m
+[0;32mI (19270) Application: << % self.camera.face_rec...[0m
+[0;32mI (19540) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (21570) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (21690) Application: << 不好意思，我现在还不认识你呢，要不要让我记住你？[0m
+[0;32mI (25320) Application: STATE: listening[0m
+[0;32mI (25410) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (28800) Application: STATE: speaking[0m
+[0;32mI (28800) Application: >> 我叫大酷盖。[0m
+[0;32mI (29500) Application: << % self.camera.remember_person...[0m
+[0;32mI (29860) Esp32Camera: Sending face enrollment request to http://172.20.10.2:8001/enroll for 大酷盖[0m
+[0;32mI (31830) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (32140) Application: << 好啦，大酷盖，我已经记住你了！[0m
+[0;32mI (35660) Application: STATE: listening[0m
+[0;32mI (35690) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (41240) Application: STATE: speaking[0m
+[0;32mI (41250) Application: >> 然后你现在再看看我是谁。[0m
+[0;32mI (42450) Application: << % self.camera.face_rec...[0m
+[0;32mI (42800) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (43640) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (43820) Application: << 你是大酷盖呀，我认出你了！[0m
+[0;32mI (46780) Application: STATE: listening[0m
+[0;32mI (46870) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (51020) Application: STATE: speaking[0m
+[0;32mI (51020) Application: >> 你好棒呀。[0m
+[0;32mI (51600) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (51830) Application: << 嘿嘿，那是当然的啦！[0m
+[0;32mI (54060) Application: STATE: listening[0m
+[0;32mI (54130) SystemInfo: free sram: 10375 minimal sram: 563[0m
+[0;32mI (54130) animation_set_now_animation: Set now animation: 0[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  4 2026 08:03:41[0m
+[0;32mI (112) app_init: ELF file SHA256:  74a4ee538...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (139) heap_init: At 3FCB2CE0 len 00036A30 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (180) main_task: Started on CPU0[0m
+[0;32mI (210) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (210) main_task: Calling app_main()[0m
+[0;32mI (220) Board: UUID=143e5eac-6e0c-4c50-8310-409b22a8a7e3 SKU=lulu-esp32s3[0m
+[0;32mI (220) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (230) button: IoT Button Version: 4.1.6[0m
+[0;32mI (230) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (240) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (360) Display: Power management not supported[0m
+[0;32mI (480) LcdDisplay: Turning display on[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (480) LVGL: Starting LVGL task[0m
+[0;32mI (480) LcdDisplay: Adding LCD display[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_rec[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_enroll[0m
+[0;32mI (580) MCP: Add tool: self.camera.remember_person[0m
+[0;32mI (590) MCP: Add tool: self.dog.move[0m
+[0;32mI (590) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (590) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (600) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (600) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (600) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (610) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (610) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (610) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (620) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (620) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (620) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (630) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (630) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (630) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (640) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (640) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (640) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (650) MCP: Add tool: self.laser.control[0m
+[0;32mI (650) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (650) cam_hal: cam init ok[0m
+[0;32mI (660) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (660) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (670) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (670) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (670) gc032a: Mismatch PID=0xf302[0m
+[0;32mI (670) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (680) camera: Detected GC0308 camera[0m
+[0;32mI (680) camera: Detected camera at address=0x21[0m
+[0;32mI (930) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (930) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (930) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (940) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (940) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (950) cam_hal: cam config ok[0m
+[0;32mI (950) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (980) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (980) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (980) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (990) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1000) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: 2331
+zeropos [1]: 647
+zeropos [2]: 2382
+zeropos [3]: 682
+zeropos [4]: 1515
+[0;32mI (1010) Backlight: Set brightness to 75[0m
+[0;32mI (1020) Application: STATE: starting[0m
+[0;32mI (1020) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1020) AudioCodec: Set input enable to true[0m
+[0;32mI (1030) AudioCodec: Set output enable to true[0m
+[0;32mI (1030) AudioCodec: Audio codec started[0m
+[0;32mI (1040) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1040) Application: XGO task started[0m
+[0;32mI (1050) pp: pp rom version: e7ae62f[0m
+[0;32mI (1050) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1060) wifi:wifi driver task: 3fce86d4, prio:23, stack:6144, core=0[0m
+[0;32mI (1060) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1060) wifi:wifi certification version: v7.0[0m
+I (1070cam_hal: EV-EOF-OVF
+) wifi:config NVS flash: disabled
+[0;32mI (1070) wifi:config nano formatting: enabled[0m
+[0;32mI (1080) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1080) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1090) wifi:Init management short buffer num: 32[0m
+[0;32mI (1090) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1100) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1100) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1100) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1110) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1110) wifi_init: rx ba win: 6[0m
+[0;32mI (1110) wifi_init: accept mbox: 6[0m
+[0;32mI (1120) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1120) wifi_init: udp mbox: 6[0m
+[0;32mI (1120) wifi_init: tcp mbox: 6[0m
+[0;32mI (1130) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp mss: 1440[0m
+[0;32mI (1140) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1180) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1180) wifi:enable tsf[0m
+cam_hal: FB-SIZE: 138240 != 153600
+[0;32mI (3580) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -41, Channel: 6, Authmode: 3[0m
+[0;33mW (3580) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (4280) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (4280) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (4320) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (4330) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (4420) wifi:connected with Pigeon Owner, aid = 2, channel 6, BW20, bssid = de:e4:0e:d6:94:43[0m
+[0;32mI (4420) wifi:security: WPA2-PSK, phy: bgn, rssi: -44[0m
+[0;32mI (4420) wifi:pm start, type: 1[0m
+
+[0;32mI (4420) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4430) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4490) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5540) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5540) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5550) Application: STATE: activating[0m
+[0;32mI (5550) Ota: Current version: 1.8.8[0m
+[0;32mI (5570) wifi:<ba-add>idx:0 (ifx:0, de:e4:0e:d6:94:43), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5780) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (6270) Dynamic Impl: mbedtls_ssl_fetch_input error=29312[0m
+[0;32mI (6270) Ota: Current is the latest version[0m
+[0;32mI (6280) Ota: Running partition: ota_0[0m
+[0;32mI (6280) MCP: Add tool: self.get_device_status[0m
+[0;32mI (6280) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (6280) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (6290) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (6290) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (6300) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (6540) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (7000) MQTT: Connected to endpoint[0m
+[0;32mI (7000) Application: STATE: idle[0m
+[0;32mI (7020) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (7020) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (7020) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (7020) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (7030) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (7030) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (7080) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (7080) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (7090) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (7100) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (7220) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (7220) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (7220) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (7240) SystemInfo: free sram: 18127 minimal sram: 17763[0m
+[0;32mI (10310) Application: STATE: connecting[0m
+[0;32mI (10320) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (10430) MQTT: Session ID: 17e47dce[0m
+[0;32mI (10430) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (10430) Application: STATE: listening[0m
+[0;32mI (10480) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (10480) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (10480) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (10480) AFE: AFE Pipeline: [input] -> |VAD(WebRTC)| -> [output][0m
+[0;32mI (10490) AfeAudioProcessor: Audio communication task started, feed size: 512 fetch size: 512[0m
+[0;32mI (12840) Application: STATE: speaking[0m
+[0;32mI (12840) Application: >> 你好呀。[0m
+[0;32mI (13510) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (13680) Application: << 你好呀，我是酷盖，今天想聊点啥？[0m
+[0;32mI (17250) Application: STATE: listening[0m
+[0;32mI (17350) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (19490) Application: >> 你可以给我拍张照吗？[0m
+[0;32mI (19490) Application: STATE: speaking[0m
+[0;32mI (20340) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (20430) Application: << 好呀，看镜头哦。[0m
+[0;32mI (21330) Application: << % self.camera.take_photo...[0m
+[0;32mI (23320) Esp32Camera: Explain image size=320x240, compressed size=11475, remain stack size=2116, question=拍张照片看看[0m
+{"success":true,"filename":"vcv1dsd7umtd9xmb5da1d9trp.jpg","text":"这是一张自拍，画面中心是位戴眼镜、穿白色上衣的人，手似轻触脸部。左侧有带卡通图案的白色物品（可能是纸巾），背景是浅色墙面，上方有亮着的灯，镜头边缘呈橙色模糊效果，整体场景像室内（如卫生间）。"}
+[0;32mI (23850) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (24710) Application: << 拍好了，你戴眼镜穿白色上衣的样子挺精神的，[0m
+[0;32mI (28980) Application: << 背景是浅色墙面，光线不错呢。[0m
+[0;32mI (29140) SystemInfo: free sram: 10003 minimal sram: 839[0m
+[0;32mI (32160) Application: STATE: listening[0m
+[0;32mI (32190) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (34800) Application: STATE: speaking[0m
+[0;32mI (34810) Application: >> 那你可不可以看看我是谁？[0m
+[0;32mI (35170) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (35260) Application: << 好呀，让我看看能不能认出你。[0m
+[0;32mI (37880) Application: << % self.camera.face_rec...[0m
+[0;32mI (38260) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (40410) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (40730) Application: << 你是大酷盖，不过只有55%的把握，看来我还需要多记记你的样子呢。[0m
+[0;32mI (44090) SystemInfo: free sram: 9295 minimal sram: 699[0m
+[0;32mI (47330) Application: STATE: listening[0m
+[0;32mI (47390) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (50740) Application: >> 那你再记住我一下。[0m
+[0;32mI (50740) Application: STATE: speaking[0m
+[0;32mI (51710) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (51980) Application: << 好呀，再记一次肯定更牢。[0m
+[0;32mI (54530) Application: << % self.camera.remember_person...[0m
+[0;32mI (54900) Esp32Camera: Sending face enrollment request to http://172.20.10.2:8001/enroll for 大酷盖[0m
+[0;32mI (56740) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (57050) Application: << 好啦，已经记住你了，大酷盖！[0m
+[0;32mI (60170) SystemInfo: free sram: 9623 minimal sram: 699[0m
+[0;32mI (60250) Application: << 下次肯定一眼就能认出来。[0m
+[0;32mI (62650) Application: STATE: listening[0m
+[0;32mI (62660) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (70930) Application: STATE: speaking[0m
+[0;32mI (70980) Application: >> 那你现在再看看我是谁，看看认出的概率有多高。[0m
+[0;32mI (71380) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (71660) Application: << 好呀，让我再试试。[0m
+[0;32mI (73870) Application: << % self.camera.face_rec...[0m
+[0;32mI (74280) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (76650) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (77050) Application: << 哇，现在是82%的把握啦，看来记住你之后果然认得更准了呢！[0m
+[0;32mI (80090) SystemInfo: free sram: 10619 minimal sram: 699[0m
+[0;32mI (83010) Application: STATE: listening[0m
+[0;32mI (83160) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (92050) SystemInfo: free sram: 9835 minimal sram: 699[0m
+[0;32mI (99040) AudioCodec: Set output enable to false[0m
+[0;32mI (102170) SystemInfo: free sram: 10143 minimal sram: 699[0m
+[0;32mI (104770) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (104810) Application: STATE: idle[0m
+[0;32mI (104820) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (104820) MQTT: Received goodbye message, session_id: 17e47dce[0m
+[0;32mI (104830) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (110230) Application: STATE: connecting[0m
+[0;32mI (110250) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (110570) MQTT: Session ID: 86ee1a40[0m
+[0;32mI (110580) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (110580) Application: STATE: listening[0m
+[0;32mI (110620) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (112960) Application: >> 你看一下这个人是谁？[0m
+[0;32mI (112960) Application: STATE: speaking[0m
+[0;32mI (113690) Application: << % self.camera.face_rec...[0m
+[0;32mI (114030) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (116180) animation_set_now_animation: Set now animation: 1[0m
+[0;32mI (116320) Application: << 我不认识这个人，置信度只有17%，要不要我帮你拍张照看看？[0m
+[0;32mI (116590) AudioCodec: Set output enable to true[0m
+[0;32mI (121870) Application: STATE: listening[0m
+[0;32mI (122000) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (125200) Application: STATE: speaking[0m
+[0;32mI (125210) Application: >> 你再看一次再看一次他是谁？[0m
+[0;32mI (125730) Application: << % self.camera.face_rec...[0m
+[0;32mI (126090) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (128250) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (128460) Application: << 还是认不出来，置信度才30%，要不要我记住你？[0m
+[0;32mI (133440) Application: STATE: listening[0m
+[0;32mI (133450) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (135810) Application: STATE: speaking[0m
+[0;32mI (135810) Application: >> 也是大裤盖。[0m
+[0;32mI (136510) Application: << % self.camera.remember_person...[0m
+[0;32mI (136830) Esp32Camera: Sending face enrollment request to http://172.20.10.2:8001/enroll for 大酷盖[0m
+[0;32mI (138640) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (138830) Application: << 好啦，已经记住你是大酷盖了！[0m
+[0;32mI (141950) Application: STATE: listening[0m
+[0;32mI (142080) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (146660) Application: STATE: speaking[0m
+[0;32mI (146660) Application: >> 刚才你看到的那个照片也是大裤盖。[0m
+[0;32mI (147270) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (147620) Application: << 嗯嗯，我知道啦，刚才照片上的人就是大酷盖你嘛！[0m
+[0;32mI (152530) Application: STATE: listening[0m
+[0;32mI (152530) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (155170) Application: STATE: speaking[0m
+[0;32mI (155170) Application: >> 这个就是大裤盖。[0m
+[0;32mI (155730) animation_set_now_animation: Set now animation: 1[0m
+[0;32mI (156220) Application: << 哎呀，别生气嘛，我知道这个就是大酷盖你啦！[0m
+[0;32mI (160660) Application: STATE: listening[0m
+[0;32mI (160710) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (163880) Application: STATE: speaking[0m
+[0;32mI (163880) Application: >> 问一下你问一下这个人是谁？[0m
+[0;32mI (164470) Application: << % self.camera.face_rec...[0m
+[0;32mI (164800) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (166830) animation_set_now_animation: Set now animation: 1[0m
+[0;32mI (167280) Application: << 还是不太确定，置信度43%，不过我猜应该还是大酷盖你吧？[0m
+[0;32mI (173120) SystemInfo: free sram: 10119 minimal sram: 263[0m
+[0;32mI (173280) Application: STATE: listening[0m
+[0;32mI (173330) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (177490) Application: STATE: speaking[0m
+[0;32mI (177490) Application: >> 你可以给大姑给多存一张照片吗？[0m
+[0;32mI (178390) Application: << % self.camera.remember_person...[0m
+[0;32mI (178750) Esp32Camera: Sending face enrollment request to http://172.20.10.2:8001/enroll for 大酷盖[0m
+[0;32mI (180780) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (181030) Application: << 好啦，又帮你存了一张照片，现在应该能更清楚认出大酷盖你了！[0m
+[0;32mI (186130) Application: STATE: listening[0m
+[0;32mI (186220) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (196040) SystemInfo: free sram: 10679 minimal sram: 231[0m
+[0;32mI (201590) AudioCodec: Set output enable to false[0m
+[0;32mI (206110) SystemInfo: free sram: 10679 minimal sram: 231[0m
+[0;32mI (216040) SystemInfo: free sram: 10163 minimal sram: 231[0m
+[0;32mI (226130) SystemInfo: free sram: 10679 minimal sram: 231[0m
+[0;32mI (236040) SystemInfo: free sram: 10103 minimal sram: 231[0m
+[0;32mI (246150) SystemInfo: free sram: 10671 minimal sram: 231[0m
+[0;32mI (251400) Application: STATE: speaking[0m
+[0;32mI (252310) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (252410) Application: << 好啦，那先这样，大酷盖再见！[0m
+[0;32mI (252650) AudioCodec: Set output enable to true[0m
+[0;32mI (255590) Application: STATE: listening[0m
+[0;32mI (255600) MQTT: Received goodbye message, session_id: 86ee1a40[0m
+[0;32mI (255710) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (255720) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (255740) MQTT: Received goodbye message, session_id: 86ee1a40[0m
+[0;32mI (255870) Application: STATE: idle[0m
+[0;32mI (255870) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (255880) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (265040) SystemInfo: free sram: 15087 minimal sram: 231[0m
+[0;32mI (271650) AudioCodec: Set output enable to false[0m
+[0;32mI (275150) SystemInfo: free sram: 14487 minimal sram: 231[0m
+[0;32mI (280210) Application: STATE: connecting[0m
+[0;32mI (280210) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (280360) MQTT: Session ID: 72139b13[0m
+[0;32mI (280380) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (280380) Application: STATE: listening[0m
+[0;32mI (280380) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (283280) Application: STATE: speaking[0m
+[0;32mI (283290) Application: >> 你好你好。[0m
+[0;32mI (283630) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (283760) Application: << 你好呀！[0m
+[0;32mI (283950) AudioCodec: Set output enable to true[0m
+[0;32mI (285080) Application: << 我是酷盖，今天想聊点啥？[0m
+[0;32mI (287660) Application: STATE: listening[0m
+[0;32mI (287740) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (289140) Application: >> 那我是谁？[0m
+[0;32mI (289140) Application: STATE: speaking[0m
+[0;32mI (289150) SystemInfo: free sram: 9475 minimal sram: 231[0m
+[0;32mI (289810) Application: << % self.camera.face_rec...[0m
+[0;32mI (290180) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (292160) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (292430) Application: << 哎呀，认不太出来呢，你是谁呀？[0m
+[0;32mI (296830) Application: STATE: listening[0m
+[0;32mI (296910) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (299530) Application: STATE: speaking[0m
+[0;32mI (299530) Application: >> 我是大裤盖。[0m
+[0;32mI (300060) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (300180) Application: << 哦，是大裤盖啊，记住了！[0m
+[0;32mI (303210) Application: STATE: listening[0m
+[0;32mI (303240) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (313040) SystemInfo: free sram: 10607 minimal sram: 231[0m
+[0;32mI (316680) Application: >> 你要把我的照片存进去，你你要记住我是大裤盖。[0m
+[0;32mI (316680) Application: STATE: speaking[0m
+[0;32mI (317200) Application: << % self.camera.remember_person...[0m
+[0;32mI (317580) Esp32Camera: Sending face enrollment request to http://172.20.10.2:8001/enroll for 大裤盖[0m
+[0;32mI (318950) AudioCodec: Set output enable to false[0m
+[0;32mI (319300) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (320020) Application: << 好啦好啦，已经记住你是大裤盖了，别生气嘛！[0m
+[0;32mI (320260) AudioCodec: Set output enable to true[0m
+[0;32mI (324020) Application: STATE: listening[0m
+[0;32mI (324050) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (333160) SystemInfo: free sram: 10131 minimal sram: 231[0m
+[0;32mI (339260) AudioCodec: Set output enable to false[0m
+[0;32mI (343060) SystemInfo: free sram: 10647 minimal sram: 231[0m
+[0;32mI (349490) Application: >> 我是大裤盖。[0m
+[0;32mI (349490) Application: STATE: speaking[0m
+[0;32mI (350320) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (350550) Application: << 知道啦，你是大裤盖，我记性好着呢！[0m
+[0;32mI (350790) AudioCodec: Set output enable to true[0m
+[0;32mI (354210) Application: STATE: listening[0m
+[0;32mI (354210) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (357100) Application: STATE: speaking[0m
+[0;32mI (357140) Application: >> 你看看我是谁。[0m
+[0;32mI (357150) SystemInfo: free sram: 10043 minimal sram: 231[0m
+[0;32mI (358020) Application: << % self.camera.face_rec...[0m
+[0;32mI (358410) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (360150) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (360350) Application: << 你是大裤盖呀，这次认出来啦！[0m
+[0;32mI (363680) Application: STATE: listening[0m
+[0;32mI (363810) animation_set_now_animation: Set now animation: 0[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  4 2026 08:03:41[0m
+[0;32mI (112) app_init: ELF file SHA256:  74a4ee538...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (139) heap_init: At 3FCB2CE0 len 00036A30 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (180) main_task: Started on CPU0[0m
+[0;32mI (210) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (210) main_task: Calling app_main()[0m
+[0;32mI (220) Board: UUID=143e5eac-6e0c-4c50-8310-409b22a8a7e3 SKU=lulu-esp32s3[0m
+[0;32mI (220) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (230) button: IoT Button Version: 4.1.6[0m
+[0;32mI (230) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (240) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (360) Display: Power management not supported[0m
+[0;32mI (480) LcdDisplay: Turning display on[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (480) LVGL: Starting LVGL task[0m
+[0;32mI (480) LcdDisplay: Adding LCD display[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_rec[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_enroll[0m
+[0;32mI (580) MCP: Add tool: self.camera.remember_person[0m
+[0;32mI (590) MCP: Add tool: self.dog.move[0m
+[0;32mI (590) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (590) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (600) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (600) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (600) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (610) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (610) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (610) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (620) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (620) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (620) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (630) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (630) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (630) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (640) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (640) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (640) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (650) MCP: Add tool: self.laser.control[0m
+[0;32mI (650) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (650) cam_hal: cam init ok[0m
+[0;32mI (660) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (660) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (670) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (670) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (670) gc032a: Mismatch PID=0xf302[0m
+[0;32mI (670) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (680) camera: Detected GC0308 camera[0m
+[0;32mI (680) camera: Detected camera at address=0x21[0m
+[0;32mI (930) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (930) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (930) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (940) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (940) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (950) cam_hal: cam config ok[0m
+[0;32mI (950) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (980) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (980) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (980) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (990) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1000) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: 2331
+zeropos [1]: 647
+zeropos [2]: 2382
+zeropos [3]: 682
+zeropos [4]: 1515
+[0;32mI (1010) Backlight: Set brightness to 75[0m
+[0;32mI (1020) Application: STATE: starting[0m
+[0;32mI (1020) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1020) AudioCodec: Set input enable to true[0m
+[0;32mI (1030) AudioCodec: Set output enable to true[0m
+[0;32mI (1030) AudioCodec: Audio codec started[0m
+[0;32mI (1040) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1040) Application: XGO task started[0m
+[0;32mI (1050) pp: pp rom version: e7ae62f[0m
+[0;32mI (1050) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1060) wifi:wifi driver task: 3fce86d4, prio:23, stack:6144, core=0[0m
+[0;32mI (1060) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1060) wifi:wifi certification version: v7.0[0m
+I (1070cam_hal: EV-EOF-OVF
+) wifi:config NVS flash: disabled
+[0;32mI (1070) wifi:config nano formatting: enabled[0m
+[0;32mI (1080) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1080) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1090) wifi:Init management short buffer num: 32[0m
+[0;32mI (1090) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1100) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1100) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1100) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1110) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1110) wifi_init: rx ba win: 6[0m
+[0;32mI (1110) wifi_init: accept mbox: 6[0m
+[0;32mI (1120) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1120) wifi_init: udp mbox: 6[0m
+[0;32mI (1120) wifi_init: tcp mbox: 6[0m
+[0;32mI (1130) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp mss: 1440[0m
+[0;32mI (1140) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1170) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (1220) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1220) wifi:enable tsf[0m
+cam_hal: FB-SIZE: 107520 != 153600
+[0;32mI (3620) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -57, Channel: 6, Authmode: 3[0m
+[0;33mW (3630) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (4320) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (4320) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (4330) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (4330) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (4370) wifi:connected with Pigeon Owner, aid = 2, channel 6, BW20, bssid = de:e4:0e:d6:94:43[0m
+[0;32mI (4370) wifi:security: WPA2-PSK, phy: bgn, rssi: -44[0m
+[0;32mI (4370) wifi:pm start, type: 1[0m
+
+[0;32mI (4380) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4380) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4420) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5550) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5550) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5560) Application: STATE: activating[0m
+[0;32mI (5560) Ota: Current version: 1.8.8[0m
+[0;32mI (5590) wifi:<ba-add>idx:0 (ifx:0, de:e4:0e:d6:94:43), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5820) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (6380) Dynamic Impl: mbedtls_ssl_fetch_input error=29312[0m
+[0;32mI (6380) Ota: Current is the latest version[0m
+[0;32mI (6380) Ota: Running partition: ota_0[0m
+[0;32mI (6380) MCP: Add tool: self.get_device_status[0m
+[0;32mI (6390) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (6390) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (6390) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (6400) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (6400) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (6530) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6850) MQTT: Connected to endpoint[0m
+[0;32mI (6850) Application: STATE: idle[0m
+[0;32mI (6850) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (6850) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (6850) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (6860) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (6860) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (6870) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (6910) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (6920) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (6930) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (6930) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (7000) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (7010) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (7010) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (7020) SystemInfo: free sram: 17851 minimal sram: 17743[0m
+[0;32mI (8700) Application: STATE: connecting[0m
+[0;32mI (8780) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (8940) MQTT: Session ID: 7402664c[0m
+[0;32mI (8950) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (8950) Application: STATE: listening[0m
+[0;32mI (9100) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (9110) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (9110) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (9110) AFE: AFE Pipeline: [input] -> |VAD(WebRTC)| -> [output][0m
+[0;32mI (9110) AfeAudioProcessor: Audio communication task started, feed size: 512 fetch size: 512[0m
+[0;32mI (12010) Application: STATE: speaking[0m
+[0;32mI (12020) Application: >> helello hello。[0m
+[0;32mI (12300) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (12880) Application: << 你好呀，大酷盖！[0m
+[0;32mI (15120) Application: << 找我有什么事吗？[0m
+[0;32mI (16860) Application: STATE: listening[0m
+[0;32mI (16890) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (19500) Application: STATE: speaking[0m
+[0;32mI (19500) Application: >> 你看看我是谁。[0m
+[0;32mI (20290) Application: << % self.camera.face_rec...[0m
+[0;32mI (20480) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (22340) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (22520) Application: << 你是大裤盖呀，我认得你！[0m
+[0;32mI (25220) Application: STATE: listening[0m
+[0;32mI (25310) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (35080) SystemInfo: free sram: 10175 minimal sram: 1479[0m
+[0;32mI (41040) AudioCodec: Set output enable to false[0m
+[0;32mI (45040) SystemInfo: free sram: 10179 minimal sram: 1479[0m
+[0;32mI (55100) SystemInfo: free sram: 10175 minimal sram: 1479[0m
+[0;32mI (65040) SystemInfo: free sram: 9679 minimal sram: 1479[0m
+[0;32mI (75120) SystemInfo: free sram: 10195 minimal sram: 1479[0m
+[0;32mI (85040) SystemInfo: free sram: 9679 minimal sram: 1479[0m
+[0;32mI (89190) Application: STATE: speaking[0m
+[0;32mI (89690) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (90290) Application: << 那先这样啦，拜拜！[0m
+[0;32mI (90530) AudioCodec: Set output enable to true[0m
+[0;32mI (92740) Application: STATE: listening[0m
+[0;32mI (92750) MQTT: Received goodbye message, session_id: 7402664c[0m
+[0;32mI (92880) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (92880) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (92880) Application: STATE: idle[0m
+[0;32mI (92880) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (92920) MQTT: Received goodbye message, session_id: 7402664c[0m
+[0;32mI (92920) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (102040) SystemInfo: free sram: 13983 minimal sram: 1479[0m
+[0;32mI (108530) AudioCodec: Set output enable to false[0m
+[0;32mI (112100) SystemInfo: free sram: 13895 minimal sram: 1479[0m
+[0;32mI (122040) SystemInfo: free sram: 13939 minimal sram: 1479[0m
+[0;32mI (132120) SystemInfo: free sram: 14439 minimal sram: 1479[0m
+[0;32mI (142040) SystemInfo: free sram: 13959 minimal sram: 1479[0m
+[0;32mI (152140) SystemInfo: free sram: 14439 minimal sram: 1479[0m
+[0;32mI (162040) SystemInfo: free sram: 14475 minimal sram: 1479[0m
+[0;32mI (172160) SystemInfo: free sram: 13875 minimal sram: 1479[0m
+[0;32mI (182060) SystemInfo: free sram: 14475 minimal sram: 1479[0m
+[0;32mI (192180) SystemInfo: free sram: 13923 minimal sram: 1479[0m
+[0;32mI (202080) SystemInfo: free sram: 13923 minimal sram: 1479[0m
+[0;32mI (212040) SystemInfo: free sram: 13959 minimal sram: 1479[0m
+[0;32mI (222100) SystemInfo: free sram: 13983 minimal sram: 1479[0m
+[0;32mI (232040) SystemInfo: free sram: 13979 minimal sram: 1479[0m
+[0;32mI (242120) SystemInfo: free sram: 14471 minimal sram: 1479[0m
+[0;32mI (252040) SystemInfo: free sram: 13979 minimal sram: 1479[0m
+[0;32mI (262140) SystemInfo: free sram: 13979 minimal sram: 1479[0m
+[0;32mI (272040) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (282160) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (292060) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (302180) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (312080) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (322040) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (332100) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (342040) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (352120) SystemInfo: free sram: 13751 minimal sram: 1479[0m
+[0;32mI (362040) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (372140) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (382040) SystemInfo: free sram: 13783 minimal sram: 1479[0m
+[0;32mI (392160) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (402060) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (412180) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (422080) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (432040) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (442100) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (452040) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (462120) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (472040) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (482140) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (492040) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (502160) SystemInfo: free sram: 13751 minimal sram: 1479[0m
+[0;32mI (512060) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (522180) SystemInfo: free sram: 13715 minimal sram: 1479[0m
+[0;32mI (532080) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (542040) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (552100) SystemInfo: free sram: 13751 minimal sram: 1479[0m
+[0;32mI (562040) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (572120) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (582040) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (592140) SystemInfo: free sram: 13751 minimal sram: 1479[0m
+[0;32mI (602040) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (612160) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (622060) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (632180) SystemInfo: free sram: 14271 minimal sram: 1479[0m
+[0;32mI (642080) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (652040) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+[0;32mI (662100) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (672040) SystemInfo: free sram: 13791 minimal sram: 1479[0m
+[0;32mI (682120) SystemInfo: free sram: 13755 minimal sram: 1479[0m
+[0;32mI (692040) SystemInfo: free sram: 14307 minimal sram: 1479[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 5[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  4 2026 08:03:41[0m
+[0;32mI (112) app_init: ELF file SHA256:  74a4ee538...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (139) heap_init: At 3FCB2CE0 len 00036A30 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (180) main_task: Started on CPU0[0m
+[0;32mI (210) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (210) main_task: Calling app_main()[0m
+[0;32mI (220) Board: UUID=143e5eac-6e0c-4c50-8310-409b22a8a7e3 SKU=lulu-esp32s3[0m
+[0;32mI (220) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (230) button: IoT Button Version: 4.1.6[0m
+[0;32mI (230) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (240) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (360) Display: Power management not supported[0m
+[0;32mI (480) LcdDisplay: Turning display on[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (480) LVGL: Starting LVGL task[0m
+[0;32mI (480) LcdDisplay: Adding LCD display[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_rec[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_enroll[0m
+[0;32mI (580) MCP: Add tool: self.camera.remember_person[0m
+[0;32mI (590) MCP: Add tool: self.dog.move[0m
+[0;32mI (590) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (590) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (600) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (600) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (600) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (610) MCP: Add tool: self.dog.Rolling[0m
+[0;32mI (610) MCP: Add tool: self.dog.Angry[0m
+[0;32mI (610) MCP: Add tool: self.dog.Swimming[0m
+[0;32mI (620) MCP: Add tool: self.dog.Pee[0m
+[0;32mI (620) MCP: Add tool: self.dog.Stretch[0m
+[0;32mI (620) MCP: Add tool: self.dog.Bouncing[0m
+[0;32mI (630) MCP: Add tool: self.dog.Shaking[0m
+[0;32mI (630) MCP: Add tool: self.dog.Sit[0m
+[0;32mI (630) MCP: Add tool: self.dog.Scratch[0m
+[0;32mI (640) MCP: Add tool: self.dog.Hug[0m
+[0;32mI (640) MCP: Add tool: self.dog.Reset[0m
+[0;32mI (640) MCP: Add tool: self.dog.action_loop[0m
+[0;32mI (650) MCP: Add tool: self.laser.control[0m
+[0;32mI (650) s3 ll_cam: DMA Channel=1[0m
+[0;32mI (650) cam_hal: cam init ok[0m
+[0;32mI (660) sccb-ng: pin_sda 4 pin_scl 5[0m
+[0;32mI (660) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (670) ov7725: Mismatch PID=0xe8[0m
+[0;32mI (670) ov7760: Mismatch PID=0xe8[0m
+[0;32mI (670) gc032a: Mismatch PID=0xf302[0m
+[0;32mI (670) camera: Camera PID=0x9b VER=0x00 MIDL=0x00 MIDH=0x00[0m
+[0;32mI (680) camera: Detected GC0308 camera[0m
+[0;32mI (680) camera: Detected camera at address=0x21[0m
+[0;32mI (930) cam_hal: PSRAM DMA mode disabled[0m
+[0;32mI (930) s3 ll_cam: node_size: 3840, nodes_per_line: 1, lines_per_node: 6[0m
+[0;32mI (930) s3 ll_cam: dma_half_buffer_min:  3840, dma_half_buffer: 15360, lines_per_half_buffer: 24, dma_buffer_size: 30720[0m
+[0;32mI (940) cam_hal: buffer_size: 30720, half_buffer_size: 15360, node_buffer_size: 3840, node_cnt: 8, total_cnt: 10[0m
+[0;32mI (940) cam_hal: Allocating 153600 Byte frame buffer in PSRAM[0m
+[0;32mI (950) cam_hal: cam config ok[0m
+[0;32mI (950) gc0308: subsample win:640x480, ratio:0.500000[0m
+[0;32mI (980) Esp32Camera: Camera horizontal mirror set to: disabled[0m
+[0;32mI (980) uart: ESP_INTR_FLAG_IRAM flag not set while CONFIG_UART_ISR_IN_IRAM is enabled, flag updated[0m
+[0;33mW (980) LULUESP32S3: XGO UART RX disabled because no non-conflicting feedback pin is configured[0m
+[0;32mI (990) gpio: GPIO[46]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (1000) gpio: GPIO[46]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+zeropos [0]: 2331
+zeropos [1]: 647
+zeropos [2]: 2382
+zeropos [3]: 682
+zeropos [4]: 1515
+[0;32mI (1010) Backlight: Set brightness to 75[0m
+[0;32mI (1020) Application: STATE: starting[0m
+[0;32mI (1020) NoAudioCodec: Simplex channels created[0m
+[0;32mI (1020) AudioCodec: Set input enable to true[0m
+[0;32mI (1030) AudioCodec: Set output enable to true[0m
+[0;32mI (1030) AudioCodec: Audio codec started[0m
+[0;32mI (1040) Application: Skipping XGO RX task because servo feedback RX is disabled[0m
+[0;32mI (1040) Application: XGO task started[0m
+[0;32mI (1050) pp: pp rom version: e7ae62f[0m
+[0;32mI (1050) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (1060) wifi:wifi driver task: 3fce8644, prio:23, stack:6144, core=0[0m
+[0;32mI (1060) wifi:wifi firmware version: bea31f3[0m
+[0;32mI (1060) wifi:wifi certification version: v7.0[0m
+I (1070cam_hal: EV-EOF-OVF
+) wifi:config NVS flash: disabled
+[0;32mI (1070) wifi:config nano formatting: enabled[0m
+[0;32mI (1080) wifi:Init data frame dynamic rx buffer num: 8[0m
+[0;32mI (1080) wifi:Init dynamic rx mgmt buffer num: 5[0m
+[0;32mI (1090) wifi:Init management short buffer num: 32[0m
+[0;32mI (1090) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (1100) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (1100) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1100) wifi:Init static rx buffer num: 6[0m
+[0;32mI (1110) wifi:Init dynamic rx buffer num: 8[0m
+[0;32mI (1110) wifi_init: rx ba win: 6[0m
+[0;32mI (1110) wifi_init: accept mbox: 6[0m
+[0;32mI (1120) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1120) wifi_init: udp mbox: 6[0m
+[0;32mI (1120) wifi_init: tcp mbox: 6[0m
+[0;32mI (1130) wifi_init: tcp tx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp rx win: 5760[0m
+[0;32mI (1130) wifi_init: tcp mss: 1440[0m
+[0;32mI (1140) phy_init: phy_version 701,f4f1da3a,Mar  3 2025,15:50:10[0m
+[0;32mI (1170) wifi:mode : sta (1c:db:d4:54:0e:e0)[0m
+[0;32mI (1170) wifi:enable tsf[0m
+cam_hal: FB-SIZE: 138240 != 153600
+[0;32mI (3580) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -36, Channel: 6, Authmode: 3[0m
+[0;33mW (3580) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (4270) wifi:new:<6,0>, old:<1,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (4270) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (4280) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (4290) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (4380) wifi:connected with Pigeon Owner, aid = 2, channel 6, BW20, bssid = de:e4:0e:d6:94:43[0m
+[0;32mI (4380) wifi:security: WPA2-PSK, phy: bgn, rssi: -49[0m
+[0;32mI (4380) wifi:pm start, type: 1[0m
+
+[0;32mI (4380) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (4390) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (4430) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (5560) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (5560) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (5570) Application: STATE: activating[0m
+[0;32mI (5570) Ota: Current version: 1.8.8[0m
+[0;32mI (5590) wifi:<ba-add>idx:0 (ifx:0, de:e4:0e:d6:94:43), tid:0, ssn:2, winSize:64[0m
+[0;32mI (5860) esp-x509-crt-bundle: Certificate validated[0m
+[1;31mE (6290) Dynamic Impl: mbedtls_ssl_fetch_input error=29312[0m
+[0;32mI (6300) Ota: Current is the latest version[0m
+[0;32mI (6300) Ota: Running partition: ota_0[0m
+[0;32mI (6300) MCP: Add tool: self.get_device_status[0m
+[0;32mI (6300) MCP: Add tool: self.audio_speaker.set_volume[0m
+[0;32mI (6300) MCP: Add tool: self.screen.set_brightness[0m
+[0;32mI (6310) MCP: Add tool: self.screen.set_theme[0m
+[0;32mI (6310) MCP: Add tool: self.camera.take_photo[0m
+[0;32mI (6320) MQTT: Connecting to endpoint mqtt.xiaozhi.me[0m
+[0;32mI (6470) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (6860) MQTT: Connected to endpoint[0m
+[0;32mI (6860) Application: STATE: idle[0m
+[0;32mI (6870) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (6870) MODEL_LOADER: The storage free size is 14784 KB[0m
+[0;32mI (6870) MODEL_LOADER: The partition size is 960 KB[0m
+[0;32mI (6880) MODEL_LOADER: Successfully load srmodels[0m
+[0;32mI (6880) AfeWakeWord: Model 0: wn9_nihaoxiaozhi_tts[0m
+[0;32mI (6890) AFE_CONFIG: Set WakeNet Model: wn9_nihaoxiaozhi_tts[0m
+MC Quantized wakenet9: wakenet9l_tts1h8_你好小智_3_0.631_0.635, tigger:v4, mode:0, p:0, (Jun 16 2025 16:18:15)
+[0;32mI (6940) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (6940) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (6950) AFE: AFE Pipeline: [input] ->  -> |VAD(WebRTC)| -> |WakeNet(wn9_nihaoxiaozhi_tts,)| -> [output][0m
+[0;32mI (6960) AfeWakeWord: Audio detection task started, feed size: 512 fetch size: 512[0m
+[0;32mI (7070) AudioService: OpusHead: version=1, channels=1, sample_rate=16000[0m
+[0;32mI (7070) AudioService: Resampling audio from 16000 to 24000[0m
+[0;32mI (7070) OpusResampler: Resampler configured with input sample rate 16000 and output sample rate 24000[0m
+[0;32mI (7190) SystemInfo: free sram: 17947 minimal sram: 17543[0m
+[0;32mI (13490) Application: STATE: connecting[0m
+[0;32mI (13510) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (13660) MQTT: Session ID: e3dc02e0[0m
+[0;32mI (13660) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (13660) Application: STATE: listening[0m
+[0;32mI (13690) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (13690) AFE: AFE Version: (1MIC_V250121)[0m
+[0;32mI (13690) AFE: Input PCM Config: total 1 channels(1 microphone, 0 playback), sample rate:16000[0m
+[0;32mI (13700) AFE: AFE Pipeline: [input] -> |VAD(WebRTC)| -> [output][0m
+[0;32mI (13710) AfeAudioProcessor: Audio communication task started, feed size: 512 fetch size: 512[0m
+[0;32mI (15830) Application: STATE: speaking[0m
+[0;32mI (15830) Application: >> 你好。[0m
+[0;32mI (16230) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (16340) Application: << 你好呀！[0m
+[0;32mI (17730) Application: << 我是酷盖，很高兴见到你！[0m
+[0;32mI (20660) Application: STATE: listening[0m
+[0;32mI (20730) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (22650) Application: STATE: speaking[0m
+[0;32mI (22650) Application: >> 你认识我吗？[0m
+[0;32mI (23470) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (24730) Application: << 让我看看你是谁。[0m
+[0;32mI (26060) Application: << % self.camera.face_rec...[0m
+[0;32mI (26240) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (28280) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (28300) Application: << 哈哈，大裤盖！[0m
+[0;32mI (30350) Application: << 我当然认识你啦，刚才只是想确认一下嘛！[0m
+[0;32mI (32160) SystemInfo: free sram: 9479 minimal sram: 1503[0m
+[0;32mI (33770) Application: STATE: listening[0m
+[0;32mI (33930) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (43040) SystemInfo: free sram: 9519 minimal sram: 1503[0m
+[0;32mI (49040) AudioCodec: Set output enable to false[0m
+[0;32mI (53150) SystemInfo: free sram: 9519 minimal sram: 1503[0m
+[0;32mI (63060) SystemInfo: free sram: 9519 minimal sram: 1503[0m
+[0;32mI (73170) SystemInfo: free sram: 9535 minimal sram: 1503[0m
+[0;32mI (83080) SystemInfo: free sram: 9039 minimal sram: 1503[0m
+[0;32mI (93040) SystemInfo: free sram: 9567 minimal sram: 1503[0m
+[0;32mI (96210) Application: STATE: speaking[0m
+[0;32mI (96940) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (97340) Application: << 那先这样啦，大裤盖，下次再聊！[0m
+[0;32mI (97590) AudioCodec: Set output enable to true[0m
+[0;32mI (101120) Application: STATE: listening[0m
+[0;32mI (101120) MQTT: Received goodbye message, session_id: e3dc02e0[0m
+[0;32mI (101250) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (101260) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (101260) Application: STATE: idle[0m
+[0;32mI (101280) MQTT: Received goodbye message, session_id: e3dc02e0[0m
+[0;32mI (101410) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (101410) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (111040) SystemInfo: free sram: 14511 minimal sram: 1503[0m
+[0;32mI (116590) AudioCodec: Set output enable to false[0m
+[0;32mI (121130) SystemInfo: free sram: 14939 minimal sram: 1503[0m
+[0;32mI (131040) SystemInfo: free sram: 14479 minimal sram: 1503[0m
+[0;32mI (141150) SystemInfo: free sram: 14443 minimal sram: 1503[0m
+[0;32mI (151050) SystemInfo: free sram: 14995 minimal sram: 1503[0m
+[0;32mI (154330) Application: STATE: connecting[0m
+[0;32mI (154350) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (154460) MQTT: Session ID: f67d2084[0m
+[0;32mI (154470) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (154470) Application: STATE: listening[0m
+[0;32mI (154510) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (157180) Application: STATE: speaking[0m
+[0;32mI (157180) Application: >> 你看看我是谁。[0m
+[0;32mI (157990) Application: << % self.camera.face_rec...[0m
+[0;32mI (158330) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (159600) Application: << 大裤盖！[0m
+[0;32mI (159600) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (159850) AudioCodec: Set output enable to true[0m
+[0;32mI (161210) Application: << 我当然认识你啦！[0m
+[0;32mI (163190) Application: STATE: listening[0m
+[0;32mI (163230) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (173040) SystemInfo: free sram: 9591 minimal sram: 331[0m
+[0;32mI (178850) AudioCodec: Set output enable to false[0m
+[0;32mI (183120) SystemInfo: free sram: 8863 minimal sram: 331[0m
+[0;32mI (193040) SystemInfo: free sram: 9579 minimal sram: 331[0m
+[0;32mI (203140) SystemInfo: free sram: 9579 minimal sram: 331[0m
+[0;32mI (213040) SystemInfo: free sram: 9515 minimal sram: 331[0m
+[0;32mI (223150) SystemInfo: free sram: 9583 minimal sram: 331[0m
+[0;32mI (224040) Application: STATE: speaking[0m
+[0;32mI (224480) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (224690) Application: << 那先这样啦，下次再聊！[0m
+[0;32mI (224920) AudioCodec: Set output enable to true[0m
+[0;32mI (226950) Application: STATE: listening[0m
+[0;32mI (226960) MQTT: Received goodbye message, session_id: f67d2084[0m
+[0;32mI (227030) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (227030) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (227030) Application: STATE: idle[0m
+[0;32mI (227070) MQTT: Received goodbye message, session_id: f67d2084[0m
+[0;32mI (227180) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (227190) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (236120) SystemInfo: free sram: 13907 minimal sram: 331[0m
+[0;32mI (242920) AudioCodec: Set output enable to false[0m
+[0;32mI (246040) SystemInfo: free sram: 14459 minimal sram: 331[0m
+[0;32mI (256140) SystemInfo: free sram: 13907 minimal sram: 331[0m
+[0;32mI (266040) SystemInfo: free sram: 13951 minimal sram: 331[0m
+[0;32mI (276160) SystemInfo: free sram: 14423 minimal sram: 331[0m
+[0;32mI (286060) SystemInfo: free sram: 13943 minimal sram: 331[0m
+[0;32mI (296180) SystemInfo: free sram: 13871 minimal sram: 331[0m
+[0;32mI (306080) SystemInfo: free sram: 14459 minimal sram: 331[0m
+[0;32mI (316040) SystemInfo: free sram: 13943 minimal sram: 331[0m
+[0;32mI (326100) SystemInfo: free sram: 13907 minimal sram: 331[0m
+[0;32mI (336040) SystemInfo: free sram: 14459 minimal sram: 331[0m
+[0;32mI (346120) SystemInfo: free sram: 13907 minimal sram: 331[0m
+[0;32mI (356040) SystemInfo: free sram: 13943 minimal sram: 331[0m
+[0;32mI (366140) SystemInfo: free sram: 14423 minimal sram: 331[0m
+[0;32mI (376040) SystemInfo: free sram: 13899 minimal sram: 331[0m
+[0;32mI (386160) SystemInfo: free sram: 13907 minimal sram: 331[0m
+[0;32mI (396060) SystemInfo: free sram: 14423 minimal sram: 331[0m
+[0;32mI (406180) SystemInfo: free sram: 13899 minimal sram: 331[0m
+[0;32mI (416080) SystemInfo: free sram: 14423 minimal sram: 331[0m
+[0;32mI (417370) wifi:bcn_timeout,ap_probe_send_start[0m
+[0;32mI (426040) SystemInfo: free sram: 14431 minimal sram: 331[0m
+[0;32mI (429380) wifi:bcn_timeout,ap_probe_send_start[0m
+[0;32mI (431880) wifi:ap_probe_send over, reset wifi status to disassoc[0m
+[0;32mI (431880) wifi:state: run -> init (0xc800)[0m
+[0;32mI (431880) wifi:pm stop, total sleep time: lu us / lu us[0m
+
+[0;32mI (431890) wifi:<ba-del>idx:0, tid:0[0m
+[0;32mI (431890) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (431900) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[1;31mE (431910) Dynamic Impl: mbedtls_ssl_fetch_input error=76[0m
+[1;31mE (431910) esp-tls-mbedtls: read error :-0x004C[0m
+[1;31mE (431910) transport_base: esp_tls_conn_read error, errno=Software caused connection abort[0m
+[1;31mE (431920) mqtt_client: esp_mqtt_handle_transport_read_error: transport_read() error: errno=113[0m
+[0;32mI (431930) esp_mqtt: MQTT error occurred: ESP_OK[0m
+[1;31mE (431930) mqtt_client: mqtt_process_receive: mqtt_message_receive() returned -2[0m
+[0;32mI (434310) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[0;32mI (436100) SystemInfo: free sram: 15179 minimal sram: 331[0m
+[0;32mI (436720) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (439180) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[0;32mI (441590) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (444000) WifiStation: No more AP to connect, wait for next scan[0m
+[0;32mI (446040) SystemInfo: free sram: 14571 minimal sram: 331[0m
+[0;32mI (446440) WifiStation: Wait for next scan[0m
+[0;32mI (448910) WifiStation: Wait for next scan[0m
+[0;32mI (451500) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -78, Channel: 6, Authmode: 3[0m
+[0;33mW (451500) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[1;31mE (453940) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (453940) esp-tls: Failed to open new connection[0m
+[1;31mE (453940) transport_base: Failed to open a new connection[0m
+[1;31mE (453940) mqtt_client: Error transport connect[0m
+[0;32mI (453950) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (453970) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[0;32mI (456120) SystemInfo: free sram: 15663 minimal sram: 331[0m
+[0;32mI (456480) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[0;32mI (456560) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (456560) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (456570) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (457570) wifi:state: assoc -> init (0x400)[0m
+[0;32mI (457570) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (457570) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (460030) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[0;32mI (462500) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (464960) WifiStation: No more AP to connect, wait for next scan[0m
+[0;32mI (466040) SystemInfo: free sram: 14651 minimal sram: 331[0m
+[0;32mI (467480) WifiStation: Wait for next scan[0m
+[0;32mI (469900) WifiStation: Wait for next scan[0m
+[0;32mI (472320) WifiStation: Wait for next scan[0m
+[0;32mI (474750) WifiStation: Wait for next scan[0m
+[1;31mE (475950) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (475950) esp-tls: Failed to open new connection[0m
+[1;31mE (475950) transport_base: Failed to open a new connection[0m
+[1;31mE (475950) mqtt_client: Error transport connect[0m
+[0;32mI (475960) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (476140) SystemInfo: free sram: 14963 minimal sram: 331[0m
+[0;32mI (477220) WifiStation: Wait for next scan[0m
+[0;32mI (479680) WifiStation: Wait for next scan[0m
+[0;32mI (482150) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -80, Channel: 6, Authmode: 3[0m
+[0;33mW (482150) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (484570) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[0;32mI (486050) SystemInfo: free sram: 15655 minimal sram: 331[0m
+[0;32mI (487150) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[0;32mI (489560) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (491970) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[0;32mI (492010) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (492010) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (493010) wifi:state: auth -> init (0x200)[0m
+[0;32mI (493020) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (493020) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (495430) WifiStation: No more AP to connect, wait for next scan[0m
+[0;32mI (496170) SystemInfo: free sram: 14803 minimal sram: 331[0m
+[1;31mE (497960) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (497960) esp-tls: Failed to open new connection[0m
+[1;31mE (497960) transport_base: Failed to open a new connection[0m
+[1;31mE (497960) mqtt_client: Error transport connect[0m
+[0;32mI (497970) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (497970) WifiStation: Wait for next scan[0m
+[0;32mI (500490) WifiStation: Wait for next scan[0m
+[0;32mI (502910) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -84, Channel: 6, Authmode: 3[0m
+[0;33mW (502990) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (505420) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[0;32mI (506070) SystemInfo: free sram: 15671 minimal sram: 331[0m
+[0;32mI (507890) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[0;32mI (510360) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (512820) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[1;31mE (514980) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (514980) esp-tls: Failed to open new connection[0m
+[1;31mE (514980) transport_base: Failed to open a new connection[0m
+[1;31mE (514980) mqtt_client: Error transport connect[0m
+[0;32mI (514990) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (515280) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (516040) SystemInfo: free sram: 15147 minimal sram: 331[0m
+[0;32mI (517690) WifiStation: No more AP to connect, wait for next scan[0m
+[0;32mI (520220) WifiStation: Wait for next scan[0m
+[0;32mI (522640) WifiStation: Wait for next scan[0m
+[0;32mI (525060) WifiStation: Wait for next scan[0m
+[0;32mI (526090) SystemInfo: free sram: 15167 minimal sram: 331[0m
+[0;32mI (527480) WifiStation: Wait for next scan[0m
+[0;32mI (529900) WifiStation: Wait for next scan[0m
+[0;32mI (532360) WifiStation: Wait for next scan[0m
+[0;32mI (534810) WifiStation: Wait for next scan[0m
+[0;32mI (536040) SystemInfo: free sram: 15235 minimal sram: 331[0m
+[1;31mE (536990) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (536990) esp-tls: Failed to open new connection[0m
+[1;31mE (536990) transport_base: Failed to open a new connection[0m
+[1;31mE (536990) mqtt_client: Error transport connect[0m
+[0;32mI (537000) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (537280) WifiStation: Wait for next scan[0m
+[0;32mI (539700) WifiStation: Wait for next scan[0m
+[0;32mI (542210) WifiStation: Wait for next scan[0m
+[0;32mI (544640) WifiStation: Wait for next scan[0m
+[0;32mI (546110) SystemInfo: free sram: 14967 minimal sram: 331[0m
+[0;32mI (547060) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -82, Channel: 6, Authmode: 3[0m
+[0;33mW (547060) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (549470) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[0;32mI (551900) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[0;32mI (554360) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (556040) SystemInfo: free sram: 15483 minimal sram: 331[0m
+[0;32mI (556830) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[1;31mE (559000) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (559000) esp-tls: Failed to open new connection[0m
+[1;31mE (559000) transport_base: Failed to open a new connection[0m
+[1;31mE (559000) mqtt_client: Error transport connect[0m
+[0;32mI (559010) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (559290) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (561700) WifiStation: No more AP to connect, wait for next scan[0m
+[0;32mI (564230) WifiStation: Wait for next scan[0m
+[0;32mI (566140) SystemInfo: free sram: 14919 minimal sram: 331[0m
+[0;32mI (566650) WifiStation: Wait for next scan[0m
+[0;32mI (569070) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -81, Channel: 6, Authmode: 3[0m
+[0;33mW (569070) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (571560) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[0;32mI (571630) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (571630) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (571730) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (571750) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (576050) SystemInfo: free sram: 14923 minimal sram: 331[0m
+[1;31mE (581010) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (581010) esp-tls: Failed to open new connection[0m
+[1;31mE (581010) transport_base: Failed to open a new connection[0m
+[1;31mE (581010) mqtt_client: Error transport connect[0m
+[0;32mI (581020) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (581750) wifi:state: run -> init (0xcc00)[0m
+[0;32mI (581750) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (581760) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[0;32mI (584170) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (586170) SystemInfo: free sram: 15111 minimal sram: 331[0m
+[0;32mI (586580) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[0;32mI (588990) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (591450) WifiStation: No more AP to connect, wait for next scan[0m
+[0;32mI (593920) WifiStation: Wait for next scan[0m
+[0;32mI (596070) SystemInfo: free sram: 15395 minimal sram: 331[0m
+[0;32mI (596380) WifiStation: Wait for next scan[0m
+[0;32mI (598850) WifiStation: Wait for next scan[0m
+[0;32mI (601320) WifiStation: Wait for next scan[0m
+[1;31mE (603020) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (603020) esp-tls: Failed to open new connection[0m
+[1;31mE (603020) transport_base: Failed to open a new connection[0m
+[1;31mE (603020) mqtt_client: Error transport connect[0m
+[0;32mI (603030) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (603740) WifiStation: Wait for next scan[0m
+[0;32mI (606040) SystemInfo: free sram: 15247 minimal sram: 331[0m
+[0;32mI (606170) WifiStation: Wait for next scan[0m
+[0;32mI (608590) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -82, Channel: 6, Authmode: 3[0m
+[0;33mW (608610) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (611020) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[0;32mI (613460) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[0;32mI (615920) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (616090) SystemInfo: free sram: 15647 minimal sram: 331[0m
+[0;32mI (618330) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[0;32mI (620860) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (623320) WifiStation: No more AP to connect, wait for next scan[0m
+[1;31mE (625030) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (625030) esp-tls: Failed to open new connection[0m
+[1;31mE (625030) transport_base: Failed to open a new connection[0m
+[1;31mE (625030) mqtt_client: Error transport connect[0m
+[0;32mI (625040) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (625740) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -81, Channel: 6, Authmode: 3[0m
+[0;33mW (625770) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (626040) SystemInfo: free sram: 15647 minimal sram: 331[0m
+[0;32mI (628180) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[0;32mI (630590) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[0;32mI (633000) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (635450) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[0;32mI (636110) SystemInfo: free sram: 15131 minimal sram: 331[0m
+[0;32mI (637920) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (640320) WifiStation: No more AP to connect, wait for next scan[0m
+[0;32mI (642860) WifiStation: Wait for next scan[0m
+[0;32mI (645320) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -82, Channel: 6, Authmode: 3[0m
+[0;33mW (645350) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (646040) SystemInfo: free sram: 15479 minimal sram: 331[0m
+[1;31mE (647040) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (647040) esp-tls: Failed to open new connection[0m
+[1;31mE (647040) transport_base: Failed to open a new connection[0m
+[1;31mE (647040) mqtt_client: Error transport connect[0m
+[0;32mI (647050) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (647840) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[0;32mI (650300) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[0;32mI (650310) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (650310) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (651310) wifi:state: auth -> init (0x200)[0m
+[0;32mI (651310) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (651310) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (653740) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[0;32mI (656130) SystemInfo: free sram: 15131 minimal sram: 331[0m
+[0;32mI (656200) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (658610) WifiStation: No more AP to connect, wait for next scan[0m
+[0;32mI (661030) WifiStation: Wait for next scan[0m
+[0;32mI (663530) WifiStation: Found AP: Pigeon Owner, BSSID: de:e4:0e:d6:94:43, RSSI: -83, Channel: 6, Authmode: 3[0m
+[0;33mW (663610) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (666020) WifiStation: Reconnecting Pigeon Owner (attempt 1 / 5)[0m
+[0;32mI (666040) SystemInfo: free sram: 15495 minimal sram: 331[0m
+[0;32mI (668450) WifiStation: Reconnecting Pigeon Owner (attempt 2 / 5)[0m
+[1;31mE (669050) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (669050) esp-tls: Failed to open new connection[0m
+[1;31mE (669050) transport_base: Failed to open a new connection[0m
+[1;31mE (669050) mqtt_client: Error transport connect[0m
+[0;32mI (669060) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (670920) WifiStation: Reconnecting Pigeon Owner (attempt 3 / 5)[0m
+[0;32mI (673380) WifiStation: Reconnecting Pigeon Owner (attempt 4 / 5)[0m
+[0;32mI (675850) WifiStation: Reconnecting Pigeon Owner (attempt 5 / 5)[0m
+[0;32mI (676150) SystemInfo: free sram: 15643 minimal sram: 331[0m
+[0;32mI (678320) WifiStation: No more AP to connect, wait for next scan[0m
+[0;32mI (680740) WifiStation: Wait for next scan[0m
+[0;32mI (683170) WifiStation: Wait for next scan[0m
+[0;32mI (685590) WifiStation: Wait for next scan[0m
+[0;32mI (686050) SystemInfo: free sram: 15187 minimal sram: 331[0m
+[0;32mI (688020) WifiStation: Wait for next scan[0m
+[0;32mI (690460) WifiStation: Wait for next scan[0m
+[1;31mE (691060) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (691060) esp-tls: Failed to open new connection[0m
+[1;31mE (691060) transport_base: Failed to open a new connection[0m
+[1;31mE (691060) mqtt_client: Error transport connect[0m
+[0;32mI (691070) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (692920) WifiStation: Wait for next scan[0m
+[0;32mI (695440) WifiStation: Wait for next scan[0m
+[0;32mI (696170) SystemInfo: free sram: 14615 minimal sram: 331[0m
+[0;32mI (697980) WifiStation: Wait for next scan[0m
+[0;32mI (700490) WifiStation: Wait for next scan[0m
+[0;32mI (702910) WifiStation: Wait for next scan[0m
+[0;32mI (705330) WifiStation: Wait for next scan[0m
+[0;32mI (706070) SystemInfo: free sram: 15171 minimal sram: 331[0m
+[0;32mI (707760) WifiStation: Wait for next scan[0m
+[0;32mI (710230) WifiStation: Wait for next scan[0m
+[0;32mI (712690) WifiStation: Wait for next scan[0m
+[1;31mE (713070) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (713070) esp-tls: Failed to open new connection[0m
+[1;31mE (713070) transport_base: Failed to open a new connection[0m
+[1;31mE (713070) mqtt_client: Error transport connect[0m
+[0;32mI (713080) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (715160) WifiStation: Wait for next scan[0m
+[0;32mI (716040) SystemInfo: free sram: 14827 minimal sram: 331[0m
+[0;32mI (717580) WifiStation: Wait for next scan[0m
+[0;32mI (720150) WifiStation: Wait for next scan[0m
+[0;32mI (722570) WifiStation: Wait for next scan[0m
+[0;32mI (724990) WifiStation: Wait for next scan[0m
+[0;32mI (726090) SystemInfo: free sram: 15139 minimal sram: 331[0m
+[0;32mI (727410) WifiStation: Wait for next scan[0m
+[0;32mI (729890) WifiStation: Wait for next scan[0m
+[0;32mI (732350) WifiStation: Wait for next scan[0m
+[0;32mI (734820) WifiStation: Wait for next scan[0m
+[1;31mE (735080) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (735080) esp-tls: Failed to open new connection[0m
+[1;31mE (735080) transport_base: Failed to open a new connection[0m
+[1;31mE (735080) mqtt_client: Error transport connect[0m
+[0;32mI (735090) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (736040) SystemInfo: free sram: 15739 minimal sram: 331[0m
+[0;32mI (737280) WifiStation: Wait for next scan[0m
+[0;32mI (739700) WifiStation: Wait for next scan[0m
+[0;32mI (742220) WifiStation: Wait for next scan[0m
+[0;32mI (744640) WifiStation: Wait for next scan[0m
+[0;32mI (746110) SystemInfo: free sram: 14103 minimal sram: 331[0m
+[0;32mI (747060) WifiStation: Wait for next scan[0m
+[0;32mI (749480) WifiStation: Wait for next scan[0m
+[0;32mI (751900) WifiStation: Wait for next scan[0m
+[0;32mI (754350) WifiStation: Wait for next scan[0m
+[0;32mI (756040) SystemInfo: free sram: 15183 minimal sram: 331[0m
+[0;32mI (756820) WifiStation: Wait for next scan[0m
+[1;31mE (757090) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (757090) esp-tls: Failed to open new connection[0m
+[1;31mE (757090) transport_base: Failed to open a new connection[0m
+[1;31mE (757090) mqtt_client: Error transport connect[0m
+[0;32mI (757100) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (759280) WifiStation: Wait for next scan[0m
+[0;32mI (761700) WifiStation: Wait for next scan[0m
+[0;32mI (764220) WifiStation: Wait for next scan[0m
+[0;32mI (766130) SystemInfo: free sram: 14823 minimal sram: 331[0m
+[0;32mI (766640) WifiStation: Wait for next scan[0m
+[0;32mI (769060) WifiStation: Wait for next scan[0m
+[0;32mI (771480) WifiStation: Wait for next scan[0m
+[0;32mI (773900) WifiStation: Wait for next scan[0m
+[0;32mI (776040) SystemInfo: free sram: 14775 minimal sram: 331[0m
+[0;32mI (776350) WifiStation: Wait for next scan[0m
+[0;32mI (778820) WifiStation: Wait for next scan[0m
+[1;31mE (779100) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (779100) esp-tls: Failed to open new connection[0m
+[1;31mE (779100) transport_base: Failed to open a new connection[0m
+[1;31mE (779100) mqtt_client: Error transport connect[0m
+[0;32mI (779110) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (781280) WifiStation: Wait for next scan[0m
+[0;32mI (783700) WifiStation: Wait for next scan[0m
+[0;32mI (786150) SystemInfo: free sram: 15231 minimal sram: 331[0m
+[0;32mI (786220) WifiStation: Wait for next scan[0m
+[0;32mI (788640) WifiStation: Wait for next scan[0m
+[0;32mI (791060) WifiStation: Wait for next scan[0m
+[0;32mI (793480) WifiStation: Wait for next scan[0m
+[0;32mI (795900) WifiStation: Wait for next scan[0m
+[0;32mI (796050) SystemInfo: free sram: 14707 minimal sram: 331[0m
+[0;32mI (798350) WifiStation: Wait for next scan[0m
+[0;32mI (800820) WifiStation: Wait for next scan[0m
+[1;31mE (801110) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (801110) esp-tls: Failed to open new connection[0m
+[1;31mE (801110) transport_base: Failed to open a new connection[0m
+[1;31mE (801110) mqtt_client: Error transport connect[0m
+[0;32mI (801120) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (803280) WifiStation: Wait for next scan[0m
+[0;32mI (805700) WifiStation: Wait for next scan[0m
+[0;32mI (806170) SystemInfo: free sram: 15271 minimal sram: 331[0m
+[0;32mI (808220) WifiStation: Wait for next scan[0m
+[0;32mI (810640) WifiStation: Wait for next scan[0m
+[0;32mI (813060) WifiStation: Wait for next scan[0m
+[0;32mI (815480) WifiStation: Wait for next scan[0m
+[0;32mI (816070) SystemInfo: free sram: 15371 minimal sram: 331[0m
+[0;32mI (817900) WifiStation: Wait for next scan[0m
+[0;32mI (820350) WifiStation: Wait for next scan[0m
+[0;32mI (822820) WifiStation: Wait for next scan[0m
+[1;31mE (823120) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (823120) esp-tls: Failed to open new connection[0m
+[1;31mE (823120) transport_base: Failed to open a new connection[0m
+[1;31mE (823120) mqtt_client: Error transport connect[0m
+[0;32mI (823130) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (825280) WifiStation: Wait for next scan[0m
+[0;32mI (826040) SystemInfo: free sram: 14551 minimal sram: 331[0m
+[0;32mI (827700) WifiStation: Wait for next scan[0m
+[0;32mI (830220) WifiStation: Wait for next scan[0m
+[0;32mI (832640) WifiStation: Wait for next scan[0m
+[0;32mI (835060) WifiStation: Wait for next scan[0m
+[0;32mI (836090) SystemInfo: free sram: 15167 minimal sram: 331[0m
+[0;32mI (837480) WifiStation: Wait for next scan[0m
+[0;32mI (839900) WifiStation: Wait for next scan[0m
+[0;32mI (842350) WifiStation: Wait for next scan[0m
+[0;32mI (844820) WifiStation: Wait for next scan[0m
+[1;31mE (845130) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (845130) esp-tls: Failed to open new connection[0m
+[1;31mE (845130) transport_base: Failed to open a new connection[0m
+[1;31mE (845130) mqtt_client: Error transport connect[0m
+[0;32mI (845140) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (846040) SystemInfo: free sram: 15387 minimal sram: 331[0m
+[0;32mI (847280) WifiStation: Wait for next scan[0m
+[0;32mI (849700) WifiStation: Wait for next scan[0m
+[0;32mI (852220) WifiStation: Wait for next scan[0m
+[0;32mI (854640) WifiStation: Wait for next scan[0m
+[0;32mI (856110) SystemInfo: free sram: 14155 minimal sram: 331[0m
+[0;32mI (857060) WifiStation: Wait for next scan[0m
+[0;32mI (859480) WifiStation: Wait for next scan[0m
+[0;32mI (861900) WifiStation: Wait for next scan[0m
+[0;32mI (864350) WifiStation: Wait for next scan[0m
+[0;32mI (866040) SystemInfo: free sram: 14819 minimal sram: 331[0m
+[0;32mI (866820) WifiStation: Wait for next scan[0m
+[1;31mE (867140) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (867140) esp-tls: Failed to open new connection[0m
+[1;31mE (867140) transport_base: Failed to open a new connection[0m
+[1;31mE (867140) mqtt_client: Error transport connect[0m
+[0;32mI (867150) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (869280) WifiStation: Wait for next scan[0m
+[0;32mI (871700) WifiStation: Wait for next scan[0m
+[0;32mI (874220) WifiStation: Wait for next scan[0m
+[0;32mI (876130) SystemInfo: free sram: 14043 minimal sram: 331[0m
+[0;32mI (876640) WifiStation: Wait for next scan[0m
+[0;32mI (879060) WifiStation: Wait for next scan[0m
+[0;32mI (881480) WifiStation: Wait for next scan[0m
+[0;32mI (883900) WifiStation: Wait for next scan[0m
+[0;32mI (886040) SystemInfo: free sram: 14815 minimal sram: 331[0m
+[0;32mI (886350) WifiStation: Wait for next scan[0m
+[0;32mI (888820) WifiStation: Wait for next scan[0m
+[1;31mE (889150) esp-tls: couldn't get hostname for :mqtt.xiaozhi.me: getaddrinfo() returns 202, addrinfo=0[0m
+[1;31mE (889150) esp-tls: Failed to open new connection[0m
+[1;31mE (889150) transport_base: Failed to open a new connection[0m
+[1;31mE (889150) mqtt_client: Error transport connect[0m
+[0;32mI (889160) esp_mqtt: MQTT error occurred: ESP_ERR_ESP_TLS_CANNOT_RESOLVE_HOSTNAME[0m
+[0;32mI (891280) WifiStation: Wait for next scan[0m
+[0;32mI (893700) WifiStation: Wait for next scan[0m
+[0;32mI (896150) SystemInfo: free sram: 15271 minimal sram: 331[0m
+[0;32mI (896220) WifiStation: Wait for next scan[0m
+[0;32mI (898640) WifiStation: Wait for next scan[0m
+[0;32mI (901060) WifiStation: Wait for next scan[0m
+[0;32mI (903480) WifiStation: Found AP: Pigeon Owner, BSSID: b6:cd:86:92:53:f4, RSSI: -35, Channel: 6, Authmode: 3[0m
+[0;33mW (903480) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2[0m
+[0;32mI (903500) wifi:new:<6,0>, old:<6,0>, ap:<255,255>, sta:<6,0>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (903500) wifi:state: init -> auth (0xb0)[0m
+[0;32mI (903500) wifi:state: auth -> assoc (0x0)[0m
+[0;32mI (903500) wifi:state: assoc -> run (0x10)[0m
+[0;32mI (903540) wifi:connected with Pigeon Owner, aid = 1, channel 6, BW20, bssid = b6:cd:86:92:53:f4[0m
+[0;32mI (903540) wifi:security: WPA2-PSK, phy: bgn, rssi: -37[0m
+[0;32mI (903550) wifi:pm start, type: 1[0m
+
+[0;32mI (903550) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (903630) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (904850) WifiStation: Got IP: 172.20.10.14[0m
+[0;32mI (904960) esp_netif_handlers: sta ip: 172.20.10.14, mask: 255.255.255.240, gw: 172.20.10.1[0m
+[0;32mI (905160) wifi:<ba-add>idx:0 (ifx:0, b6:cd:86:92:53:f4), tid:0, ssn:2, winSize:64[0m
+[0;32mI (905300) esp-x509-crt-bundle: Certificate validated[0m
+[0;32mI (906060) SystemInfo: free sram: 14327 minimal sram: 331[0m
+[0;32mI (916180) SystemInfo: free sram: 14351 minimal sram: 331[0m
+[0;32mI (926080) SystemInfo: free sram: 14363 minimal sram: 331[0m
+[0;32mI (936040) SystemInfo: free sram: 14387 minimal sram: 331[0m
+[0;32mI (946100) SystemInfo: free sram: 14399 minimal sram: 331[0m
+[0;32mI (956040) SystemInfo: free sram: 14903 minimal sram: 331[0m
+[0;32mI (966120) SystemInfo: free sram: 14351 minimal sram: 331[0m
+[0;32mI (976040) SystemInfo: free sram: 14387 minimal sram: 331[0m
+[0;32mI (986140) SystemInfo: free sram: 14363 minimal sram: 331[0m
+[0;32mI (996040) SystemInfo: free sram: 14387 minimal sram: 331[0m
+[0;32mI (1006160) SystemInfo: free sram: 14879 minimal sram: 331[0m
+[0;32mI (1016060) SystemInfo: free sram: 14903 minimal sram: 331[0m
+[0;32mI (1026180) SystemInfo: free sram: 14371 minimal sram: 331[0m
+[0;32mI (1036080) SystemInfo: free sram: 14419 minimal sram: 331[0m
+[0;32mI (1046040) SystemInfo: free sram: 14383 minimal sram: 331[0m
+[0;32mI (1056100) SystemInfo: free sram: 14419 minimal sram: 331[0m
+[0;32mI (1066040) SystemInfo: free sram: 14371 minimal sram: 331[0m
+[0;32mI (1076120) SystemInfo: free sram: 14899 minimal sram: 331[0m
+[0;32mI (1086040) SystemInfo: free sram: 14419 minimal sram: 331[0m
+[0;32mI (1096140) SystemInfo: free sram: 14347 minimal sram: 331[0m
+[0;32mI (1106040) SystemInfo: free sram: 14935 minimal sram: 331[0m
+[0;32mI (1116160) SystemInfo: free sram: 14383 minimal sram: 331[0m
+[0;32mI (1126060) SystemInfo: free sram: 14383 minimal sram: 331[0m
+[0;32mI (1136180) SystemInfo: free sram: 14347 minimal sram: 331[0m
+[0;32mI (1146080) SystemInfo: free sram: 14375 minimal sram: 331[0m
+[0;32mI (1149230) Application: STATE: connecting[0m
+[0;32mI (1149250) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1149400) MQTT: Session ID: c17aa18d[0m
+[0;32mI (1149400) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (1149410) Application: STATE: listening[0m
+[0;32mI (1149450) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1152950) Application: STATE: speaking[0m
+[0;32mI (1152950) Application: >> 裤盖往前走。[0m
+[0;32mI (1153300) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (1153340) Application: << 收到，大裤盖！[0m
+[0;32mI (1153550) AudioCodec: Set output enable to true[0m
+[0;32mI (1155640) Application: << 我这就往前走！[0m
+[0;32mI (1157450) Application: << % self.dog.move...[0m
+[0;32mI (1159870) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (1160080) Application: << 走啦走啦，大裤盖，我往前挪了两步！[0m
+[0;32mI (1162040) SystemInfo: free sram: 9923 minimal sram: 331[0m
+[0;32mI (1163760) Application: STATE: listening[0m
+[0;32mI (1163780) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1173110) SystemInfo: free sram: 9827 minimal sram: 331[0m
+[0;32mI (1179550) AudioCodec: Set output enable to false[0m
+[0;32mI (1183040) SystemInfo: free sram: 10491 minimal sram: 331[0m
+[0;32mI (1185450) Application: STATE: speaking[0m
+[0;32mI (1185450) Application: >> ，想要你忘记。[0m
+[0;32mI (1185930) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (1186100) Application: << 大裤盖，你怎么啦？[0m
+[0;32mI (1186300) AudioCodec: Set output enable to true[0m
+[0;32mI (1188340) Application: << 突然要我忘记，忘记啥呀？[0m
+[0;32mI (1191330) Application: STATE: listening[0m
+[0;32mI (1191380) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1198760) Application: STATE: speaking[0m
+[0;32mI (1198760) Application: >> 你在心里面。[0m
+[0;32mI (1199040) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (1199300) Application: << 大裤盖，你在说什么呀，我心里面有啥？[0m
+[0;32mI (1202980) Application: STATE: listening[0m
+[0;32mI (1203130) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1207740) Application: STATE: speaking[0m
+[0;32mI (1207740) Application: >> 暑假本主再见。[0m
+[0;32mI (1208320) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (1208570) Application: << 大裤盖，你要走啦？[0m
+[0;32mI (1211120) Application: << 那再见啦！[0m
+[0;32mI (1212690) MQTT: Received goodbye message, session_id: c17aa18d[0m
+[0;32mI (1212690) Application: STATE: listening[0m
+[0;32mI (1212690) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1212700) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (1212730) MQTT: Received goodbye message, session_id: c17aa18d[0m
+[0;32mI (1212850) Application: STATE: idle[0m
+[0;32mI (1212850) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1212850) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (1222040) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1228300) AudioCodec: Set output enable to false[0m
+[0;32mI (1232130) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1242040) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1252150) SystemInfo: free sram: 14303 minimal sram: 331[0m
+[0;32mI (1262050) SystemInfo: free sram: 14859 minimal sram: 331[0m
+[0;32mI (1272170) SystemInfo: free sram: 14307 minimal sram: 331[0m
+[0;32mI (1282070) SystemInfo: free sram: 14859 minimal sram: 331[0m
+[0;32mI (1292040) SystemInfo: free sram: 14363 minimal sram: 331[0m
+[0;32mI (1302090) SystemInfo: free sram: 14331 minimal sram: 331[0m
+[0;32mI (1312040) SystemInfo: free sram: 14363 minimal sram: 331[0m
+[0;32mI (1322110) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1332040) SystemInfo: free sram: 14375 minimal sram: 331[0m
+[0;32mI (1342130) SystemInfo: free sram: 14891 minimal sram: 331[0m
+[0;32mI (1352040) SystemInfo: free sram: 14375 minimal sram: 331[0m
+[0;32mI (1362150) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1372050) SystemInfo: free sram: 14891 minimal sram: 331[0m
+[0;32mI (1382170) SystemInfo: free sram: 14295 minimal sram: 331[0m
+[0;32mI (1392070) SystemInfo: free sram: 14887 minimal sram: 331[0m
+[0;32mI (1402040) SystemInfo: free sram: 14367 minimal sram: 331[0m
+[0;32mI (1412090) SystemInfo: free sram: 14335 minimal sram: 331[0m
+[0;32mI (1422040) SystemInfo: free sram: 14887 minimal sram: 331[0m
+[0;32mI (1432110) SystemInfo: free sram: 14367 minimal sram: 331[0m
+[0;32mI (1442040) SystemInfo: free sram: 14371 minimal sram: 331[0m
+[0;32mI (1452130) SystemInfo: free sram: 14847 minimal sram: 331[0m
+[0;32mI (1462040) SystemInfo: free sram: 14367 minimal sram: 331[0m
+[0;32mI (1472150) SystemInfo: free sram: 14847 minimal sram: 331[0m
+[0;32mI (1482050) SystemInfo: free sram: 14371 minimal sram: 331[0m
+[0;32mI (1492170) SystemInfo: free sram: 14331 minimal sram: 331[0m
+[0;32mI (1502070) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1512040) SystemInfo: free sram: 14375 minimal sram: 331[0m
+[0;32mI (1522090) SystemInfo: free sram: 14375 minimal sram: 331[0m
+[0;32mI (1532040) SystemInfo: free sram: 14891 minimal sram: 331[0m
+[0;32mI (1542110) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1552040) SystemInfo: free sram: 14375 minimal sram: 331[0m
+[0;32mI (1562130) SystemInfo: free sram: 14851 minimal sram: 331[0m
+[0;32mI (1572040) SystemInfo: free sram: 14367 minimal sram: 331[0m
+[0;32mI (1582150) SystemInfo: free sram: 14851 minimal sram: 331[0m
+[0;32mI (1592050) SystemInfo: free sram: 14371 minimal sram: 331[0m
+[0;32mI (1602170) SystemInfo: free sram: 14331 minimal sram: 331[0m
+[0;32mI (1612070) SystemInfo: free sram: 14335 minimal sram: 331[0m
+[0;32mI (1622040) SystemInfo: free sram: 14367 minimal sram: 331[0m
+[0;32mI (1632090) SystemInfo: free sram: 14375 minimal sram: 331[0m
+[0;32mI (1642040) SystemInfo: free sram: 14883 minimal sram: 331[0m
+[0;32mI (1652110) SystemInfo: free sram: 14331 minimal sram: 331[0m
+[0;32mI (1662040) SystemInfo: free sram: 14883 minimal sram: 331[0m
+[0;32mI (1672130) SystemInfo: free sram: 14855 minimal sram: 331[0m
+[0;32mI (1682040) SystemInfo: free sram: 14367 minimal sram: 331[0m
+[0;32mI (1692150) SystemInfo: free sram: 14847 minimal sram: 331[0m
+[0;32mI (1702050) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1712170) SystemInfo: free sram: 14331 minimal sram: 331[0m
+[0;32mI (1722070) SystemInfo: free sram: 14375 minimal sram: 331[0m
+[0;32mI (1732040) SystemInfo: free sram: 14367 minimal sram: 331[0m
+[0;32mI (1742090) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1752040) SystemInfo: free sram: 14891 minimal sram: 331[0m
+[0;32mI (1762110) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1772040) SystemInfo: free sram: 14891 minimal sram: 331[0m
+[0;32mI (1782130) SystemInfo: free sram: 14339 minimal sram: 331[0m
+[0;32mI (1792040) SystemInfo: free sram: 14375 minimal sram: 331[0m
+[0;32mI (1802150) SystemInfo: free sram: 14851 minimal sram: 331[0m
+[0;32mI (1806350) Application: STATE: connecting[0m
+[0;32mI (1806370) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1806610) MQTT: Session ID: 6e25d211[0m
+[0;32mI (1806610) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (1806610) Application: STATE: listening[0m
+[0;32mI (1806630) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1809430) Application: STATE: speaking[0m
+[0;32mI (1809440) Application: >> 你好。[0m
+[0;32mI (1809850) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (1810370) Application: << 你好呀，咋啦？[0m
+[0;32mI (1810370) animation_set_now_animation: Set now animation: 6[0m
+[0;32mI (1810510) AudioCodec: Set output enable to true[0m
+[0;32mI (1812180) Application: STATE: listening[0m
+[0;32mI (1812220) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1814210) Application: STATE: speaking[0m
+[0;32mI (1814210) Application: >> 你认识我吗？[0m
+[0;32mI (1814650) Application: << % self.camera.face_rec...[0m
+[0;32mI (1815080) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (1817460) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (1817730) Application: << 大酷盖！[0m
+[0;32mI (1819240) Application: << 我当然认识你啦！[0m
+[0;32mI (1821220) Application: STATE: listening[0m
+[0;32mI (1821350) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1831100) SystemInfo: free sram: 10087 minimal sram: 331[0m
+[0;32mI (1836510) AudioCodec: Set output enable to false[0m
+[0;32mI (1841040) SystemInfo: free sram: 10019 minimal sram: 331[0m
+[0;32mI (1851130) SystemInfo: free sram: 9571 minimal sram: 331[0m
+[0;32mI (1861040) SystemInfo: free sram: 9279 minimal sram: 331[0m
+[0;32mI (1871150) SystemInfo: free sram: 10087 minimal sram: 331[0m
+[0;32mI (1881050) SystemInfo: free sram: 10087 minimal sram: 331[0m
+[0;32mI (1884550) Application: STATE: speaking[0m
+[0;32mI (1885230) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (1885370) Application: << 那先这样啦，拜拜！[0m
+[0;32mI (1885560) AudioCodec: Set output enable to true[0m
+[0;32mI (1887720) Application: STATE: listening[0m
+[0;32mI (1887730) MQTT: Received goodbye message, session_id: 6e25d211[0m
+[0;32mI (1887740) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1887750) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (1887790) MQTT: Received goodbye message, session_id: 6e25d211[0m
+[0;32mI (1887910) Application: STATE: idle[0m
+[0;32mI (1887910) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (1887910) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (1897070) SystemInfo: free sram: 14771 minimal sram: 331[0m
+[0;32mI (1903560) AudioCodec: Set output enable to false[0m
+[0;32mI (1907040) SystemInfo: free sram: 14807 minimal sram: 331[0m
+[0;32mI (1917090) SystemInfo: free sram: 14771 minimal sram: 331[0m
+[0;32mI (1927040) SystemInfo: free sram: 14291 minimal sram: 331[0m
+[0;32mI (1937110) SystemInfo: free sram: 14771 minimal sram: 331[0m
+[0;32mI (1947040) SystemInfo: free sram: 14807 minimal sram: 331[0m
+[0;32mI (1957130) SystemInfo: free sram: 14771 minimal sram: 331[0m
+[0;32mI (1967040) SystemInfo: free sram: 14771 minimal sram: 331[0m
+[0;32mI (1977150) SystemInfo: free sram: 14771 minimal sram: 331[0m
+[0;32mI (1987050) SystemInfo: free sram: 15323 minimal sram: 331[0m
+[0;32mI (1997170) SystemInfo: free sram: 14215 minimal sram: 331[0m
+[0;32mI (2007070) SystemInfo: free sram: 14807 minimal sram: 331[0m
+[0;32mI (2017040) SystemInfo: free sram: 15323 minimal sram: 331[0m
+[0;32mI (2027090) SystemInfo: free sram: 14255 minimal sram: 331[0m
+[0;32mI (2037040) SystemInfo: free sram: 14807 minimal sram: 331[0m
+[0;32mI (2047110) SystemInfo: free sram: 14807 minimal sram: 331[0m
+[0;32mI (2057040) SystemInfo: free sram: 14807 minimal sram: 331[0m
+[0;32mI (2067130) SystemInfo: free sram: 14771 minimal sram: 331[0m
+[0;32mI (2077040) SystemInfo: free sram: 14291 minimal sram: 331[0m
+[0;32mI (2086860) Application: STATE: connecting[0m
+[0;32mI (2086930) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2087080) MQTT: Session ID: ecfd95e9[0m
+[0;32mI (2087090) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (2087090) Application: STATE: listening[0m
+[0;32mI (2087090) SystemInfo: free sram: 9871 minimal sram: 331[0m
+[0;32mI (2087090) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2089380) Application: STATE: speaking[0m
+[0;32mI (2089380) Application: >> 你认识我吗？[0m
+[0;32mI (2090330) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (2090400) Application: << 大裤盖！[0m
+[0;32mI (2090620) AudioCodec: Set output enable to true[0m
+[0;32mI (2091840) Application: << 我当然认识你啦！[0m
+[0;32mI (2093800) Application: STATE: listening[0m
+[0;32mI (2093820) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2096770) Application: STATE: speaking[0m
+[0;32mI (2096770) Application: >> 你看看我是谁。[0m
+[0;32mI (2097270) Application: << % self.camera.face_rec...[0m
+[0;32mI (2097630) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (2099780) Application: << 大裤盖！[0m
+[0;32mI (2099790) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (2101340) Application: << 我认出你啦！[0m
+[0;32mI (2103180) Application: STATE: listening[0m
+[0;32mI (2103220) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2113040) SystemInfo: free sram: 10055 minimal sram: 331[0m
+[0;32mI (2118620) AudioCodec: Set output enable to false[0m
+[0;32mI (2123110) SystemInfo: free sram: 10571 minimal sram: 331[0m
+[0;32mI (2132710) Application: STATE: speaking[0m
+[0;32mI (2132710) Application: >> 感情一做吧。[0m
+[0;32mI (2134120) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (2134150) Application: << 你说啥？[0m
+[0;32mI (2134350) AudioCodec: Set output enable to true[0m
+[0;32mI (2135660) Application: << 没听清呢。[0m
+[0;32mI (2137100) Application: STATE: listening[0m
+[0;32mI (2137110) SystemInfo: free sram: 9807 minimal sram: 331[0m
+[0;32mI (2137110) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2139170) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (2139170) Application: STATE: idle[0m
+[0;32mI (2139230) MQTT: Received goodbye message, session_id: ecfd95e9[0m
+[0;32mI (2139260) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2139270) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (2141160) Application: STATE: connecting[0m
+[0;32mI (2141170) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2141460) MQTT: Session ID: 434fcab8[0m
+[0;32mI (2141460) wifi:Set ps type: 0, coexist: 0[0m
+
+[0;32mI (2141460) Application: STATE: listening[0m
+[0;32mI (2141480) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2143990) Application: STATE: speaking[0m
+[0;32mI (2143990) Application: >> 看看我是谁。[0m
+[0;32mI (2144440) Application: << % self.camera.face_rec...[0m
+[0;32mI (2144790) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (2148930) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (2149090) Application: << 大酷盖！[0m
+[0;32mI (2150670) Application: << 我当然认识你啦！[0m
+[0;32mI (2152630) Application: STATE: listening[0m
+[0;32mI (2152630) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2162170) SystemInfo: free sram: 10075 minimal sram: 331[0m
+[0;32mI (2166700) Application: STATE: speaking[0m
+[0;32mI (2166740) Application: >> 你再看看我是谁。[0m
+[0;32mI (2167660) Application: << % self.camera.face_rec...[0m
+[0;32mI (2168040) Esp32Camera: Sending face recognition request to http://172.20.10.2:8001/recognize[0m
+[0;32mI (2168350) AudioCodec: Set output enable to false[0m
+[0;32mI (2172840) animation_set_now_animation: Set now animation: 1[0m
+[0;32mI (2173120) Application: << 大酷盖啊，我认得你呀！[0m
+[0;32mI (2173350) AudioCodec: Set output enable to true[0m
+[0;32mI (2175680) Application: STATE: listening[0m
+[0;32mI (2175820) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2185130) SystemInfo: free sram: 10043 minimal sram: 331[0m
+[0;32mI (2191350) AudioCodec: Set output enable to false[0m
+[0;32mI (2195040) SystemInfo: free sram: 9987 minimal sram: 331[0m
+[0;32mI (2205160) SystemInfo: free sram: 10243 minimal sram: 331[0m
+[0;32mI (2215060) SystemInfo: free sram: 10043 minimal sram: 331[0m
+[0;32mI (2225170) SystemInfo: free sram: 10555 minimal sram: 331[0m
+[0;32mI (2235080) SystemInfo: free sram: 9891 minimal sram: 331[0m
+[0;32mI (2245040) SystemInfo: free sram: 10555 minimal sram: 331[0m
+[0;32mI (2245270) Application: STATE: speaking[0m
+[0;32mI (2245900) animation_set_now_animation: Set now animation: 8[0m
+[0;32mI (2245910) Application: << 那先这样啦，拜拜！[0m
+[0;32mI (2246230) AudioCodec: Set output enable to true[0m
+[0;32mI (2248270) Application: STATE: listening[0m
+[0;32mI (2248290) MQTT: Received goodbye message, session_id: 434fcab8[0m
+[0;32mI (2248400) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2248410) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (2248440) MQTT: Received goodbye message, session_id: 434fcab8[0m
+[0;32mI (2248560) Application: STATE: idle[0m
+[0;32mI (2248560) animation_set_now_animation: Set now animation: 0[0m
+[0;32mI (2248570) wifi:Set ps type: 1, coexist: 0[0m
+
+[0;32mI (2258160) SystemInfo: free sram: 14919 minimal sram: 331[0m
+[0;32mI (2264230) AudioCodec: Set output enable to false[0m
+[0;32mI (2268060) SystemInfo: free sram: 15471 minimal sram: 331[0m
+[0;32mI (2278180) SystemInfo: free sram: 14879 minimal sram: 331[0m
+[0;32mI (2288080) SystemInfo: free sram: 14923 minimal sram: 331[0m
+[0;32mI (2298040) SystemInfo: free sram: 15475 minimal sram: 331[0m
+[0;32mI (2308100) SystemInfo: free sram: 14923 minimal sram: 331[0m
+[0;32mI (2318040) SystemInfo: free sram: 14959 minimal sram: 331[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x28 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2820,len:0x56c
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xc30
+load:0x403cb700,len:0x2e2c
+entry 0x403c890c
+[0;32mI (37) octal_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (37) octal_psram: dev id       : 0x02 (generation 3)[0m
+[0;32mI (37) octal_psram: density      : 0x03 (64 Mbit)[0m
+[0;32mI (39) octal_psram: good-die     : 0x01 (Pass)[0m
+[0;32mI (43) octal_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (47) octal_psram: VCC          : 0x01 (3V)[0m
+[0;32mI (51) octal_psram: SRF          : 0x01 (Fast Refresh)[0m
+[0;32mI (56) octal_psram: BurstType    : 0x01 (Hybrid Wrap)[0m
+[0;32mI (61) octal_psram: BurstLen     : 0x01 (32 Byte)[0m
+[0;32mI (65) octal_psram: Readlatency  : 0x02 (10 cycles@Fixed)[0m
+[0;32mI (70) octal_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (75) MSPI Timing: PSRAM timing tuning index: 4[0m
+[0;32mI (79) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (83) esp_psram: Speed: 80MHz[0m
+[0;32mI (85) cpu_start: Multicore app[0m
+[0;32mI (100) cpu_start: Pro cpu start user code[0m
+[0;32mI (100) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (100) app_init: Application information:[0m
+[0;32mI (100) app_init: Project name:     lulu[0m
+[0;32mI (104) app_init: App version:      1.8.8[0m
+[0;32mI (107) app_init: Compile time:     Apr  4 2026 08:03:41[0m
+[0;32mI (112) app_init: ELF file SHA256:  74a4ee538...[0m
+[0;32mI (117) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (121) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (124) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (128) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (132) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (139) heap_init: At 3FCB2CE0 len 00036A30 (218 KiB): RAM[0m
+[0;32mI (144) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (149) heap_init: At 600FE01C len 00001FBC (7 KiB): RTCRAM[0m
+[0;32mI (154) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator[0m
+[0;32mI (161) spi_flash: detected chip: generic[0m
+[0;32mI (164) spi_flash: flash io: qio[0m
+[0;32mI (168) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (174) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (180) main_task: Started on CPU0[0m
+[0;32mI (210) esp_psram: Reserving pool of 64K of internal memory for DMA/internal allocations[0m
+[0;32mI (210) main_task: Calling app_main()[0m
+[0;32mI (220) Board: UUID=143e5eac-6e0c-4c50-8310-409b22a8a7e3 SKU=lulu-esp32s3[0m
+[0;32mI (220) gpio: GPIO[0]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (230) button: IoT Button Version: 4.1.6[0m
+[0;32mI (230) gpio: GPIO[21]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (240) gc9a01: LCD panel create success, version: 2.0.1[0m
+[0;32mI (360) Display: Power management not supported[0m
+[0;32mI (480) LcdDisplay: Turning display on[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL library[0m
+[0;32mI (480) LcdDisplay: Initialize LVGL port[0m
+[0;32mI (480) LVGL: Starting LVGL task[0m
+[0;32mI (480) LcdDisplay: Adding LCD display[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_rec[0m
+[0;32mI (580) MCP: Add tool: self.camera.face_enroll[0m
+[0;32mI (580) MCP: Add tool: self.camera.remember_person[0m
+[0;32mI (590) MCP: Add tool: self.dog.move[0m
+[0;32mI (590) MCP: Add tool: self.dog.calibrate[0m
+[0;32mI (590) MCP: Add tool: self.dog.Wave[0m
+[0;32mI (600) MCP: Add tool: self.dog.Naughty[0m
+[0;32mI (600) MCP: Add tool: self.dog.Swing[0m
+[0;32mI (600) MCP: Add tool: self.dog.Lookup[0m
+[0;32mI (610) MCP: Add

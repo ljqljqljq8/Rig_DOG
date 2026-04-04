@@ -6,6 +6,9 @@
 class Camera {
 public:
     virtual void SetExplainUrl(const std::string& url, const std::string& token) = 0;
+    virtual void SetFaceTrackUrl(const std::string& url) {
+        (void)url;
+    }
     virtual bool Capture() = 0;
     virtual bool SetHMirror(bool enabled) = 0;
     virtual bool SetVFlip(bool enabled) = 0;
@@ -13,6 +16,10 @@ public:
     virtual std::string EnrollPerson(const std::string& name) {
         (void)name;
         return "<enroll>Face enrollment not supported</enroll>";
+    }
+    virtual std::string LocatePerson(const std::string& name) {
+        (void)name;
+        return "{\"success\":false,\"error\":\"Face locate not supported\"}";
     }
 };
 

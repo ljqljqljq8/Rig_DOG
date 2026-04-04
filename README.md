@@ -1,52 +1,159 @@
-RIG-pupyy is a desktop-level 5-DOF robotic dog.
+# Rig_DOG `face_v2`
 
-## 🐶 RIG-puppy 五自由度机器狗-噜噜
-基于 ESP32-S3 + 小智 AI 框架的轻量化智能机器狗 | 开源可复刻 | 支持语音和视觉多模态交互
+这个分支用于 `Lulu ESP32-S3` 机器狗的人脸 MCP 本地联调，当前已经合并了两类能力：
 
-（中文 | [English](README_en.md) ）
+- 本地 face service：
+  每人多图、同音或近似拼音归并、识别后自动追加样本。
+- 固件侧 follow 能力：
+  `self.camera.locate_person` 和 `self.dog.follow_person`。
 
-## 视频
+当前默认联调环境按这台开发机配置：
 
-- 待更新
+- 仓库路径：`E:\OneDrive\Research\Project\Robot_Pet_Project\Rig_Puppy\Rig_DOG`
+- 本机服务地址：`172.20.10.2:8001`
+- 串口：`COM9`
+- 板卡：`Lulu ESP32-S3`
 
-## 介绍
+## 目录说明
 
-- RIG-puppy(噜噜) 是一款面向教育、创客和嵌入式AI爱好者的微型四足机器人平台。它以 ESP32-S3 单芯片为主控核心，深度集成国产开源 AI 语音框架——“小智”（XiaoZhi），实现了从语音唤醒、自然语言理解到动作执行的全链路本地化闭环。不同于其他四自由度机器狗，RIG-puppy创新性的使用 5个总线式串口舵机 构成五自由度（5DOF）运动结构，引入了机器人腰部舵机，通过 UART 总线通信，大幅简化布线复杂度，使得机器人结构简洁，动作更加丰富有趣。
+```text
+Rig_DOG/
+  main/                       固件源码
+  mcp_service/                Windows 本地 face MCP 服务
+  build_lulu_mcp/             旧的人脸 MCP 构建产物
+  build_lulu_follow/          当前 follow 版构建产物
+  sdkconfig.lulu-esp32s3.local
+```
 
-- 如果你有任何想法或建议，请随时提出 Issues。
+## 当前能力
 
-### 硬件参数
+- `self.camera.face_rec`
+- `self.camera.face_enroll`
+- `self.camera.remember_person`
+- `self.camera.locate_person`
+- `self.dog.follow_person`
 
-- MEMS 麦克风，有效拾音范围 1-2m，灵敏度 - 26dB±3dB
-- 8Ω 2W 全频扬声器，频响范围 200Hz-20kHz，支持音量多级调节（0-100%）
-- 1.09 英寸 TFT SPI圆形全彩屏幕，分辨率 240*240
-- 70mm长3v流星雨流水灯
-- GC0308 摄像头
-- EM3总线串口舵机
-- ICM42670高性能6轴MEMS
-### 实现功能
+本地服务支持：
 
-- 语音唤醒(定制语音唤醒词语"小陆同学")
-- 摄像头取景拍照(如:打开摄像头，拍照等)
-- 语音控制机器狗运动(如:前进，后退，握手等)
-- 激光剑动态灯光(如:打开激光剑，切换灯光模式等)
-- 利用IMU实现运动学的拓展
-### RIG-puppy百科全书
+- `POST /recognize`
+- `POST /enroll`
+- `POST /reload`
+- `POST /locate`
+- `DELETE /remove/{name}`
+- `GET /list`
+- `GET /health`
 
-👉 [《RIG-puppy开源文档》](https://www.yuque.com/luwudynamics/pet/eghh6p5ycdgcgomf)
+## 启动本地服务
 
-## 软件
+推荐直接使用脚本：
 
-固件默认接入 [xiaozhi.me](https://xiaozhi.me) 官方服务器，个人用户注册账号可以免费使用。
+```powershell
+cd E:\OneDrive\Research\Project\Robot_Pet_Project\Rig_Puppy\Rig_DOG\mcp_service
+powershell -ExecutionPolicy Bypass -File .\scripts\start_windows.ps1
+```
 
+手动启动：
 
-## 许可证（License）
+```powershell
+cd E:\OneDrive\Research\Project\Robot_Pet_Project\Rig_Puppy\Rig_DOG\mcp_service
+.\.venv\Scripts\Activate.ps1
+python -m uvicorn src.app:app --host 0.0.0.0 --port 8001
+```
 
-本项目采用 **非商业许可（Non-Commercial License）** 发布。
+健康检查：
 
-- ✅ 允许个人使用 / 学习 / 教育 / 科研用途  
-- ❌ 未经作者许可，**禁止任何形式的商业使用**
+```powershell
+Invoke-WebRequest http://127.0.0.1:8001/health
+Invoke-WebRequest http://172.20.10.2:8001/health
+```
 
-如需进行商业授权，请联系项目作者。
+## ESP-IDF 环境激活
 
+```powershell
+cd E:\OneDrive\Research\Project\Robot_Pet_Project\Rig_Puppy\Rig_DOG
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+. ..\activate_idf.ps1
+$env:PATH = 'C:\Program Files\Git\cmd;' + $env:PATH
+```
 
+## 构建固件
+
+当前推荐使用 `build_lulu_follow`：
+
+```powershell
+cd E:\OneDrive\Research\Project\Robot_Pet_Project\Rig_Puppy\Rig_DOG
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+. ..\activate_idf.ps1
+$env:PATH = 'C:\Program Files\Git\cmd;' + $env:PATH
+python $env:IDF_PATH\tools\idf.py -B build_lulu_follow -D SDKCONFIG=sdkconfig.lulu-esp32s3.local -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;sdkconfig.defaults.esp32s3;sdkconfig.defaults.lulu-esp32s3" -D IDF_TARGET=esp32s3 build
+```
+
+如果要复用旧目录 `build_lulu_mcp`：
+
+```powershell
+cd E:\OneDrive\Research\Project\Robot_Pet_Project\Rig_Puppy\Rig_DOG
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+. ..\activate_idf.ps1
+$env:PATH = 'C:\Program Files\Git\cmd;' + $env:PATH
+python $env:IDF_PATH\tools\idf.py -B build_lulu_mcp -D SDKCONFIG=sdkconfig.lulu-esp32s3.local -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;sdkconfig.defaults.esp32s3;sdkconfig.defaults.lulu-esp32s3" -D IDF_TARGET=esp32s3 build
+```
+
+## 烧录与监视
+
+烧录：
+
+```powershell
+cd E:\OneDrive\Research\Project\Robot_Pet_Project\Rig_Puppy\Rig_DOG
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+. ..\activate_idf.ps1
+$env:PATH = 'C:\Program Files\Git\cmd;' + $env:PATH
+python $env:IDF_PATH\tools\idf.py -B build_lulu_follow -D SDKCONFIG=sdkconfig.lulu-esp32s3.local -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;sdkconfig.defaults.esp32s3;sdkconfig.defaults.lulu-esp32s3" -D IDF_TARGET=esp32s3 -p COM9 flash
+```
+
+串口监视：
+
+```powershell
+cd E:\OneDrive\Research\Project\Robot_Pet_Project\Rig_Puppy\Rig_DOG
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+. ..\activate_idf.ps1
+$env:PATH = 'C:\Program Files\Git\cmd;' + $env:PATH
+python $env:IDF_PATH\tools\idf.py -B build_lulu_follow -D SDKCONFIG=sdkconfig.lulu-esp32s3.local -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;sdkconfig.defaults.esp32s3;sdkconfig.defaults.lulu-esp32s3" -D IDF_TARGET=esp32s3 -p COM9 monitor
+```
+
+一条命令直接烧录并监视：
+
+```powershell
+cd E:\OneDrive\Research\Project\Robot_Pet_Project\Rig_Puppy\Rig_DOG
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+. ..\activate_idf.ps1
+$env:PATH = 'C:\Program Files\Git\cmd;' + $env:PATH
+python $env:IDF_PATH\tools\idf.py -B build_lulu_follow -D SDKCONFIG=sdkconfig.lulu-esp32s3.local -D SDKCONFIG_DEFAULTS="sdkconfig.defaults;sdkconfig.defaults.esp32s3;sdkconfig.defaults.lulu-esp32s3" -D IDF_TARGET=esp32s3 -p COM9 flash monitor
+```
+
+## 人脸库说明
+
+人脸库位于 `mcp_service/photos/`，按“每人一个文件夹”维护：
+
+```text
+mcp_service/photos/
+  大酷盖/
+    1.jpg
+    2.jpg
+    3.jpg
+```
+
+当前行为：
+
+- 同一个人再次录入时，会继续往对应目录追加图片。
+- 识别命中已知人时，会按阈值自动追加新图片。
+- 同音或相近拼音名会优先归并到已有目录名。
+
+## 已知限制
+
+- 当前 `lulu.bin` 仍然大于 `ota_1` 分区。
+- 串口 `flash` 正常，但 OTA 分区布局后续需要单独调整。
+- 这个分支把 `build_lulu_mcp/` 和 `build_lulu_follow/` 也一并保留在仓库中，仓库体积会比较大。
+
+## 更多说明
+
+本地服务的详细说明见 [mcp_service/README.md](mcp_service/README.md)。
