@@ -44,22 +44,23 @@ class InsightFaceBackend:
         return self.extract_from_image(image, strategy=strategy)
 
     def extract_from_image(self, image: np.ndarray, strategy: str = "largest") -> dict[str, Any]:
-        faces = self._app.get(image)
-        if not faces:
-            return self._failure("no face detected")
+        result = self.extract_faces_from_image(image)
+        if not result["success"]:
+            return self._failure(result["error"])
 
+        faces = result["faces"]
         if len(faces) > 1 and strategy == "error":
             return self._failure(f"multiple faces detected ({len(faces)})")
 
         if strategy == "largest":
-            selected = max(faces, key=self._face_area)
+            selected = max(faces, key=lambda face: self._bbox_area(face["face"]["bbox"]))
         else:
             selected = faces[0]
 
-        embedding = self._normalized_embedding(selected)
-        bbox = self._bbox_dict(selected)
-        landmarks = self._landmarks(selected)
-        confidence = float(getattr(selected, "det_score", 0.0))
+        embedding = selected["embedding"]
+        bbox = selected["face"]["bbox"]
+        landmarks = selected["face"]["landmarks"]
+        confidence = selected["face"]["confidence"]
 
         return {
             "success": True,
@@ -69,6 +70,34 @@ class InsightFaceBackend:
                 "landmarks": landmarks,
                 "confidence": confidence,
             },
+            "error": None,
+        }
+
+    def extract_faces_from_image(self, image: np.ndarray) -> dict[str, Any]:
+        faces = self._app.get(image)
+        if not faces:
+            return {
+                "success": False,
+                "faces": [],
+                "error": "no face detected",
+            }
+
+        extracted_faces: list[dict[str, Any]] = []
+        for face in faces:
+            extracted_faces.append(
+                {
+                    "embedding": self._normalized_embedding(face),
+                    "face": {
+                        "bbox": self._bbox_dict(face),
+                        "landmarks": self._landmarks(face),
+                        "confidence": float(getattr(face, "det_score", 0.0)),
+                    },
+                }
+            )
+
+        return {
+            "success": True,
+            "faces": extracted_faces,
             "error": None,
         }
 
@@ -106,6 +135,9 @@ class InsightFaceBackend:
         bbox = np.asarray(face.bbox, dtype=np.float32).reshape(-1)
         return float(max(0.0, bbox[2] - bbox[0]) * max(0.0, bbox[3] - bbox[1]))
 
+    def _bbox_area(self, bbox: dict[str, int]) -> float:
+        return float(max(0, bbox["w"]) * max(0, bbox["h"]))
+
     def _failure(self, error: str) -> dict[str, Any]:
         logger.warning("face extraction failed: %s", error)
         return {
@@ -114,4 +146,3 @@ class InsightFaceBackend:
             "face": None,
             "error": error,
         }
-

@@ -40,10 +40,20 @@ class RecognizeRequest(BaseModel):
     confidence_threshold: Optional[float] = Field(default=None)
 
 
+class RecognizedFace(BaseModel):
+    matched: bool
+    name: Optional[str]
+    candidate_name: Optional[str]
+    confidence: float
+    bbox: dict
+
+
 class RecognizeResponse(BaseModel):
     matched: bool
     name: Optional[str]
     confidence: float
+    face_count: int = 0
+    faces: list[RecognizedFace] = Field(default_factory=list)
     processing_time_ms: int
 
 
@@ -232,6 +242,77 @@ def _face_position_payload(image: np.ndarray, face: dict) -> dict:
     }
 
 
+def _build_recognition_matches(
+    extracted_faces: list[dict],
+    store: VectorStore,
+    threshold: float,
+) -> list[dict]:
+    matches: list[dict] = []
+    for extracted_face in extracted_faces:
+        match = store.search(extracted_face["embedding"], threshold=threshold)
+        bbox = extracted_face["face"]["bbox"]
+        matches.append(
+            {
+                "matched": bool(match["matched"]),
+                "name": match["name"],
+                "candidate_name": match.get("candidate_name"),
+                "confidence": float(match["confidence"]),
+                "bbox": bbox,
+            }
+        )
+
+    matches.sort(key=lambda item: item["bbox"]["x"] + (item["bbox"]["w"] / 2.0))
+    return matches
+
+
+def _select_locate_candidate(
+    image: np.ndarray,
+    extracted_faces: list[dict],
+    target_name: str,
+    store: VectorStore,
+    threshold: float,
+) -> dict:
+    best_candidate = None
+    best_score = -1.0
+
+    for extracted_face in extracted_faces:
+        target_confidence = store.score_name(target_name, extracted_face["embedding"])
+        score = float(target_confidence) if target_confidence is not None else -1.0
+        best_match = store.search(extracted_face["embedding"], threshold=-1.0)
+        candidate = {
+            "face": extracted_face["face"],
+            "target_confidence": score,
+            "best_match": best_match,
+        }
+        if best_candidate is None or score > best_score:
+            best_candidate = candidate
+            best_score = score
+
+    if best_candidate is None:
+        raise RuntimeError("no face candidates available")
+
+    matched = best_candidate["target_confidence"] >= threshold
+    face_payload = _face_position_payload(image, best_candidate["face"])
+    detected_name = (
+        target_name
+        if matched
+        else best_candidate["best_match"].get("candidate_name")
+    )
+
+    return {
+        "matched": matched,
+        "detected_name": detected_name,
+        "confidence": max(0.0, float(best_candidate["target_confidence"])),
+        "bbox": face_payload["bbox"],
+        "center": face_payload["center"],
+        "offset": face_payload["offset"],
+        "image_size": face_payload["image_size"],
+        "face_ratio": float(face_payload["face_ratio"]),
+        "turn_hint": face_payload["turn_hint"],
+        "distance_hint": face_payload["distance_hint"],
+    }
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     del app
@@ -300,24 +381,32 @@ async def recognize(request: RecognizeRequest) -> RecognizeResponse:
         raise HTTPException(status_code=503, detail="service not ready")
 
     started = time.time()
-    result = backend.extract_from_base64(
-        request.image_base64,
-        strategy=config.MULTIPLE_FACES_STRATEGY,
-    )
+    image = _decode_base64_image(request.image_base64)
+    result = backend.extract_faces_from_image(image)
     if not result["success"]:
         return RecognizeResponse(
             matched=False,
             name=None,
             confidence=0.0,
+            face_count=0,
+            faces=[],
             processing_time_ms=int((time.time() - started) * 1000),
         )
 
     threshold = request.confidence_threshold or config.SIMILARITY_THRESHOLD
-    match = vector_store.search(result["embedding"], threshold=threshold)
+    matches = _build_recognition_matches(result["faces"], vector_store, threshold)
+    matched_faces = [face for face in matches if face["matched"]]
+    summary_face = max(
+        matched_faces if matched_faces else matches,
+        key=lambda face: face["confidence"],
+    )
+
     return RecognizeResponse(
-        matched=match["matched"],
-        name=match["name"],
-        confidence=float(match["confidence"]),
+        matched=bool(matched_faces),
+        name=summary_face["name"] if summary_face["matched"] else None,
+        confidence=float(summary_face["confidence"]),
+        face_count=len(matches),
+        faces=matches,
         processing_time_ms=int((time.time() - started) * 1000),
     )
 
@@ -438,10 +527,7 @@ async def locate_person(request: LocateRequest) -> LocateResponse:
         )
 
     image = _decode_base64_image(request.image_base64)
-    result = backend.extract_from_image(
-        image,
-        strategy=config.MULTIPLE_FACES_STRATEGY,
-    )
+    result = backend.extract_faces_from_image(image)
     if not result["success"]:
         return LocateResponse(
             success=False,
@@ -461,24 +547,27 @@ async def locate_person(request: LocateRequest) -> LocateResponse:
         )
 
     threshold = request.confidence_threshold or config.SIMILARITY_THRESHOLD
-    face_payload = _face_position_payload(image, result["face"])
-    target_confidence = vector_store.score_name(normalized_name, result["embedding"])
-    best_match = vector_store.search(result["embedding"], threshold=-1.0)
-    matched = target_confidence is not None and target_confidence >= threshold
+    selected = _select_locate_candidate(
+        image=image,
+        extracted_faces=result["faces"],
+        target_name=normalized_name,
+        store=vector_store,
+        threshold=threshold,
+    )
 
     return LocateResponse(
         success=True,
         target_name=normalized_name,
-        matched=matched,
-        detected_name=best_match.get("candidate_name"),
-        confidence=float(target_confidence or 0.0),
-        bbox=face_payload["bbox"],
-        center=face_payload["center"],
-        offset=face_payload["offset"],
-        image_size=face_payload["image_size"],
-        face_ratio=float(face_payload["face_ratio"]),
-        turn_hint=face_payload["turn_hint"],
-        distance_hint=face_payload["distance_hint"],
+        matched=selected["matched"],
+        detected_name=selected["detected_name"],
+        confidence=selected["confidence"],
+        bbox=selected["bbox"],
+        center=selected["center"],
+        offset=selected["offset"],
+        image_size=selected["image_size"],
+        face_ratio=selected["face_ratio"],
+        turn_hint=selected["turn_hint"],
+        distance_hint=selected["distance_hint"],
         error=None,
         processing_time_ms=int((time.time() - started) * 1000),
     )

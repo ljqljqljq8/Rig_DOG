@@ -5,6 +5,7 @@
 #include "system_info.h"
 
 #include <cJSON.h>
+#include <atomic>
 #include <esp_log.h>
 #include <esp_heap_caps.h>
 #include <img_converters.h>
@@ -139,6 +140,79 @@ std::string ExtractApiErrorMessage(const std::string& response_body, int status_
     return std::string(fallback);
 }
 
+std::string BuildExplainFailureResponse(const std::string& message) {
+    return std::string("{\"success\": false, \"message\": \"") + message + "\"}";
+}
+
+std::string BuildMultiFaceRecognitionResult(cJSON* faces) {
+    if (!cJSON_IsArray(faces)) {
+        return {};
+    }
+
+    int total_faces = cJSON_GetArraySize(faces);
+    if (total_faces <= 0) {
+        return {};
+    }
+
+    int matched_faces = 0;
+    int listed_faces = 0;
+    int unknown_faces = 0;
+    std::string result = "<rec>";
+
+    char prefix[48];
+    if (total_faces == 1) {
+        snprintf(prefix, sizeof(prefix), "Detected 1 face");
+    } else {
+        snprintf(prefix, sizeof(prefix), "Detected %d faces", total_faces);
+    }
+    result += prefix;
+
+    for (int i = 0; i < total_faces; ++i) {
+        cJSON* face = cJSON_GetArrayItem(faces, i);
+        if (!cJSON_IsObject(face)) {
+            unknown_faces++;
+            continue;
+        }
+
+        cJSON* matched = cJSON_GetObjectItem(face, "matched");
+        cJSON* name = cJSON_GetObjectItem(face, "name");
+        cJSON* confidence = cJSON_GetObjectItem(face, "confidence");
+        if (cJSON_IsBool(matched) && cJSON_IsTrue(matched) && cJSON_IsString(name) &&
+            name->valuestring != nullptr) {
+            matched_faces++;
+            if (listed_faces < 4) {
+                result += (listed_faces == 0) ? ": " : ", ";
+                char item[96];
+                snprintf(item, sizeof(item), "%s (%.2f)", name->valuestring,
+                         cJSON_IsNumber(confidence) ? confidence->valuedouble : 0.0);
+                result += item;
+                listed_faces++;
+            }
+        } else {
+            unknown_faces++;
+        }
+    }
+
+    if (matched_faces == 0) {
+        result += ", no known match";
+    } else {
+        int hidden_matches = matched_faces - listed_faces;
+        if (hidden_matches > 0) {
+            char hidden_output[48];
+            snprintf(hidden_output, sizeof(hidden_output), ", %d more known", hidden_matches);
+            result += hidden_output;
+        }
+        if (unknown_faces > 0) {
+            char unknown_output[48];
+            snprintf(unknown_output, sizeof(unknown_output), ", %d unknown", unknown_faces);
+            result += unknown_output;
+        }
+    }
+
+    result += "</rec>";
+    return result;
+}
+
 }  // namespace
 
 Esp32Camera::Esp32Camera(const camera_config_t& config) {
@@ -212,6 +286,7 @@ Esp32Camera::~Esp32Camera() {
 void Esp32Camera::SetExplainUrl(const std::string& url, const std::string& token) {
     explain_url_ = url;
     explain_token_ = token;
+    ESP_LOGI(TAG, "Set explain URL: %s (token=%s)", explain_url_.c_str(), explain_token_.empty() ? "no" : "yes");
 }
 
 void Esp32Camera::SetFaceEnrollUrl(const std::string& url) {
@@ -312,6 +387,13 @@ std::string Esp32Camera::RecognizeFace(const std::string& url) {
     }
 
     std::string result = "<rec>Invalid API response</rec>";
+    cJSON* faces = cJSON_GetObjectItem(response, "faces");
+    std::string multi_face_result = BuildMultiFaceRecognitionResult(faces);
+    if (!multi_face_result.empty()) {
+        cJSON_Delete(response);
+        return multi_face_result;
+    }
+
     cJSON* matched = cJSON_GetObjectItem(response, "matched");
     cJSON* name = cJSON_GetObjectItem(response, "name");
     cJSON* confidence = cJSON_GetObjectItem(response, "confidence");
@@ -529,31 +611,56 @@ std::string Esp32Camera::Explain(const std::string& question) {
         return "{\"success\": false, \"message\": \"Image explain URL or token is not set\"}";
     }
 
-    // 创建局部的 JPEG 队列, 40 entries is about to store 512 * 40 = 20480 bytes of JPEG data
-    QueueHandle_t jpeg_queue = xQueueCreate(40, sizeof(JpegChunk));
-    if (jpeg_queue == nullptr) {
-        ESP_LOGE(TAG, "Failed to create JPEG queue");
-        return "{\"success\": false, \"message\": \"Failed to create JPEG queue\"}";
+    ESP_LOGI(TAG, "Explain request question=%s, url=%s, free internal heap=%u, free 8bit heap=%u",
+             question.c_str(), explain_url_.c_str(),
+             (unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL),
+             (unsigned)heap_caps_get_free_size(MALLOC_CAP_8BIT));
+
+    uint8_t* jpeg_buffer = nullptr;
+    size_t jpeg_length = 0;
+    bool own_jpeg_buffer = false;
+    if (fb_->format == PIXFORMAT_JPEG) {
+        jpeg_buffer = fb_->buf;
+        jpeg_length = fb_->len;
+    } else {
+        // Use synchronous JPEG encoding so TLS upload does not compete with an extra
+        // encoder thread/queue for scarce internal SRAM.
+        if (!frame2jpg(fb_, 60, &jpeg_buffer, &jpeg_length) || jpeg_buffer == nullptr || jpeg_length == 0) {
+            ESP_LOGE(TAG, "Failed to encode frame as JPEG for explain");
+            return "{\"success\": false, \"message\": \"Failed to encode JPEG\"}";
+        }
+        own_jpeg_buffer = true;
     }
 
-    // We spawn a thread to encode the image to JPEG
-    encoder_thread_ = std::thread([this, jpeg_queue]() {
-        frame2jpg_cb(fb_, 80, [](void* arg, size_t index, const void* data, size_t len) -> unsigned int {
-            auto jpeg_queue = (QueueHandle_t)arg;
-            JpegChunk chunk = {
-                .data = (uint8_t*)heap_caps_aligned_alloc(16, len, MALLOC_CAP_SPIRAM),
-                .len = len
-            };
-            memcpy(chunk.data, data, len);
-            xQueueSend(jpeg_queue, &chunk, portMAX_DELAY);
-            return len;
-        }, jpeg_queue);
-    });
+    ESP_LOGI(TAG, "Explain JPEG prepared, size=%u, own_buffer=%s, free internal heap=%u",
+             (unsigned)jpeg_length, own_jpeg_buffer ? "yes" : "no",
+             (unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL));
 
     auto network = Board::GetInstance().GetNetwork();
     auto http = network->CreateHttp(3);
+    // Keep the default 30s-class timeout so slow uplinks do not fail photo explain early.
+    http->SetTimeout(30000);
     // 构造multipart/form-data请求体
     std::string boundary = "----ESP32_CAMERA_BOUNDARY";
+    bool http_opened = false;
+    bool upload_failed = false;
+    std::string failure_message = "Failed to upload photo";
+    auto close_http = [&]() {
+        if (http_opened) {
+            http->Close();
+            http_opened = false;
+        }
+    };
+    auto mark_upload_failed = [&](const char* stage, const char* message = "Failed to upload photo") {
+        if (upload_failed) {
+            return;
+        }
+        upload_failed = true;
+        failure_message = message;
+        ESP_LOGE(TAG, "Photo upload failed at %s, free internal heap=%u", stage,
+                 (unsigned)heap_caps_get_free_size(MALLOC_CAP_INTERNAL));
+        close_http();
+    };
 
     // 配置HTTP客户端，使用分块传输编码
     http->SetHeader("Device-Id", SystemInfo::GetMacAddress().c_str());
@@ -565,75 +672,80 @@ std::string Esp32Camera::Explain(const std::string& question) {
     http->SetHeader("Transfer-Encoding", "chunked");
     if (!http->Open("POST", explain_url_)) {
         ESP_LOGE(TAG, "Failed to connect to explain URL");
-        // Clear the queue
-        encoder_thread_.join();
-        JpegChunk chunk;
-        while (xQueueReceive(jpeg_queue, &chunk, portMAX_DELAY) == pdPASS) {
-            if (chunk.data != nullptr) {
-                heap_caps_free(chunk.data);
-            } else {
-                break;
-            }
-        }
-        vQueueDelete(jpeg_queue);
-        return "{\"success\": false, \"message\": \"Failed to connect to explain URL\"}";
+        upload_failed = true;
+        failure_message = "Failed to connect to explain URL";
+    } else {
+        http_opened = true;
     }
-    
-    {
+
+    if (!upload_failed) {
         // 第一块：question字段
         std::string question_field;
         question_field += "--" + boundary + "\r\n";
         question_field += "Content-Disposition: form-data; name=\"question\"\r\n";
         question_field += "\r\n";
         question_field += question + "\r\n";
-        http->Write(question_field.c_str(), question_field.size());
+        if (http->Write(question_field.c_str(), question_field.size()) <= 0) {
+            mark_upload_failed("question field");
+        }
     }
-    {
+    if (!upload_failed) {
         // 第二块：文件字段头部
         std::string file_header;
         file_header += "--" + boundary + "\r\n";
         file_header += "Content-Disposition: form-data; name=\"file\"; filename=\"camera.jpg\"\r\n";
         file_header += "Content-Type: image/jpeg\r\n";
         file_header += "\r\n";
-        http->Write(file_header.c_str(), file_header.size());
+        if (http->Write(file_header.c_str(), file_header.size()) <= 0) {
+            mark_upload_failed("file header");
+        }
     }
 
     // 第三块：JPEG数据
     size_t total_sent = 0;
-    while (true) {
-        JpegChunk chunk;
-        if (xQueueReceive(jpeg_queue, &chunk, portMAX_DELAY) != pdPASS) {
-            ESP_LOGE(TAG, "Failed to receive JPEG chunk");
+    const size_t send_chunk_size = 2048;
+    for (size_t offset = 0; offset < jpeg_length && !upload_failed; offset += send_chunk_size) {
+        size_t chunk_len = std::min(send_chunk_size, jpeg_length - offset);
+        if (http->Write(reinterpret_cast<const char*>(jpeg_buffer + offset), chunk_len) <= 0) {
+            mark_upload_failed("jpeg data");
             break;
         }
-        if (chunk.data == nullptr) {
-            break; // The last chunk
-        }
-        http->Write((const char*)chunk.data, chunk.len);
-        total_sent += chunk.len;
-        heap_caps_free(chunk.data);
+        total_sent += chunk_len;
     }
-    // Wait for the encoder thread to finish
-    encoder_thread_.join();
-    // 清理队列
-    vQueueDelete(jpeg_queue);
+    if (own_jpeg_buffer) {
+        free(jpeg_buffer);
+        jpeg_buffer = nullptr;
+    }
 
-    {
+    if (!upload_failed) {
         // 第四块：multipart尾部
         std::string multipart_footer;
         multipart_footer += "\r\n--" + boundary + "--\r\n";
-        http->Write(multipart_footer.c_str(), multipart_footer.size());
+        if (http->Write(multipart_footer.c_str(), multipart_footer.size()) <= 0) {
+            mark_upload_failed("multipart footer");
+        }
     }
-    // 结束块
-    http->Write("", 0);
+    if (!upload_failed) {
+        // 结束块
+        if (http->Write("", 0) <= 0) {
+            mark_upload_failed("final chunk");
+        }
+    }
 
-    if (http->GetStatusCode() != 200) {
-        ESP_LOGE(TAG, "Failed to upload photo, status code: %d", http->GetStatusCode());
+    if (upload_failed) {
+        close_http();
+        return BuildExplainFailureResponse(failure_message);
+    }
+
+    int status_code = http->GetStatusCode();
+    if (status_code != 200) {
+        ESP_LOGE(TAG, "Failed to upload photo, status code: %d", status_code);
+        close_http();
         return "{\"success\": false, \"message\": \"Failed to upload photo\"}";
     }
 
     std::string result = http->ReadAll();
-    http->Close();
+    close_http();
 
     // Get remain task stack size
     size_t remain_stack_size = uxTaskGetStackHighWaterMark(nullptr);

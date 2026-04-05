@@ -52,9 +52,9 @@
 #define CAMERA_PIN_PWDN GPIO_NUM_NC
 #define CAMERA_PIN_RESET GPIO_NUM_NC
 #define XCLK_FREQ_HZ 20000000
-#define FACE_RECOGNITION_URL "http://192.168.147.46:8001/recognize"
-#define FACE_ENROLL_URL "http://192.168.147.46:8001/enroll"
-#define FACE_TRACK_URL "http://192.168.147.46:8001/locate"
+#define FACE_RECOGNITION_URL "http://172.20.10.2:8001/recognize"
+#define FACE_ENROLL_URL "http://172.20.10.2:8001/enroll"
+#define FACE_TRACK_URL "http://172.20.10.2:8001/locate"
 
 
 #define DISPLAY_BACKLIGHT_PIN GPIO_NUM_38

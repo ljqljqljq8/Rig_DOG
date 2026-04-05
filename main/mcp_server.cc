@@ -421,6 +421,13 @@ void McpServer::DoToolCall(int id, const std::string& tool_name, const cJSON* to
         return;
     }
 
+    bool expected = false;
+    if (!tool_call_running_.compare_exchange_strong(expected, true)) {
+        ESP_LOGW(TAG, "tools/call: Busy while starting tool: %s", tool_name.c_str());
+        ReplyError(id, "Another tool call is already running");
+        return;
+    }
+
     // Start a task to receive data with stack size
     esp_pthread_cfg_t cfg = esp_pthread_get_default_config();
     cfg.thread_name = "tool_call";
@@ -429,13 +436,27 @@ void McpServer::DoToolCall(int id, const std::string& tool_name, const cJSON* to
     esp_pthread_set_cfg(&cfg);
 
     // Use a thread to call the tool to avoid blocking the main thread
-    tool_call_thread_ = std::thread([this, id, tool_iter, arguments = std::move(arguments)]() {
-        try {
-            ReplyResult(id, (*tool_iter)->Call(arguments));
-        } catch (const std::exception& e) {
-            ESP_LOGE(TAG, "tools/call: %s", e.what());
-            ReplyError(id, e.what());
-        }
-    });
-    tool_call_thread_.detach();
+    try {
+        tool_call_thread_ = std::thread([this, id, tool_iter, arguments = std::move(arguments)]() {
+            try {
+                ReplyResult(id, (*tool_iter)->Call(arguments));
+            } catch (const std::exception& e) {
+                ESP_LOGE(TAG, "tools/call: %s", e.what());
+                ReplyError(id, e.what());
+            } catch (...) {
+                ESP_LOGE(TAG, "tools/call: Unknown exception");
+                ReplyError(id, "Unknown tool execution error");
+            }
+            tool_call_running_.store(false);
+        });
+        tool_call_thread_.detach();
+    } catch (const std::exception& e) {
+        tool_call_running_.store(false);
+        ESP_LOGE(TAG, "tools/call: failed to start tool thread for %s: %s", tool_name.c_str(), e.what());
+        ReplyError(id, "Failed to start tool execution thread");
+    } catch (...) {
+        tool_call_running_.store(false);
+        ESP_LOGE(TAG, "tools/call: failed to start tool thread for %s: unknown error", tool_name.c_str());
+        ReplyError(id, "Failed to start tool execution thread");
+    }
 }

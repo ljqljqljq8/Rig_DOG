@@ -11,9 +11,27 @@ This branch packages the current working state of the project into one repo:
 - The dog can capture a photo and recognize a face against the local PC library.
 - The dog can capture a photo and enroll a person directly into the local PC library.
 - The local face library supports multiple photos per person using `photos/<name>/...`.
+- The local face service can detect and report multiple faces from a single image.
 - The dog can reuse natural phrases such as "remember me as <name>" and route them into face enrollment.
 - The local HTTP service exposes `/recognize`, `/locate`, `/enroll`, `/reload`, `/list`, and `/health`.
 - The dog can locate a named person in the frame and use that result for short visual follow bursts.
+- In multi-person scenes, locate now chooses the requested identity instead of defaulting to the most obvious face.
+- Firmware-side tool execution now rejects overlapping calls instead of letting multiple tool jobs pile up.
+- The audio abort path resets the decoder so the device is less likely to stay stuck after an interrupted response.
+
+## Compared with `codex/face-mcp-package`
+
+This branch keeps the packaged layout from `codex/face-mcp-package` and adds
+the next round of behavior fixes.
+
+Main updates:
+
+- `/recognize` now returns multiple face matches and a face count
+- `/locate` now evaluates every detected face against the requested person
+- service tests cover multi-face recognition and target selection
+- firmware guards against concurrent MCP tool execution
+- decoder reset is triggered on speaking abort
+- the current Lulu board config points to `http://172.20.10.2:8001`
 
 ## Branch comparison
 
@@ -81,7 +99,7 @@ This means collaborators can share the code branch without sharing personal biom
 ## Current board-side assumptions
 
 - board: Lulu ESP32-S3
-- local face service URL: `http://192.168.147.46:8001`
+- local face service URL: `http://172.20.10.2:8001`
 - firmware endpoint: `/recognize`
 - firmware endpoint: `/locate`
 - firmware endpoint: `/enroll`

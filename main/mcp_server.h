@@ -9,6 +9,7 @@
 #include <optional>
 #include <stdexcept>
 #include <thread>
+#include <atomic>
 
 #include <cJSON.h>
 
@@ -276,6 +277,7 @@ private:
 
     std::vector<McpTool*> tools_;
     std::thread tool_call_thread_;
+    std::atomic_bool tool_call_running_{false};
 };
 
 #endif // MCP_SERVER_H
